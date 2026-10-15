@@ -1,0 +1,1285 @@
+{
+  "versione": "2026-10-15T00:00:00.000Z",
+  "categorie": [
+    {
+      "id": "signature",
+      "nome": "I nostri Cocktail"
+    },
+    {
+      "id": "classici",
+      "nome": "Classici & Vintage"
+    },
+    {
+      "id": "spritz",
+      "nome": "Spritz"
+    },
+    {
+      "id": "gin",
+      "nome": "Gin Tonic"
+    },
+    {
+      "id": "birre",
+      "nome": "Birre"
+    },
+    {
+      "id": "vini",
+      "nome": "Vini & Bollicine"
+    },
+    {
+      "id": "whiskey",
+      "nome": "Whiskey"
+    },
+    {
+      "id": "rum",
+      "nome": "Rum"
+    },
+    {
+      "id": "digestivi",
+      "nome": "Grappe, Cognac & Amari"
+    },
+    {
+      "id": "analcolici",
+      "nome": "Analcolici"
+    },
+    {
+      "id": "cucina",
+      "nome": "Menu Sfizioso"
+    }
+  ],
+  "drinks": [
+    {
+      "id": "soledad",
+      "nome": "Soledad",
+      "categoria": "signature",
+      "prezzo": 10,
+      "emoji": "🍊",
+      "descrizione": "Gin Gold agrumato, lampone e lime, con tonica classica o all'ananas. Anche analcolico.",
+      "varianti": [
+        "Tonica classica",
+        "Tonica all'ananas",
+        "Analcolico"
+      ],
+      "ingredienti": [
+        {
+          "nome": "Gin Gold agrumato",
+          "dose": ""
+        },
+        {
+          "nome": "Lampone",
+          "dose": ""
+        },
+        {
+          "nome": "Lime",
+          "dose": ""
+        },
+        {
+          "nome": "Tonica classica o all'ananas",
+          "dose": ""
+        }
+      ],
+      "note": "Dosi e procedimento da completare con la ricetta del bar."
+    },
+    {
+      "id": "cherry-americano",
+      "nome": "Cherry Americano",
+      "categoria": "signature",
+      "prezzo": 10,
+      "emoji": "🍒",
+      "descrizione": "Bitter Campari e Vermouth del Professore con tonica alla ciliegia.",
+      "ingredienti": [
+        {
+          "nome": "Bitter Campari",
+          "dose": ""
+        },
+        {
+          "nome": "Vermouth del Professore",
+          "dose": ""
+        },
+        {
+          "nome": "Tonica alla ciliegia",
+          "dose": ""
+        }
+      ],
+      "note": "Dosi e procedimento da completare con la ricetta del bar."
+    },
+    {
+      "id": "sage-flower",
+      "nome": "Sage Flower",
+      "categoria": "signature",
+      "prezzo": 10,
+      "emoji": "🌼",
+      "descrizione": "Briottet ai fiori di sambuco ed Elisir Salvia & Limone con tonica mandarino & bergamotto.",
+      "ingredienti": [
+        {
+          "nome": "Briottet ai fiori di sambuco",
+          "dose": ""
+        },
+        {
+          "nome": "Elisir Salvia & Limone",
+          "dose": ""
+        },
+        {
+          "nome": "Tonica mandarino & bergamotto",
+          "dose": ""
+        }
+      ],
+      "note": "Dosi e procedimento da completare con la ricetta del bar."
+    },
+    {
+      "id": "the-last-drugs",
+      "nome": "The Last Drugs",
+      "categoria": "signature",
+      "prezzo": 10,
+      "emoji": "🥃",
+      "descrizione": "Whiskey Bourbon, Centum Herbis, zenzero e lime.",
+      "ingredienti": [
+        {
+          "nome": "Whiskey Bourbon",
+          "dose": ""
+        },
+        {
+          "nome": "Centum Herbis",
+          "dose": ""
+        },
+        {
+          "nome": "Zenzero",
+          "dose": ""
+        },
+        {
+          "nome": "Lime",
+          "dose": ""
+        }
+      ],
+      "note": "Dosi e procedimento da completare con la ricetta del bar."
+    },
+    {
+      "id": "il-nostro-paloma",
+      "nome": "Il nostro Paloma",
+      "categoria": "signature",
+      "prezzo": 10,
+      "emoji": "🌶️",
+      "descrizione": "Mezcal Vida, Ancho Reyes Rosso e lime con tonica al pompelmo.",
+      "ingredienti": [
+        {
+          "nome": "Mezcal Vida",
+          "dose": ""
+        },
+        {
+          "nome": "Ancho Reyes Rosso",
+          "dose": ""
+        },
+        {
+          "nome": "Lime",
+          "dose": ""
+        },
+        {
+          "nome": "Tonica al pompelmo",
+          "dose": ""
+        }
+      ],
+      "note": "Dosi e procedimento da completare con la ricetta del bar."
+    },
+    {
+      "id": "fresh-collins",
+      "nome": "Fresh Collins",
+      "categoria": "signature",
+      "prezzo": 10,
+      "emoji": "🌿",
+      "descrizione": "Elisir Eucalipto & Menta, Labdano e limone con soda.",
+      "ingredienti": [
+        {
+          "nome": "Elisir Eucalipto & Menta",
+          "dose": ""
+        },
+        {
+          "nome": "Labdano",
+          "dose": ""
+        },
+        {
+          "nome": "Limone",
+          "dose": ""
+        },
+        {
+          "nome": "Soda",
+          "dose": ""
+        }
+      ],
+      "note": "Dosi e procedimento da completare con la ricetta del bar."
+    },
+    {
+      "id": "cactus-del-fico",
+      "nome": "Cactus del Fico",
+      "categoria": "signature",
+      "prezzo": 10,
+      "emoji": "🌵",
+      "descrizione": "Tequila Reposado, Chartreuse, miele e lime con tonica al fico.",
+      "ingredienti": [
+        {
+          "nome": "Tequila Reposado",
+          "dose": ""
+        },
+        {
+          "nome": "Chartreuse",
+          "dose": ""
+        },
+        {
+          "nome": "Miele",
+          "dose": ""
+        },
+        {
+          "nome": "Lime",
+          "dose": ""
+        },
+        {
+          "nome": "Tonica al fico",
+          "dose": ""
+        }
+      ],
+      "note": "Dosi e procedimento da completare con la ricetta del bar."
+    },
+    {
+      "id": "diversamente-simili",
+      "nome": "Diversamente Simili",
+      "categoria": "signature",
+      "prezzo": 10,
+      "emoji": "🍓",
+      "descrizione": "Gin Bulldog, Elisir di Rabarbaro, lampone e lime.",
+      "ingredienti": [
+        {
+          "nome": "Gin Bulldog",
+          "dose": ""
+        },
+        {
+          "nome": "Elisir di Rabarbaro",
+          "dose": ""
+        },
+        {
+          "nome": "Lampone",
+          "dose": ""
+        },
+        {
+          "nome": "Lime",
+          "dose": ""
+        }
+      ],
+      "note": "Dosi e procedimento da completare con la ricetta del bar."
+    },
+    {
+      "id": "americano",
+      "nome": "Americano",
+      "categoria": "classici",
+      "prezzo": 10,
+      "emoji": "🍹",
+      "descrizione": "Campari e Vermouth del Professore, con soda.",
+      "ingredienti": [
+        {
+          "nome": "Campari",
+          "dose": "30 ml"
+        },
+        {
+          "nome": "Vermouth del Professore Rosso",
+          "dose": "30 ml"
+        },
+        {
+          "nome": "Soda",
+          "dose": "top"
+        },
+        {
+          "nome": "Arancia",
+          "dose": "1 fetta"
+        }
+      ],
+      "bicchiere": "Old fashioned o highball",
+      "ghiaccio": "Cubetti",
+      "metodo": "Build",
+      "guarnizione": "Fetta d'arancia",
+      "passaggi": [
+        "Riempi il bicchiere di ghiaccio.",
+        "Versa Campari e Vermouth del Professore.",
+        "Completa con la soda.",
+        "Mescola brevemente e guarnisci con la fetta d'arancia."
+      ]
+    },
+    {
+      "id": "negroni",
+      "nome": "Negroni",
+      "categoria": "classici",
+      "prezzo": 10,
+      "emoji": "🥃",
+      "descrizione": "Campari, Vermouth del Professore e Gin Bulldog.",
+      "ingredienti": [
+        {
+          "nome": "Gin Bulldog",
+          "dose": "30 ml"
+        },
+        {
+          "nome": "Campari",
+          "dose": "30 ml"
+        },
+        {
+          "nome": "Vermouth del Professore Rosso",
+          "dose": "30 ml"
+        },
+        {
+          "nome": "Scorza d'arancia",
+          "dose": "1"
+        }
+      ],
+      "bicchiere": "Old fashioned (tumbler basso)",
+      "ghiaccio": "Cubo grande o cubetti",
+      "metodo": "Stir (mixing glass)",
+      "guarnizione": "Scorza d'arancia",
+      "passaggi": [
+        "Riempi il mixing glass di ghiaccio.",
+        "Versa gin, Campari e vermouth.",
+        "Mescola con il bar spoon per 20-30 secondi.",
+        "Filtra nel tumbler con ghiaccio nuovo.",
+        "Spremi la scorza d'arancia sopra il drink e lasciala nel bicchiere."
+      ]
+    },
+    {
+      "id": "negroni-sbagliato",
+      "nome": "Negroni Sbagliato",
+      "categoria": "classici",
+      "prezzo": 10,
+      "emoji": "🥂",
+      "descrizione": "Campari e vermouth rosso con bollicine al posto del gin.",
+      "ingredienti": [
+        {
+          "nome": "Campari",
+          "dose": "30 ml"
+        },
+        {
+          "nome": "Vermouth del Professore Rosso",
+          "dose": "30 ml"
+        },
+        {
+          "nome": "Prosecco / spumante brut",
+          "dose": "60 ml"
+        },
+        {
+          "nome": "Arancia",
+          "dose": "1 fetta"
+        }
+      ],
+      "bicchiere": "Old fashioned o calice",
+      "ghiaccio": "Cubetti",
+      "metodo": "Build",
+      "guarnizione": "Fetta o scorza d'arancia",
+      "passaggi": [
+        "Riempi il bicchiere di ghiaccio.",
+        "Versa Campari e vermouth.",
+        "Completa con le bollicine versandole delicatamente.",
+        "Mescola una sola volta e guarnisci con l'arancia."
+      ]
+    },
+    {
+      "id": "boulevardier",
+      "nome": "Boulevardier",
+      "categoria": "classici",
+      "prezzo": 10,
+      "emoji": "🥃",
+      "descrizione": "Il cugino del Negroni con Bourbon al posto del gin.",
+      "ingredienti": [
+        {
+          "nome": "Bourbon",
+          "dose": "45 ml"
+        },
+        {
+          "nome": "Campari",
+          "dose": "30 ml"
+        },
+        {
+          "nome": "Vermouth del Professore Rosso",
+          "dose": "30 ml"
+        },
+        {
+          "nome": "Scorza d'arancia",
+          "dose": "1"
+        }
+      ],
+      "bicchiere": "Old fashioned o coppetta",
+      "ghiaccio": "Cubo grande (o niente se in coppetta)",
+      "metodo": "Stir (mixing glass)",
+      "guarnizione": "Scorza d'arancia",
+      "passaggi": [
+        "Riempi il mixing glass di ghiaccio.",
+        "Versa bourbon, Campari e vermouth.",
+        "Mescola per 20-30 secondi.",
+        "Filtra nel bicchiere con un cubo grande (o in coppetta fredda).",
+        "Spremi la scorza d'arancia sopra il drink."
+      ]
+    },
+    {
+      "id": "old-fashioned",
+      "nome": "Old Fashioned",
+      "categoria": "classici",
+      "prezzo": 10,
+      "emoji": "🥃",
+      "descrizione": "Bourbon, zucchero e bitter aromatico.",
+      "ingredienti": [
+        {
+          "nome": "Bourbon (o Rye)",
+          "dose": "60 ml"
+        },
+        {
+          "nome": "Sciroppo di zucchero",
+          "dose": "5-10 ml (o 1 zolletta)"
+        },
+        {
+          "nome": "Angostura bitters",
+          "dose": "2-3 dash"
+        },
+        {
+          "nome": "Scorza d'arancia",
+          "dose": "1"
+        }
+      ],
+      "bicchiere": "Old fashioned",
+      "ghiaccio": "Cubo grande",
+      "metodo": "Stir",
+      "guarnizione": "Scorza d'arancia",
+      "passaggi": [
+        "Nel mixing glass (o direttamente nel bicchiere) metti zucchero e Angostura.",
+        "Aggiungi il bourbon e il ghiaccio.",
+        "Mescola per circa 30 secondi.",
+        "Filtra sul cubo grande.",
+        "Spremi la scorza d'arancia sopra il drink e lasciala nel bicchiere."
+      ]
+    },
+    {
+      "id": "martini-cocktail",
+      "nome": "Martini Cocktail",
+      "categoria": "classici",
+      "prezzo": 10,
+      "emoji": "🍸",
+      "descrizione": "Gin e vermouth dry, secco ed elegante.",
+      "varianti": [
+        "Con scorza di limone",
+        "Con oliva"
+      ],
+      "ingredienti": [
+        {
+          "nome": "Gin",
+          "dose": "60 ml"
+        },
+        {
+          "nome": "Vermouth dry",
+          "dose": "10 ml"
+        },
+        {
+          "nome": "Scorza di limone o oliva",
+          "dose": "1"
+        }
+      ],
+      "bicchiere": "Coppetta Martini",
+      "ghiaccio": "Nel mixing glass, niente nel bicchiere",
+      "metodo": "Stir + strain",
+      "guarnizione": "Scorza di limone o oliva",
+      "passaggi": [
+        "Metti la coppetta in freezer o raffreddala con ghiaccio.",
+        "Nel mixing glass pieno di ghiaccio versa gin e vermouth dry.",
+        "Mescola per 30 secondi: deve essere molto freddo.",
+        "Filtra nella coppetta fredda.",
+        "Guarnisci con la scorza di limone spremuta sopra o con l'oliva."
+      ]
+    },
+    {
+      "id": "margarita",
+      "nome": "Margarita",
+      "categoria": "classici",
+      "prezzo": 10,
+      "emoji": "🍋",
+      "descrizione": "Tequila, triple sec e lime, con il bordo al sale.",
+      "ingredienti": [
+        {
+          "nome": "Tequila",
+          "dose": "50 ml"
+        },
+        {
+          "nome": "Triple sec",
+          "dose": "20 ml"
+        },
+        {
+          "nome": "Succo di lime",
+          "dose": "25 ml"
+        },
+        {
+          "nome": "Sale",
+          "dose": "per il bordo"
+        }
+      ],
+      "bicchiere": "Coppa Margarita o coppetta",
+      "ghiaccio": "Nello shaker",
+      "metodo": "Shake + strain",
+      "guarnizione": "Mezzo bordo di sale e rotella di lime",
+      "passaggi": [
+        "Passa uno spicchio di lime su metà del bordo e intingilo nel sale.",
+        "Nello shaker versa tequila, triple sec e lime.",
+        "Riempi di ghiaccio e shakera per 10-12 secondi.",
+        "Filtra nel bicchiere e guarnisci con la rotella di lime."
+      ]
+    },
+    {
+      "id": "mojito",
+      "nome": "Mojito",
+      "categoria": "classici",
+      "prezzo": 10,
+      "emoji": "🌱",
+      "descrizione": "Rum bianco, lime e menta fresca. Anche analcolico.",
+      "ingredienti": [
+        {
+          "nome": "Rum bianco",
+          "dose": "50 ml"
+        },
+        {
+          "nome": "Lime",
+          "dose": "½ lime a spicchi"
+        },
+        {
+          "nome": "Zucchero di canna",
+          "dose": "2 cucchiaini"
+        },
+        {
+          "nome": "Menta",
+          "dose": "8-10 foglie"
+        },
+        {
+          "nome": "Soda",
+          "dose": "top"
+        }
+      ],
+      "bicchiere": "Highball",
+      "ghiaccio": "Ghiaccio tritato",
+      "metodo": "Muddle + build",
+      "guarnizione": "Rametto di menta",
+      "passaggi": [
+        "Pesta lime e zucchero nel bicchiere per estrarre il succo.",
+        "Aggiungi la menta e premila delicatamente (non tritarla, diventa amara).",
+        "Riempi di ghiaccio tritato e versa il rum.",
+        "Mescola dal basso verso l'alto.",
+        "Completa con la soda, aggiungi ghiaccio tritato e guarnisci con la menta."
+      ]
+    },
+    {
+      "id": "classico-altro",
+      "nome": "Altro classico / vintage",
+      "categoria": "classici",
+      "prezzo": 10,
+      "emoji": "✨",
+      "descrizione": "Qualsiasi altro classico su richiesta (chiedere al barman)."
+    },
+    {
+      "id": "spritz",
+      "nome": "Spritz",
+      "categoria": "spritz",
+      "prezzo": 7,
+      "emoji": "🍊",
+      "descrizione": "Aperol, Campari, Limoncello, Rabarbaro o Cynar.",
+      "varianti": [
+        "Aperol",
+        "Campari",
+        "Limoncello",
+        "Rabarbaro",
+        "Cynar"
+      ],
+      "ingredienti": [
+        {
+          "nome": "Aperol / Campari / Limoncello / Rabarbaro / Cynar",
+          "dose": "60 ml"
+        },
+        {
+          "nome": "Prosecco",
+          "dose": "90 ml"
+        },
+        {
+          "nome": "Soda",
+          "dose": "30 ml"
+        },
+        {
+          "nome": "Arancia",
+          "dose": "1 fetta"
+        }
+      ],
+      "bicchiere": "Calice da vino",
+      "ghiaccio": "Cubetti, bicchiere pieno",
+      "metodo": "Build",
+      "guarnizione": "Fetta d'arancia (limone per il Limoncello)",
+      "passaggi": [
+        "Riempi il calice di ghiaccio.",
+        "Versa il Prosecco.",
+        "Aggiungi il bitter o liquore scelto.",
+        "Completa con uno splash di soda.",
+        "Mescola delicatamente dal basso verso l'alto e guarnisci."
+      ],
+      "note": "Proporzione 3-2-1 (Prosecco-bitter-soda). Prosecco ben freddo."
+    },
+    {
+      "id": "gin-tonic",
+      "nome": "Gin Tonic Premium",
+      "categoria": "gin",
+      "prezzo": 10,
+      "emoji": "🫧",
+      "descrizione": "Scegli il gin. Per le ultime novità chiedere al barman.",
+      "varianti": [
+        {
+          "nome": "JRose",
+          "info": "bergamotto calabrese"
+        },
+        {
+          "nome": "Akori Blu",
+          "info": "un giapponese esotico"
+        },
+        {
+          "nome": "Hendrick's Oasium",
+          "info": "profumi di oasi"
+        },
+        {
+          "nome": "Blackwood",
+          "info": "Navy 60°, morbido e profumato"
+        },
+        {
+          "nome": "Sipsmith",
+          "info": "London Dry Gin… che piace!"
+        },
+        {
+          "nome": "Gin Arte",
+          "info": "armonia tra forza e delicatezza"
+        },
+        {
+          "nome": "Silent Pool",
+          "info": "quintessenza fresca e complessa"
+        },
+        {
+          "nome": "Geranium",
+          "info": "London Dry Gin, decisamente secco"
+        },
+        {
+          "nome": "Whitley Neill",
+          "info": "al pompelmo o al lampone"
+        },
+        {
+          "nome": "Lonewolf",
+          "info": "Cactus e Lime o Pesca e Passion Fruit"
+        },
+        {
+          "nome": "Condesa Clasica",
+          "info": "anima messicana"
+        },
+        {
+          "nome": "Alkkemist",
+          "info": "elisir del mediterraneo spagnolo"
+        },
+        {
+          "nome": "Saigon Baigur",
+          "info": "botaniche vietnamite"
+        },
+        {
+          "nome": "Bareksten",
+          "info": "essenze norvegesi"
+        },
+        {
+          "nome": "Ukiyo",
+          "info": "giapponese con Yuzu"
+        }
+      ],
+      "ingredienti": [
+        {
+          "nome": "Gin scelto",
+          "dose": "50 ml"
+        },
+        {
+          "nome": "Acqua tonica",
+          "dose": "150 ml"
+        },
+        {
+          "nome": "Guarnizione in base al gin",
+          "dose": ""
+        }
+      ],
+      "bicchiere": "Balloon (copa)",
+      "ghiaccio": "Cubetti grandi, bicchiere pieno",
+      "metodo": "Build",
+      "guarnizione": "In base al gin (scorza di agrume, botaniche…)",
+      "passaggi": [
+        "Riempi il balloon di ghiaccio e mescola per raffreddarlo, poi elimina l'acqua.",
+        "Versa il gin.",
+        "Aggiungi la tonica lungo il bar spoon per non perdere le bollicine.",
+        "Mescola una sola volta dal basso verso l'alto.",
+        "Aggiungi la guarnizione adatta al gin."
+      ]
+    },
+    {
+      "id": "guinness",
+      "nome": "Guinness",
+      "categoria": "birre",
+      "prezzo": 6.5,
+      "emoji": "🍺",
+      "varianti": [
+        {
+          "nome": "Piccola",
+          "prezzo": 4
+        },
+        {
+          "nome": "Pinta",
+          "prezzo": 6.5
+        }
+      ]
+    },
+    {
+      "id": "bionda",
+      "nome": "Bionda inglese Pale/Golden Ale",
+      "categoria": "birre",
+      "prezzo": 7,
+      "emoji": "🍺",
+      "descrizione": "Alla pompa.",
+      "varianti": [
+        {
+          "nome": "Piccola",
+          "prezzo": 4
+        },
+        {
+          "nome": "Media",
+          "prezzo": 7
+        }
+      ]
+    },
+    {
+      "id": "kilkenny",
+      "nome": "Ambrata Kilkenny Cream",
+      "categoria": "birre",
+      "prezzo": 7,
+      "emoji": "🍺",
+      "descrizione": "Alla pompa.",
+      "varianti": [
+        {
+          "nome": "Piccola",
+          "prezzo": 4
+        },
+        {
+          "nome": "Media",
+          "prezzo": 7
+        }
+      ]
+    },
+    {
+      "id": "ipa",
+      "nome": "IPA 33 cl",
+      "categoria": "birre",
+      "prezzo": 6,
+      "emoji": "🍾",
+      "descrizione": "In bottiglia."
+    },
+    {
+      "id": "la-trappe",
+      "nome": "La Trappe Blonde 33 cl",
+      "categoria": "birre",
+      "prezzo": 6,
+      "emoji": "🍾",
+      "descrizione": "In bottiglia."
+    },
+    {
+      "id": "daura",
+      "nome": "Daura Damm Lager 33 cl",
+      "categoria": "birre",
+      "prezzo": 6,
+      "emoji": "🍾",
+      "descrizione": "In bottiglia, senza glutine."
+    },
+    {
+      "id": "birra-zero",
+      "nome": "Birra Zero Alcool",
+      "categoria": "birre",
+      "prezzo": 6,
+      "emoji": "🍾"
+    },
+    {
+      "id": "bianco-calice",
+      "nome": "Vino bianco · calice",
+      "categoria": "vini",
+      "prezzo": 6,
+      "emoji": "🥂",
+      "varianti": [
+        {
+          "nome": "Grüner Veltliner",
+          "info": "morbidamente minerale"
+        },
+        {
+          "nome": "Pinot Grigio",
+          "info": "erbaceo"
+        },
+        {
+          "nome": "Falerio Pecorino",
+          "info": "profumato e fruttato"
+        }
+      ]
+    },
+    {
+      "id": "bianco-bottiglia",
+      "nome": "Vino bianco · bottiglia",
+      "categoria": "vini",
+      "prezzo": 25,
+      "emoji": "🍾",
+      "varianti": [
+        "Grüner Veltliner",
+        "Pinot Grigio",
+        "Falerio Pecorino"
+      ]
+    },
+    {
+      "id": "rosso-calice",
+      "nome": "Vino rosso · calice",
+      "categoria": "vini",
+      "prezzo": 7,
+      "emoji": "🍷",
+      "varianti": [
+        {
+          "nome": "Pinot Nero",
+          "info": "rotondo e sempre elegante"
+        },
+        {
+          "nome": "Rosso di Montalcino",
+          "info": "un buon vino, what else?"
+        },
+        {
+          "nome": "Merlot Cabernet",
+          "info": "corposo, deciso"
+        },
+        {
+          "nome": "Nebbiolo",
+          "info": "Valtellina o Langhe"
+        },
+        {
+          "nome": "Vino del sud",
+          "info": "pugliese, siciliano oppure…"
+        }
+      ]
+    },
+    {
+      "id": "rosso-bottiglia",
+      "nome": "Vino rosso · bottiglia",
+      "categoria": "vini",
+      "prezzo": 30,
+      "emoji": "🍾",
+      "varianti": [
+        "Pinot Nero",
+        "Rosso di Montalcino",
+        "Merlot Cabernet",
+        "Nebbiolo",
+        "Vino del sud"
+      ]
+    },
+    {
+      "id": "bolla",
+      "nome": "Bolla spensierata",
+      "categoria": "vini",
+      "prezzo": 7,
+      "emoji": "🥂",
+      "varianti": [
+        {
+          "nome": "Calice",
+          "prezzo": 7
+        },
+        {
+          "nome": "Bottiglia",
+          "prezzo": 35
+        }
+      ]
+    },
+    {
+      "id": "trento-doc",
+      "nome": "Trento DOC",
+      "categoria": "vini",
+      "prezzo": 8,
+      "emoji": "🥂",
+      "descrizione": "Raffinatezza montanara.",
+      "varianti": [
+        {
+          "nome": "Calice",
+          "prezzo": 8
+        },
+        {
+          "nome": "Bottiglia",
+          "prezzo": 40
+        }
+      ]
+    },
+    {
+      "id": "bollicina-francese",
+      "nome": "Bollicina francese",
+      "categoria": "vini",
+      "prezzo": 9,
+      "emoji": "🥂",
+      "varianti": [
+        {
+          "nome": "Calice",
+          "prezzo": 9
+        },
+        {
+          "nome": "Bottiglia",
+          "prezzo": 50
+        }
+      ]
+    },
+    {
+      "id": "whiskey-premium",
+      "nome": "Whiskey Premium · 6 cl",
+      "categoria": "whiskey",
+      "prezzo": 12,
+      "emoji": "🥃",
+      "varianti": [
+        "Glenfiddich 12",
+        "Macallan 12",
+        "Johnnie Walker Black Label",
+        "Woodford Reserve Bourbon",
+        "Ardbeg 10",
+        "Caol Ila 12",
+        "Speyside Selection",
+        "Islay Selection",
+        "Japan Selection"
+      ]
+    },
+    {
+      "id": "whiskey-fuori-di-testa",
+      "nome": "Whiskey «Fuori di Testa» · 3 cl",
+      "categoria": "whiskey",
+      "prezzo": 20,
+      "emoji": "🥃",
+      "descrizione": "Selezione Diageo 2023.",
+      "varianti": [
+        "Lagavulin 12",
+        "Clynelish 10",
+        "Oban 11",
+        "Talisker Natural Cask Strength",
+        "Roseisle 12",
+        "Singleton 14",
+        {
+          "nome": "Mortlach",
+          "prezzo": 30
+        },
+        {
+          "nome": "Glenkinchie 27",
+          "prezzo": 30
+        },
+        {
+          "nome": "Johnnie Walker Blue Label",
+          "prezzo": 40
+        }
+      ]
+    },
+    {
+      "id": "rum-premium",
+      "nome": "Rum Premium · 4,5 cl",
+      "categoria": "rum",
+      "prezzo": 12,
+      "emoji": "🏝️",
+      "varianti": [
+        {
+          "nome": "Doorly's 12",
+          "info": "Barbados"
+        },
+        {
+          "nome": "CAB Ron",
+          "info": "Caribbean & Barbados"
+        },
+        {
+          "nome": "Flor de Caña 12",
+          "info": "Nicaragua"
+        },
+        {
+          "nome": "Relicario Supremo",
+          "info": "Repubblica Dominicana"
+        }
+      ]
+    },
+    {
+      "id": "rum-elite",
+      "nome": "Rum Élite · Millonario 15",
+      "categoria": "rum",
+      "prezzo": 14,
+      "emoji": "🏝️",
+      "descrizione": "4,5 cl · Perù."
+    },
+    {
+      "id": "rum-zacapa",
+      "nome": "Rum «Fuori di Testa» · Zacapa La Pasion",
+      "categoria": "rum",
+      "prezzo": 16,
+      "emoji": "🏝️",
+      "descrizione": "3 cl · Guatemala."
+    },
+    {
+      "id": "grappa",
+      "nome": "Grappa",
+      "categoria": "digestivi",
+      "prezzo": 7,
+      "emoji": "🍶",
+      "varianti": [
+        {
+          "nome": "18 Lune Riserva",
+          "info": "Marzadro"
+        },
+        {
+          "nome": "Barolo 9 anni",
+          "info": "Marolo"
+        },
+        {
+          "nome": "Moscato 5 anni",
+          "info": "Marolo"
+        },
+        {
+          "nome": "Grappa del Padre",
+          "info": "bianca, corposa, decisa · Marolo"
+        }
+      ]
+    },
+    {
+      "id": "cognac",
+      "nome": "Cognac",
+      "categoria": "digestivi",
+      "prezzo": 7,
+      "emoji": "🥃",
+      "varianti": [
+        "Camus VSOP",
+        "Drouet VS"
+      ]
+    },
+    {
+      "id": "amaro",
+      "nome": "Amaro / Elisir digestivo",
+      "categoria": "digestivi",
+      "prezzo": 5,
+      "emoji": "🌿",
+      "descrizione": "Per le ultime novità chiedere al barman.",
+      "varianti": [
+        "Jefferson",
+        "Bomba Carta",
+        "Milla di Marolo",
+        "Menta e Eucalipto",
+        "Salvia e Limone",
+        "Amaro Nazionale",
+        "Genepì",
+        "Limoncello",
+        "Liquirizia",
+        "Braulio Riserva",
+        "Camatti",
+        "Adriatico",
+        "Crema Whisky"
+      ]
+    },
+    {
+      "id": "shot",
+      "nome": "Shot",
+      "categoria": "digestivi",
+      "prezzo": 4,
+      "emoji": "🥃"
+    },
+    {
+      "id": "virgin-mojito",
+      "nome": "Virgin Mojito",
+      "categoria": "analcolici",
+      "prezzo": 10,
+      "emoji": "🍃",
+      "descrizione": "Tutta la freschezza del Mojito, senza alcol.",
+      "ingredienti": [
+        {
+          "nome": "Lime",
+          "dose": "½ lime a spicchi"
+        },
+        {
+          "nome": "Zucchero di canna",
+          "dose": "2 cucchiaini"
+        },
+        {
+          "nome": "Menta",
+          "dose": "8-10 foglie"
+        },
+        {
+          "nome": "Soda",
+          "dose": "top"
+        }
+      ],
+      "bicchiere": "Highball",
+      "ghiaccio": "Ghiaccio tritato",
+      "metodo": "Muddle + build",
+      "guarnizione": "Rametto di menta",
+      "passaggi": [
+        "Pesta lime e zucchero nel bicchiere.",
+        "Aggiungi la menta e premila delicatamente.",
+        "Riempi di ghiaccio tritato.",
+        "Completa con la soda e mescola.",
+        "Guarnisci con la menta."
+      ]
+    },
+    {
+      "id": "gin-tonic-analcolico",
+      "nome": "Gin Tonic Analcolico",
+      "categoria": "analcolici",
+      "prezzo": 10,
+      "emoji": "🫧",
+      "descrizione": "Con Tanqueray Zero.",
+      "ingredienti": [
+        {
+          "nome": "Tanqueray 0.0",
+          "dose": "50 ml"
+        },
+        {
+          "nome": "Acqua tonica",
+          "dose": "150 ml"
+        },
+        {
+          "nome": "Scorza di lime",
+          "dose": "1"
+        }
+      ],
+      "bicchiere": "Balloon (copa)",
+      "ghiaccio": "Cubetti grandi",
+      "metodo": "Build",
+      "guarnizione": "Scorza di lime",
+      "passaggi": [
+        "Riempi il balloon di ghiaccio e raffreddalo.",
+        "Versa il Tanqueray 0.0.",
+        "Aggiungi la tonica lungo il bar spoon.",
+        "Mescola una volta e guarnisci."
+      ]
+    },
+    {
+      "id": "cocktail-analcolico",
+      "nome": "Cocktail analcolico",
+      "categoria": "analcolici",
+      "prezzo": 10,
+      "emoji": "🍹",
+      "descrizione": "Creazione del barman."
+    },
+    {
+      "id": "tonica-frutta",
+      "nome": "Tonica alla frutta",
+      "categoria": "analcolici",
+      "prezzo": 5,
+      "emoji": "🫧",
+      "varianti": [
+        "Mandarino e Bergamotto",
+        "Ciliegia",
+        "Fico",
+        "Pompelmo",
+        "Ananas"
+      ]
+    },
+    {
+      "id": "coca-cola",
+      "nome": "Coca Cola",
+      "categoria": "analcolici",
+      "prezzo": 4,
+      "emoji": "🥤"
+    },
+    {
+      "id": "succo-te",
+      "nome": "Succo / Tè",
+      "categoria": "analcolici",
+      "prezzo": 4,
+      "emoji": "🧃",
+      "varianti": [
+        "Tè alla pesca",
+        "Tè al limone",
+        "Succo albicocca",
+        "Succo pesca"
+      ]
+    },
+    {
+      "id": "red-bull",
+      "nome": "Red Bull",
+      "categoria": "analcolici",
+      "prezzo": 4,
+      "emoji": "⚡"
+    },
+    {
+      "id": "acqua",
+      "nome": "Acqua",
+      "categoria": "analcolici",
+      "prezzo": 2,
+      "emoji": "💧"
+    },
+    {
+      "id": "vasetto",
+      "nome": "Sfiziosità in vasetto da spalmare",
+      "categoria": "cucina",
+      "prezzo": 10,
+      "emoji": "🫙",
+      "descrizione": "Monouso, servite con pane «malfatto».",
+      "varianti": [
+        "Baccalà mantecato (160 g)",
+        "Crema di verdure (130 g)",
+        "Crema di pomodorini secchi (130 g)",
+        "Crema di carciofo (130 g)",
+        "Crema di olive (130 g)"
+      ]
+    },
+    {
+      "id": "malfatto-praga-salame",
+      "nome": "Pane malfatto · Praga o salame",
+      "categoria": "cucina",
+      "prezzo": 7,
+      "emoji": "🥪",
+      "varianti": [
+        "Prosciutto di Praga",
+        "Salame nostrano"
+      ]
+    },
+    {
+      "id": "malfatto-praga-branzi",
+      "nome": "Pane malfatto · Praga e Branzi",
+      "categoria": "cucina",
+      "prezzo": 8,
+      "emoji": "🥪"
+    },
+    {
+      "id": "malfatto-porchetta",
+      "nome": "Pane malfatto · Porchetta di Ariccia IGP",
+      "categoria": "cucina",
+      "prezzo": 8,
+      "emoji": "🥪"
+    },
+    {
+      "id": "piatto-mix",
+      "nome": "Piatto Mix",
+      "categoria": "cucina",
+      "prezzo": 12,
+      "emoji": "🍽️",
+      "descrizione": "Servito con pane «malfatto».",
+      "varianti": [
+        "Porchetta di Ariccia IGP, Branzi e Grana",
+        "Praga, salame nostrano, Branzi e Grana"
+      ]
+    },
+    {
+      "id": "grana",
+      "nome": "Porzione di Grana Padano",
+      "categoria": "cucina",
+      "prezzo": 5,
+      "emoji": "🧀"
+    },
+    {
+      "id": "piatto-fuori-di-testa",
+      "nome": "Piatto «Fuori di Testa»",
+      "categoria": "cucina",
+      "prezzo": 18,
+      "emoji": "🍽️",
+      "descrizione": "Culatello e Cinta Senese. Senza glutine e senza lattosio, con pane «malfatto»."
+    },
+    {
+      "id": "patatine",
+      "nome": "Patatine fritte",
+      "categoria": "cucina",
+      "prezzo": 5,
+      "emoji": "🍟"
+    },
+    {
+      "id": "snack",
+      "nome": "Snack",
+      "categoria": "cucina",
+      "prezzo": 0,
+      "emoji": "🥨",
+      "descrizione": "Offerti dalla casa."
+    }
+  ]
+}

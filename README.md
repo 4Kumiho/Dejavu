@@ -6,7 +6,8 @@
 
 <p align="center">
   L'app del bancone del <b>Déjà Vu</b> (Borgo Santa Caterina, Bergamo):<br>
-  <b>tavoli</b> con il conto che si calcola da solo, <b>pagamenti separati</b> e <b>ricette</b> dei cocktail.
+  <b>tavoli</b> con il conto che si calcola da solo, <b>pagamenti separati</b>, <b>ricette</b> dei cocktail<br>
+  e un <b>menu modificabile dall'app</b> che si aggiorna su tutti i dispositivi.
 </p>
 
 <p align="center">
@@ -125,7 +126,7 @@ Dopo, l'app **funziona anche senza internet**.
 ## 🍸 Come si usa
 
 ### 1. Pagina iniziale
-Le foto del locale scorrono dietro il logo. Da qui vai a **Tavoli** o **Ricette**, oppure apri subito un **+ Nuovo tavolo**.
+Le foto del locale scorrono dietro il logo. Da qui vai a **Tavoli**, **Ricette** o **Menu**, oppure apri subito un **+ Nuovo tavolo**.
 Nel riquadro *Tavoli* vedi quanti tavoli sono aperti e quanto c'è ancora da incassare.
 
 ### 2. Arriva un tavolo → **+ Nuovo tavolo**
@@ -171,6 +172,55 @@ Anche dall'ordine di un tavolo puoi toccare il nome di un cocktail per aprirne l
   <img src="docs/screenshots/ipad-ricetta.jpg" width="420" alt="Ricetta del Negroni">
 </p>
 
+### 8. Modificare il menu (proprietario / responsabile)
+Dalla scheda **Menu** puoi cambiare tutto senza toccare il codice:
+
+- **Modificare una voce**: toccala → cambi nome, prezzo, categoria, icona, descrizione → **Salva**.
+- **Varianti**: le scelte che compaiono quando aggiungi la voce a un tavolo (gusti dello spritz, gin, piccola/media, calice/bottiglia…), ognuna con il suo prezzo se diverso.
+- **Ricetta e dosi**: bicchiere, ghiaccio, metodo, guarnizione, **ingredienti con le quantità** e passaggi.
+- **Aggiungere** una voce: **+ Nuova voce**. **Togliere** una voce: aprila → **Elimina voce** (va toccato due volte, per sicurezza).
+- **Categorie**: rinominarle, riordinarle, aggiungerne di nuove.
+
+<p align="center">
+  <img src="docs/screenshots/ipad-menu.jpg" width="420" alt="Sezione Menu">
+  &nbsp;
+  <img src="docs/screenshots/ipad-modifica-voce.jpg" width="420" alt="Modifica di una voce">
+</p>
+
+#### 🔄 Le modifiche arrivano a tutti
+Quando premi **Salva**, il nuovo menu viene pubblicato online. Tutti gli altri dispositivi con l'app,
+entro un paio di minuti (o appena riaprono l'app), mostrano in alto **«Il menu è stato aggiornato · Aggiorna»**:
+basta toccare **Aggiorna**.
+
+<p align="center"><img src="docs/screenshots/ipad-avviso-aggiornamento.jpg" width="560" alt="Avviso menu aggiornato"></p>
+
+- I **tavoli già aperti** mantengono i prezzi con cui sono stati segnati; i nuovi ordini usano il menu nuovo.
+- Per salvare serve **internet**.
+- **Scarica copia** salva un file con tutto il menu (utile come backup).
+
+#### 🔑 La chiave di pubblicazione (una volta sola, solo sui dispositivi di chi modifica il menu)
+Per poter **salvare** le modifiche, il dispositivo deve avere la *chiave di pubblicazione*.
+Chi non ha la chiave può usare l'app normalmente ma non può cambiare il menu (così nessuno lo modifica per sbaglio).
+
+**Crea la chiave** (da computer o telefono, con l'account GitHub **4Kumiho**):
+1. Apri questo link: **[👉 Crea la chiave su GitHub](https://github.com/settings/personal-access-tokens/new)** (accedi con l'account 4Kumiho se te lo chiede).
+2. **Token name**: scrivi `Déjà Vu menu`.
+3. **Expiration**: scegli la durata più lunga disponibile (quando scade, basta crearne una nuova).
+4. **Repository access**: scegli **Only select repositories** e seleziona **4Kumiho/Dejavu**.
+5. **Permissions** → **Repository permissions** → **Contents**: scegli **Read and write**.
+6. In fondo premi **Generate token** (e conferma).
+7. **Copia** la chiave che compare (inizia con `github_pat_…`). ⚠️ GitHub la mostra una volta sola.
+
+**Inseriscila nell'app**:
+1. Apri l'app → scheda **Menu** → **Impostazioni** (oppure **Inserisci chiave**).
+2. Incolla la chiave e premi **Verifica e salva**.
+3. Se è tutto giusto compare *«Chiave salvata»* e il pulsante diventa **Impostazioni ✓**.
+
+<p align="center"><img src="docs/screenshots/ipad-chiave.jpg" width="560" alt="Inserire la chiave"></p>
+
+> 🔒 Inserisci la chiave solo sui dispositivi del proprietario o del responsabile.
+> Se un dispositivo con la chiave viene perso: su GitHub vai in **Settings → Developer settings → Personal access tokens → Fine-grained tokens** ed elimina la chiave.
+
 ### Sul telefono
 Stessa app, adattata allo schermo: dentro un tavolo usi le due schede **Ordine** e **+ Aggiungi**.
 
@@ -193,8 +243,15 @@ No, restano salvati sul dispositivo.
 **I tavoli si vedono su tutti gli iPad?**
 No: ogni dispositivo ha i suoi tavoli. Usate un solo dispositivo per segnare i tavoli.
 
-**Ho cambiato il menu ma sull'iPad non lo vedo.**
-Apri l'app con internet attivo, chiudila e riaprila: la nuova versione compare dalla seconda apertura.
+**Ho cambiato il menu ma un dispositivo non lo vede.**
+Deve essere collegato a internet: aprendo l'app compare in alto **«Il menu è stato aggiornato · Aggiorna»**. Tocca **Aggiorna**.
+Se hai appena salvato, aspetta un paio di minuti: la pubblicazione online richiede 1–2 minuti.
+
+**Quando salvo il menu dice che manca la chiave / che la chiave non è valida.**
+Vedi [La chiave di pubblicazione](#-la-chiave-di-pubblicazione-una-volta-sola-solo-sui-dispositivi-di-chi-modifica-il-menu): probabilmente non è stata inserita su quel dispositivo oppure è scaduta.
+
+**Esce «È disponibile una nuova versione dell'app».**
+È un aggiornamento dell'app: tocca **Aggiorna** e si ricarica con le novità.
 
 **L'icona apre GitHub invece dell'app.**
 Hai aggiunto la pagina sbagliata. Tieni premuto sull'icona → **Rimuovi**, poi rifai l'installazione da questo link: **[👉 Apri Déjà Vu Staff](https://4kumiho.github.io/Dejavu/staff/)**
@@ -210,18 +267,23 @@ I tavoli aperti in quel momento vengono cancellati. Il menu e le ricette invece 
 | Cartella | Cosa contiene |
 |---|---|
 | `staff/` | L'app: pagina iniziale, tavoli, ricette |
-| `shared/drinks.js` | **Il menu**: voci, prezzi, varianti e ricette. È l'unico file da modificare per cambiare il menu |
+| `shared/menu.json` | **Il menu**: voci, prezzi, varianti e ricette. Si modifica dall'app (sezione Menu) |
+| `shared/config.js` | Nome del locale, logo, foto della pagina iniziale, repository dove pubblicare il menu |
 | `shared/img/` | Foto che scorrono nella pagina iniziale |
 | `shared/` | Logo, colori, caratteri |
 | `Foto/Menu/`, `Foto/Locale/` | Foto originali del menu e del locale |
 | `docs/screenshots/` | Le immagini di questo README |
 
-### Modificare il menu
-In `shared/drinks.js` ogni voce ha nome, categoria, prezzo ed eventuali **varianti**
-(es. gusti dello spritz, gin, misure della birra). I cocktail hanno anche ingredienti con dosi e passaggi
-e compaiono nella sezione Ricette. Le foto della pagina iniziale sono elencate nella voce `foto`.
+### Come funziona l'aggiornamento del menu
+- Il menu ufficiale è `shared/menu.json`. L'app lo modifica tramite l'API di GitHub (commit su `main`) usando la chiave
+  di pubblicazione salvata sul dispositivo; GitHub Pages lo rimette online in 1–2 minuti.
+- Ogni dispositivo tiene una copia del menu per funzionare offline e controlla `menu.json` ogni 2 minuti e a ogni apertura:
+  se il campo `versione` è più recente, mostra l'avviso **Aggiorna**.
+- Se due persone salvano insieme, la seconda riceve un avviso e ricarica il menu più recente prima di riprovare.
+- Si può anche modificare `shared/menu.json` a mano: ricordati di aggiornare `versione` (data e ora ISO) perché gli altri dispositivi se ne accorgano.
 
-Ogni modifica pubblicata su `main` va online da sola in 1–2 minuti.
+Ogni modifica pubblicata su `main` va online da sola in 1–2 minuti. Le modifiche al codice dell'app mostrano l'avviso
+«nuova versione dell'app» quando cambia `CACHE` in `staff/sw.js`.
 
 ### Provarla sul computer senza installarla
 - Doppio clic su `staff/index.html` (con Chrome o Edge), oppure

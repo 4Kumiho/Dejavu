@@ -1,15 +1,21 @@
-// Rende l'app utilizzabile offline: mostra subito la copia salvata
-// e in background scarica l'eventuale versione aggiornata.
-const CACHE = "dejavu-staff-v7";
+// Rende l'app utilizzabile offline.
+// - menu.json: prima dalla rete (per avere sempre il menu più recente), se offline dalla copia salvata
+// - tutto il resto: subito dalla copia salvata, e in background scarica l'eventuale versione aggiornata
+// Cambiando CACHE, gli iPad scaricano la nuova versione dell'app e mostrano "Aggiorna".
+const CACHE = "dejavu-staff-v9";
 const FILES = [
   "./", "./index.html", "./manifest.json", "./icon-180.png", "./icon-192.png",
-  "../shared/drinks.js", "../shared/brand.css", "../shared/logo-white.png", "../shared/img/bar.jpg",
-  "../shared/img/locale-1.jpg", "../shared/img/locale-2.jpg", "../shared/img/locale-3.jpg",
+  "../shared/config.js", "../shared/menu.json", "../shared/brand.css", "../shared/logo-white.png",
+  "../shared/img/bar.jpg", "../shared/img/locale-1.jpg", "../shared/img/locale-2.jpg", "../shared/img/locale-3.jpg",
   "../shared/fonts/montserrat.woff2", "../shared/fonts/cormorant-500.woff2", "../shared/fonts/cormorant-600.woff2",
 ];
 
 self.addEventListener("install", (e) => {
-  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(FILES)).then(() => self.skipWaiting()));
+  e.waitUntil(
+    caches.open(CACHE)
+      .then((c) => c.addAll(FILES.map((u) => new Request(u, { cache: "reload" }))))
+      .then(() => self.skipWaiting())
+  );
 });
 
 self.addEventListener("activate", (e) => {
@@ -21,7 +27,21 @@ self.addEventListener("activate", (e) => {
 });
 
 self.addEventListener("fetch", (e) => {
-  if (e.request.method !== "GET" || new URL(e.request.url).origin !== location.origin) return;
+  const url = new URL(e.request.url);
+  if (e.request.method !== "GET" || url.origin !== location.origin) return;
+
+  if (url.pathname.endsWith("/menu.json")) {
+    const chiave = url.origin + url.pathname;
+    e.respondWith(
+      caches.open(CACHE).then((cache) =>
+        fetch(e.request, { cache: "no-store" })
+          .then((res) => { if (res.ok) cache.put(chiave, res.clone()); return res; })
+          .catch(() => cache.match(chiave))
+      )
+    );
+    return;
+  }
+
   e.respondWith(
     caches.open(CACHE).then(async (cache) => {
       const cached = await cache.match(e.request, { ignoreSearch: true });

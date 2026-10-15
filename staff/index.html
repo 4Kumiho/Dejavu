@@ -128,8 +128,8 @@
   .hero-top .line::before, .hero-top .line::after { content: ""; width: 36px; height: 1px; background: var(--accent); }
   .hero-top .date { margin-top: 10px; color: var(--muted); font-size: 13px; letter-spacing: .06em; }
   .hero-cards {
-    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px;
-    width: min(900px, 100%); margin: 36px auto 0; padding: 0 20px calc(28px + env(safe-area-inset-bottom));
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;
+    width: min(1000px, 100%); margin: 36px auto 0; padding: 0 20px calc(28px + env(safe-area-inset-bottom));
   }
   .hcard {
     text-align: left; text-decoration: none; color: var(--text);
@@ -307,6 +307,75 @@
   }
   .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
+
+  /* ---------- Gestione menu ---------- */
+  .me-tools { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .me-tools .btn { min-height: 42px; padding: 8px 14px; font-size: 11px; }
+  .banner {
+    border: 1px solid var(--dv-tq-line); background: var(--dv-tq-soft); border-radius: 12px;
+    padding: 14px 16px; margin-bottom: 14px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; line-height: 1.45;
+  }
+  .banner span { flex: 1; min-width: 220px; }
+  .banner .btn { min-height: 42px; }
+  .mlist { display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+  .mrow {
+    display: flex; align-items: center; gap: 12px; padding: 8px 14px 8px 8px; text-align: left;
+    background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  }
+  .mrow:active { border-color: var(--line-2); }
+  .mrow .tile { width: 40px; height: 40px; font-size: 19px; }
+  .mrow .n { font-weight: 600; line-height: 1.2; }
+  .mrow .s { color: var(--muted); font-size: 12px; margin-top: 3px; }
+  .mrow .p { margin-left: auto; color: var(--accent); font-weight: 600; white-space: nowrap; padding-left: 8px; }
+  .box.wide { width: min(780px, 100%); }
+  .editor h4 {
+    margin: 26px 0 4px; display: flex; align-items: center; gap: 12px; color: var(--text);
+    text-transform: uppercase; letter-spacing: .2em; font-size: 11px; font-weight: 700;
+  }
+  .editor h4::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .editor .hint { color: var(--muted); font-size: 12px; margin: 4px 0 0; line-height: 1.4; }
+  .egrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0 12px; }
+  .dlg textarea, .dlg select {
+    display: block; width: 100%; margin-top: 8px; padding: 12px 14px; font: inherit; font-size: 16px; border-radius: 10px;
+    border: 1px solid var(--line-2); background: var(--dv-black); color: var(--text); outline: none;
+    text-transform: none; letter-spacing: normal; font-weight: 500; resize: vertical;
+  }
+  .dlg select { appearance: none; -webkit-appearance: none; padding: 14px; font-size: 18px; }
+  .dlg textarea:focus, .dlg select:focus { border-color: var(--accent); }
+  .erow { display: flex; gap: 6px; margin-top: 8px; align-items: stretch; }
+  .erow input, .erow textarea { margin-top: 0 !important; padding: 10px 12px !important; font-size: 15px !important; min-width: 0; }
+  .erow [data-f="nome"] { flex: 2; }
+  .erow [data-f="prezzo"] { flex: 0 0 96px; }
+  .erow [data-f="info"] { flex: 2; }
+  .erow [data-f="dose"] { flex: 1; }
+  .erow [data-f="testo"] { flex: 1; }
+  .erow .x, .erow .mv {
+    flex: none; width: 44px; border: 1px solid var(--line); border-radius: 10px; background: none; color: var(--muted); font-size: 16px;
+  }
+  .erow .cnt { flex: none; align-self: center; color: var(--muted); font-size: 12px; width: 54px; text-align: center; }
+  .add { margin-top: 10px; }
+  .btn.small { min-height: 40px; padding: 8px 14px; font-size: 11px; }
+  .dlg-actions .spacer { flex: 1; }
+  @media (max-width: 560px) {
+    .erow { flex-wrap: wrap; }
+    .erow [data-f="info"] { flex-basis: 100%; order: 5; }
+    .mlist { grid-template-columns: minmax(0, 1fr); }
+    .dlg-actions { flex-wrap: wrap; }
+  }
+
+  /* ---------- Avviso aggiornamenti ---------- */
+  .avviso {
+    position: fixed; left: 50%; top: calc(env(safe-area-inset-top) + 10px); z-index: 70;
+    transform: translate(-50%, -140%); transition: transform .3s ease;
+    width: min(560px, calc(100% - 24px)); display: flex; align-items: center; gap: 12px;
+    background: var(--text); color: var(--dv-black); border-radius: 14px; padding: 10px 10px 10px 18px;
+    box-shadow: 0 14px 40px rgba(0,0,0,.6); border-left: 4px solid var(--accent); font-weight: 600; line-height: 1.35;
+  }
+  .avviso.show { transform: translate(-50%, 0); }
+  .avviso span { flex: 1; }
+  .avviso .btn { min-height: 44px; background: var(--dv-black); color: var(--text); border-color: var(--dv-black); }
+  .stato-ok { color: var(--accent); }
+
   /* ---------- Telefono ---------- */
   @media (max-width: 560px) {
     :root { --top-h: 60px; }
@@ -353,14 +422,16 @@
     <nav class="tabs">
       <a href="#tavoli" id="tabTavoli">Tavoli</a>
       <a href="#ricette" id="tabRicette">Ricette</a>
+      <a href="#menu" id="tabMenu">Menu</a>
     </nav>
   </div>
   <main id="app"></main>
 
   <div class="overlay" id="overlay"><div class="box" id="box"></div></div>
   <div class="toast" id="toast"></div>
+  <div class="avviso" id="avviso" role="status"><span id="avvisoTesto"></span><button class="btn" id="avvisoBtn">Aggiorna</button></div>
 
-<script src="../shared/drinks.js"></script>
+<script src="../shared/config.js"></script>
 <script>
 (function () {
   const D = window.DEJAVU;
@@ -371,9 +442,101 @@
   const euro = (cent) => fmt.format(cent / 100);
   const norm = (s) => String(s).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
   const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
-  const drinkById = (id) => D.drinks.find((d) => d.id === id);
-  const catNome = (id) => (D.categorie.find((c) => c.id === id) || {}).nome || "";
-  const RICETTE = D.drinks.filter((d) => d.ingredienti && d.ingredienti.length);
+  /* Il menu ufficiale è shared/menu.json (pubblicato su GitHub). Ogni dispositivo ne tiene una copia
+     per funzionare offline e controlla spesso se ne è uscita una versione nuova. */
+  const MENU_URL = "../shared/menu.json";
+  const MENU_CACHE = "dejavu.staff.menu.cache.v1";
+  const TOKEN_KEY = "dejavu.staff.github.token";
+  const GH = D.github;
+  const clona = (o) => JSON.parse(JSON.stringify(o));
+  const menuValido = (m) => !!(m && Array.isArray(m.categorie) && Array.isArray(m.drinks));
+  function leggiCacheMenu() {
+    try { const m = JSON.parse(localStorage.getItem(MENU_CACHE)); return menuValido(m) ? m : null; } catch { return null; }
+  }
+  let MENU = leggiCacheMenu();
+  let menuNuovo = null;
+  function applicaMenu(m) {
+    MENU = m;
+    menuNuovo = null;
+    try { localStorage.setItem(MENU_CACHE, JSON.stringify(m)); } catch {}
+    nascondiAvviso();
+    if (!$("#overlay").classList.contains("open")) render();
+  }
+  async function scaricaMenu() {
+    const r = await fetch(`${MENU_URL}?t=${Date.now()}`, { cache: "no-store" });
+    if (!r.ok) throw new Error(r.status);
+    const m = await r.json();
+    if (!menuValido(m)) throw new Error("menu non valido");
+    return m;
+  }
+  // Controlla se online c'è un menu più recente di quello in uso
+  async function controllaMenu() {
+    try {
+      const m = await scaricaMenu();
+      if (!MENU) return applicaMenu(m);
+      if ((m.versione || "") > (MENU.versione || "")) { menuNuovo = m; mostraAvviso("menu"); }
+    } catch {}
+  }
+
+  /* ---------- Avviso "aggiorna" ---------- */
+  let avvisoTipo = null;
+  function mostraAvviso(tipo) {
+    if (avvisoTipo === "app") return; // l'aggiornamento dell'app include già il menu
+    avvisoTipo = tipo;
+    $("#avvisoTesto").textContent = tipo === "app"
+      ? "È disponibile una nuova versione dell'app."
+      : "Il menu è stato aggiornato.";
+    $("#avviso").classList.add("show");
+  }
+  function nascondiAvviso() { avvisoTipo = null; $("#avviso").classList.remove("show"); }
+  $("#avvisoBtn").addEventListener("click", () => {
+    if (avvisoTipo === "app") return location.reload();
+    if (menuNuovo) { applicaMenu(menuNuovo); toast("Menu aggiornato"); }
+  });
+
+  /* ---------- Pubblicazione del menu su GitHub (solo con la chiave) ---------- */
+  const leggiToken = () => { try { return localStorage.getItem(TOKEN_KEY) || ""; } catch { return ""; } };
+  const ghApi = (path, opt = {}, token = leggiToken()) =>
+    fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}${path ? "/" + path : ""}`, {
+      ...opt,
+      cache: "no-store",
+      headers: { Accept: "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28", Authorization: `Bearer ${token}`, ...(opt.headers || {}) },
+    });
+  function aBase64(testo) {
+    const bytes = new TextEncoder().encode(testo);
+    let bin = "";
+    for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+    return btoa(bin);
+  }
+  const daBase64 = (b) => new TextDecoder().decode(Uint8Array.from(atob(b.replace(/\s/g, "")), (c) => c.charCodeAt(0)));
+  async function pubblicaMenu(nuovo, messaggio) {
+    if (!leggiToken()) throw new Error("Su questo dispositivo manca la chiave di pubblicazione: Menu → Impostazioni.");
+    let r;
+    try { r = await ghApi(`contents/${GH.menuPath}?ref=${GH.branch}`); }
+    catch { throw new Error("Serve la connessione a internet per salvare le modifiche."); }
+    if (r.status === 401 || r.status === 403) throw new Error("La chiave di pubblicazione non è valida o è scaduta: Menu → Impostazioni.");
+    if (!r.ok) throw new Error(`Non riesco a leggere il menu online (errore ${r.status}).`);
+    const attuale = await r.json();
+    const remoto = JSON.parse(daBase64(attuale.content));
+    if ((remoto.versione || "") !== (MENU.versione || "")) {
+      applicaMenu(remoto);
+      throw new Error("Il menu è stato cambiato da un altro dispositivo: ho caricato la versione più recente, rifai la modifica.");
+    }
+    nuovo.versione = new Date().toISOString();
+    const put = await ghApi(`contents/${GH.menuPath}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: messaggio, content: aBase64(JSON.stringify(nuovo, null, 2) + "\n"), sha: attuale.sha, branch: GH.branch }),
+    });
+    if (put.status === 409 || put.status === 422) throw new Error("Il menu è stato cambiato da un altro dispositivo nello stesso momento: riprova.");
+    if (put.status === 401 || put.status === 403) throw new Error("La chiave non ha il permesso di modificare il menu: Menu → Impostazioni.");
+    if (!put.ok) throw new Error(`Salvataggio non riuscito (errore ${put.status}).`);
+    applicaMenu(nuovo);
+  }
+
+  const drinkById = (id) => MENU.drinks.find((d) => d.id === id);
+  const catNome = (id) => (MENU.categorie.find((c) => c.id === id) || {}).nome || "";
+  const ricette = () => MENU.drinks.filter((d) => d.ingredienti && d.ingredienti.length);
   const haRicetta = (d) => !!(d && d.ingredienti && d.ingredienti.length);
   const varNome = (v) => (typeof v === "string" ? v : v.nome);
   const varPrezzo = (d, v) => (typeof v === "object" && v.prezzo != null ? v.prezzo : d.prezzo);
@@ -410,6 +573,7 @@
   const ui = {
     ricQ: "", ricCat: "tutti",
     pickQ: "", pickCat: "tutti",
+    meQ: "", meCat: "tutti",
     pane: "ordine", // su telefono: "ordine" oppure "aggiungi"
     pagamento: null, // { id: tavoloId, sel: { rigaId: quantità } }
   };
@@ -425,7 +589,7 @@
     });
   }
   function chipsHtml(lista, sel, action) {
-    const cats = [{ id: "tutti", nome: "Tutti" }, ...D.categorie.filter((c) => lista.some((d) => d.categoria === c.id))];
+    const cats = [{ id: "tutti", nome: "Tutti" }, ...MENU.categorie.filter((c) => lista.some((d) => d.categoria === c.id))];
     return cats.map((c) => `<button class="chip ${c.id === sel ? "on" : ""}" data-action="${action}" data-cat="${esc(c.id)}">${esc(c.nome)}</button>`).join("");
   }
 
@@ -433,7 +597,7 @@
   function route() {
     const h = location.hash.slice(1);
     if (h.startsWith("tavolo/")) return { view: "tavolo", id: decodeURIComponent(h.slice(7)) };
-    if (h === "ricette" || h === "tavoli") return { view: h };
+    if (h === "ricette" || h === "tavoli" || h === "menu") return { view: h };
     return { view: "home" };
   }
   function paneIniziale() {
@@ -448,9 +612,11 @@
     document.body.classList.toggle("home", r.view === "home");
     if (r.view !== "home") clearInterval(slideTimer);
     $("#tabRicette").classList.toggle("on", r.view === "ricette");
+    $("#tabMenu").classList.toggle("on", r.view === "menu");
     $("#tabTavoli").classList.toggle("on", r.view === "tavoli" || r.view === "tavolo");
     if (r.view === "home") return viewHome();
     if (r.view === "ricette") return viewRicette();
+    if (r.view === "menu") return viewMenu();
     if (r.view === "tavolo") {
       const t = tavoloById(r.id);
       if (!t) { location.replace("#tavoli"); return viewTavoli(); }
@@ -510,7 +676,12 @@
           <a class="hcard" href="#ricette">
             <span class="k dv-caps">Bancone</span>
             <h3>Ricette</h3>
-            <div class="v"><b>${RICETTE.length}</b> ricette · <b>${D.drinks.length}</b> voci di menu</div>
+            <div class="v"><b>${ricette().length}</b> ricette · <b>${MENU.drinks.length}</b> voci di menu</div>
+          </a>
+          <a class="hcard" href="#menu">
+            <span class="k dv-caps">Gestione</span>
+            <h3>Menu</h3>
+            <div class="v">Voci, prezzi e ricette</div>
           </a>
           <div class="hero-new"><button class="btn primary" data-action="nuovo-tavolo">+ Nuovo tavolo</button></div>
         </div>
@@ -521,7 +692,7 @@
   /* ---------- Ricette ---------- */
   function viewRicette() {
     $("#app").innerHTML = `
-      <div class="page-title"><h2>Ricette</h2><span class="sub">${RICETTE.length} drink</span></div>
+      <div class="page-title"><h2>Ricette</h2><span class="sub">${ricette().length} drink</span></div>
       <input class="search" id="ricQ" type="search" placeholder="Cerca drink o ingrediente…" value="${esc(ui.ricQ)}" autocomplete="off">
       <div class="chips" id="ricChips"></div>
       <div class="rgrid" id="ricLista"></div>`;
@@ -529,8 +700,8 @@
     listaRicette();
   }
   function listaRicette() {
-    $("#ricChips").innerHTML = chipsHtml(RICETTE, ui.ricQ.trim() ? "" : ui.ricCat, "ric-cat");
-    const items = filtra(RICETTE, ui.ricQ, ui.ricCat);
+    $("#ricChips").innerHTML = chipsHtml(ricette(), ui.ricQ.trim() ? "" : ui.ricCat, "ric-cat");
+    const items = filtra(ricette(), ui.ricQ, ui.ricCat);
     $("#ricLista").innerHTML = items.length
       ? items.map((d) => `
         <button class="rcard" data-action="apri-ricetta" data-id="${esc(d.id)}">
@@ -694,10 +865,10 @@
   }
 
   function listaPicker(t) {
-    $("#pickChips").innerHTML = chipsHtml(D.drinks, ui.pickQ.trim() ? "" : ui.pickCat, "pick-cat");
+    $("#pickChips").innerHTML = chipsHtml(MENU.drinks, ui.pickQ.trim() ? "" : ui.pickCat, "pick-cat");
     const contati = {};
     t.righe.forEach((r) => { if (r.drinkId) contati[r.drinkId] = (contati[r.drinkId] || 0) + r.qty; });
-    const items = filtra(D.drinks, ui.pickQ, ui.pickCat);
+    const items = filtra(MENU.drinks, ui.pickQ, ui.pickCat);
     $("#pickLista").innerHTML =
       items.map((d) => `
         <button class="pbtn" data-action="aggiungi" data-id="${esc(d.id)}">
@@ -729,15 +900,17 @@
   }
 
   /* ---------- Finestre (dialoghi) ---------- */
-  let risolvi = null;
+  let risolvi = null, finestraBloccata = false;
   function apriFinestra(html, small) {
     if (risolvi) { const r = risolvi; risolvi = null; r(null); }
+    finestraBloccata = false;
     $("#box").className = "box" + (small ? " small" : "");
     $("#box").innerHTML = html;
     $("#box").scrollTop = 0;
     $("#overlay").classList.add("open");
   }
   function chiudiFinestra(valore = null) {
+    finestraBloccata = false;
     $("#overlay").classList.remove("open");
     const r = risolvi; risolvi = null;
     if (r) r(valore);
@@ -780,8 +953,8 @@
       });
     });
   }
-  $("#overlay").addEventListener("click", (e) => { if (e.target.id === "overlay") chiudiFinestra(null); });
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") chiudiFinestra(null); });
+  $("#overlay").addEventListener("click", (e) => { if (e.target.id === "overlay" && !finestraBloccata) chiudiFinestra(null); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !finestraBloccata) chiudiFinestra(null); });
 
   let toastTimer;
   function toast(msg) {
@@ -791,6 +964,334 @@
     clearTimeout(toastTimer);
     toastTimer = setTimeout(() => el.classList.remove("show"), 2200);
   }
+
+
+  /* ---------- Gestione menu (modifiche salvate sul dispositivo) ---------- */
+  function viewMenu() {
+    const conChiave = !!leggiToken();
+    const agg = MENU.versione && MENU.versione > "2026-10-16"
+      ? new Date(MENU.versione).toLocaleString("it-IT", { day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" }) : "";
+    $("#app").innerHTML = `
+      <div class="page-title">
+        <h2>Menu</h2>
+        <span class="sub">${MENU.drinks.length} voci${agg ? ` · aggiornato il ${esc(agg)}` : ""}</span>
+        <button class="btn primary" data-action="me-nuova">+ Nuova voce</button>
+      </div>
+      ${conChiave ? "" : `<div class="banner"><span>Le modifiche al menu vengono pubblicate su <b>tutti i dispositivi</b>.
+        Per salvarle, su questo dispositivo serve la <b>chiave di pubblicazione</b> (solo proprietario / responsabile).</span>
+        <button class="btn accent" data-action="me-impostazioni">Inserisci chiave</button></div>`}
+      <div class="me-tools">
+        <button class="btn" data-action="me-categorie">Categorie</button>
+        <button class="btn" data-action="me-esporta">Scarica copia</button>
+        <button class="btn" data-action="me-impostazioni">Impostazioni${conChiave ? " ✓" : ""}</button>
+      </div>
+      <input class="search" id="meQ" type="search" placeholder="Cerca una voce…" value="${esc(ui.meQ)}" autocomplete="off">
+      <div class="chips" id="meChips"></div>
+      <div class="mlist" id="meLista"></div>`;
+    $("#meQ").addEventListener("input", (e) => { ui.meQ = e.target.value; listaMenu(); });
+    listaMenu();
+  }
+  function listaMenu() {
+    $("#meChips").innerHTML = chipsHtml(MENU.drinks, ui.meQ.trim() ? "" : ui.meCat, "me-cat");
+    const items = filtra(MENU.drinks, ui.meQ, ui.meCat);
+    $("#meLista").innerHTML = items.length
+      ? items.map((d) => {
+          const info = [catNome(d.categoria)];
+          if (d.varianti && d.varianti.length) info.push(`${d.varianti.length} varianti`);
+          if (haRicetta(d)) info.push("ricetta");
+          return `<button class="mrow" data-action="me-modifica" data-id="${esc(d.id)}">
+            ${tileHtml(d)}
+            <div><div class="n">${esc(d.nome)}</div><div class="s">${esc(info.join(" · "))}</div></div>
+            <span class="p">${prezzoLabel(d)}</span>
+          </button>`;
+        }).join("")
+      : `<div class="empty">Nessuna voce trovata.</div>`;
+  }
+
+  const numero = (v) => { const n = parseFloat(String(v).replace(",", ".").trim()); return isFinite(n) ? n : NaN; };
+  const prezzoTxt = (p) => (p == null ? "" : String(p).replace(".", ","));
+  function slug(nome) {
+    const base = norm(nome).replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "voce";
+    let id = base, i = 2;
+    while (MENU.drinks.some((d) => d.id === id) || MENU.categorie.some((c) => c.id === id)) id = `${base}-${i++}`;
+    return id;
+  }
+  function rigaEditor(tipo, v = {}) {
+    const x = `<button type="button" class="x" data-action="me-del-row" aria-label="Togli">✕</button>`;
+    if (tipo === "var") return `<div class="erow">
+        <input data-f="nome" placeholder="Nome (es. Aperol)" value="${esc(v.nome || "")}">
+        <input data-f="prezzo" placeholder="Prezzo" inputmode="decimal" value="${esc(prezzoTxt(v.prezzo))}">
+        <input data-f="info" placeholder="Descrizione breve (facoltativa)" value="${esc(v.info || "")}">${x}</div>`;
+    if (tipo === "ingr") return `<div class="erow">
+        <input data-f="nome" placeholder="Ingrediente (es. Gin)" value="${esc(v.nome || "")}">
+        <input data-f="dose" placeholder="Dose (es. 30 ml)" value="${esc(v.dose || "")}">${x}</div>`;
+    return `<div class="erow"><textarea data-f="testo" rows="2" placeholder="Descrivi il passaggio">${esc(v.testo || "")}</textarea>${x}</div>`;
+  }
+
+  function apriEditor(id) {
+    const d = id ? MENU.drinks.find((x) => x.id === id) : null;
+    const v = d || { categoria: ui.meCat !== "tutti" ? ui.meCat : (MENU.categorie[0] || {}).id, emoji: "🍸" };
+    const varianti = (v.varianti || []).map((x) => (typeof x === "string" ? { nome: x } : x));
+    const campo = (name, label, ph = "") =>
+      `<label>${label}<input name="${name}" value="${esc(v[name] || "")}" placeholder="${esc(ph)}"></label>`;
+    apriFinestra(`
+      <button class="close" data-action="chiudi-finestra" aria-label="Chiudi">✕</button>
+      <form class="dlg editor" id="meForm" autocomplete="off" data-id="${esc(d ? d.id : "")}">
+        <h3>${d ? "Modifica voce" : "Nuova voce"}</h3>
+        <div class="egrid">
+          <label style="grid-column: span 2">Nome<input name="nome" value="${esc(v.nome || "")}" placeholder="es. Negroni"></label>
+          <label>Prezzo (€)<input name="prezzo" inputmode="decimal" value="${esc(prezzoTxt(v.prezzo))}" placeholder="es. 10"></label>
+          <label>Categoria<select name="categoria">${MENU.categorie.map((c) =>
+            `<option value="${esc(c.id)}" ${c.id === v.categoria ? "selected" : ""}>${esc(c.nome)}</option>`).join("")}</select></label>
+          <label>Icona<input name="emoji" value="${esc(v.emoji || "")}" placeholder="🍸" maxlength="8"></label>
+        </div>
+        <label>Descrizione<textarea name="descrizione" rows="2" placeholder="Facoltativa">${esc(v.descrizione || "")}</textarea></label>
+
+        <h4>Varianti</h4>
+        <p class="hint">Le scelte che compaiono quando aggiungi la voce a un tavolo (gusti, gin, piccola/media, calice/bottiglia…).
+          Prezzo vuoto = prezzo della voce.</p>
+        <div id="eVar">${varianti.map((x) => rigaEditor("var", x)).join("")}</div>
+        <button type="button" class="btn small add" data-action="me-add-row" data-tipo="var" data-into="eVar">+ Aggiungi variante</button>
+
+        <h4>Ricetta</h4>
+        <p class="hint">La voce compare nella sezione Ricette se ha almeno un ingrediente.</p>
+        <div class="egrid">
+          ${campo("bicchiere", "Bicchiere", "es. Old fashioned")}
+          ${campo("ghiaccio", "Ghiaccio", "es. Cubo grande")}
+          ${campo("metodo", "Metodo", "es. Stir, Shake, Build")}
+          ${campo("guarnizione", "Guarnizione", "es. Scorza d'arancia")}
+        </div>
+        <label style="margin-top:20px">Ingredienti e dosi</label>
+        <div id="eIngr">${(v.ingredienti || []).map((x) => rigaEditor("ingr", x)).join("")}</div>
+        <button type="button" class="btn small add" data-action="me-add-row" data-tipo="ingr" data-into="eIngr">+ Aggiungi ingrediente</button>
+        <label style="margin-top:20px">Passaggi</label>
+        <div id="ePass">${(v.passaggi || []).map((t) => rigaEditor("pass", { testo: t })).join("")}</div>
+        <button type="button" class="btn small add" data-action="me-add-row" data-tipo="pass" data-into="ePass">+ Aggiungi passaggio</button>
+        <label>Note per lo staff<textarea name="note" rows="2" placeholder="Facoltative">${esc(v.note || "")}</textarea></label>
+
+        <div class="err" id="meErr"></div>
+        <div class="dlg-actions">
+          ${d ? `<button type="button" class="btn danger" data-action="me-elimina">Elimina voce</button><span class="spacer"></span>` : ""}
+          <button type="button" class="btn" data-action="chiudi-finestra">Annulla</button>
+          <button type="submit" class="btn primary">Salva</button>
+        </div>
+      </form>`);
+    $("#box").classList.add("wide");
+    finestraBloccata = true;
+    $("#meForm").addEventListener("submit", (e) => { e.preventDefault(); salvaVoce(); });
+    if (!d) $("#meForm [name=nome]").focus();
+  }
+
+  async function salvaVoce() {
+    const f = $("#meForm");
+    const val = (n) => f.elements[n].value.trim();
+    const errore = (m) => { $("#meErr").textContent = m; $("#meErr").scrollIntoView({ block: "nearest" }); };
+    const nome = val("nome");
+    if (!nome) return errore("Scrivi il nome.");
+    const prezzo = numero(val("prezzo"));
+    if (!(prezzo >= 0)) return errore("Prezzo non valido (es. 10 oppure 6,50).");
+
+    const righe = (id) => [...f.querySelectorAll(`#${id} .erow`)].map((r) =>
+      Object.fromEntries([...r.querySelectorAll("[data-f]")].map((el) => [el.dataset.f, el.value.trim()])));
+    const varianti = [];
+    for (const r of righe("eVar")) {
+      if (!r.nome) continue;
+      const o = { nome: r.nome };
+      if (r.prezzo) {
+        const vp = numero(r.prezzo);
+        if (!(vp >= 0)) return errore(`Prezzo non valido nella variante «${r.nome}».`);
+        if (vp !== prezzo) o.prezzo = vp;
+      }
+      if (r.info) o.info = r.info;
+      varianti.push(Object.keys(o).length === 1 ? o.nome : o);
+    }
+    const ingredienti = righe("eIngr").filter((r) => r.nome).map((r) => ({ nome: r.nome, dose: r.dose || "" }));
+    const passaggi = righe("ePass").map((r) => r.testo).filter(Boolean);
+
+    const id = f.dataset.id;
+    const vecchia = id ? MENU.drinks.find((x) => x.id === id) : null;
+    const voce = vecchia ? { ...vecchia } : { id: slug(nome) };
+    Object.assign(voce, { nome, categoria: val("categoria"), prezzo, emoji: val("emoji") || "🍸" });
+    const opzionali = { descrizione: val("descrizione"), bicchiere: val("bicchiere"), ghiaccio: val("ghiaccio"),
+      metodo: val("metodo"), guarnizione: val("guarnizione"), note: val("note") };
+    for (const [k, v] of Object.entries(opzionali)) { if (v) voce[k] = v; else delete voce[k]; }
+    for (const [k, v] of Object.entries({ varianti, ingredienti, passaggi })) { if (v.length) voce[k] = v; else delete voce[k]; }
+
+    const lista = MENU.drinks.filter((x) => x.id !== voce.id);
+    let pos = vecchia && vecchia.categoria === voce.categoria ? MENU.drinks.indexOf(vecchia) : -1;
+    if (pos < 0) {
+      const ultimo = lista.map((x) => x.categoria).lastIndexOf(voce.categoria);
+      pos = ultimo >= 0 ? ultimo + 1 : lista.length;
+    }
+    lista.splice(pos, 0, voce);
+    const nuovo = clona(MENU);
+    nuovo.drinks = lista;
+    const btn = f.querySelector("[type=submit]");
+    btn.disabled = true; btn.textContent = "Pubblico…";
+    try {
+      await pubblicaMenu(nuovo, `Menu: ${vecchia ? "modificato" : "aggiunto"} «${nome}»`);
+    } catch (err) {
+      btn.disabled = false; btn.textContent = "Salva";
+      return errore(err.message);
+    }
+    chiudiFinestra(null);
+    toast(vecchia ? `Salvato «${nome}» per tutti` : `Aggiunto «${nome}» per tutti`);
+    if (route().view === "menu") viewMenu();
+  }
+
+  function apriCategorie() {
+    const riga = (c) => {
+      const n = MENU.drinks.filter((d) => d.categoria === c.id).length;
+      return `<div class="erow" data-id="${esc(c.id || "")}">
+        <button type="button" class="mv" data-action="me-cat-su" aria-label="Su">↑</button>
+        <input data-f="nome" value="${esc(c.nome || "")}" placeholder="Nome categoria">
+        <span class="cnt">${c.id ? `${n} voci` : "nuova"}</span>
+        <button type="button" class="x" data-action="me-cat-del" ${n ? "disabled title='Contiene voci'" : ""} aria-label="Elimina">✕</button>
+      </div>`;
+    };
+    apriFinestra(`
+      <button class="close" data-action="chiudi-finestra" aria-label="Chiudi">✕</button>
+      <form class="dlg editor" id="catForm" autocomplete="off">
+        <h3>Categorie</h3>
+        <p class="hint">Rinomina, riordina con ↑ o aggiungi categorie. Si può eliminare solo una categoria vuota.</p>
+        <div id="eCat">${MENU.categorie.map(riga).join("")}</div>
+        <button type="button" class="btn small add" data-action="me-cat-add">+ Nuova categoria</button>
+        <div class="err" id="catErr"></div>
+        <div class="dlg-actions">
+          <button type="button" class="btn" data-action="chiudi-finestra">Annulla</button>
+          <button type="submit" class="btn primary">Salva</button>
+        </div>
+      </form>`);
+    finestraBloccata = true;
+    apriCategorie.riga = riga;
+    $("#catForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const nuove = [];
+      for (const r of document.querySelectorAll("#eCat .erow")) {
+        const nome = r.querySelector("[data-f=nome]").value.trim();
+        if (!nome) { $("#catErr").textContent = "Ogni categoria deve avere un nome."; return; }
+        if (nuove.some((c) => norm(c.nome) === norm(nome))) { $("#catErr").textContent = `La categoria «${nome}» è ripetuta.`; return; }
+        nuove.push({ id: r.dataset.id || slug(nome), nome });
+      }
+      const nuovo = clona(MENU);
+      nuovo.categorie = nuove;
+      const btn = $("#catForm [type=submit]");
+      btn.disabled = true; btn.textContent = "Pubblico…";
+      try { await pubblicaMenu(nuovo, "Menu: categorie aggiornate"); }
+      catch (err) { btn.disabled = false; btn.textContent = "Salva"; $("#catErr").textContent = err.message; return; }
+      chiudiFinestra(null);
+      toast("Categorie salvate per tutti");
+      if (route().view === "menu") viewMenu();
+    });
+  }
+
+  async function esportaMenu() {
+    const dati = { app: "dejavu-staff", tipo: "menu", esportato: new Date().toISOString(), categorie: MENU.categorie, drinks: MENU.drinks };
+    const nome = `menu-dejavu-${new Date().toISOString().slice(0, 10)}.json`;
+    const blob = new Blob([JSON.stringify(dati, null, 2)], { type: "application/json" });
+    try {
+      const file = new File([blob], nome, { type: "application/json" });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], title: "Menu Déjà Vu" }); return; }
+    } catch (err) { if (err && err.name === "AbortError") return; }
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob); a.download = nome;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+  }
+  function apriImpostazioni() {
+    const t = leggiToken();
+    apriFinestra(`
+      <button class="close" data-action="chiudi-finestra" aria-label="Chiudi">✕</button>
+      <form class="dlg editor" id="keyForm" autocomplete="off">
+        <h3>Chiave di pubblicazione</h3>
+        <p>Serve per salvare le modifiche al menu e mandarle a tutti i dispositivi.
+          Inseriscila solo sui dispositivi del proprietario o del responsabile.</p>
+        <p>Stato: ${t ? `<b class="stato-ok">chiave inserita ✓</b>` : "<b>nessuna chiave</b>"}</p>
+        <label>Chiave GitHub (inizia con github_pat_)<input name="token" type="password" placeholder="${t ? "•••••• (lascia vuoto per non cambiarla)" : "github_pat_…"}" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
+        <p class="hint">Come crearla: su github.com, account <b>${esc(GH.owner)}</b> → Settings → Developer settings →
+          Personal access tokens → Fine-grained tokens → Generate new token. Repository: solo <b>${esc(GH.repo)}</b>.
+          Permessi: <b>Contents → Read and write</b>. Le istruzioni passo passo sono nel README.</p>
+        <div class="err" id="keyErr"></div>
+        <div class="dlg-actions">
+          ${t ? `<button type="button" class="btn danger" data-action="me-chiave-rimuovi">Rimuovi chiave</button><span class="spacer"></span>` : ""}
+          <button type="button" class="btn" data-action="chiudi-finestra">Annulla</button>
+          <button type="submit" class="btn primary">Verifica e salva</button>
+        </div>
+      </form>`);
+    finestraBloccata = true;
+    $("#keyForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const nuovo = e.target.elements.token.value.trim();
+      if (!nuovo) return chiudiFinestra(null);
+      const btn = e.target.querySelector("[type=submit]");
+      btn.disabled = true; btn.textContent = "Verifico…";
+      let ok = false, msg = "";
+      try {
+        const r = await ghApi(`contents/${GH.menuPath}?ref=${GH.branch}`, {}, nuovo);
+        const repo = r.ok ? await (await ghApi("", {}, nuovo)).json() : null;
+        ok = r.ok && repo && repo.permissions && repo.permissions.push;
+        if (r.status === 401) msg = "Chiave non valida o scaduta.";
+        else if (!r.ok) msg = `La chiave non può leggere il repository ${GH.repo} (errore ${r.status}).`;
+        else if (!ok) msg = "La chiave può leggere ma non modificare: serve il permesso Contents → Read and write.";
+      } catch { msg = "Serve la connessione a internet per verificare la chiave."; }
+      if (!ok) { btn.disabled = false; btn.textContent = "Verifica e salva"; $("#keyErr").textContent = msg; return; }
+      try { localStorage.setItem(TOKEN_KEY, nuovo); } catch {}
+      chiudiFinestra(null);
+      toast("Chiave salvata: ora puoi modificare il menu");
+      if (route().view === "menu") viewMenu();
+    });
+  }
+
+  document.addEventListener("click", async (e) => {
+    const b = e.target.closest("[data-action^='me-']");
+    if (!b) return;
+    switch (b.dataset.action) {
+      case "me-cat": ui.meCat = b.dataset.cat; ui.meQ = ""; $("#meQ").value = ""; return listaMenu();
+      case "me-nuova": return apriEditor(null);
+      case "me-modifica": return apriEditor(b.dataset.id);
+      case "me-add-row": {
+        const box = document.getElementById(b.dataset.into);
+        box.insertAdjacentHTML("beforeend", rigaEditor(b.dataset.tipo));
+        const nuova = box.lastElementChild.querySelector("input, textarea");
+        if (nuova) nuova.focus();
+        return;
+      }
+      case "me-del-row": return b.closest(".erow").remove();
+      case "me-elimina": {
+        if (!b.classList.contains("fill")) { b.classList.add("fill"); b.textContent = "Tocca ancora per eliminare"; return; }
+        const id = $("#meForm").dataset.id;
+        const voce = MENU.drinks.find((x) => x.id === id);
+        const nuovo = clona(MENU);
+        nuovo.drinks = nuovo.drinks.filter((x) => x.id !== id);
+        b.disabled = true; b.textContent = "Pubblico…";
+        try { await pubblicaMenu(nuovo, `Menu: eliminato «${voce ? voce.nome : id}»`); }
+        catch (err) { b.disabled = false; b.textContent = "Elimina voce"; b.classList.remove("fill"); $("#meErr").textContent = err.message; return; }
+        chiudiFinestra(null);
+        toast(`Eliminato «${voce ? voce.nome : ""}» per tutti`);
+        return viewMenu();
+      }
+      case "me-categorie": return apriCategorie();
+      case "me-cat-add": {
+        $("#eCat").insertAdjacentHTML("beforeend", apriCategorie.riga({ nome: "" }));
+        return $("#eCat").lastElementChild.querySelector("input").focus();
+      }
+      case "me-cat-su": {
+        const r = b.closest(".erow");
+        if (r.previousElementSibling) r.parentNode.insertBefore(r, r.previousElementSibling);
+        return;
+      }
+      case "me-cat-del": return b.closest(".erow").remove();
+      case "me-esporta": return esportaMenu();
+      case "me-impostazioni": return apriImpostazioni();
+      case "me-chiave-rimuovi": {
+        try { localStorage.removeItem(TOKEN_KEY); } catch {}
+        chiudiFinestra(null);
+        toast("Chiave rimossa da questo dispositivo");
+        if (route().view === "menu") viewMenu();
+        return;
+      }
+    }
+  });
 
   /* ---------- Azioni ---------- */
   document.addEventListener("click", async (e) => {
@@ -935,9 +1436,35 @@
     if (r.view === "tavolo") { const t = tavoloById(r.id); const el = $("#tSince"); if (t && el) el.textContent = tempo(t.creato); }
   }, 30000);
 
-  paneIniziale();
-  render();
-  if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+  // Avvio: si usa subito la copia del menu salvata sul dispositivo, poi si controlla se online ce n'è una nuova
+  async function avvio() {
+    if (!MENU) {
+      $("#app").innerHTML = `<div class="empty"><div class="big">🍸</div>Carico il menu…</div>`;
+      await controllaMenu();
+      if (!MENU) {
+        $("#app").innerHTML = `<div class="empty"><div class="big">📶</div>Per il primo avvio serve internet:<br>collegati e riapri l'app.</div>`;
+        return;
+      }
+    } else {
+      controllaMenu();
+    }
+    paneIniziale();
+    render();
+  }
+  avvio();
+  setInterval(controllaMenu, 2 * 60 * 1000);
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) return;
+    controllaMenu();
+    if (navigator.serviceWorker && navigator.serviceWorker.getRegistration)
+      navigator.serviceWorker.getRegistration().then((r) => r && r.update()).catch(() => {});
+  });
+
+  if ("serviceWorker" in navigator) {
+    const avevaSw = !!navigator.serviceWorker.controller;
+    navigator.serviceWorker.addEventListener("controllerchange", () => { if (avevaSw) mostraAvviso("app"); });
+    navigator.serviceWorker.register("sw.js").then((r) => r.update()).catch(() => {});
+  }
 })();
 </script>
 </body>
