@@ -10,8 +10,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Déjà Vu Staff">
 <link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icon.png">
-<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="stylesheet" href="../shared/brand.css">
 <style>
   :root {
@@ -120,6 +120,7 @@
   .bar-row h2 { margin: 0; font-size: 24px; }
   .bar-row .sub { color: var(--muted); }
   .bar-row .btn { margin-left: auto; }
+  @media (max-width: 560px) { .bar-row .btn { width: 100%; } .bar-row .sub { font-size: 14px; } }
   .tgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
   .tcard {
     text-align: left; padding: 18px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
@@ -135,7 +136,21 @@
   .thead h2 { margin: 0; font-size: 26px; word-break: break-word; }
   .thead .since { color: var(--muted); font-size: 14px; width: 100%; }
   .icon-btn { width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--line); background: var(--panel-2); flex: none; }
-  .tlayout { display: grid; gap: 16px; grid-template-columns: 1fr; align-items: start; }
+  .tlayout { display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr); align-items: start; }
+  .mtabs { display: none; }
+  @media (max-width: 899px) {
+    .mtabs {
+      display: flex; gap: 6px; position: sticky; top: calc(env(safe-area-inset-top) + 67px); z-index: 5;
+      margin: 0 -16px 12px; padding: 8px 16px; background: rgba(6,27,32,.92);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line);
+    }
+    .mtabs button {
+      flex: 1; min-height: 48px; border-radius: 12px; border: 1px solid var(--line); background: transparent;
+      color: var(--muted); font-weight: 700;
+    }
+    .mtabs button.on { background: var(--accent); border-color: var(--accent); color: var(--dv-ink); }
+    .tlayout[data-pane="ordine"] #picker, .tlayout[data-pane="aggiungi"] #ordine { display: none; }
+  }
   @media (min-width: 900px) {
     .tlayout { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
     .ordine { position: sticky; top: 84px; }
@@ -165,6 +180,29 @@
   .picker { padding: 14px; }
   .picker.off { opacity: .35; pointer-events: none; }
   .plist { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
+  @media (max-width: 560px) {
+    main { padding: 12px; }
+    .mtabs { margin: 0 -12px 12px; padding: 8px 12px; }
+    .picker { padding: 10px; }
+    .plist { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .pbtn { gap: 6px; padding: 8px 6px; }
+    .pbtn .tile { width: 32px; height: 32px; font-size: 16px; margin: 4px; }
+    .pbtn .n { font-size: 14px; }
+    .riga { gap: 8px; padding: 10px 12px; }
+    .riga .nome { font-size: 16px; }
+    .riga .tot { width: 62px; font-size: 14px; }
+    .step button { width: 38px; height: 42px; }
+    .step span { min-width: 36px; }
+    .riga .mini { display: none; }
+    .totale { padding: 14px 12px; }
+    .totale .v { font-size: 26px; }
+    .azioni { padding: 0 12px 12px; }
+    .azioni .btn { min-width: 0; }
+    .thead h2 { font-size: 22px; }
+    .top { gap: 10px; padding-left: 12px; padding-right: 12px; }
+    .tabs a { padding: 9px 14px; }
+    .rgrid { grid-template-columns: minmax(0, 1fr); }
+  }
   .pbtn {
     position: relative; display: flex; align-items: center; gap: 10px; text-align: left; padding: 10px;
     background: var(--panel-2); border: 1px solid var(--line); border-radius: 12px; min-height: 64px;
@@ -267,6 +305,7 @@
   const ui = {
     ricQ: "", ricCat: "tutti",
     pickQ: "", pickCat: "tutti",
+    pane: "ordine", // su telefono: "ordine" oppure "aggiungi"
     pagamento: null, // { id: tavoloId, sel: { rigaId: quantità } }
   };
 
@@ -292,7 +331,12 @@
     if (h === "ricette") return { view: "ricette" };
     return { view: "tavoli" };
   }
-  window.addEventListener("hashchange", () => { ui.pagamento = null; ui.pickQ = ""; render(); window.scrollTo(0, 0); });
+  function paneIniziale() {
+    const r = route();
+    const t = r.view === "tavolo" && tavoloById(r.id);
+    ui.pane = t && !t.righe.length ? "aggiungi" : "ordine";
+  }
+  window.addEventListener("hashchange", () => { ui.pagamento = null; ui.pickQ = ""; paneIniziale(); render(); window.scrollTo(0, 0); });
 
   function render() {
     const r = route();
@@ -402,7 +446,11 @@
         <button class="icon-btn" data-action="rinomina" aria-label="Rinomina">✎</button>
         <div class="since" id="tSince">${tempo(t.creato)}</div>
       </div>
-      <div class="tlayout">
+      <div class="mtabs">
+        <button data-action="pane" data-pane="ordine" id="mtOrdine"></button>
+        <button data-action="pane" data-pane="aggiungi" id="mtAggiungi">+ Aggiungi</button>
+      </div>
+      <div class="tlayout" id="tlayout">
         <div class="panel ordine" id="ordine"></div>
         <div class="panel picker" id="picker">
           <input class="search" id="pickQ" type="search" placeholder="Aggiungi: cerca drink…" value="${esc(ui.pickQ)}" autocomplete="off">
@@ -468,6 +516,12 @@
     }
     $("#ordine").innerHTML = `<div class="righe">${righe}</div>${fondo}`;
     $("#picker").classList.toggle("off", !!pay);
+    if (pay) ui.pane = "ordine";
+    $("#tlayout").dataset.pane = ui.pane;
+    $("#mtOrdine").classList.toggle("on", ui.pane === "ordine");
+    $("#mtAggiungi").classList.toggle("on", ui.pane === "aggiungi");
+    $("#mtOrdine").textContent = `Ordine (${pezzi(t)}) · ${euro(tot)}`;
+    $("#mtAggiungi").disabled = !!pay;
     listaPicker(t);
   }
 
@@ -632,6 +686,10 @@
         return;
       }
 
+      case "pane":
+        ui.pane = b.dataset.pane; aggiornaTavolo(t); window.scrollTo(0, 0);
+        return;
+
       case "paga-separato": ui.pagamento = { id: t.id, sel: {} }; return aggiornaTavolo(t);
       case "pay-annulla": ui.pagamento = null; return aggiornaTavolo(t);
       case "pay-inc": if (pay && riga) { pay[riga.id] = Math.min(riga.qty, (pay[riga.id] || 0) + 1); aggiornaTavolo(t); } return;
@@ -684,6 +742,7 @@
     if (r.view === "tavolo") { const t = tavoloById(r.id); const el = $("#tSince"); if (t && el) el.textContent = tempo(t.creato); }
   }, 30000);
 
+  paneIniziale();
   render();
   if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
 })();

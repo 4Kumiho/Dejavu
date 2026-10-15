@@ -10,8 +10,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Déjà Vu Menu">
 <link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icon.png">
-<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="stylesheet" href="../shared/brand.css">
 <style>
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -68,6 +68,21 @@
   .card .price { margin-top: 6px; font-size: 15px; }
   .card .ingr { color: var(--dv-muted); font-size: 13px; margin: 8px 0 0; line-height: 1.45;
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  @media (max-width: 560px) {
+    main { padding: 4px 12px 32px; }
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .card { padding: 18px 10px 14px; border-radius: 20px; }
+    .card .dv-ring { width: 84px; height: 84px; font-size: 38px; }
+    .card .name { font-size: 15px; margin-top: 16px; }
+    .card .price { font-size: 14px; }
+    .card .ingr { font-size: 12px; }
+    section h2 { font-size: 13px; margin: 28px 0 16px; gap: 10px; }
+    header { padding: 24px 16px 14px; }
+    header p { font-size: 10px; letter-spacing: .14em; }
+    .sheet { padding: 32px 18px calc(28px + env(safe-area-inset-bottom)); }
+    .sheet .dv-ring { width: 150px; height: 150px; font-size: 70px; }
+    .sheet h3 { font-size: 26px; }
+  }
 
   /* Dettaglio */
   .overlay {
