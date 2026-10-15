@@ -253,6 +253,10 @@ Vedi [La chiave di pubblicazione](#-la-chiave-di-pubblicazione-una-volta-sola-so
 **Esce «È disponibile una nuova versione dell'app».**
 È un aggiornamento dell'app: tocca **Aggiorna** e si ricarica con le novità.
 
+**Voglio controllare io se ci sono aggiornamenti.**
+Tocca **↻ Aggiorna** (in alto a destra, in ogni pagina). Se c'è una nuova versione dell'app o del menu si aggiorna subito,
+altrimenti compare *«App già aggiornata»*.
+
 **L'icona apre GitHub invece dell'app.**
 Hai aggiunto la pagina sbagliata. Tieni premuto sull'icona → **Rimuovi**, poi rifai l'installazione da questo link: **[👉 Apri Déjà Vu Staff](https://4kumiho.github.io/Dejavu/staff/)**
 

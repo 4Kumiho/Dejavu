@@ -363,6 +363,20 @@
     .dlg-actions { flex-wrap: wrap; }
   }
 
+  /* ---------- Pulsante Aggiorna ---------- */
+  .agg-btn {
+    display: inline-flex; align-items: center; gap: 8px; flex: none;
+    border: 1px solid var(--line-2); background: transparent; color: var(--text); border-radius: 999px;
+    padding: 9px 14px; font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  }
+  .agg-btn .ic { font-size: 16px; line-height: 1; letter-spacing: 0; display: inline-block; }
+  .agg-btn.gira .ic { animation: gira 1s linear infinite; }
+  @keyframes gira { to { transform: rotate(360deg); } }
+  .hero > .agg-home {
+    position: absolute; z-index: 3; top: calc(env(safe-area-inset-top) + 14px); right: 16px;
+    background: rgba(10,10,11,.55); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  }
+
   /* ---------- Avviso aggiornamenti ---------- */
   .avviso {
     position: fixed; left: 50%; top: calc(env(safe-area-inset-top) + 10px); z-index: 70;
@@ -387,6 +401,8 @@
     .top { padding-left: 14px; padding-right: 14px; gap: 8px; }
     .brand img { width: 42px; height: 42px; }
     .brand span { display: none; }
+    .top .agg-btn { padding: 9px 11px; }
+    .top .agg-btn .tx { display: none; }
     .tabs a { padding: 12px 10px; letter-spacing: .12em; }
     .tabs a.on::after { left: 10px; right: 10px; }
     .page-title h2 { font-size: 30px; }
@@ -428,6 +444,7 @@
       <a href="#ricette" id="tabRicette">Ricette</a>
       <a href="#menu" id="tabMenu">Menu</a>
     </nav>
+    <button class="agg-btn" data-action="aggiorna" aria-label="Controlla aggiornamenti"><span class="ic">↻</span><span class="tx">Aggiorna</span></button>
   </div>
   <main id="app"></main>
 
@@ -662,6 +679,7 @@
     const oggi = new Date().toLocaleDateString("it-IT", { weekday: "long", day: "numeric", month: "long" });
     $("#app").innerHTML = `
       <section class="hero">
+        <button class="agg-btn agg-home" data-action="aggiorna" aria-label="Controlla aggiornamenti"><span class="ic">↻</span><span class="tx">Aggiorna</span></button>
         <div class="slides">${foto.map((f) => `<div class="slide" style="background-image:url('${esc(f)}')"></div>`).join("")}</div>
         <div class="hero-top">
           <img src="${esc(D.bar.logo)}" alt="${esc(D.bar.nome)}">
@@ -1313,6 +1331,7 @@
       case "ric-cat": ui.ricCat = b.dataset.cat; ui.ricQ = ""; $("#ricQ").value = ""; return listaRicette();
       case "apri-ricetta": return apriRicetta(b.dataset.id);
       case "slide": mostraSlide(+b.dataset.i); return avviaSlide();
+      case "aggiorna": return controllaAggiornamenti();
       case "nuovo-tavolo": return nuovoTavolo();
       case "apri-tavolo": location.hash = "#tavolo/" + encodeURIComponent(b.dataset.id); return;
     }
@@ -1440,6 +1459,56 @@
     if (r.view === "tavolo") { const t = tavoloById(r.id); const el = $("#tSince"); if (t && el) el.textContent = tempo(t.creato); }
   }, 30000);
 
+  /* ---------- Pulsante «Aggiorna»: controlla subito app e menu ---------- */
+  let aggiornandoApp = false, controlloInCorso = false;
+  function messaggio(titolo, testo) {
+    apriFinestra(`
+      <div class="dlg">
+        <h3>${esc(titolo)}</h3>
+        <p>${testo}</p>
+        <div class="dlg-actions"><button class="btn primary" data-action="chiudi-finestra">OK</button></div>
+      </div>`, true);
+  }
+  async function nuovaVersioneApp() {
+    // se l'app non era ancora installata non c'è niente da aggiornare (si sta solo salvando per l'offline)
+    if (!("serviceWorker" in navigator) || !navigator.serviceWorker.controller) return false;
+    const reg = await navigator.serviceWorker.getRegistration();
+    if (!reg) return false;
+    await reg.update();
+    const sw = reg.installing || reg.waiting;
+    if (!sw) return false;
+    // aspetta che la nuova versione sia pronta (al massimo 20 secondi)
+    await new Promise((ok) => {
+      if (sw.state === "activated") return ok();
+      const t = setTimeout(ok, 20000);
+      sw.addEventListener("statechange", () => { if (sw.state === "activated") { clearTimeout(t); ok(); } });
+    });
+    return true;
+  }
+  async function controllaAggiornamenti() {
+    if (controlloInCorso) return;
+    controlloInCorso = true;
+    const btns = document.querySelectorAll(".agg-btn");
+    btns.forEach((b) => b.classList.add("gira"));
+    const fine = () => { controlloInCorso = false; btns.forEach((b) => b.classList.remove("gira")); };
+    let online = true, menuCambiato = false;
+    try {
+      const m = await scaricaMenu();
+      if (!MENU || (m.versione || "") > (MENU.versione || "")) { applicaMenu(m); menuCambiato = true; }
+    } catch { online = false; }
+    if (!online) { fine(); return messaggio("Nessuna connessione", "Serve internet per controllare gli aggiornamenti. Riprova quando sei collegato."); }
+    let appNuova = false;
+    try { aggiornandoApp = true; appNuova = await nuovaVersioneApp(); } catch {}
+    if (appNuova) { toast("Aggiorno l'app…"); setTimeout(() => location.reload(), 600); return; }
+    aggiornandoApp = false;
+    fine();
+    if (menuCambiato) return messaggio("Menu aggiornato", "Ho caricato l'ultima versione del menu.");
+    const quando = MENU && MENU.versione && MENU.versione > "2026-10-16"
+      ? ` Menu aggiornato il ${esc(new Date(MENU.versione).toLocaleString("it-IT", { day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" }))}.`
+      : "";
+    messaggio("App già aggiornata", `Hai già l'ultima versione dell'app e del menu.${quando}`);
+  }
+
   // Avvio: si usa subito la copia del menu salvata sul dispositivo, poi si controlla se online ce n'è una nuova
   async function avvio() {
     if (!MENU) {
@@ -1466,7 +1535,10 @@
 
   if ("serviceWorker" in navigator) {
     const avevaSw = !!navigator.serviceWorker.controller;
-    navigator.serviceWorker.addEventListener("controllerchange", () => { if (avevaSw) mostraAvviso("app"); });
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      if (aggiornandoApp) return location.reload();
+      if (avevaSw) mostraAvviso("app");
+    });
     navigator.serviceWorker.register("sw.js").then((r) => r.update()).catch(() => {});
   }
 })();
