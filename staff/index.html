@@ -105,7 +105,7 @@
     position: absolute; inset: 0; background: center 40% / cover no-repeat;
     opacity: 0; transition: opacity 1.8s ease; transform: scale(1.02);
   }
-  .slide.on { opacity: 1; animation: kenburns 9s ease-out forwards; }
+  .slide.on { opacity: 1; animation: kenburns 7.5s ease-out forwards; }
   @keyframes kenburns { from { transform: scale(1.02); } to { transform: scale(1.12); } }
   @media (prefers-reduced-motion: reduce) { .slide.on { animation: none; } }
   .dots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
@@ -468,7 +468,7 @@
   }
   function avviaSlide() {
     clearInterval(slideTimer);
-    if (foto.length > 1) slideTimer = setInterval(() => mostraSlide(slideIdx + 1), 6000);
+    if (foto.length > 1) slideTimer = setInterval(() => mostraSlide(slideIdx + 1), 5000);
   }
 
   function viewHome() {
