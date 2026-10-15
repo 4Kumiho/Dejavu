@@ -242,6 +242,20 @@
     position: absolute; top: -7px; right: -7px; min-width: 24px; height: 24px; padding: 0 6px; border-radius: 12px;
     background: var(--accent); color: var(--dv-black); font-weight: 700; font-size: 12px; display: grid; place-items: center;
   }
+  .vhead { padding: 26px 24px 6px; }
+  .vhead h3 { margin: 0; font-size: 32px; line-height: 1.05; padding-right: 48px; }
+  .vhead p { margin: 6px 0 0; color: var(--muted); }
+  .vlist { display: grid; gap: 8px; padding: 14px 24px 24px; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); }
+  .vbtn {
+    text-align: left; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel-2);
+    min-height: 58px; display: flex; flex-direction: column; justify-content: center; gap: 2px;
+  }
+  .vbtn:active { transform: scale(.97); border-color: var(--accent); }
+  .vbtn .n { font-weight: 600; }
+  .vbtn .i { color: var(--muted); font-size: 12px; }
+  .vbtn .p { color: var(--accent); font-size: 13px; font-weight: 600; }
+  .vtags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .vtags span { border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: 13px; }
   .pbtn.libera { border-style: dashed; color: var(--muted); justify-content: center; text-transform: uppercase; letter-spacing: .12em; font-size: 12px; font-weight: 600; }
 
   /* ---------- Finestre ---------- */
@@ -345,6 +359,17 @@
   const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
   const drinkById = (id) => D.drinks.find((d) => d.id === id);
   const catNome = (id) => (D.categorie.find((c) => c.id === id) || {}).nome || "";
+  const RICETTE = D.drinks.filter((d) => d.ingredienti && d.ingredienti.length);
+  const haRicetta = (d) => !!(d && d.ingredienti && d.ingredienti.length);
+  const varNome = (v) => (typeof v === "string" ? v : v.nome);
+  const varPrezzo = (d, v) => (typeof v === "object" && v.prezzo != null ? v.prezzo : d.prezzo);
+  const cent = (p) => Math.round(p * 100);
+  function prezzoLabel(d) {
+    const ps = (d.varianti || []).map((v) => varPrezzo(d, v));
+    const min = ps.length ? Math.min(...ps) : d.prezzo;
+    if (!min && !ps.some((p) => p)) return "Omaggio";
+    return (ps.some((p) => p !== ps[0]) ? "da " : "") + euro(cent(min));
+  }
 
   $("#brandLogo").src = D.bar.logo;
   document.title = `${D.bar.nome} · Staff`;
@@ -378,15 +403,15 @@
   const visual = (d) => (d && d.img ? `background-image:url('${esc(d.img)}')` : "");
   const tileHtml = (d) => `<div class="tile dv-ring" style="${visual(d)}">${d && d.img ? "" : esc((d && d.emoji) || "🧾")}</div>`;
 
-  function filtra(q, cat) {
+  function filtra(lista, q, cat) {
     const nq = norm(q.trim());
-    return D.drinks.filter((d) => {
-      if (nq) return norm(d.nome + " " + d.ingredienti.map((i) => i.nome).join(" ")).includes(nq);
+    return lista.filter((d) => {
+      if (nq) return norm([d.nome, ...(d.ingredienti || []).map((i) => i.nome), ...(d.varianti || []).map(varNome)].join(" ")).includes(nq);
       return cat === "tutti" || d.categoria === cat;
     });
   }
-  function chipsHtml(sel, action) {
-    const cats = [{ id: "tutti", nome: "Tutti" }, ...D.categorie.filter((c) => D.drinks.some((d) => d.categoria === c.id))];
+  function chipsHtml(lista, sel, action) {
+    const cats = [{ id: "tutti", nome: "Tutti" }, ...D.categorie.filter((c) => lista.some((d) => d.categoria === c.id))];
     return cats.map((c) => `<button class="chip ${c.id === sel ? "on" : ""}" data-action="${action}" data-cat="${esc(c.id)}">${esc(c.nome)}</button>`).join("");
   }
 
@@ -441,7 +466,7 @@
           <a class="hcard" href="#ricette">
             <span class="k dv-caps">Bancone</span>
             <h3>Ricette</h3>
-            <div class="v"><b>${D.drinks.length}</b> drink</div>
+            <div class="v"><b>${RICETTE.length}</b> ricette · <b>${D.drinks.length}</b> voci di menu</div>
           </a>
           <div class="hero-new"><button class="btn primary" data-action="nuovo-tavolo">+ Nuovo tavolo</button></div>
         </div>
@@ -451,7 +476,7 @@
   /* ---------- Ricette ---------- */
   function viewRicette() {
     $("#app").innerHTML = `
-      <div class="page-title"><h2>Ricette</h2><span class="sub">${D.drinks.length} drink</span></div>
+      <div class="page-title"><h2>Ricette</h2><span class="sub">${RICETTE.length} drink</span></div>
       <input class="search" id="ricQ" type="search" placeholder="Cerca drink o ingrediente…" value="${esc(ui.ricQ)}" autocomplete="off">
       <div class="chips" id="ricChips"></div>
       <div class="rgrid" id="ricLista"></div>`;
@@ -459,13 +484,13 @@
     listaRicette();
   }
   function listaRicette() {
-    $("#ricChips").innerHTML = chipsHtml(ui.ricQ.trim() ? "" : ui.ricCat, "ric-cat");
-    const items = filtra(ui.ricQ, ui.ricCat);
+    $("#ricChips").innerHTML = chipsHtml(RICETTE, ui.ricQ.trim() ? "" : ui.ricCat, "ric-cat");
+    const items = filtra(RICETTE, ui.ricQ, ui.ricCat);
     $("#ricLista").innerHTML = items.length
       ? items.map((d) => `
         <button class="rcard" data-action="apri-ricetta" data-id="${esc(d.id)}">
           ${tileHtml(d)}
-          <div><div class="n">${esc(d.nome)}</div><div class="s">${esc(d.metodo || "")}${d.bicchiere ? " · " + esc(d.bicchiere) : ""}</div></div>
+          <div><div class="n">${esc(d.nome)}</div><div class="s">${d.metodo ? esc(d.metodo) + (d.bicchiere ? " · " + esc(d.bicchiere) : "") : esc(catNome(d.categoria))}</div></div>
         </button>`).join("")
       : `<div class="empty">Nessun drink trovato.</div>`;
   }
@@ -479,10 +504,12 @@
       <div class="ric-head"><div class="dv-ring" style="${visual(d)}">${d.img ? "" : esc(d.emoji || "🍸")}</div></div>
       <div class="ric-body">
         <h3>${esc(d.nome)}</h3>
-        <div class="ric-sub"><span class="dv-caps">${esc(catNome(d.categoria))}</span><span class="p">${euro(Math.round(d.prezzo * 100))}</span></div>
-        <div class="meta">${meta}</div>
+        <div class="ric-sub"><span class="dv-caps">${esc(catNome(d.categoria))}</span><span class="p">${prezzoLabel(d)}</span></div>
+        ${d.descrizione ? `<p class="ric-sub" style="margin-top:14px">${esc(d.descrizione)}</p>` : ""}
+        ${meta ? `<div class="meta">${meta}</div>` : ""}
         <h4>Ingredienti</h4>
         <table class="ingr">${d.ingredienti.map((i) => `<tr><td>${esc(i.nome)}</td><td>${esc(i.dose || "")}</td></tr>`).join("")}</table>
+        ${d.varianti ? `<h4>Varianti</h4><div class="vtags">${d.varianti.map((v) => `<span>${esc(varNome(v))}</span>`).join("")}</div>` : ""}
         ${d.passaggi && d.passaggi.length ? `<h4>Procedimento</h4><ol class="steps">${d.passaggi.map((p) => `<li>${esc(p)}</li>`).join("")}</ol>` : ""}
         ${d.note ? `<div class="nota">${esc(d.note)}</div>` : ""}
       </div>`);
@@ -567,7 +594,7 @@
     } else {
       righe = t.righe.map((r) => {
         const d = r.drinkId && drinkById(r.drinkId);
-        const nome = d
+        const nome = haRicetta(d)
           ? `<button class="nome link" data-action="apri-ricetta" data-id="${esc(d.id)}">${esc(r.nome)}</button>`
           : `<div class="nome">${esc(r.nome)}</div>`;
         const step = pay
@@ -622,15 +649,15 @@
   }
 
   function listaPicker(t) {
-    $("#pickChips").innerHTML = chipsHtml(ui.pickQ.trim() ? "" : ui.pickCat, "pick-cat");
+    $("#pickChips").innerHTML = chipsHtml(D.drinks, ui.pickQ.trim() ? "" : ui.pickCat, "pick-cat");
     const contati = {};
     t.righe.forEach((r) => { if (r.drinkId) contati[r.drinkId] = (contati[r.drinkId] || 0) + r.qty; });
-    const items = filtra(ui.pickQ, ui.pickCat);
+    const items = filtra(D.drinks, ui.pickQ, ui.pickCat);
     $("#pickLista").innerHTML =
       items.map((d) => `
         <button class="pbtn" data-action="aggiungi" data-id="${esc(d.id)}">
           ${tileHtml(d)}
-          <div><div class="n">${esc(d.nome)}</div><div class="p">${euro(Math.round(d.prezzo * 100))}</div></div>
+          <div><div class="n">${esc(d.nome)}</div><div class="p">${prezzoLabel(d)}${d.varianti ? " · scegli ›" : ""}</div></div>
           ${contati[d.id] ? `<span class="badge">${contati[d.id]}</span>` : ""}
         </button>`).join("") +
       `<button class="pbtn libera" data-action="voce-libera">+ Voce libera</button>`;
@@ -642,6 +669,18 @@
     else t.righe.push({ id: uid(), drinkId, nome, prezzoCent, qty: 1 });
     salva();
     aggiornaTavolo(t);
+  }
+
+  function sceltaVariante(d) {
+    apriFinestra(`
+      <button class="close" data-action="chiudi-finestra" aria-label="Chiudi">✕</button>
+      <div class="vhead"><h3>${esc(d.nome)}</h3><p>${d.descrizione ? esc(d.descrizione) : "Scegli:"}</p></div>
+      <div class="vlist">${d.varianti.map((v, i) => `
+        <button class="vbtn" data-action="aggiungi-var" data-id="${esc(d.id)}" data-i="${i}">
+          <span class="n">${esc(varNome(v))}</span>
+          ${typeof v === "object" && v.info ? `<span class="i">${esc(v.info)}</span>` : ""}
+          <span class="p">${euro(cent(varPrezzo(d, v)))}</span>
+        </button>`).join("")}</div>`);
   }
 
   /* ---------- Finestre (dialoghi) ---------- */
@@ -736,9 +775,21 @@
       case "aggiungi": {
         const d = drinkById(b.dataset.id);
         if (!d) return;
-        aggiungiRiga(t, { drinkId: d.id, nome: d.nome, prezzoCent: Math.round(d.prezzo * 100) });
+        if (d.varianti && d.varianti.length) return sceltaVariante(d);
+        aggiungiRiga(t, { drinkId: d.id, nome: d.nome, prezzoCent: cent(d.prezzo) });
         const nb = document.querySelector(`.pbtn[data-id="${CSS.escape(d.id)}"]`);
         if (nb) { nb.classList.add("flash"); setTimeout(() => nb.classList.remove("flash"), 250); }
+        return;
+      }
+
+      case "aggiungi-var": {
+        const d = drinkById(b.dataset.id);
+        const v = d && d.varianti[+b.dataset.i];
+        if (!v) return;
+        const nome = `${d.nome} · ${varNome(v)}`;
+        chiudiFinestra(null);
+        aggiungiRiga(t, { drinkId: d.id, nome, prezzoCent: cent(varPrezzo(d, v)) });
+        toast(`+ ${nome}`);
         return;
       }
 

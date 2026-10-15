@@ -18,8 +18,10 @@ Fatto. Da ora apri l'app **sempre dall'icona**: funziona anche senza internet e 
 | `staff/`   | L'app: pagina iniziale, gestione **tavoli**, ricette complete (dosi, bicchiere, metodo, passaggi) |
 | `shared/`  | `drinks.js` (l'elenco drink, **unico file da modificare**), logo, foto del locale, colori, font |
 
-### Modificare i drink
-Apri `shared/drinks.js`: ogni drink ha nome, categoria, prezzo, descrizione, ingredienti con dosi e passaggi.
+### Modificare il menu
+Apri `shared/drinks.js`: ogni voce ha nome, categoria, prezzo ed eventuali **varianti** (es. gusti dello spritz, gin, misure della birra).
+I cocktail hanno anche ingredienti con dosi e passaggi e compaiono nella sezione Ricette.
+Le foto del menu originale sono in `Foto/Menu/`.
 Per usare una foto: mettila in `shared/img/` e aggiungi al drink `img: "../shared/img/nome-foto.jpg"`.
 La foto della pagina iniziale è `shared/img/bar.jpg`: sostituiscila con un file con lo stesso nome per cambiarla.
 
