@@ -100,14 +100,17 @@
     position: relative; min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column;
     background: #000 center 35% / cover no-repeat;
   }
-  .hero .slides { position: absolute; inset: 0; overflow: hidden; }
+  /* Slideshow: la foto nuova entra in dissolvenza SOPRA quella vecchia, che resta ferma
+     finché non è coperta. Zoom e inquadratura puntano al bancone (parte bassa della foto). */
+  .hero .slides { position: absolute; inset: 0; overflow: hidden; z-index: 0; background: #000; }
   .slide {
-    position: absolute; inset: 0; background: center 40% / cover no-repeat;
-    opacity: 0; transition: opacity 1.8s ease; transform: scale(1.02);
+    position: absolute; inset: 0; background: center 72% / cover no-repeat;
+    opacity: 0; z-index: 0; transform: scale(1); transform-origin: 50% 75%;
+    transition: none; will-change: transform, opacity; backface-visibility: hidden;
   }
-  .slide.on { opacity: 1; animation: kenburns 7.5s ease-out forwards; }
-  @keyframes kenburns { from { transform: scale(1.02); } to { transform: scale(1.12); } }
-  @media (prefers-reduced-motion: reduce) { .slide.on { animation: none; } }
+  .slide.on { opacity: 1; z-index: 2; transform: scale(1.08); transition: opacity 1.6s ease-in-out, transform 7s linear; }
+  .slide.out { opacity: 1; z-index: 1; transform: scale(1.08); transition: transform 7s linear; }
+  @media (prefers-reduced-motion: reduce) { .slide.on, .slide.out { transform: none; } }
   .dots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
   .dots button { width: 7px; height: 7px; padding: 0; border-radius: 50%; border: none; background: rgba(255,255,255,.3); }
   .dots button.on { background: var(--accent); width: 22px; border-radius: 4px; transition: width .3s; }
@@ -458,12 +461,23 @@
 
   /* ---------- Home ---------- */
   const foto = [].concat(D.bar.foto || []);
-  let slideTimer = null, slideIdx = 0;
+  let slideTimer = null, outTimer = null, slideIdx = 0;
+  // Precarica le foto così il primo cambio non scatta
+  foto.forEach((src) => { const im = new Image(); im.src = src; if (im.decode) im.decode().catch(() => {}); });
   function mostraSlide(i) {
-    const slides = document.querySelectorAll(".slide");
+    const slides = [...document.querySelectorAll(".slide")];
     if (!slides.length) return;
-    slideIdx = (i + slides.length) % slides.length;
-    slides.forEach((el, k) => el.classList.toggle("on", k === slideIdx));
+    const next = (i + slides.length) % slides.length;
+    const prev = slides.find((el) => el.classList.contains("on"));
+    if (prev === slides[next]) return;
+    clearTimeout(outTimer);
+    slides.forEach((el) => el.classList.remove("out"));
+    if (prev) {
+      prev.classList.replace("on", "out");
+      outTimer = setTimeout(() => prev.classList.remove("out"), 1700);
+    }
+    slides[next].classList.add("on");
+    slideIdx = next;
     document.querySelectorAll(".dots button").forEach((el, k) => el.classList.toggle("on", k === slideIdx));
   }
   function avviaSlide() {
@@ -478,7 +492,7 @@
     const oggi = new Date().toLocaleDateString("it-IT", { weekday: "long", day: "numeric", month: "long" });
     $("#app").innerHTML = `
       <section class="hero">
-        <div class="slides">${foto.map((f, i) => `<div class="slide${i ? "" : " on"}" style="background-image:url('${esc(f)}')"></div>`).join("")}</div>
+        <div class="slides">${foto.map((f) => `<div class="slide" style="background-image:url('${esc(f)}')"></div>`).join("")}</div>
         <div class="hero-top">
           <img src="${esc(D.bar.logo)}" alt="${esc(D.bar.nome)}">
           <div class="line dv-caps">${esc(D.bar.sottotitolo)}</div>
@@ -501,6 +515,7 @@
           <div class="hero-new"><button class="btn primary" data-action="nuovo-tavolo">+ Nuovo tavolo</button></div>
         </div>
       </section>`;
+    requestAnimationFrame(() => requestAnimationFrame(() => mostraSlide(0)));
   }
 
   /* ---------- Ricette ---------- */
