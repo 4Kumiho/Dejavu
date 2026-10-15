@@ -533,7 +533,13 @@
     try {
       const m = await scaricaMenu();
       if (!MENU) return applicaMenu(m);
-      if ((m.versione || "") > (MENU.versione || "")) { menuNuovo = m; mostraAvviso("menu"); }
+      if ((m.versione || "") > (MENU.versione || "")) {
+        menuNuovo = m;
+        mostraAvviso("menu");
+        // un menu nuovo può richiedere anche l'app nuova: controlla subito
+        if (navigator.serviceWorker && navigator.serviceWorker.getRegistration)
+          navigator.serviceWorker.getRegistration().then((r) => r && r.update()).catch(() => {});
+      }
     } catch {}
   }
 
