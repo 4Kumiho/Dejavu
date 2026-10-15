@@ -1,5 +1,5 @@
 /*
- * ELENCO DRINK — unico file condiviso tra app Clienti e app Staff.
+ * ELENCO DRINK dell'app Staff.
  *
  * Per ogni drink:
  *   id           identificativo univoco (minuscolo, senza spazi)
@@ -8,10 +8,10 @@
  *   prezzo       prezzo in euro (es. 8 oppure 8.5)
  *   emoji        mostrata se non c'è una foto
  *   img          (facoltativo) percorso della foto, es. "../shared/img/spritz.jpg"
- *   descrizione  testo per i clienti
- *   ingredienti  [{ nome, dose }]  -> i clienti vedono solo il nome, lo staff anche la dose
- *   bicchiere, ghiaccio, metodo, guarnizione   -> solo staff
- *   passaggi     elenco dei passaggi della preparazione -> solo staff
+ *   descrizione  breve descrizione del drink
+ *   ingredienti  [{ nome, dose }]
+ *   bicchiere, ghiaccio, metodo, guarnizione
+ *   passaggi     elenco dei passaggi della preparazione
  *   note         (facoltativo) consigli per lo staff
  *
  * I drink qui sotto sono ESEMPI: modificali, cancellali o aggiungine di nuovi.
@@ -21,11 +21,9 @@ window.DEJAVU = {
     nome: "Déjà Vu",
     sottotitolo: "Draught Beer · Finest Cocktail",
     luogo: "Borgo Santa Caterina · Bergamo",
-    logo: "../shared/logo.png",
+    logo: "../shared/logo-white.png",
+    foto: "../shared/img/bar.jpg", // foto della pagina iniziale
   },
-
-  // Mostrare i prezzi nel menu clienti?
-  mostraPrezziClienti: true,
 
   categorie: [
     { id: "signature", nome: "Signature" },

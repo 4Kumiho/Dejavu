@@ -2,9 +2,7 @@
 
 ## 👉 Installa l'app sull'iPad
 
-1. Apri il link con **Safari**:
-   - **Staff:** [https://4kumiho.github.io/Dejavu/staff/](https://4kumiho.github.io/Dejavu/staff/)
-   - **Menu clienti:** [https://4kumiho.github.io/Dejavu/clienti/](https://4kumiho.github.io/Dejavu/clienti/)
+1. Apri il link con **Safari**: **[https://4kumiho.github.io/Dejavu/staff/](https://4kumiho.github.io/Dejavu/staff/)**
 2. Tocca il tasto **Condividi** (il quadrato con la freccia verso l'alto).
 3. Tocca **Aggiungi alla schermata Home**.
 
@@ -17,13 +15,13 @@ Fatto. Da ora apri l'app **sempre dall'icona**: funziona anche senza internet e 
 ### Cosa c'è dentro
 | Cartella   | Cosa fa |
 |------------|---------|
-| `clienti/` | Menu per i clienti: foto/icona, descrizione e ingredienti (senza dosi) |
-| `staff/`   | Ricette complete (dosi, bicchiere, metodo, passaggi) + gestione **tavoli** |
-| `shared/`  | `drinks.js` (l'elenco drink, **unico file da modificare**), logo, colori, font |
+| `staff/`   | L'app: pagina iniziale, gestione **tavoli**, ricette complete (dosi, bicchiere, metodo, passaggi) |
+| `shared/`  | `drinks.js` (l'elenco drink, **unico file da modificare**), logo, foto del locale, colori, font |
 
 ### Modificare i drink
 Apri `shared/drinks.js`: ogni drink ha nome, categoria, prezzo, descrizione, ingredienti con dosi e passaggi.
 Per usare una foto: mettila in `shared/img/` e aggiungi al drink `img: "../shared/img/nome-foto.jpg"`.
+La foto della pagina iniziale è `shared/img/bar.jpg`: sostituiscila con un file con lo stesso nome per cambiarla.
 
 Ogni modifica pubblicata su `main` va online da sola in 1–2 minuti. Gli iPad prendono la nuova versione
 alla successiva apertura con internet (la vedono dalla seconda apertura).
@@ -37,7 +35,7 @@ Serve perché i link qui sopra funzionino.
 Per avere una propria copia (es. con altri drink): **Fork** del repository e attivare GitHub Pages sul fork.
 
 ### Aprire l'app sul PC (per provarla)
-- **Doppio clic** su `staff/index.html` (o `clienti/index.html`) e aprilo con Chrome o Edge.
+- **Doppio clic** su `staff/index.html` e aprilo con Chrome o Edge.
 - Oppure, più simile all'iPad: `python -m http.server 8000` nella cartella e apri http://localhost:8000/staff/.
 
 ### Note

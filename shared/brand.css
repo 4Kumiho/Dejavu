@@ -1,52 +1,65 @@
-/* Identità Déjà Vu — colori e forme presi dal logo (badge rotondo, petrolio acquerellato, doppio anello turchese) */
+/* Identità Déjà Vu — nero e antracite come le pareti del locale, bianco come l'insegna,
+   turchese del logo e del bancone retroilluminato usato solo come accento. */
 @font-face {
   font-family: "Montserrat";
   src: url("fonts/montserrat.woff2") format("woff2");
   font-weight: 100 900;
   font-display: swap;
 }
-
-:root {
-  --dv-ink: #061b20;       /* petrolio più scuro */
-  --dv-deep: #0b2428;      /* fondo logo */
-  --dv-sea: #0e363e;
-  --dv-mist: #1c4c56;      /* velature chiare dell'acquerello */
-  --dv-tq: #51c7e3;        /* turchese scritte e anelli */
-  --dv-tq-soft: rgba(81, 199, 227, .14);
-  --dv-tq-line: rgba(81, 199, 227, .35);
-  --dv-text: #e6f6fa;
-  --dv-muted: #8fb5bf;
-  --dv-font: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+@font-face {
+  font-family: "Cormorant";
+  src: url("fonts/cormorant-500.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cormorant";
+  src: url("fonts/cormorant-600.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
 }
 
-/* Sfondo "acquerello" come nel logo */
+:root {
+  --dv-black: #0a0a0b;
+  --dv-coal: #111113;
+  --dv-panel: #16171a;
+  --dv-panel-2: #1e2024;
+  --dv-line: rgba(255, 255, 255, .09);
+  --dv-line-2: rgba(255, 255, 255, .2);
+  --dv-white: #f5f3ee;
+  --dv-muted: #9b9ca1;
+  --dv-tq: #51c7e3;
+  --dv-tq-soft: rgba(81, 199, 227, .12);
+  --dv-tq-line: rgba(81, 199, 227, .45);
+  --dv-red: #e5675f;
+  --dv-sans: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --dv-serif: "Cormorant", "Cormorant Garamond", Didot, "Bodoni 72", Georgia, serif;
+}
+
 .dv-bg {
-  background-color: var(--dv-deep);
+  background-color: var(--dv-black);
   background-image:
-    radial-gradient(ellipse 60% 40% at 20% 10%, rgba(28, 76, 86, .75), transparent 70%),
-    radial-gradient(ellipse 50% 45% at 85% 30%, rgba(18, 80, 91, .55), transparent 70%),
-    radial-gradient(ellipse 70% 50% at 50% 95%, rgba(6, 27, 32, .9), transparent 70%),
-    radial-gradient(ellipse 40% 30% at 10% 70%, rgba(14, 54, 62, .8), transparent 70%);
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(81, 199, 227, .07), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(255, 255, 255, .03), transparent 70%);
   background-attachment: fixed;
 }
 
-/* Cerchio con doppio anello turchese, come il badge del logo */
+/* Cerchio con doppio anello (bianco fuori, turchese dentro), come il badge del logo */
 .dv-ring {
   border-radius: 50%;
-  border: 2px solid var(--dv-tq);
-  box-shadow: 0 0 0 4px var(--dv-deep), 0 0 0 6px var(--dv-tq);
-  background:
-    radial-gradient(circle at 35% 30%, var(--dv-mist), transparent 60%),
-    radial-gradient(circle at 70% 75%, var(--dv-ink), transparent 65%),
-    var(--dv-sea);
+  border: 1px solid var(--dv-tq-line);
+  box-shadow: 0 0 0 3px var(--dv-black), 0 0 0 4px var(--dv-line-2);
+  background: radial-gradient(circle at 35% 30%, #23262b, var(--dv-coal) 70%);
   background-size: cover;
   background-position: center;
 }
 
-/* Titoletto stile "BORGO SANTA CATERINA" */
+.dv-serif { font-family: var(--dv-serif); font-weight: 600; letter-spacing: .01em; }
+
+/* Etichette maiuscole spaziate, come "BORGO SANTA CATERINA" */
 .dv-caps {
   text-transform: uppercase;
-  letter-spacing: .18em;
+  letter-spacing: .22em;
   font-weight: 600;
-  color: var(--dv-tq);
+  font-size: 11px;
 }
