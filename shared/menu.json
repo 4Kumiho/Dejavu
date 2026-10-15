@@ -1,5 +1,5 @@
 {
-  "versione": "2026-10-15T00:00:00.000Z",
+  "versione": "2026-10-15T11:27:05.116Z",
   "categorie": [
     {
       "id": "signature",
@@ -304,7 +304,7 @@
       "id": "negroni",
       "nome": "Negroni",
       "categoria": "classici",
-      "prezzo": 10,
+      "prezzo": 9,
       "emoji": "🥃",
       "descrizione": "Campari, Vermouth del Professore e Gin Bulldog.",
       "ingredienti": [
