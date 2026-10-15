@@ -21,7 +21,13 @@ Per usare una foto: mettila in `shared/img/` e aggiungi al drink `img: "../share
 Attenzione: la **D** di `Dejavu` è maiuscola e serve la `/` finale.
 Non confonderli con `github.com/4Kumiho/Dejavu`: quella è la pagina del codice, non l'app.
 
-## Attivare GitHub Pages (una volta sola)
+## Chi può usarla
+- **Chiunque, senza account GitHub**, può aprire e installare l'app dagli indirizzi qui sopra.
+- **Chiunque** può scaricare il codice: **Code → Download ZIP**, poi doppio clic su `staff/index.html` (sul PC).
+- Per avere **una propria copia** (es. con altri drink): **Fork** del repository, poi attivare GitHub Pages
+  sul proprio fork come spiegato sotto. L'indirizzo diventa `https://<proprio-utente>.github.io/Dejavu/staff/`.
+
+## Attivare GitHub Pages (una volta sola, dal proprietario del repository)
 1. Vai su https://github.com/4Kumiho/Dejavu/settings/pages
 2. In **Build and deployment**: Source **Deploy from a branch**, Branch **`main`**, cartella **`/ (root)`**, poi **Save**.
 3. Dopo 1–2 minuti in alto compare "Your site is live at https://4kumiho.github.io/Dejavu/".
