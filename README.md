@@ -33,8 +33,9 @@ Dopo, l'app **funziona anche senza internet**.
 <details open>
 <summary><b>🍏 iPhone</b></summary>
 
-1. Apri **Safari** (l'icona con la bussola blu). Deve essere Safari.
-2. Scrivi nella barra in alto: `4kumiho.github.io/Dejavu/staff/` e premi **Vai**.
+1. Tocca questo link: **[👉 Apri Déjà Vu Staff](https://4kumiho.github.io/Dejavu/staff/)**
+2. Deve aprirsi in **Safari** (l'icona con la bussola blu).
+   *Se si apre dentro un'altra app* (GitHub, WhatsApp, Instagram…): tocca **⋯** o l'icona della bussola e scegli **Apri in Safari**.
 3. Aspetta che compaia la pagina nera con il logo Déjà Vu.
 4. Tocca il tasto **Condividi** (il quadrato con la freccia verso l'alto ⬆️) nella barra in basso.
    *Se non lo vedi:* tocca **⋯** (tre puntini) in basso a destra, poi **Condividi**.
@@ -48,8 +49,9 @@ Dopo, l'app **funziona anche senza internet**.
 <details open>
 <summary><b>🍏 iPad</b></summary>
 
-1. Apri **Safari**.
-2. Scrivi nella barra in alto: `4kumiho.github.io/Dejavu/staff/` e premi **Vai**.
+1. Tocca questo link: **[👉 Apri Déjà Vu Staff](https://4kumiho.github.io/Dejavu/staff/)**
+2. Deve aprirsi in **Safari** (l'icona con la bussola blu).
+   *Se si apre dentro un'altra app* (GitHub, WhatsApp, Instagram…): tocca **⋯** o l'icona della bussola e scegli **Apri in Safari**.
 3. Aspetta che compaia la pagina nera con il logo Déjà Vu.
 4. Tocca il tasto **Condividi** (il quadrato con la freccia ⬆️) **in alto a destra**, accanto alla barra dell'indirizzo.
    *Se non lo vedi:* tocca **⋯** (tre puntini) in alto, poi **Condividi**.
@@ -66,15 +68,16 @@ Dopo, l'app **funziona anche senza internet**.
 <summary><b>🤖 Telefono Android</b></summary>
 
 **Con Google Chrome** (consigliato)
-1. Apri **Chrome**.
-2. Scrivi nella barra in alto: `4kumiho.github.io/Dejavu/staff/` e premi **Invio**.
+1. Tocca questo link: **[👉 Apri Déjà Vu Staff](https://4kumiho.github.io/Dejavu/staff/)**
+2. Deve aprirsi in **Chrome**.
+   *Se si apre dentro un'altra app* (GitHub, WhatsApp, Instagram…): tocca **⋮** e scegli **Apri in Chrome**.
 3. Tocca **⋮** (tre puntini) in alto a destra.
 4. Tocca **Installa app** oppure **Aggiungi a schermata Home**.
 5. Conferma con **Installa** (o **Aggiungi**).
 6. Trovi l'icona **Déjà Vu Staff** nella schermata Home e tra le app. ✅
 
 **Con Samsung Internet**
-1. Apri il link come sopra.
+1. Tocca il link **[👉 Apri Déjà Vu Staff](https://4kumiho.github.io/Dejavu/staff/)** e aprilo con **Samsung Internet**.
 2. Tocca **☰** (tre righe) in basso a destra.
 3. Tocca **Aggiungi pagina a** → **Schermata Home**.
 
@@ -83,8 +86,9 @@ Dopo, l'app **funziona anche senza internet**.
 <details open>
 <summary><b>🤖 Tablet Android</b></summary>
 
-1. Apri **Chrome**.
-2. Scrivi nella barra in alto: `4kumiho.github.io/Dejavu/staff/` e premi **Invio**.
+1. Tocca questo link: **[👉 Apri Déjà Vu Staff](https://4kumiho.github.io/Dejavu/staff/)**
+2. Deve aprirsi in **Chrome**.
+   *Se si apre dentro un'altra app* (GitHub, WhatsApp, Instagram…): tocca **⋮** e scegli **Apri in Chrome**.
 3. Tocca **⋮** (tre puntini) **a destra della barra dell'indirizzo**.
    Su alcuni tablet compare direttamente un'icona **Installa** (uno schermo con una freccia) dentro la barra dell'indirizzo: puoi toccare quella.
 4. Tocca **Installa app** oppure **Aggiungi a schermata Home**.
@@ -97,18 +101,18 @@ Dopo, l'app **funziona anche senza internet**.
 <summary><b>💻 Computer (Windows o Mac)</b></summary>
 
 **Google Chrome**
-1. Apri il link [4kumiho.github.io/Dejavu/staff/](https://4kumiho.github.io/Dejavu/staff/).
+1. Clicca il link **[👉 Apri Déjà Vu Staff](https://4kumiho.github.io/Dejavu/staff/)** (si apre in Chrome se è il tuo browser predefinito).
 2. Nella barra dell'indirizzo, a destra, clicca l'icona **Installa** (uno schermo con una freccia ⬇️).
    *Se non c'è:* menu **⋮** → **Trasmetti, salva e condividi** → **Installa pagina come app…**
 3. Clicca **Installa**. L'app si apre in una finestra sua e trovi l'icona nel menu Start / nel Launchpad.
 
 **Microsoft Edge**
-1. Apri il link.
+1. Clicca il link **[👉 Apri Déjà Vu Staff](https://4kumiho.github.io/Dejavu/staff/)**
 2. Menu **⋯** in alto a destra → **App** → **Installa questo sito come app**.
 3. Clicca **Installa**.
 
 **Safari su Mac**
-1. Apri il link.
+1. Clicca il link **[👉 Apri Déjà Vu Staff](https://4kumiho.github.io/Dejavu/staff/)**
 2. Menu **File** → **Aggiungi al Dock**.
 3. Clicca **Aggiungi**.
 
@@ -193,7 +197,7 @@ No: ogni dispositivo ha i suoi tavoli. Usate un solo dispositivo per segnare i t
 Apri l'app con internet attivo, chiudila e riaprila: la nuova versione compare dalla seconda apertura.
 
 **L'icona apre GitHub invece dell'app.**
-Hai aggiunto la pagina sbagliata. Tieni premuto sull'icona → **Rimuovi**, poi rifai l'installazione dal link `4kumiho.github.io/Dejavu/staff/`.
+Hai aggiunto la pagina sbagliata. Tieni premuto sull'icona → **Rimuovi**, poi rifai l'installazione da questo link: **[👉 Apri Déjà Vu Staff](https://4kumiho.github.io/Dejavu/staff/)**
 
 **Ho cancellato i dati di Safari / rimosso l'icona.**
 I tavoli aperti in quel momento vengono cancellati. Il menu e le ricette invece si riscaricano da soli.
