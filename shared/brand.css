@@ -1,0 +1,52 @@
+/* Identità Déjà Vu — colori e forme presi dal logo (badge rotondo, petrolio acquerellato, doppio anello turchese) */
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/montserrat.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  --dv-ink: #061b20;       /* petrolio più scuro */
+  --dv-deep: #0b2428;      /* fondo logo */
+  --dv-sea: #0e363e;
+  --dv-mist: #1c4c56;      /* velature chiare dell'acquerello */
+  --dv-tq: #51c7e3;        /* turchese scritte e anelli */
+  --dv-tq-soft: rgba(81, 199, 227, .14);
+  --dv-tq-line: rgba(81, 199, 227, .35);
+  --dv-text: #e6f6fa;
+  --dv-muted: #8fb5bf;
+  --dv-font: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Sfondo "acquerello" come nel logo */
+.dv-bg {
+  background-color: var(--dv-deep);
+  background-image:
+    radial-gradient(ellipse 60% 40% at 20% 10%, rgba(28, 76, 86, .75), transparent 70%),
+    radial-gradient(ellipse 50% 45% at 85% 30%, rgba(18, 80, 91, .55), transparent 70%),
+    radial-gradient(ellipse 70% 50% at 50% 95%, rgba(6, 27, 32, .9), transparent 70%),
+    radial-gradient(ellipse 40% 30% at 10% 70%, rgba(14, 54, 62, .8), transparent 70%);
+  background-attachment: fixed;
+}
+
+/* Cerchio con doppio anello turchese, come il badge del logo */
+.dv-ring {
+  border-radius: 50%;
+  border: 2px solid var(--dv-tq);
+  box-shadow: 0 0 0 4px var(--dv-deep), 0 0 0 6px var(--dv-tq);
+  background:
+    radial-gradient(circle at 35% 30%, var(--dv-mist), transparent 60%),
+    radial-gradient(circle at 70% 75%, var(--dv-ink), transparent 65%),
+    var(--dv-sea);
+  background-size: cover;
+  background-position: center;
+}
+
+/* Titoletto stile "BORGO SANTA CATERINA" */
+.dv-caps {
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  font-weight: 600;
+  color: var(--dv-tq);
+}
