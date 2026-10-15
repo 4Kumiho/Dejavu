@@ -23,7 +23,8 @@ Apri `shared/drinks.js`: ogni voce ha nome, categoria, prezzo ed eventuali **var
 I cocktail hanno anche ingredienti con dosi e passaggi e compaiono nella sezione Ricette.
 Le foto del menu originale sono in `Foto/Menu/`.
 Per usare una foto: mettila in `shared/img/` e aggiungi al drink `img: "../shared/img/nome-foto.jpg"`.
-La foto della pagina iniziale è `shared/img/bar.jpg`: sostituiscila con un file con lo stesso nome per cambiarla.
+Le foto che scorrono nella pagina iniziale sono in `shared/img/` e sono elencate in `shared/drinks.js` (voce `foto`).
+Gli originali delle foto del locale sono in `Foto/Locale/`.
 
 Ogni modifica pubblicata su `main` va online da sola in 1–2 minuti. Gli iPad prendono la nuova versione
 alla successiva apertura con internet (la vedono dalla seconda apertura).

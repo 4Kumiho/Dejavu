@@ -1,9 +1,10 @@
 // Rende l'app utilizzabile offline: mostra subito la copia salvata
 // e in background scarica l'eventuale versione aggiornata.
-const CACHE = "dejavu-staff-v4";
+const CACHE = "dejavu-staff-v5";
 const FILES = [
   "./", "./index.html", "./manifest.json", "./icon-180.png", "./icon-192.png",
   "../shared/drinks.js", "../shared/brand.css", "../shared/logo-white.png", "../shared/img/bar.jpg",
+  "../shared/img/locale-1.jpg", "../shared/img/locale-2.jpg", "../shared/img/locale-3.jpg",
   "../shared/fonts/montserrat.woff2", "../shared/fonts/cormorant-500.woff2", "../shared/fonts/cormorant-600.woff2",
 ];
 

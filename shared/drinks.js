@@ -25,7 +25,13 @@ window.DEJAVU = {
     sottotitolo: "Draught Beer · Finest Cocktail",
     luogo: "Borgo Santa Caterina · Bergamo",
     logo: "../shared/logo-white.png",
-    foto: "../shared/img/bar.jpg", // foto della pagina iniziale
+    // foto che scorrono nella pagina iniziale
+    foto: [
+      "../shared/img/locale-1.jpg",
+      "../shared/img/locale-2.jpg",
+      "../shared/img/bar.jpg",
+      "../shared/img/locale-3.jpg",
+    ],
   },
 
   categorie: [

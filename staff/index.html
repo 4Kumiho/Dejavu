@@ -100,11 +100,22 @@
     position: relative; min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column;
     background: #000 center 35% / cover no-repeat;
   }
+  .hero .slides { position: absolute; inset: 0; overflow: hidden; }
+  .slide {
+    position: absolute; inset: 0; background: center 40% / cover no-repeat;
+    opacity: 0; transition: opacity 1.8s ease; transform: scale(1.02);
+  }
+  .slide.on { opacity: 1; animation: kenburns 9s ease-out forwards; }
+  @keyframes kenburns { from { transform: scale(1.02); } to { transform: scale(1.12); } }
+  @media (prefers-reduced-motion: reduce) { .slide.on { animation: none; } }
+  .dots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
+  .dots button { width: 7px; height: 7px; padding: 0; border-radius: 50%; border: none; background: rgba(255,255,255,.3); }
+  .dots button.on { background: var(--accent); width: 22px; border-radius: 4px; transition: width .3s; }
   .hero::before {
-    content: ""; position: absolute; inset: 0;
+    content: ""; position: absolute; inset: 0; z-index: 1;
     background: linear-gradient(180deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,.4) 30%, rgba(0,0,0,.78) 60%, var(--dv-black) 92%);
   }
-  .hero > * { position: relative; }
+  .hero > *:not(.slides) { position: relative; z-index: 2; }
   .hero-top {
     padding: calc(env(safe-area-inset-top) + 48px) 20px 0; text-align: center; flex: 1;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -432,6 +443,7 @@
   function render() {
     const r = route();
     document.body.classList.toggle("home", r.view === "home");
+    if (r.view !== "home") clearInterval(slideTimer);
     $("#tabRicette").classList.toggle("on", r.view === "ricette");
     $("#tabTavoli").classList.toggle("on", r.view === "tavoli" || r.view === "tavolo");
     if (r.view === "home") return viewHome();
@@ -445,15 +457,33 @@
   }
 
   /* ---------- Home ---------- */
+  const foto = [].concat(D.bar.foto || []);
+  let slideTimer = null, slideIdx = 0;
+  function mostraSlide(i) {
+    const slides = document.querySelectorAll(".slide");
+    if (!slides.length) return;
+    slideIdx = (i + slides.length) % slides.length;
+    slides.forEach((el, k) => el.classList.toggle("on", k === slideIdx));
+    document.querySelectorAll(".dots button").forEach((el, k) => el.classList.toggle("on", k === slideIdx));
+  }
+  function avviaSlide() {
+    clearInterval(slideTimer);
+    if (foto.length > 1) slideTimer = setInterval(() => mostraSlide(slideIdx + 1), 6000);
+  }
+
   function viewHome() {
+    slideIdx = 0;
+    avviaSlide();
     const aperti = tavoli.reduce((s, t) => s + totale(t), 0);
     const oggi = new Date().toLocaleDateString("it-IT", { weekday: "long", day: "numeric", month: "long" });
     $("#app").innerHTML = `
-      <section class="hero" style="${D.bar.foto ? `background-image:url('${esc(D.bar.foto)}')` : ""}">
+      <section class="hero">
+        <div class="slides">${foto.map((f, i) => `<div class="slide${i ? "" : " on"}" style="background-image:url('${esc(f)}')"></div>`).join("")}</div>
         <div class="hero-top">
           <img src="${esc(D.bar.logo)}" alt="${esc(D.bar.nome)}">
           <div class="line dv-caps">${esc(D.bar.sottotitolo)}</div>
           <div class="date">${esc(oggi)}</div>
+          ${foto.length > 1 ? `<div class="dots">${foto.map((_, i) => `<button data-action="slide" data-i="${i}" class="${i ? "" : "on"}" aria-label="Foto ${i + 1}"></button>`).join("")}</div>` : ""}
         </div>
         <div class="hero-cards">
           <a class="hcard" href="#tavoli">
@@ -762,6 +792,7 @@
       case "finestra-ok": return chiudiFinestra(true);
       case "ric-cat": ui.ricCat = b.dataset.cat; ui.ricQ = ""; $("#ricQ").value = ""; return listaRicette();
       case "apri-ricetta": return apriRicetta(b.dataset.id);
+      case "slide": mostraSlide(+b.dataset.i); return avviaSlide();
       case "nuovo-tavolo": return nuovoTavolo();
       case "apri-tavolo": location.hash = "#tavolo/" + encodeURIComponent(b.dataset.id); return;
     }
