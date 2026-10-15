@@ -203,7 +203,7 @@ Per poter **salvare** le modifiche, il dispositivo deve avere la *chiave di pubb
 Chi non ha la chiave può usare l'app normalmente ma non può cambiare il menu (così nessuno lo modifica per sbaglio).
 
 **Crea la chiave** (da computer o telefono, con l'account GitHub **4Kumiho**):
-1. Apri questo link: **[👉 Crea la chiave su GitHub](https://github.com/settings/personal-access-tokens/new)** (accedi con l'account 4Kumiho se te lo chiede).
+1. Apri questo link (molti campi sono già compilati): **[👉 Crea la chiave su GitHub](https://github.com/settings/personal-access-tokens/new?name=D%C3%A9j%C3%A0%20Vu%20menu&description=Chiave%20per%20modificare%20il%20menu%20dall%27app%20staff&target_name=4Kumiho&expires_in=366&contents=write)** (accedi con l'account 4Kumiho se te lo chiede).
 2. **Token name**: scrivi `Déjà Vu menu`.
 3. **Expiration**: scegli la durata più lunga disponibile (quando scade, basta crearne una nuova).
 4. **Repository access**: scegli **Only select repositories** e seleziona **4Kumiho/Dejavu**.
