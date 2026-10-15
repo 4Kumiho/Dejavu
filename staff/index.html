@@ -127,10 +127,23 @@
   .hero-top .line { display: flex; align-items: center; gap: 14px; margin-top: 22px; color: rgba(255,255,255,.8); }
   .hero-top .line::before, .hero-top .line::after { content: ""; width: 36px; height: 1px; background: var(--accent); }
   .hero-top .date { margin-top: 10px; color: var(--muted); font-size: 13px; letter-spacing: .06em; }
+  /* Primo schermo: foto, logo e solo Tavoli. Scorrendo: Ricette, Menu e Nuovo tavolo */
   .hero-cards {
-    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;
-    width: min(1000px, 100%); margin: 36px auto 0; padding: 0 20px calc(28px + env(safe-area-inset-bottom));
+    display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px;
+    width: min(560px, 100%); margin: 36px auto 0; padding: 0 20px calc(18px + env(safe-area-inset-bottom));
   }
+  .scroll-hint {
+    display: flex; flex-direction: column; align-items: center; gap: 4px; margin: 6px auto 0;
+    background: none; border: none; color: rgba(255,255,255,.7); padding: 8px 16px;
+  }
+  .scroll-hint .freccia { font-size: 20px; animation: rimbalza 1.8s ease-in-out infinite; }
+  @keyframes rimbalza { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+  @media (prefers-reduced-motion: reduce) { .scroll-hint .freccia { animation: none; } }
+  .home-more {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px;
+    width: min(1000px, 100%); margin: 0 auto; padding: 28px 20px calc(40px + env(safe-area-inset-bottom));
+  }
+  .home-more .hcard { background: var(--panel); backdrop-filter: none; -webkit-backdrop-filter: none; }
   .hcard {
     text-align: left; text-decoration: none; color: var(--text);
     background: rgba(17,17,19,.78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
@@ -407,7 +420,8 @@
     .tabs a.on::after { left: 10px; right: 10px; }
     .page-title h2 { font-size: 30px; }
     .page-title .btn { width: 100%; }
-    .hero-cards { grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 0 14px calc(20px + env(safe-area-inset-bottom)); margin-top: 24px; }
+    .hero-cards { gap: 10px; padding: 0 14px calc(12px + env(safe-area-inset-bottom)); margin-top: 24px; }
+    .home-more { grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 20px 14px calc(28px + env(safe-area-inset-bottom)); }
     .hcard { min-height: 0; padding: 18px; }
     .hero-top { padding-top: calc(env(safe-area-inset-top) + 32px); }
     .hero-top .line { font-size: 9px; letter-spacing: .16em; gap: 10px; margin-top: 18px; white-space: nowrap; }
@@ -695,6 +709,10 @@
               ? `<b>${tavoli.length}</b> ${tavoli.length === 1 ? "aperto" : "aperti"} · <b>${euro(aperti)}</b>`
               : "Nessun tavolo aperto"}</div>
           </a>
+          <button class="scroll-hint" data-action="scendi"><span class="dv-caps">Ricette e Menu</span><span class="freccia">↓</span></button>
+        </div>
+      </section>
+      <section class="home-more">
           <a class="hcard" href="#ricette">
             <span class="k dv-caps">Bancone</span>
             <h3>Ricette</h3>
@@ -706,7 +724,6 @@
             <div class="v">Voci, prezzi e ricette</div>
           </a>
           <div class="hero-new"><button class="btn primary" data-action="nuovo-tavolo">+ Nuovo tavolo</button></div>
-        </div>
       </section>`;
     requestAnimationFrame(() => requestAnimationFrame(() => mostraSlide(0)));
   }
@@ -1332,6 +1349,7 @@
       case "apri-ricetta": return apriRicetta(b.dataset.id);
       case "slide": mostraSlide(+b.dataset.i); return avviaSlide();
       case "aggiorna": return controllaAggiornamenti();
+      case "scendi": return window.scrollTo({ top: $(".hero").offsetHeight, behavior: "smooth" });
       case "nuovo-tavolo": return nuovoTavolo();
       case "apri-tavolo": location.hash = "#tavolo/" + encodeURIComponent(b.dataset.id); return;
     }

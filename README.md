@@ -126,8 +126,14 @@ Dopo, l'app **funziona anche senza internet**.
 ## 🍸 Come si usa
 
 ### 1. Pagina iniziale
-Le foto del locale scorrono dietro il logo. Da qui vai a **Tavoli**, **Ricette** o **Menu**, oppure apri subito un **+ Nuovo tavolo**.
-Nel riquadro *Tavoli* vedi quanti tavoli sono aperti e quanto c'è ancora da incassare.
+Le foto del locale scorrono dietro il logo e c'è subito il riquadro **Tavoli**, con quanti tavoli sono aperti e quanto c'è ancora da incassare.
+**Scorrendo verso il basso** trovi **Ricette**, **Menu** e il pulsante **+ Nuovo tavolo**.
+
+<p align="center">
+  <img src="docs/screenshots/phone-home.jpg" width="200" alt="Pagina iniziale">
+  &nbsp;
+  <img src="docs/screenshots/phone-home-giu.jpg" width="200" alt="Pagina iniziale scorrendo giù">
+</p>
 
 ### 2. Arriva un tavolo → **+ Nuovo tavolo**
 Scrivi il nome che vuoi (*Tavolo 4*, *Divanetto*, *Esterno 2*…) e premi **Crea tavolo**.
