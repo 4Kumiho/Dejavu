@@ -2,7 +2,7 @@
 // - menu.json: prima dalla rete (per avere sempre il menu più recente), se offline dalla copia salvata
 // - tutto il resto: subito dalla copia salvata, e in background scarica l'eventuale versione aggiornata
 // Cambiando CACHE, gli iPad scaricano la nuova versione dell'app e mostrano "Aggiorna".
-const CACHE = "dejavu-staff-v12";
+const CACHE = "dejavu-staff-v13";
 const FILES = [
   "./", "./index.html", "./manifest.json", "./icon-180.png", "./icon-192.png",
   "../shared/config.js", "../shared/menu.json", "../shared/brand.css", "../shared/logo-white.png",

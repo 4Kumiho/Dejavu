@@ -269,6 +269,27 @@
     position: absolute; top: -7px; right: -7px; min-width: 24px; height: 24px; padding: 0 6px; border-radius: 12px;
     background: var(--accent); color: var(--dv-black); font-weight: 700; font-size: 12px; display: grid; place-items: center;
   }
+  /* Menu a tendina per aggiungere al tavolo */
+  .acc-list { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+  .acc { border: 1px solid var(--line); border-radius: 12px; background: var(--panel-2); overflow: hidden; }
+  .acc.open { border-color: var(--line-2); }
+  .acc-h {
+    width: 100%; display: flex; align-items: center; gap: 12px; padding: 12px 16px; min-height: 58px;
+    background: none; border: none; text-align: left;
+  }
+  .acc-n { flex: 1; font-family: var(--dv-serif); font-size: 23px; font-weight: 600; line-height: 1.1; }
+  .acc-c { color: var(--muted); font-size: 12px; min-width: 22px; text-align: right; }
+  .chev { color: var(--muted); font-size: 24px; line-height: 1; transition: transform .2s ease; }
+  .acc.open > .acc-h .chev { transform: rotate(90deg); color: var(--accent); }
+  .acc.open > .acc-h .acc-n { color: var(--accent); }
+  .acc-b { padding: 0 10px 12px; }
+  .acc.sub { background: var(--panel); margin-top: 8px; }
+  .acc.sub .acc-h { min-height: 50px; padding: 10px 14px; }
+  .acc.sub .acc-n { font-family: var(--dv-sans); font-size: 15px; font-weight: 600; }
+  .acc-b > .plist:first-child { margin-top: 2px; }
+  .vgrp { margin-top: 12px; }
+  .vgrp:first-child { margin-top: 4px; }
+  .vgrp-h { color: var(--accent); margin: 0 4px 8px; }
   .vhead { padding: 26px 24px 6px; }
   .vhead h3 { margin: 0; font-size: 32px; line-height: 1.05; padding-right: 48px; }
   .vhead p { margin: 6px 0 0; color: var(--muted); }
@@ -607,7 +628,7 @@
   /* ---------- Stato interfaccia ---------- */
   const ui = {
     ricQ: "", ricCat: "tutti",
-    pickQ: "", pickCat: "tutti",
+    pickQ: "", apriGruppo: null, apriCat: null, // menu a tendina "Aggiungi"
     meQ: "", meCat: "tutti",
     pane: "ordine", // su telefono: "ordine" oppure "aggiungi"
     pagamento: null, // { id: tavoloId, sel: { rigaId: quantità } }
@@ -831,9 +852,8 @@
       <div class="tlayout" id="tlayout">
         <div class="panel ordine" id="ordine"></div>
         <div class="panel picker" id="picker">
-          <input class="search" id="pickQ" type="search" placeholder="Aggiungi: cerca drink…" value="${esc(ui.pickQ)}" autocomplete="off">
-          <div class="chips" id="pickChips"></div>
-          <div class="plist" id="pickLista"></div>
+          <input class="search" id="pickQ" type="search" placeholder="Cerca: drink, whiskey, birra, gin…" value="${esc(ui.pickQ)}" autocomplete="off">
+          <div id="pickLista"></div>
         </div>
       </div>`;
     $("#pickQ").addEventListener("input", (e) => { ui.pickQ = e.target.value; listaPicker(t); });
@@ -903,19 +923,79 @@
     listaPicker(t);
   }
 
+  /* Gruppi del menu a tendina (es. Drink & Cocktail → I nostri Cocktail, Classici…).
+     Le categorie non assegnate a un gruppo diventano un gruppo a sé. */
+  function gruppi() {
+    const esiste = (id) => MENU.categorie.some((c) => c.id === id);
+    const lista = (MENU.gruppi || [])
+      .map((g) => ({ ...g, categorie: g.categorie.filter(esiste) }))
+      .filter((g) => g.categorie.length);
+    const usate = new Set(lista.flatMap((g) => g.categorie));
+    MENU.categorie.filter((c) => !usate.has(c.id)).forEach((c) => lista.push({ id: "cat-" + c.id, nome: c.nome, categorie: [c.id] }));
+    return lista;
+  }
+  // Ogni prodotto ordinabile: le voci senza varianti, oppure ogni singola variante (es. ogni whiskey, ogni birra)
+  const nomeRiga = (d, i) => (i == null ? d.nome : `${d.nome} · ${varNome(d.varianti[i])}`);
+  function prodotti(d) {
+    if (!d.varianti || !d.varianti.length) return [{ d, i: null, nome: d.nome, info: "", prezzo: d.prezzo }];
+    return d.varianti.map((v, i) => ({ d, i, nome: varNome(v), info: typeof v === "object" && v.info ? v.info : "", prezzo: varPrezzo(d, v) }));
+  }
+  function bottoneProdotto(p, t, nomeCompleto) {
+    const quanti = t.righe.filter((r) => r.drinkId === p.d.id && r.nome === nomeRiga(p.d, p.i)).reduce((s, r) => s + r.qty, 0);
+    const prezzo = p.prezzo ? euro(cent(p.prezzo)) : "Omaggio";
+    return `<button class="pbtn" data-action="aggiungi" data-id="${esc(p.d.id)}" data-v="${p.i == null ? "" : p.i}">
+        ${tileHtml(p.d)}
+        <div><div class="n">${esc(nomeCompleto ? nomeRiga(p.d, p.i) : p.nome)}</div><div class="p">${prezzo}${p.info ? " · " + esc(p.info) : ""}</div></div>
+        ${quanti ? `<span class="badge">${quanti}</span>` : ""}
+      </button>`;
+  }
+  // Prodotti di una categoria:
+  // - voci semplici e voci con poche varianti (es. Guinness piccola/pinta) → bottoni col nome completo
+  // - voci con tante varianti (gin, whiskey, amari…) → in fondo, con un titoletto e sotto le varianti
+  function prodottiCategoria(catId, t) {
+    const voci = MENU.drinks.filter((d) => d.categoria === catId);
+    const tante = (d) => d.varianti && d.varianti.length > 3;
+    const semplici = voci.filter((d) => !tante(d)).flatMap(prodotti).map((p) => bottoneProdotto(p, t, true));
+    let html = semplici.length ? `<div class="plist">${semplici.join("")}</div>` : "";
+    voci.filter(tante).forEach((d) => {
+      html += `<div class="vgrp"><div class="vgrp-h dv-caps">${esc(d.nome)}</div><div class="plist">${prodotti(d).map((p) => bottoneProdotto(p, t)).join("")}</div></div>`;
+    });
+    return html || `<div class="empty" style="padding:16px">Nessuna voce.</div>`;
+  }
+  const quantiProdotti = (catIds) => MENU.drinks.filter((d) => catIds.includes(d.categoria)).reduce((s, d) => s + prodotti(d).length, 0);
+
   function listaPicker(t) {
-    $("#pickChips").innerHTML = chipsHtml(MENU.drinks, ui.pickQ.trim() ? "" : ui.pickCat, "pick-cat");
-    const contati = {};
-    t.righe.forEach((r) => { if (r.drinkId) contati[r.drinkId] = (contati[r.drinkId] || 0) + r.qty; });
-    const items = filtra(MENU.drinks, ui.pickQ, ui.pickCat);
-    $("#pickLista").innerHTML =
-      items.map((d) => `
-        <button class="pbtn" data-action="aggiungi" data-id="${esc(d.id)}">
-          ${tileHtml(d)}
-          <div><div class="n">${esc(d.nome)}</div><div class="p">${prezzoLabel(d)}${d.varianti ? " · scegli ›" : ""}</div></div>
-          ${contati[d.id] ? `<span class="badge">${contati[d.id]}</span>` : ""}
-        </button>`).join("") +
-      `<button class="pbtn libera" data-action="voce-libera">+ Voce libera</button>`;
+    const q = norm(ui.pickQ.trim());
+    let html;
+    if (q) {
+      // Ricerca: trova qualsiasi prodotto, anche le singole varianti
+      const trovati = MENU.drinks.flatMap(prodotti).filter((p) =>
+        norm([p.d.nome, p.nome, p.info, catNome(p.d.categoria)].join(" ")).includes(q));
+      html = trovati.length
+        ? `<div class="plist">${trovati.map((p) => bottoneProdotto(p, t, true)).join("")}</div>`
+        : `<div class="empty" style="padding:24px 8px">Nessun risultato per «${esc(ui.pickQ.trim())}».</div>`;
+    } else {
+      html = `<div class="acc-list">${gruppi().map((g) => {
+        const aperto = ui.apriGruppo === g.id;
+        let corpo = "";
+        if (aperto) {
+          corpo = g.categorie.length > 1
+            ? g.categorie.map((c) => {
+                const apertoCat = ui.apriCat === c;
+                return `<div class="acc sub ${apertoCat ? "open" : ""}">
+                  <button class="acc-h" data-action="acc-cat" data-c="${esc(c)}"><span class="acc-n">${esc(catNome(c))}</span><span class="acc-c">${quantiProdotti([c])}</span><span class="chev">›</span></button>
+                  ${apertoCat ? `<div class="acc-b">${prodottiCategoria(c, t)}</div>` : ""}
+                </div>`;
+              }).join("")
+            : prodottiCategoria(g.categorie[0], t);
+        }
+        return `<div class="acc ${aperto ? "open" : ""}" id="acc-${esc(g.id)}">
+          <button class="acc-h" data-action="acc" data-g="${esc(g.id)}"><span class="acc-n">${esc(g.nome)}</span><span class="acc-c">${quantiProdotti(g.categorie)}</span><span class="chev">›</span></button>
+          ${aperto ? `<div class="acc-b">${corpo}</div>` : ""}
+        </div>`;
+      }).join("")}</div>`;
+    }
+    $("#pickLista").innerHTML = html + `<div class="plist" style="margin-top:12px"><button class="pbtn libera" data-action="voce-libera">+ Voce libera</button></div>`;
   }
 
   function aggiungiRiga(t, { drinkId = null, nome, prezzoCent }) {
@@ -1356,17 +1436,29 @@
     if (!t) return;
 
     switch (a) {
-      case "pick-cat":
-        ui.pickCat = b.dataset.cat; ui.pickQ = ""; $("#pickQ").value = "";
+      case "acc": {
+        ui.apriGruppo = ui.apriGruppo === b.dataset.g ? null : b.dataset.g;
+        const g = gruppi().find((x) => x.id === ui.apriGruppo);
+        ui.apriCat = g && g.categorie.length > 1 ? null : ui.apriCat;
+        listaPicker(t);
+        const el = document.getElementById("acc-" + ui.apriGruppo);
+        if (el) el.scrollIntoView({ block: "nearest", behavior: "smooth" });
+        return;
+      }
+      case "acc-cat":
+        ui.apriCat = ui.apriCat === b.dataset.c ? null : b.dataset.c;
         return listaPicker(t);
 
       case "aggiungi": {
         const d = drinkById(b.dataset.id);
         if (!d) return;
-        if (d.varianti && d.varianti.length) return sceltaVariante(d);
-        aggiungiRiga(t, { drinkId: d.id, nome: d.nome, prezzoCent: cent(d.prezzo) });
-        const nb = document.querySelector(`.pbtn[data-id="${CSS.escape(d.id)}"]`);
+        const i = b.dataset.v === "" || b.dataset.v == null ? null : +b.dataset.v;
+        if (i == null && d.varianti && d.varianti.length) return sceltaVariante(d);
+        const prezzo = i == null ? d.prezzo : varPrezzo(d, d.varianti[i]);
+        aggiungiRiga(t, { drinkId: d.id, nome: nomeRiga(d, i), prezzoCent: cent(prezzo) });
+        const nb = document.querySelector(`.pbtn[data-id="${CSS.escape(d.id)}"][data-v="${i == null ? "" : i}"]`);
         if (nb) { nb.classList.add("flash"); setTimeout(() => nb.classList.remove("flash"), 250); }
+        if (matchMedia("(max-width: 899px)").matches) toast(`+ ${nomeRiga(d, i)}`);
         return;
       }
 

@@ -1,5 +1,80 @@
 {
-  "versione": "2026-10-15T11:27:24.478Z",
+  "versione": "2026-10-15T11:56:51.666Z",
+  "gruppi": [
+    {
+      "id": "drink",
+      "nome": "Drink & Cocktail",
+      "categorie": [
+        "signature",
+        "classici",
+        "spritz",
+        "gin"
+      ]
+    },
+    {
+      "id": "whiskey",
+      "nome": "Whiskey",
+      "categorie": [
+        "whiskey"
+      ]
+    },
+    {
+      "id": "rum",
+      "nome": "Rum",
+      "categorie": [
+        "rum"
+      ]
+    },
+    {
+      "id": "grappe",
+      "nome": "Grappe",
+      "categorie": [
+        "grappe"
+      ]
+    },
+    {
+      "id": "digestivi",
+      "nome": "Digestivi",
+      "categorie": [
+        "digestivi"
+      ]
+    },
+    {
+      "id": "cognac",
+      "nome": "Cognac",
+      "categorie": [
+        "cognac"
+      ]
+    },
+    {
+      "id": "vini",
+      "nome": "Vini & Bollicine",
+      "categorie": [
+        "vini"
+      ]
+    },
+    {
+      "id": "birre",
+      "nome": "Birre",
+      "categorie": [
+        "birre"
+      ]
+    },
+    {
+      "id": "analcolici",
+      "nome": "Analcolici",
+      "categorie": [
+        "analcolici"
+      ]
+    },
+    {
+      "id": "cibo",
+      "nome": "Cibo",
+      "categorie": [
+        "cucina"
+      ]
+    }
+  ],
   "categorie": [
     {
       "id": "signature",
@@ -18,14 +93,6 @@
       "nome": "Gin Tonic"
     },
     {
-      "id": "birre",
-      "nome": "Birre"
-    },
-    {
-      "id": "vini",
-      "nome": "Vini & Bollicine"
-    },
-    {
       "id": "whiskey",
       "nome": "Whiskey"
     },
@@ -34,8 +101,24 @@
       "nome": "Rum"
     },
     {
+      "id": "grappe",
+      "nome": "Grappe"
+    },
+    {
       "id": "digestivi",
-      "nome": "Grappe, Cognac & Amari"
+      "nome": "Digestivi"
+    },
+    {
+      "id": "cognac",
+      "nome": "Cognac"
+    },
+    {
+      "id": "vini",
+      "nome": "Vini & Bollicine"
+    },
+    {
+      "id": "birre",
+      "nome": "Birre"
     },
     {
       "id": "analcolici",
@@ -710,88 +793,157 @@
       ]
     },
     {
-      "id": "guinness",
-      "nome": "Guinness",
-      "categoria": "birre",
-      "prezzo": 6.5,
-      "emoji": "🍺",
+      "id": "whiskey-premium",
+      "nome": "Whiskey Premium · 6 cl",
+      "categoria": "whiskey",
+      "prezzo": 12,
+      "emoji": "🥃",
       "varianti": [
+        "Glenfiddich 12",
+        "Macallan 12",
+        "Johnnie Walker Black Label",
+        "Woodford Reserve Bourbon",
+        "Ardbeg 10",
+        "Caol Ila 12",
+        "Speyside Selection",
+        "Islay Selection",
+        "Japan Selection"
+      ]
+    },
+    {
+      "id": "whiskey-fuori-di-testa",
+      "nome": "Whiskey «Fuori di Testa» · 3 cl",
+      "categoria": "whiskey",
+      "prezzo": 20,
+      "emoji": "🥃",
+      "descrizione": "Selezione Diageo 2023.",
+      "varianti": [
+        "Lagavulin 12",
+        "Clynelish 10",
+        "Oban 11",
+        "Talisker Natural Cask Strength",
+        "Roseisle 12",
+        "Singleton 14",
         {
-          "nome": "Piccola",
-          "prezzo": 4
+          "nome": "Mortlach",
+          "prezzo": 30
         },
         {
-          "nome": "Pinta",
-          "prezzo": 6.5
+          "nome": "Glenkinchie 27",
+          "prezzo": 30
+        },
+        {
+          "nome": "Johnnie Walker Blue Label",
+          "prezzo": 40
         }
       ]
     },
     {
-      "id": "bionda",
-      "nome": "Bionda inglese Pale/Golden Ale",
-      "categoria": "birre",
+      "id": "rum-premium",
+      "nome": "Rum Premium · 4,5 cl",
+      "categoria": "rum",
+      "prezzo": 12,
+      "emoji": "🏝️",
+      "varianti": [
+        {
+          "nome": "Doorly's 12",
+          "info": "Barbados"
+        },
+        {
+          "nome": "CAB Ron",
+          "info": "Caribbean & Barbados"
+        },
+        {
+          "nome": "Flor de Caña 12",
+          "info": "Nicaragua"
+        },
+        {
+          "nome": "Relicario Supremo",
+          "info": "Repubblica Dominicana"
+        }
+      ]
+    },
+    {
+      "id": "rum-elite",
+      "nome": "Rum Élite · Millonario 15",
+      "categoria": "rum",
+      "prezzo": 14,
+      "emoji": "🏝️",
+      "descrizione": "4,5 cl · Perù."
+    },
+    {
+      "id": "rum-zacapa",
+      "nome": "Rum «Fuori di Testa» · Zacapa La Pasion",
+      "categoria": "rum",
+      "prezzo": 16,
+      "emoji": "🏝️",
+      "descrizione": "3 cl · Guatemala."
+    },
+    {
+      "id": "grappa",
+      "nome": "Grappa",
+      "categoria": "grappe",
       "prezzo": 7,
-      "emoji": "🍺",
-      "descrizione": "Alla pompa.",
+      "emoji": "🍶",
       "varianti": [
         {
-          "nome": "Piccola",
-          "prezzo": 4
+          "nome": "18 Lune Riserva",
+          "info": "Marzadro"
         },
         {
-          "nome": "Media",
-          "prezzo": 7
+          "nome": "Barolo 9 anni",
+          "info": "Marolo"
+        },
+        {
+          "nome": "Moscato 5 anni",
+          "info": "Marolo"
+        },
+        {
+          "nome": "Grappa del Padre",
+          "info": "bianca, corposa, decisa · Marolo"
         }
       ]
     },
     {
-      "id": "kilkenny",
-      "nome": "Ambrata Kilkenny Cream",
-      "categoria": "birre",
+      "id": "amaro",
+      "nome": "Amaro / Elisir",
+      "categoria": "digestivi",
+      "prezzo": 5,
+      "emoji": "🌿",
+      "descrizione": "Per le ultime novità chiedere al barman.",
+      "varianti": [
+        "Jefferson",
+        "Bomba Carta",
+        "Milla di Marolo",
+        "Menta e Eucalipto",
+        "Salvia e Limone",
+        "Amaro Nazionale",
+        "Genepì",
+        "Limoncello",
+        "Liquirizia",
+        "Braulio Riserva",
+        "Camatti",
+        "Adriatico",
+        "Crema Whisky"
+      ]
+    },
+    {
+      "id": "shot",
+      "nome": "Shot",
+      "categoria": "digestivi",
+      "prezzo": 4,
+      "emoji": "🥃"
+    },
+    {
+      "id": "cognac",
+      "nome": "Cognac",
+      "categoria": "cognac",
       "prezzo": 7,
-      "emoji": "🍺",
-      "descrizione": "Alla pompa.",
+      "emoji": "🥃",
       "varianti": [
-        {
-          "nome": "Piccola",
-          "prezzo": 4
-        },
-        {
-          "nome": "Media",
-          "prezzo": 7
-        }
+        "Camus VSOP",
+        "Drouet VS"
       ]
-    },
-    {
-      "id": "ipa",
-      "nome": "IPA 33 cl",
-      "categoria": "birre",
-      "prezzo": 6,
-      "emoji": "🍾",
-      "descrizione": "In bottiglia."
-    },
-    {
-      "id": "la-trappe",
-      "nome": "La Trappe Blonde 33 cl",
-      "categoria": "birre",
-      "prezzo": 6,
-      "emoji": "🍾",
-      "descrizione": "In bottiglia."
-    },
-    {
-      "id": "daura",
-      "nome": "Daura Damm Lager 33 cl",
-      "categoria": "birre",
-      "prezzo": 6,
-      "emoji": "🍾",
-      "descrizione": "In bottiglia, senza glutine."
-    },
-    {
-      "id": "birra-zero",
-      "nome": "Birra Zero Alcool",
-      "categoria": "birre",
-      "prezzo": 6,
-      "emoji": "🍾"
     },
     {
       "id": "bianco-calice",
@@ -922,157 +1074,88 @@
       ]
     },
     {
-      "id": "whiskey-premium",
-      "nome": "Whiskey Premium · 6 cl",
-      "categoria": "whiskey",
-      "prezzo": 12,
-      "emoji": "🥃",
+      "id": "guinness",
+      "nome": "Guinness",
+      "categoria": "birre",
+      "prezzo": 6.5,
+      "emoji": "🍺",
       "varianti": [
-        "Glenfiddich 12",
-        "Macallan 12",
-        "Johnnie Walker Black Label",
-        "Woodford Reserve Bourbon",
-        "Ardbeg 10",
-        "Caol Ila 12",
-        "Speyside Selection",
-        "Islay Selection",
-        "Japan Selection"
-      ]
-    },
-    {
-      "id": "whiskey-fuori-di-testa",
-      "nome": "Whiskey «Fuori di Testa» · 3 cl",
-      "categoria": "whiskey",
-      "prezzo": 20,
-      "emoji": "🥃",
-      "descrizione": "Selezione Diageo 2023.",
-      "varianti": [
-        "Lagavulin 12",
-        "Clynelish 10",
-        "Oban 11",
-        "Talisker Natural Cask Strength",
-        "Roseisle 12",
-        "Singleton 14",
         {
-          "nome": "Mortlach",
-          "prezzo": 30
+          "nome": "Piccola",
+          "prezzo": 4
         },
         {
-          "nome": "Glenkinchie 27",
-          "prezzo": 30
-        },
-        {
-          "nome": "Johnnie Walker Blue Label",
-          "prezzo": 40
+          "nome": "Pinta",
+          "prezzo": 6.5
         }
       ]
     },
     {
-      "id": "rum-premium",
-      "nome": "Rum Premium · 4,5 cl",
-      "categoria": "rum",
-      "prezzo": 12,
-      "emoji": "🏝️",
-      "varianti": [
-        {
-          "nome": "Doorly's 12",
-          "info": "Barbados"
-        },
-        {
-          "nome": "CAB Ron",
-          "info": "Caribbean & Barbados"
-        },
-        {
-          "nome": "Flor de Caña 12",
-          "info": "Nicaragua"
-        },
-        {
-          "nome": "Relicario Supremo",
-          "info": "Repubblica Dominicana"
-        }
-      ]
-    },
-    {
-      "id": "rum-elite",
-      "nome": "Rum Élite · Millonario 15",
-      "categoria": "rum",
-      "prezzo": 14,
-      "emoji": "🏝️",
-      "descrizione": "4,5 cl · Perù."
-    },
-    {
-      "id": "rum-zacapa",
-      "nome": "Rum «Fuori di Testa» · Zacapa La Pasion",
-      "categoria": "rum",
-      "prezzo": 16,
-      "emoji": "🏝️",
-      "descrizione": "3 cl · Guatemala."
-    },
-    {
-      "id": "grappa",
-      "nome": "Grappa",
-      "categoria": "digestivi",
+      "id": "bionda",
+      "nome": "Bionda inglese Pale/Golden Ale",
+      "categoria": "birre",
       "prezzo": 7,
-      "emoji": "🍶",
+      "emoji": "🍺",
+      "descrizione": "Alla pompa.",
       "varianti": [
         {
-          "nome": "18 Lune Riserva",
-          "info": "Marzadro"
+          "nome": "Piccola",
+          "prezzo": 4
         },
         {
-          "nome": "Barolo 9 anni",
-          "info": "Marolo"
-        },
-        {
-          "nome": "Moscato 5 anni",
-          "info": "Marolo"
-        },
-        {
-          "nome": "Grappa del Padre",
-          "info": "bianca, corposa, decisa · Marolo"
+          "nome": "Media",
+          "prezzo": 7
         }
       ]
     },
     {
-      "id": "cognac",
-      "nome": "Cognac",
-      "categoria": "digestivi",
+      "id": "kilkenny",
+      "nome": "Ambrata Kilkenny Cream",
+      "categoria": "birre",
       "prezzo": 7,
-      "emoji": "🥃",
+      "emoji": "🍺",
+      "descrizione": "Alla pompa.",
       "varianti": [
-        "Camus VSOP",
-        "Drouet VS"
+        {
+          "nome": "Piccola",
+          "prezzo": 4
+        },
+        {
+          "nome": "Media",
+          "prezzo": 7
+        }
       ]
     },
     {
-      "id": "amaro",
-      "nome": "Amaro / Elisir digestivo",
-      "categoria": "digestivi",
-      "prezzo": 5,
-      "emoji": "🌿",
-      "descrizione": "Per le ultime novità chiedere al barman.",
-      "varianti": [
-        "Jefferson",
-        "Bomba Carta",
-        "Milla di Marolo",
-        "Menta e Eucalipto",
-        "Salvia e Limone",
-        "Amaro Nazionale",
-        "Genepì",
-        "Limoncello",
-        "Liquirizia",
-        "Braulio Riserva",
-        "Camatti",
-        "Adriatico",
-        "Crema Whisky"
-      ]
+      "id": "ipa",
+      "nome": "IPA 33 cl",
+      "categoria": "birre",
+      "prezzo": 6,
+      "emoji": "🍾",
+      "descrizione": "In bottiglia."
     },
     {
-      "id": "shot",
-      "nome": "Shot",
-      "categoria": "digestivi",
-      "prezzo": 4,
-      "emoji": "🥃"
+      "id": "la-trappe",
+      "nome": "La Trappe Blonde 33 cl",
+      "categoria": "birre",
+      "prezzo": 6,
+      "emoji": "🍾",
+      "descrizione": "In bottiglia."
+    },
+    {
+      "id": "daura",
+      "nome": "Daura Damm Lager 33 cl",
+      "categoria": "birre",
+      "prezzo": 6,
+      "emoji": "🍾",
+      "descrizione": "In bottiglia, senza glutine."
+    },
+    {
+      "id": "birra-zero",
+      "nome": "Birra Zero Alcool",
+      "categoria": "birre",
+      "prezzo": 6,
+      "emoji": "🍾"
     },
     {
       "id": "virgin-mojito",
