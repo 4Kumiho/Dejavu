@@ -286,6 +286,9 @@
   .acc.sub { background: var(--panel); margin-top: 8px; }
   .acc.sub .acc-h { min-height: 50px; padding: 10px 14px; }
   .acc.sub .acc-n { font-family: var(--dv-sans); font-size: 15px; font-weight: 600; }
+  .acc.ter { background: var(--panel-2); }
+  .acc.ter .acc-h { min-height: 46px; }
+  .acc.ter .acc-n { font-size: 14px; }
   .acc-b > .plist:first-child { margin-top: 2px; }
   .vgrp { margin-top: 12px; }
   .vgrp:first-child { margin-top: 4px; }
@@ -628,7 +631,7 @@
   /* ---------- Stato interfaccia ---------- */
   const ui = {
     ricQ: "", ricCat: "tutti",
-    pickQ: "", apriGruppo: null, apriCat: null, // menu a tendina "Aggiungi"
+    pickQ: "", apriGruppo: null, apriCat: null, apriVoce: null, // menu a tendina "Aggiungi"
     meQ: "", meCat: "tutti",
     pane: "ordine", // su telefono: "ordine" oppure "aggiungi"
     pagamento: null, // { id: tavoloId, sel: { rigaId: quantità } }
@@ -940,25 +943,40 @@
     if (!d.varianti || !d.varianti.length) return [{ d, i: null, nome: d.nome, info: "", prezzo: d.prezzo }];
     return d.varianti.map((v, i) => ({ d, i, nome: varNome(v), info: typeof v === "object" && v.info ? v.info : "", prezzo: varPrezzo(d, v) }));
   }
-  function bottoneProdotto(p, t, nomeCompleto) {
+  function bottoneProdotto(p, t, titolo) {
     const quanti = t.righe.filter((r) => r.drinkId === p.d.id && r.nome === nomeRiga(p.d, p.i)).reduce((s, r) => s + r.qty, 0);
     const prezzo = p.prezzo ? euro(cent(p.prezzo)) : "Omaggio";
     return `<button class="pbtn" data-action="aggiungi" data-id="${esc(p.d.id)}" data-v="${p.i == null ? "" : p.i}">
         ${tileHtml(p.d)}
-        <div><div class="n">${esc(nomeCompleto ? nomeRiga(p.d, p.i) : p.nome)}</div><div class="p">${prezzo}${p.info ? " · " + esc(p.info) : ""}</div></div>
+        <div><div class="n">${esc(titolo)}</div><div class="p">${prezzo}${p.info ? " · " + esc(p.info) : ""}</div></div>
         ${quanti ? `<span class="badge">${quanti}</span>` : ""}
       </button>`;
   }
+  // nome mostrato sul bottone dentro il menu a tendina (l'etichetta, se c'è, è il nome breve: es. "Guinness")
+  const titoloVoce = (d) => d.etichetta || d.nome;
   // Prodotti di una categoria:
-  // - voci semplici e voci con poche varianti (es. Guinness piccola/pinta) → bottoni col nome completo
+  // - categoria "a tendina" (es. Calice → Bianco/Rosso/Bollicine): ogni voce si apre e mostra le sue varianti
+  // - voci semplici e voci con poche varianti (es. Soledad) → bottoni col nome completo
   // - voci con tante varianti (gin, whiskey, amari…) → in fondo, con un titoletto e sotto le varianti
   function prodottiCategoria(catId, t) {
     const voci = MENU.drinks.filter((d) => d.categoria === catId);
+    const cat = MENU.categorie.find((c) => c.id === catId) || {};
+    if (cat.tendina) {
+      return voci.map((d) => {
+        const aperta = ui.apriVoce === d.id;
+        const lista = prodotti(d).map((p) => bottoneProdotto(p, t, p.i == null ? titoloVoce(d) : p.nome)).join("");
+        return `<div class="acc sub ter ${aperta ? "open" : ""}">
+          <button class="acc-h" data-action="acc-voce" data-id="${esc(d.id)}"><span class="acc-n">${esc(titoloVoce(d))}</span><span class="acc-c">${prodotti(d).length}</span><span class="chev">›</span></button>
+          ${aperta ? `<div class="acc-b"><div class="plist">${lista}</div></div>` : ""}
+        </div>`;
+      }).join("") || `<div class="empty" style="padding:16px">Nessuna voce.</div>`;
+    }
     const tante = (d) => d.varianti && d.varianti.length > 3;
-    const semplici = voci.filter((d) => !tante(d)).flatMap(prodotti).map((p) => bottoneProdotto(p, t, true));
+    const semplici = voci.filter((d) => !tante(d)).flatMap(prodotti)
+      .map((p) => bottoneProdotto(p, t, p.i == null ? titoloVoce(p.d) : `${titoloVoce(p.d)} · ${p.nome}`));
     let html = semplici.length ? `<div class="plist">${semplici.join("")}</div>` : "";
     voci.filter(tante).forEach((d) => {
-      html += `<div class="vgrp"><div class="vgrp-h dv-caps">${esc(d.nome)}</div><div class="plist">${prodotti(d).map((p) => bottoneProdotto(p, t)).join("")}</div></div>`;
+      html += `<div class="vgrp"><div class="vgrp-h dv-caps">${esc(titoloVoce(d))}</div><div class="plist">${prodotti(d).map((p) => bottoneProdotto(p, t, p.nome)).join("")}</div></div>`;
     });
     return html || `<div class="empty" style="padding:16px">Nessuna voce.</div>`;
   }
@@ -972,7 +990,7 @@
       const trovati = MENU.drinks.flatMap(prodotti).filter((p) =>
         norm([p.d.nome, p.nome, p.info, catNome(p.d.categoria)].join(" ")).includes(q));
       html = trovati.length
-        ? `<div class="plist">${trovati.map((p) => bottoneProdotto(p, t, true)).join("")}</div>`
+        ? `<div class="plist">${trovati.map((p) => bottoneProdotto(p, t, nomeRiga(p.d, p.i))).join("")}</div>`
         : `<div class="empty" style="padding:24px 8px">Nessun risultato per «${esc(ui.pickQ.trim())}».</div>`;
     } else {
       html = `<div class="acc-list">${gruppi().map((g) => {
@@ -1163,6 +1181,7 @@
           <label>Categoria<select name="categoria">${MENU.categorie.map((c) =>
             `<option value="${esc(c.id)}" ${c.id === v.categoria ? "selected" : ""}>${esc(c.nome)}</option>`).join("")}</select></label>
           <label>Icona<input name="emoji" value="${esc(v.emoji || "")}" placeholder="🍸" maxlength="8"></label>
+          <label style="grid-column: span 2">Nome breve nel menu a tendina<input name="etichetta" value="${esc(v.etichetta || "")}" placeholder="Facoltativo (es. Guinness)"></label>
         </div>
         <label>Descrizione<textarea name="descrizione" rows="2" placeholder="Facoltativa">${esc(v.descrizione || "")}</textarea></label>
 
@@ -1231,7 +1250,7 @@
     const vecchia = id ? MENU.drinks.find((x) => x.id === id) : null;
     const voce = vecchia ? { ...vecchia } : { id: slug(nome) };
     Object.assign(voce, { nome, categoria: val("categoria"), prezzo, emoji: val("emoji") || "🍸" });
-    const opzionali = { descrizione: val("descrizione"), bicchiere: val("bicchiere"), ghiaccio: val("ghiaccio"),
+    const opzionali = { etichetta: val("etichetta"), descrizione: val("descrizione"), bicchiere: val("bicchiere"), ghiaccio: val("ghiaccio"),
       metodo: val("metodo"), guarnizione: val("guarnizione"), note: val("note") };
     for (const [k, v] of Object.entries(opzionali)) { if (v) voce[k] = v; else delete voce[k]; }
     for (const [k, v] of Object.entries({ varianti, ingredienti, passaggi })) { if (v.length) voce[k] = v; else delete voce[k]; }
@@ -1290,7 +1309,8 @@
         const nome = r.querySelector("[data-f=nome]").value.trim();
         if (!nome) { $("#catErr").textContent = "Ogni categoria deve avere un nome."; return; }
         if (nuove.some((c) => norm(c.nome) === norm(nome))) { $("#catErr").textContent = `La categoria «${nome}» è ripetuta.`; return; }
-        nuove.push({ id: r.dataset.id || slug(nome), nome });
+        const vecchia = MENU.categorie.find((c) => c.id === r.dataset.id);
+        nuove.push({ ...(vecchia || {}), id: r.dataset.id || slug(nome), nome });
       }
       const nuovo = clona(MENU);
       nuovo.categorie = nuove;
@@ -1447,6 +1467,10 @@
       }
       case "acc-cat":
         ui.apriCat = ui.apriCat === b.dataset.c ? null : b.dataset.c;
+        ui.apriVoce = null;
+        return listaPicker(t);
+      case "acc-voce":
+        ui.apriVoce = ui.apriVoce === b.dataset.id ? null : b.dataset.id;
         return listaPicker(t);
 
       case "aggiungi": {

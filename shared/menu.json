@@ -1,5 +1,5 @@
 {
-  "versione": "2026-10-15T11:56:51.666Z",
+  "versione": "2026-10-15T12:07:53.025Z",
   "gruppi": [
     {
       "id": "drink",
@@ -50,14 +50,17 @@
       "id": "vini",
       "nome": "Vini & Bollicine",
       "categorie": [
-        "vini"
+        "vini-calice",
+        "vini-bottiglia"
       ]
     },
     {
       "id": "birre",
       "nome": "Birre",
       "categorie": [
-        "birre"
+        "birre-piccola",
+        "birre-media",
+        "birre-bottiglia"
       ]
     },
     {
@@ -113,12 +116,26 @@
       "nome": "Cognac"
     },
     {
-      "id": "vini",
-      "nome": "Vini & Bollicine"
+      "id": "vini-calice",
+      "nome": "Calice",
+      "tendina": true
     },
     {
-      "id": "birre",
-      "nome": "Birre"
+      "id": "vini-bottiglia",
+      "nome": "Bottiglia",
+      "tendina": true
+    },
+    {
+      "id": "birre-piccola",
+      "nome": "Piccola"
+    },
+    {
+      "id": "birre-media",
+      "nome": "Media"
+    },
+    {
+      "id": "birre-bottiglia",
+      "nome": "In bottiglia"
     },
     {
       "id": "analcolici",
@@ -946,9 +963,10 @@
       ]
     },
     {
-      "id": "bianco-calice",
-      "nome": "Vino bianco · calice",
-      "categoria": "vini",
+      "id": "calice-bianco",
+      "nome": "Calice di bianco",
+      "etichetta": "Bianco",
+      "categoria": "vini-calice",
       "prezzo": 6,
       "emoji": "🥂",
       "varianti": [
@@ -967,21 +985,10 @@
       ]
     },
     {
-      "id": "bianco-bottiglia",
-      "nome": "Vino bianco · bottiglia",
-      "categoria": "vini",
-      "prezzo": 25,
-      "emoji": "🍾",
-      "varianti": [
-        "Grüner Veltliner",
-        "Pinot Grigio",
-        "Falerio Pecorino"
-      ]
-    },
-    {
-      "id": "rosso-calice",
-      "nome": "Vino rosso · calice",
-      "categoria": "vini",
+      "id": "calice-rosso",
+      "nome": "Calice di rosso",
+      "etichetta": "Rosso",
+      "categoria": "vini-calice",
       "prezzo": 7,
       "emoji": "🍷",
       "varianti": [
@@ -1008,128 +1015,153 @@
       ]
     },
     {
-      "id": "rosso-bottiglia",
-      "nome": "Vino rosso · bottiglia",
-      "categoria": "vini",
-      "prezzo": 30,
+      "id": "calice-bollicine",
+      "nome": "Calice di bollicine",
+      "etichetta": "Bollicine",
+      "categoria": "vini-calice",
+      "prezzo": 7,
       "emoji": "🍾",
       "varianti": [
-        "Pinot Nero",
-        "Rosso di Montalcino",
-        "Merlot Cabernet",
-        "Nebbiolo",
-        "Vino del sud"
-      ]
-    },
-    {
-      "id": "bolla",
-      "nome": "Bolla spensierata",
-      "categoria": "vini",
-      "prezzo": 7,
-      "emoji": "🥂",
-      "varianti": [
         {
-          "nome": "Calice",
+          "nome": "Bolla spensierata",
           "prezzo": 7
         },
         {
-          "nome": "Bottiglia",
-          "prezzo": 35
-        }
-      ]
-    },
-    {
-      "id": "trento-doc",
-      "nome": "Trento DOC",
-      "categoria": "vini",
-      "prezzo": 8,
-      "emoji": "🥂",
-      "descrizione": "Raffinatezza montanara.",
-      "varianti": [
-        {
-          "nome": "Calice",
+          "nome": "Trento DOC",
           "prezzo": 8
         },
         {
-          "nome": "Bottiglia",
-          "prezzo": 40
+          "nome": "Bollicina francese",
+          "prezzo": 9
         }
       ]
     },
     {
-      "id": "bollicina-francese",
-      "nome": "Bollicina francese",
-      "categoria": "vini",
-      "prezzo": 9,
-      "emoji": "🥂",
+      "id": "bottiglia-bianco",
+      "nome": "Bottiglia di bianco",
+      "etichetta": "Bianco",
+      "categoria": "vini-bottiglia",
+      "prezzo": 25,
+      "emoji": "🍾",
       "varianti": [
         {
-          "nome": "Calice",
-          "prezzo": 9
+          "nome": "Grüner Veltliner",
+          "info": "morbidamente minerale"
         },
         {
-          "nome": "Bottiglia",
+          "nome": "Pinot Grigio",
+          "info": "erbaceo"
+        },
+        {
+          "nome": "Falerio Pecorino",
+          "info": "profumato e fruttato"
+        }
+      ]
+    },
+    {
+      "id": "bottiglia-rosso",
+      "nome": "Bottiglia di rosso",
+      "etichetta": "Rosso",
+      "categoria": "vini-bottiglia",
+      "prezzo": 30,
+      "emoji": "🍾",
+      "varianti": [
+        {
+          "nome": "Pinot Nero",
+          "info": "rotondo e sempre elegante"
+        },
+        {
+          "nome": "Rosso di Montalcino",
+          "info": "un buon vino, what else?"
+        },
+        {
+          "nome": "Merlot Cabernet",
+          "info": "corposo, deciso"
+        },
+        {
+          "nome": "Nebbiolo",
+          "info": "Valtellina o Langhe"
+        },
+        {
+          "nome": "Vino del sud",
+          "info": "pugliese, siciliano oppure…"
+        }
+      ]
+    },
+    {
+      "id": "bottiglia-bollicine",
+      "nome": "Bottiglia di bollicine",
+      "etichetta": "Bollicine",
+      "categoria": "vini-bottiglia",
+      "prezzo": 35,
+      "emoji": "🍾",
+      "varianti": [
+        {
+          "nome": "Bolla spensierata",
+          "prezzo": 35
+        },
+        {
+          "nome": "Trento DOC",
+          "prezzo": 40
+        },
+        {
+          "nome": "Bollicina francese",
           "prezzo": 50
         }
       ]
     },
     {
-      "id": "guinness",
-      "nome": "Guinness",
-      "categoria": "birre",
+      "id": "guinness-piccola",
+      "nome": "Guinness · piccola",
+      "etichetta": "Guinness",
+      "categoria": "birre-piccola",
+      "prezzo": 4,
+      "emoji": "🍺"
+    },
+    {
+      "id": "bionda-piccola",
+      "nome": "Bionda · piccola",
+      "etichetta": "Bionda Pale/Golden Ale",
+      "categoria": "birre-piccola",
+      "prezzo": 4,
+      "emoji": "🍺"
+    },
+    {
+      "id": "kilkenny-piccola",
+      "nome": "Kilkenny · piccola",
+      "etichetta": "Ambrata Kilkenny Cream",
+      "categoria": "birre-piccola",
+      "prezzo": 4,
+      "emoji": "🍺"
+    },
+    {
+      "id": "guinness-media",
+      "nome": "Guinness · pinta",
+      "etichetta": "Guinness (pinta)",
+      "categoria": "birre-media",
       "prezzo": 6.5,
-      "emoji": "🍺",
-      "varianti": [
-        {
-          "nome": "Piccola",
-          "prezzo": 4
-        },
-        {
-          "nome": "Pinta",
-          "prezzo": 6.5
-        }
-      ]
+      "emoji": "🍺"
     },
     {
-      "id": "bionda",
-      "nome": "Bionda inglese Pale/Golden Ale",
-      "categoria": "birre",
+      "id": "bionda-media",
+      "nome": "Bionda · media",
+      "etichetta": "Bionda Pale/Golden Ale",
+      "categoria": "birre-media",
       "prezzo": 7,
-      "emoji": "🍺",
-      "descrizione": "Alla pompa.",
-      "varianti": [
-        {
-          "nome": "Piccola",
-          "prezzo": 4
-        },
-        {
-          "nome": "Media",
-          "prezzo": 7
-        }
-      ]
+      "emoji": "🍺"
     },
     {
-      "id": "kilkenny",
-      "nome": "Ambrata Kilkenny Cream",
-      "categoria": "birre",
+      "id": "kilkenny-media",
+      "nome": "Kilkenny · media",
+      "etichetta": "Ambrata Kilkenny Cream",
+      "categoria": "birre-media",
       "prezzo": 7,
-      "emoji": "🍺",
-      "descrizione": "Alla pompa.",
-      "varianti": [
-        {
-          "nome": "Piccola",
-          "prezzo": 4
-        },
-        {
-          "nome": "Media",
-          "prezzo": 7
-        }
-      ]
+      "emoji": "🍺"
     },
     {
       "id": "ipa",
       "nome": "IPA 33 cl",
-      "categoria": "birre",
+      "categoria": "birre-bottiglia",
       "prezzo": 6,
       "emoji": "🍾",
       "descrizione": "In bottiglia."
@@ -1137,7 +1169,7 @@
     {
       "id": "la-trappe",
       "nome": "La Trappe Blonde 33 cl",
-      "categoria": "birre",
+      "categoria": "birre-bottiglia",
       "prezzo": 6,
       "emoji": "🍾",
       "descrizione": "In bottiglia."
@@ -1145,7 +1177,7 @@
     {
       "id": "daura",
       "nome": "Daura Damm Lager 33 cl",
-      "categoria": "birre",
+      "categoria": "birre-bottiglia",
       "prezzo": 6,
       "emoji": "🍾",
       "descrizione": "In bottiglia, senza glutine."
@@ -1153,7 +1185,7 @@
     {
       "id": "birra-zero",
       "nome": "Birra Zero Alcool",
-      "categoria": "birre",
+      "categoria": "birre-bottiglia",
       "prezzo": 6,
       "emoji": "🍾"
     },
