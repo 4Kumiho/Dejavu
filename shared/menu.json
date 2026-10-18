@@ -1,5 +1,5 @@
 {
-  "versione": "2026-10-15T12:07:53.025Z",
+  "versione": "2026-10-18T03:20:08.000Z",
   "gruppi": [
     {
       "id": "drink",
@@ -159,25 +159,35 @@
         "Tonica all'ananas",
         "Analcolico"
       ],
+      "bicchiere": "Tumbler alto",
+      "ghiaccio": "Sì",
+      "metodo": "Shaker + double strain",
+      "guarnizione": "Fetta di limone e scorza",
       "ingredienti": [
         {
-          "nome": "Gin Gold agrumato",
-          "dose": ""
+          "nome": "Gin Gold (analcolico se richiesto)",
+          "dose": "1½ oz"
         },
         {
-          "nome": "Lampone",
-          "dose": ""
+          "nome": "Purea di lampone",
+          "dose": "½ oz"
         },
         {
-          "nome": "Lime",
-          "dose": ""
+          "nome": "Lime spremuto",
+          "dose": "½ lime"
         },
         {
-          "nome": "Tonica classica o all'ananas",
-          "dose": ""
+          "nome": "Tonica classica (amaro) o all'ananas (dolce)",
+          "dose": "top"
         }
       ],
-      "note": "Dosi e procedimento da completare con la ricetta del bar."
+      "passaggi": [
+        "Nello shaker versa gin, purea di lampone e lime.",
+        "Aggiungi ghiaccio e shakera.",
+        "Versa con double strain nel tumbler con ghiaccio.",
+        "Completa con la tonica scelta.",
+        "Mescola delicatamente."
+      ]
     },
     {
       "id": "cherry-americano",
@@ -186,21 +196,29 @@
       "prezzo": 10,
       "emoji": "🍒",
       "descrizione": "Bitter Campari e Vermouth del Professore con tonica alla ciliegia.",
+      "bicchiere": "Tumbler alto",
+      "ghiaccio": "Sì",
+      "metodo": "Nel bicchiere",
+      "guarnizione": "Fetta d'arancia",
       "ingredienti": [
         {
           "nome": "Bitter Campari",
-          "dose": ""
+          "dose": "1½ oz"
         },
         {
-          "nome": "Vermouth del Professore",
-          "dose": ""
+          "nome": "Vermouth rosso",
+          "dose": "1½ oz"
         },
         {
           "nome": "Tonica alla ciliegia",
-          "dose": ""
+          "dose": "top"
         }
       ],
-      "note": "Dosi e procedimento da completare con la ricetta del bar."
+      "passaggi": [
+        "Nel tumbler con ghiaccio versa Campari e vermouth.",
+        "Completa con la tonica alla ciliegia.",
+        "Mescola delicatamente."
+      ]
     },
     {
       "id": "sage-flower",
@@ -209,21 +227,29 @@
       "prezzo": 10,
       "emoji": "🌼",
       "descrizione": "Briottet ai fiori di sambuco ed Elisir Salvia & Limone con tonica mandarino & bergamotto.",
+      "bicchiere": "Tumbler alto",
+      "ghiaccio": "Sì",
+      "metodo": "Nel bicchiere",
+      "guarnizione": "Fetta di limone",
       "ingredienti": [
         {
           "nome": "Briottet ai fiori di sambuco",
-          "dose": ""
+          "dose": "1½ oz"
         },
         {
-          "nome": "Elisir Salvia & Limone",
-          "dose": ""
+          "nome": "Amaro Salvia & Limone",
+          "dose": "1½ oz"
         },
         {
-          "nome": "Tonica mandarino & bergamotto",
-          "dose": ""
+          "nome": "Tonica Mandarino & Bergamotto",
+          "dose": "½ bottiglia"
         }
       ],
-      "note": "Dosi e procedimento da completare con la ricetta del bar."
+      "passaggi": [
+        "Nel tumbler con ghiaccio versa Briottet e amaro.",
+        "Completa con mezza bottiglia di tonica.",
+        "Mescola delicatamente."
+      ]
     },
     {
       "id": "the-last-drugs",
@@ -232,25 +258,33 @@
       "prezzo": 10,
       "emoji": "🥃",
       "descrizione": "Whiskey Bourbon, Centum Herbis, zenzero e lime.",
+      "bicchiere": "Tumbler basso con ghiaccio, oppure coppa senza ghiaccio",
+      "ghiaccio": "Nel tumbler sì, nella coppa no",
+      "metodo": "Shaker + double strain",
+      "guarnizione": "Fetta di zenzero o di lime",
       "ingredienti": [
         {
-          "nome": "Whiskey Bourbon",
-          "dose": ""
+          "nome": "Bourbon whiskey",
+          "dose": "1½ oz"
         },
         {
           "nome": "Centum Herbis",
-          "dose": ""
+          "dose": "¾ oz"
         },
         {
-          "nome": "Zenzero",
-          "dose": ""
+          "nome": "Purea di zenzero",
+          "dose": "½ oz"
         },
         {
-          "nome": "Lime",
-          "dose": ""
+          "nome": "Lime spremuto",
+          "dose": "½ lime"
         }
       ],
-      "note": "Dosi e procedimento da completare con la ricetta del bar."
+      "passaggi": [
+        "Nello shaker con ghiaccio versa bourbon, Centum Herbis, purea di zenzero e lime.",
+        "Shakera.",
+        "Versa con double strain nel bicchiere."
+      ]
     },
     {
       "id": "il-nostro-paloma",
@@ -259,25 +293,33 @@
       "prezzo": 10,
       "emoji": "🌶️",
       "descrizione": "Mezcal Vida, Ancho Reyes Rosso e lime con tonica al pompelmo.",
+      "bicchiere": "Tumbler alto",
+      "ghiaccio": "Sì",
+      "metodo": "Nel bicchiere",
+      "guarnizione": "Fetta di lime",
       "ingredienti": [
         {
           "nome": "Mezcal Vida",
-          "dose": ""
+          "dose": "1½ oz"
         },
         {
           "nome": "Ancho Reyes Rosso",
-          "dose": ""
+          "dose": "½ oz"
         },
         {
-          "nome": "Lime",
-          "dose": ""
+          "nome": "Lime spremuto",
+          "dose": "½ lime"
         },
         {
           "nome": "Tonica al pompelmo",
-          "dose": ""
+          "dose": "top"
         }
       ],
-      "note": "Dosi e procedimento da completare con la ricetta del bar."
+      "passaggi": [
+        "Nel tumbler con ghiaccio versa mezcal, Ancho Reyes e lime.",
+        "Completa con la tonica al pompelmo.",
+        "Mescola delicatamente."
+      ]
     },
     {
       "id": "fresh-collins",
@@ -286,25 +328,34 @@
       "prezzo": 10,
       "emoji": "🌿",
       "descrizione": "Elisir Eucalipto & Menta, Labdano e limone con soda.",
+      "bicchiere": "Tumbler alto",
+      "ghiaccio": "Sì",
+      "metodo": "Nel bicchiere",
+      "guarnizione": "Fetta di limone",
+      "note": "Poco alcolico.",
       "ingredienti": [
         {
-          "nome": "Elisir Eucalipto & Menta",
-          "dose": ""
+          "nome": "Amaro Eucalipto & Menta",
+          "dose": "1¼ oz"
         },
         {
-          "nome": "Labdano",
-          "dose": ""
+          "nome": "Labdanum",
+          "dose": "½–¾ oz"
         },
         {
-          "nome": "Limone",
-          "dose": ""
+          "nome": "Limone spremuto",
+          "dose": "½ limone"
         },
         {
           "nome": "Soda",
-          "dose": ""
+          "dose": "top"
         }
       ],
-      "note": "Dosi e procedimento da completare con la ricetta del bar."
+      "passaggi": [
+        "Nel tumbler con ghiaccio versa amaro, Labdanum e limone.",
+        "Completa con la soda.",
+        "Mescola energicamente."
+      ]
     },
     {
       "id": "cactus-del-fico",
@@ -313,29 +364,38 @@
       "prezzo": 10,
       "emoji": "🌵",
       "descrizione": "Tequila Reposado, Chartreuse, miele e lime con tonica al fico.",
+      "bicchiere": "Tumbler alto",
+      "ghiaccio": "Sì, aggiunto dopo aver mescolato",
+      "metodo": "Nel bicchiere",
+      "guarnizione": "Fetta di lime",
       "ingredienti": [
         {
           "nome": "Tequila Reposado",
-          "dose": ""
+          "dose": "1½ oz"
         },
         {
           "nome": "Chartreuse",
-          "dose": ""
+          "dose": "½ oz"
         },
         {
           "nome": "Miele",
-          "dose": ""
+          "dose": "½ oz"
         },
         {
-          "nome": "Lime",
-          "dose": ""
+          "nome": "Lime spremuto",
+          "dose": "½ lime"
         },
         {
           "nome": "Tonica al fico",
-          "dose": ""
+          "dose": "top"
         }
       ],
-      "note": "Dosi e procedimento da completare con la ricetta del bar."
+      "passaggi": [
+        "Nel tumbler vuoto versa tequila, Chartreuse, miele e lime.",
+        "Mescola energicamente per sciogliere il miele.",
+        "Aggiungi il ghiaccio.",
+        "Completa con la tonica al fico."
+      ]
     },
     {
       "id": "diversamente-simili",
@@ -344,25 +404,33 @@
       "prezzo": 10,
       "emoji": "🍓",
       "descrizione": "Gin Bulldog, Elisir di Rabarbaro, lampone e lime.",
+      "bicchiere": "Tumbler basso",
+      "ghiaccio": "Sì",
+      "metodo": "Shaker",
+      "guarnizione": "Fetta di limone",
       "ingredienti": [
         {
           "nome": "Gin Bulldog",
-          "dose": ""
+          "dose": "1½ oz"
         },
         {
           "nome": "Elisir di Rabarbaro",
-          "dose": ""
+          "dose": "¾ oz"
         },
         {
-          "nome": "Lampone",
-          "dose": ""
+          "nome": "Purea di lampone",
+          "dose": "½ oz"
         },
         {
-          "nome": "Lime",
-          "dose": ""
+          "nome": "Lime spremuto",
+          "dose": "½ lime"
         }
       ],
-      "note": "Dosi e procedimento da completare con la ricetta del bar."
+      "passaggi": [
+        "Nello shaker con ghiaccio versa gin, elisir, purea di lampone e lime.",
+        "Shakera bene.",
+        "Versa nel tumbler con ghiaccio."
+      ]
     },
     {
       "id": "americano",
@@ -371,33 +439,28 @@
       "prezzo": 10,
       "emoji": "🍹",
       "descrizione": "Campari e Vermouth del Professore, con soda.",
+      "bicchiere": "Tumbler basso",
+      "ghiaccio": "Sì",
+      "metodo": "Nel bicchiere",
+      "guarnizione": "Fetta d'arancia",
       "ingredienti": [
         {
-          "nome": "Campari",
-          "dose": "30 ml"
+          "nome": "Bitter Campari",
+          "dose": "2 oz"
         },
         {
-          "nome": "Vermouth del Professore Rosso",
-          "dose": "30 ml"
+          "nome": "Vermouth rosso",
+          "dose": "2 oz"
         },
         {
           "nome": "Soda",
           "dose": "top"
-        },
-        {
-          "nome": "Arancia",
-          "dose": "1 fetta"
         }
       ],
-      "bicchiere": "Old fashioned o highball",
-      "ghiaccio": "Cubetti",
-      "metodo": "Build",
-      "guarnizione": "Fetta d'arancia",
       "passaggi": [
-        "Riempi il bicchiere di ghiaccio.",
-        "Versa Campari e Vermouth del Professore.",
+        "Nel tumbler con ghiaccio versa Campari e vermouth.",
         "Completa con la soda.",
-        "Mescola brevemente e guarnisci con la fetta d'arancia."
+        "Mescola delicatamente."
       ]
     },
     {
@@ -407,34 +470,27 @@
       "prezzo": 10,
       "emoji": "🥃",
       "descrizione": "Campari, Vermouth del Professore e Gin Bulldog.",
+      "bicchiere": "Tumbler basso",
+      "ghiaccio": "Sì",
+      "metodo": "Nel bicchiere",
+      "guarnizione": "Fetta d'arancia",
       "ingredienti": [
         {
           "nome": "Gin Bulldog",
-          "dose": "30 ml"
+          "dose": "2 oz"
         },
         {
-          "nome": "Campari",
-          "dose": "30 ml"
+          "nome": "Bitter Campari",
+          "dose": "2 oz"
         },
         {
-          "nome": "Vermouth del Professore Rosso",
-          "dose": "30 ml"
-        },
-        {
-          "nome": "Scorza d'arancia",
-          "dose": "1"
+          "nome": "Vermouth rosso",
+          "dose": "2 oz"
         }
       ],
-      "bicchiere": "Old fashioned (tumbler basso)",
-      "ghiaccio": "Cubo grande o cubetti",
-      "metodo": "Stir (mixing glass)",
-      "guarnizione": "Scorza d'arancia",
       "passaggi": [
-        "Riempi il mixing glass di ghiaccio.",
-        "Versa gin, Campari e vermouth.",
-        "Mescola con il bar spoon per 20-30 secondi.",
-        "Filtra nel tumbler con ghiaccio nuovo.",
-        "Spremi la scorza d'arancia sopra il drink e lasciala nel bicchiere."
+        "Nel tumbler con ghiaccio versa gin, Campari e vermouth.",
+        "Mescola delicatamente."
       ]
     },
     {
@@ -444,33 +500,28 @@
       "prezzo": 10,
       "emoji": "🥂",
       "descrizione": "Campari e vermouth rosso con bollicine al posto del gin.",
+      "bicchiere": "Tumbler basso",
+      "ghiaccio": "Sì",
+      "metodo": "Nel bicchiere",
+      "guarnizione": "Fetta d'arancia",
       "ingredienti": [
         {
-          "nome": "Campari",
-          "dose": "30 ml"
+          "nome": "Bitter Campari",
+          "dose": "2 oz"
         },
         {
-          "nome": "Vermouth del Professore Rosso",
-          "dose": "30 ml"
+          "nome": "Vermouth rosso",
+          "dose": "2 oz"
         },
         {
-          "nome": "Prosecco / spumante brut",
-          "dose": "60 ml"
-        },
-        {
-          "nome": "Arancia",
-          "dose": "1 fetta"
+          "nome": "Prosecco",
+          "dose": "top"
         }
       ],
-      "bicchiere": "Old fashioned o calice",
-      "ghiaccio": "Cubetti",
-      "metodo": "Build",
-      "guarnizione": "Fetta o scorza d'arancia",
       "passaggi": [
-        "Riempi il bicchiere di ghiaccio.",
-        "Versa Campari e vermouth.",
-        "Completa con le bollicine versandole delicatamente.",
-        "Mescola una sola volta e guarnisci con l'arancia."
+        "Nel tumbler con ghiaccio versa Campari e vermouth.",
+        "Completa con il prosecco.",
+        "Mescola delicatamente."
       ]
     },
     {
@@ -480,34 +531,27 @@
       "prezzo": 10,
       "emoji": "🥃",
       "descrizione": "Il cugino del Negroni con Bourbon al posto del gin.",
+      "bicchiere": "Tumbler basso",
+      "ghiaccio": "Sì",
+      "metodo": "Nel bicchiere",
+      "guarnizione": "Fetta d'arancia",
       "ingredienti": [
         {
-          "nome": "Bourbon",
-          "dose": "45 ml"
+          "nome": "Bourbon whiskey",
+          "dose": "2 oz"
         },
         {
-          "nome": "Campari",
-          "dose": "30 ml"
+          "nome": "Bitter Campari",
+          "dose": "2 oz"
         },
         {
-          "nome": "Vermouth del Professore Rosso",
-          "dose": "30 ml"
-        },
-        {
-          "nome": "Scorza d'arancia",
-          "dose": "1"
+          "nome": "Vermouth rosso",
+          "dose": "2 oz"
         }
       ],
-      "bicchiere": "Old fashioned o coppetta",
-      "ghiaccio": "Cubo grande (o niente se in coppetta)",
-      "metodo": "Stir (mixing glass)",
-      "guarnizione": "Scorza d'arancia",
       "passaggi": [
-        "Riempi il mixing glass di ghiaccio.",
-        "Versa bourbon, Campari e vermouth.",
-        "Mescola per 20-30 secondi.",
-        "Filtra nel bicchiere con un cubo grande (o in coppetta fredda).",
-        "Spremi la scorza d'arancia sopra il drink."
+        "Nel tumbler con ghiaccio versa whiskey, Campari e vermouth.",
+        "Mescola delicatamente."
       ]
     },
     {
@@ -517,34 +561,35 @@
       "prezzo": 10,
       "emoji": "🥃",
       "descrizione": "Bourbon, zucchero e bitter aromatico.",
+      "bicchiere": "Tumbler basso",
+      "ghiaccio": "3 cubetti, messi nel mixing glass",
+      "metodo": "Mixing glass",
+      "guarnizione": "Scorza d'arancia",
       "ingredienti": [
         {
-          "nome": "Bourbon (o Rye)",
-          "dose": "60 ml"
-        },
-        {
-          "nome": "Sciroppo di zucchero",
-          "dose": "5-10 ml (o 1 zolletta)"
-        },
-        {
-          "nome": "Angostura bitters",
-          "dose": "2-3 dash"
-        },
-        {
-          "nome": "Scorza d'arancia",
+          "nome": "Zolletta di zucchero",
           "dose": "1"
+        },
+        {
+          "nome": "Angostura",
+          "dose": "quanto basta a imbevere la zolletta"
+        },
+        {
+          "nome": "Soda",
+          "dose": "una spruzzata"
+        },
+        {
+          "nome": "Bourbon whiskey",
+          "dose": "2 oz"
         }
       ],
-      "bicchiere": "Old fashioned",
-      "ghiaccio": "Cubo grande",
-      "metodo": "Stir",
-      "guarnizione": "Scorza d'arancia",
       "passaggi": [
-        "Nel mixing glass (o direttamente nel bicchiere) metti zucchero e Angostura.",
-        "Aggiungi il bourbon e il ghiaccio.",
-        "Mescola per circa 30 secondi.",
-        "Filtra sul cubo grande.",
-        "Spremi la scorza d'arancia sopra il drink e lasciala nel bicchiere."
+        "Metti un fazzoletto sopra il mixing glass vuoto e appoggia sopra la zolletta.",
+        "Imbevi la zolletta di Angostura.",
+        "Togli il fazzoletto e lascia cadere la zolletta nel mixing glass.",
+        "Pesta la zolletta e aggiungi una spruzzata di soda.",
+        "Versa il bourbon e mescola.",
+        "Aggiungi 3 cubetti di ghiaccio e versa tutto nel tumbler."
       ]
     },
     {
@@ -555,33 +600,29 @@
       "emoji": "🍸",
       "descrizione": "Gin e vermouth dry, secco ed elegante.",
       "varianti": [
-        "Con scorza di limone",
-        "Con oliva"
+        "Profumato",
+        "Strong"
       ],
+      "bicchiere": "Coppetta fredda",
+      "ghiaccio": "Nel mixing glass, non nella coppetta",
+      "metodo": "Mixing glass + strain",
+      "guarnizione": "Oliva",
       "ingredienti": [
         {
-          "nome": "Gin",
-          "dose": "60 ml"
-        },
-        {
           "nome": "Vermouth dry",
-          "dose": "10 ml"
+          "dose": "½ oz"
         },
         {
-          "nome": "Scorza di limone o oliva",
-          "dose": "1"
+          "nome": "Gin Sipsmith",
+          "dose": "2 oz"
         }
       ],
-      "bicchiere": "Coppetta Martini",
-      "ghiaccio": "Nel mixing glass, niente nel bicchiere",
-      "metodo": "Stir + strain",
-      "guarnizione": "Scorza di limone o oliva",
       "passaggi": [
-        "Metti la coppetta in freezer o raffreddala con ghiaccio.",
-        "Nel mixing glass pieno di ghiaccio versa gin e vermouth dry.",
-        "Mescola per 30 secondi: deve essere molto freddo.",
-        "Filtra nella coppetta fredda.",
-        "Guarnisci con la scorza di limone spremuta sopra o con l'oliva."
+        "Riempi il mixing glass di ghiaccio.",
+        "Versa il vermouth dry e mescola.",
+        "Profumato: con lo strainer butta via il vermouth e tieni solo il ghiaccio profumato. Strong: non buttare il vermouth.",
+        "Aggiungi il gin e mescola.",
+        "Filtra nella coppetta fredda."
       ]
     },
     {
@@ -591,33 +632,33 @@
       "prezzo": 10,
       "emoji": "🍋",
       "descrizione": "Tequila, triple sec e lime, con il bordo al sale.",
+      "bicchiere": "Coppetta fredda con il sale sul bordo",
+      "ghiaccio": "No",
+      "metodo": "Shaker + strain",
+      "guarnizione": "Sale sul bordo",
       "ingredienti": [
         {
           "nome": "Tequila",
-          "dose": "50 ml"
+          "dose": "1½ oz"
         },
         {
-          "nome": "Triple sec",
-          "dose": "20 ml"
+          "nome": "Triple sec (Cointreau se è un'occasione particolare)",
+          "dose": "½ oz"
         },
         {
-          "nome": "Succo di lime",
-          "dose": "25 ml"
+          "nome": "Lime spremuto",
+          "dose": "½ lime"
         },
         {
           "nome": "Sale",
           "dose": "per il bordo"
         }
       ],
-      "bicchiere": "Coppa Margarita o coppetta",
-      "ghiaccio": "Nello shaker",
-      "metodo": "Shake + strain",
-      "guarnizione": "Mezzo bordo di sale e rotella di lime",
       "passaggi": [
-        "Passa uno spicchio di lime su metà del bordo e intingilo nel sale.",
-        "Nello shaker versa tequila, triple sec e lime.",
-        "Riempi di ghiaccio e shakera per 10-12 secondi.",
-        "Filtra nel bicchiere e guarnisci con la rotella di lime."
+        "Metti il sale sul bordo della coppetta fredda.",
+        "Nello shaker con ghiaccio versa tequila, triple sec e lime.",
+        "Shakera.",
+        "Filtra nella coppetta."
       ]
     },
     {
@@ -627,38 +668,498 @@
       "prezzo": 10,
       "emoji": "🌱",
       "descrizione": "Rum bianco, lime e menta fresca. Anche analcolico.",
+      "bicchiere": "Tumbler alto",
+      "ghiaccio": "4 cubetti, poi ghiaccio tritato",
+      "metodo": "Pestato + nel bicchiere",
+      "guarnizione": "Lime",
       "ingredienti": [
         {
-          "nome": "Rum bianco",
-          "dose": "50 ml"
-        },
-        {
-          "nome": "Lime",
-          "dose": "½ lime a spicchi"
-        },
-        {
           "nome": "Zucchero di canna",
-          "dose": "2 cucchiaini"
+          "dose": "3 cucchiai"
+        },
+        {
+          "nome": "Sciroppo di zucchero",
+          "dose": "½ oz"
+        },
+        {
+          "nome": "Lime a pezzetti",
+          "dose": "½ lime"
         },
         {
           "nome": "Menta",
-          "dose": "8-10 foglie"
+          "dose": "8–10 foglie"
+        },
+        {
+          "nome": "Rum chiaro",
+          "dose": "1½ oz"
         },
         {
           "nome": "Soda",
           "dose": "top"
         }
       ],
-      "bicchiere": "Highball",
-      "ghiaccio": "Ghiaccio tritato",
-      "metodo": "Muddle + build",
-      "guarnizione": "Rametto di menta",
       "passaggi": [
-        "Pesta lime e zucchero nel bicchiere per estrarre il succo.",
-        "Aggiungi la menta e premila delicatamente (non tritarla, diventa amara).",
-        "Riempi di ghiaccio tritato e versa il rum.",
-        "Mescola dal basso verso l'alto.",
-        "Completa con la soda, aggiungi ghiaccio tritato e guarnisci con la menta."
+        "Nel tumbler vuoto metti zucchero di canna, sciroppo e lime a pezzetti.",
+        "Pesta.",
+        "Aggiungi 4 cubetti di ghiaccio e le foglie di menta.",
+        "Versa il rum e riempi di ghiaccio tritato.",
+        "Mescola delicatamente.",
+        "Riempi di nuovo con ghiaccio tritato.",
+        "Completa con la soda."
+      ]
+    },
+    {
+      "id": "campari-shakerato",
+      "nome": "Campari Shakerato",
+      "categoria": "classici",
+      "prezzo": 10,
+      "emoji": "🍸",
+      "descrizione": "Bitter Campari shakerato e servito freddo in coppetta.",
+      "bicchiere": "Coppetta fredda",
+      "ghiaccio": "No",
+      "metodo": "Shaker + strain",
+      "guarnizione": "Fetta d'arancia",
+      "ingredienti": [
+        {
+          "nome": "Bitter Campari",
+          "dose": "2 oz"
+        }
+      ],
+      "passaggi": [
+        "Nello shaker con ghiaccio versa il Campari.",
+        "Shakera.",
+        "Filtra nella coppetta fredda."
+      ]
+    },
+    {
+      "id": "campari-espresso-martini",
+      "nome": "Campari Espresso Martini",
+      "categoria": "classici",
+      "prezzo": 10,
+      "emoji": "☕",
+      "descrizione": "Campari, vodka, liquore al caffè ed espresso.",
+      "bicchiere": "Coppetta ghiacciata",
+      "ghiaccio": "No",
+      "metodo": "Shaker + strain",
+      "ingredienti": [
+        {
+          "nome": "Bitter Campari",
+          "dose": "1 oz"
+        },
+        {
+          "nome": "Vodka",
+          "dose": "¾ oz"
+        },
+        {
+          "nome": "Liquore al caffè",
+          "dose": "½ oz"
+        },
+        {
+          "nome": "Espresso",
+          "dose": "1 oz"
+        },
+        {
+          "nome": "Sciroppo di zucchero",
+          "dose": "un goccio"
+        }
+      ],
+      "passaggi": [
+        "Nello shaker con ghiaccio versa tutti gli ingredienti.",
+        "Shakera.",
+        "Filtra nella coppetta ghiacciata."
+      ]
+    },
+    {
+      "id": "red-russian",
+      "nome": "Red Russian",
+      "categoria": "classici",
+      "prezzo": 10,
+      "emoji": "🍸",
+      "descrizione": "Campari, liquore al caffè e panna fresca.",
+      "bicchiere": "Coppetta fredda",
+      "ghiaccio": "No",
+      "metodo": "Shaker + strain",
+      "ingredienti": [
+        {
+          "nome": "Bitter Campari",
+          "dose": "1½ oz"
+        },
+        {
+          "nome": "Liquore al caffè",
+          "dose": "¾ oz"
+        },
+        {
+          "nome": "Panna fresca",
+          "dose": "1 oz"
+        }
+      ],
+      "passaggi": [
+        "Nello shaker con ghiaccio versa Campari, liquore al caffè e panna.",
+        "Shakera.",
+        "Versa nella coppetta fredda."
+      ]
+    },
+    {
+      "id": "martinez",
+      "nome": "Martinez",
+      "categoria": "classici",
+      "prezzo": 10,
+      "emoji": "🍸",
+      "descrizione": "Gin, vermouth rosso, maraschino e orange bitter.",
+      "bicchiere": "Coppetta fredda",
+      "ghiaccio": "Nel mixing glass, non nella coppetta",
+      "metodo": "Mixing glass + strain",
+      "ingredienti": [
+        {
+          "nome": "Gin Bulldog",
+          "dose": "1¼ oz"
+        },
+        {
+          "nome": "Vermouth rosso",
+          "dose": "¾ oz"
+        },
+        {
+          "nome": "Maraschino",
+          "dose": "una spruzzata"
+        },
+        {
+          "nome": "Orange bitter",
+          "dose": "2 dash"
+        }
+      ],
+      "passaggi": [
+        "Nel mixing glass con ghiaccio versa tutti gli ingredienti.",
+        "Mescola.",
+        "Filtra nella coppetta fredda."
+      ]
+    },
+    {
+      "id": "bijou",
+      "nome": "Bijou",
+      "categoria": "classici",
+      "prezzo": 10,
+      "emoji": "💎",
+      "descrizione": "Gin, vermouth, Chartreuse e orange bitter.",
+      "bicchiere": "Coppetta fredda",
+      "ghiaccio": "Nel mixing glass, non nella coppetta",
+      "metodo": "Mixing glass + strain",
+      "ingredienti": [
+        {
+          "nome": "Gin Bulldog",
+          "dose": "1¼ oz"
+        },
+        {
+          "nome": "Vermouth rosso",
+          "dose": "¾ oz"
+        },
+        {
+          "nome": "Chartreuse",
+          "dose": "½ oz"
+        },
+        {
+          "nome": "Orange bitter",
+          "dose": "2 dash"
+        }
+      ],
+      "passaggi": [
+        "Nel mixing glass con ghiaccio versa tutti gli ingredienti.",
+        "Mescola.",
+        "Filtra nella coppetta fredda."
+      ]
+    },
+    {
+      "id": "daiquiri",
+      "nome": "Daiquiri",
+      "categoria": "classici",
+      "prezzo": 10,
+      "emoji": "🍸",
+      "descrizione": "Rum, lime e zucchero, shakerato e servito in coppetta.",
+      "varianti": [
+        "Rum bianco",
+        "Rum scuro"
+      ],
+      "bicchiere": "Coppetta fredda",
+      "ghiaccio": "No",
+      "metodo": "Shaker + strain",
+      "ingredienti": [
+        {
+          "nome": "Rum bianco o scuro",
+          "dose": "2 oz"
+        },
+        {
+          "nome": "Lime spremuto",
+          "dose": "½ lime"
+        },
+        {
+          "nome": "Sciroppo di zucchero",
+          "dose": "½ oz"
+        },
+        {
+          "nome": "Maraschino (facoltativo)",
+          "dose": "qualche goccia"
+        }
+      ],
+      "passaggi": [
+        "Nello shaker con ghiaccio versa rum, lime e sciroppo di zucchero.",
+        "Shakera.",
+        "Filtra nella coppetta fredda.",
+        "Se vuoi, aggiungi qualche goccia di maraschino."
+      ]
+    },
+    {
+      "id": "sour",
+      "nome": "Sour",
+      "categoria": "classici",
+      "prezzo": 10,
+      "emoji": "🍋",
+      "descrizione": "Whiskey sour, Vodka sour o con qualsiasi altro alcolico.",
+      "varianti": [
+        "Whiskey",
+        "Vodka",
+        "Altro alcolico"
+      ],
+      "bicchiere": "Tumbler basso",
+      "ghiaccio": "Sì, nel bicchiere (nello shaker no)",
+      "metodo": "Shaker senza ghiaccio",
+      "guarnizione": "Nessuna",
+      "ingredienti": [
+        {
+          "nome": "Alcolico scelto (Whiskey sour: Bourbon)",
+          "dose": "2 oz"
+        },
+        {
+          "nome": "Sour mix",
+          "dose": "2 oz"
+        }
+      ],
+      "passaggi": [
+        "Nello shaker senza ghiaccio versa l'alcolico e il sour mix.",
+        "Shakera.",
+        "Versa nel tumbler con ghiaccio."
+      ]
+    },
+    {
+      "id": "tom-collins",
+      "nome": "Tom Collins",
+      "categoria": "classici",
+      "prezzo": 10,
+      "emoji": "🍋",
+      "descrizione": "Old Tom gin, limone, zucchero e soda.",
+      "bicchiere": "Tumbler alto",
+      "ghiaccio": "Sì",
+      "metodo": "Nel bicchiere",
+      "guarnizione": "Fetta di lime",
+      "ingredienti": [
+        {
+          "nome": "Old Tom gin",
+          "dose": "1½ oz"
+        },
+        {
+          "nome": "Succo di limone",
+          "dose": "¾ oz"
+        },
+        {
+          "nome": "Sciroppo di zucchero",
+          "dose": "½ oz"
+        },
+        {
+          "nome": "Angostura",
+          "dose": "2 gocce"
+        },
+        {
+          "nome": "Soda",
+          "dose": "top"
+        }
+      ],
+      "passaggi": [
+        "Nel tumbler con ghiaccio versa gin, limone, sciroppo e Angostura.",
+        "Completa con la soda.",
+        "Mescola delicatamente."
+      ]
+    },
+    {
+      "id": "paloma",
+      "nome": "Paloma",
+      "categoria": "classici",
+      "prezzo": 10,
+      "emoji": "🍹",
+      "descrizione": "Tequila o mezcal, agave, lime e soda al pompelmo.",
+      "varianti": [
+        "Tequila",
+        "Mezcal"
+      ],
+      "bicchiere": "Tumbler alto con mezzo bordo di sale",
+      "ghiaccio": "Sì",
+      "metodo": "Nel bicchiere",
+      "guarnizione": "Mezzo bordo di sale",
+      "ingredienti": [
+        {
+          "nome": "Tequila o Mezcal",
+          "dose": "1½ oz"
+        },
+        {
+          "nome": "Sciroppo d'agave",
+          "dose": "½ oz"
+        },
+        {
+          "nome": "Lime spremuto",
+          "dose": "½ lime"
+        },
+        {
+          "nome": "Soda al pompelmo",
+          "dose": "top"
+        },
+        {
+          "nome": "Sale",
+          "dose": "per il bordo"
+        }
+      ],
+      "passaggi": [
+        "Metti il sale su metà del bordo del tumbler e riempilo di ghiaccio.",
+        "Versa tequila (o mezcal), sciroppo d'agave e lime.",
+        "Completa con la soda al pompelmo.",
+        "Mescola delicatamente."
+      ]
+    },
+    {
+      "id": "rum-cooler",
+      "nome": "Rum Cooler",
+      "categoria": "classici",
+      "prezzo": 10,
+      "emoji": "🍹",
+      "descrizione": "Lime, arancia e zucchero pestati, rum ambrato e ginger beer.",
+      "bicchiere": "Tumbler basso",
+      "ghiaccio": "Sì, aggiunto dopo aver pestato",
+      "metodo": "Pestato + nel bicchiere",
+      "guarnizione": "Arancia o lime",
+      "ingredienti": [
+        {
+          "nome": "Lime",
+          "dose": "3 fette"
+        },
+        {
+          "nome": "Arancia",
+          "dose": "1 fetta"
+        },
+        {
+          "nome": "Zucchero di canna",
+          "dose": "2 cucchiai"
+        },
+        {
+          "nome": "Rum ambrato",
+          "dose": "1¼ oz"
+        },
+        {
+          "nome": "Ginger beer",
+          "dose": "top"
+        },
+        {
+          "nome": "Angostura (facoltativo)",
+          "dose": "1 dash"
+        }
+      ],
+      "passaggi": [
+        "Nel tumbler vuoto metti lime, arancia e zucchero di canna.",
+        "Pesta bene.",
+        "Aggiungi il ghiaccio.",
+        "Versa il rum.",
+        "Completa con la ginger beer.",
+        "Se il cliente lo vuole, aggiungi un dash di Angostura."
+      ]
+    },
+    {
+      "id": "dark-n-stormy",
+      "nome": "Dark 'n' Stormy",
+      "categoria": "classici",
+      "prezzo": 10,
+      "emoji": "⛈️",
+      "descrizione": "Rum scuro, lime e ginger beer.",
+      "bicchiere": "Tumbler alto",
+      "ghiaccio": "Sì",
+      "metodo": "Nel bicchiere",
+      "ingredienti": [
+        {
+          "nome": "Lime spremuto",
+          "dose": "½ lime"
+        },
+        {
+          "nome": "Rum scuro",
+          "dose": "1½ oz"
+        },
+        {
+          "nome": "Ginger beer",
+          "dose": "top"
+        }
+      ],
+      "passaggi": [
+        "Nel tumbler con ghiaccio versa lime e rum.",
+        "Completa con la ginger beer.",
+        "Mescola."
+      ]
+    },
+    {
+      "id": "canchanchara",
+      "nome": "Canchánchara",
+      "categoria": "classici",
+      "prezzo": 10,
+      "emoji": "🍯",
+      "descrizione": "Rum scuro, lime e miele.",
+      "bicchiere": "Tumbler basso",
+      "ghiaccio": "Sì, aggiunto dopo aver mescolato",
+      "metodo": "Nel bicchiere",
+      "ingredienti": [
+        {
+          "nome": "Rum scuro",
+          "dose": "2 oz"
+        },
+        {
+          "nome": "Lime spremuto",
+          "dose": "2 lime"
+        },
+        {
+          "nome": "Miele",
+          "dose": "1½ oz"
+        }
+      ],
+      "passaggi": [
+        "Nel tumbler vuoto versa rum, lime e miele.",
+        "Mescola energicamente per sciogliere il miele.",
+        "Aggiungi il ghiaccio."
+      ]
+    },
+    {
+      "id": "mule",
+      "nome": "Moscow Mule / London Mule",
+      "categoria": "classici",
+      "prezzo": 10,
+      "emoji": "🫚",
+      "descrizione": "Vodka (Moscow) o gin (London), lime e ginger beer.",
+      "varianti": [
+        "Moscow (vodka)",
+        "London (gin)"
+      ],
+      "bicchiere": "Tumbler alto",
+      "ghiaccio": "Sì",
+      "metodo": "Nel bicchiere",
+      "guarnizione": "Fetta di lime",
+      "ingredienti": [
+        {
+          "nome": "Vodka (London Mule: gin)",
+          "dose": "1½ oz"
+        },
+        {
+          "nome": "Lime spremuto",
+          "dose": "½ lime"
+        },
+        {
+          "nome": "Ginger beer",
+          "dose": "top"
+        }
+      ],
+      "passaggi": [
+        "Nel tumbler con ghiaccio versa vodka (o gin) e lime.",
+        "Completa con la ginger beer.",
+        "Mescola delicatamente."
       ]
     },
     {
@@ -683,36 +1184,65 @@
         "Rabarbaro",
         "Cynar"
       ],
+      "bicchiere": "Calice",
+      "ghiaccio": "Sì, aggiunto dopo l'alcolico",
+      "metodo": "Nel bicchiere",
+      "guarnizione": "Arancia e cannuccia",
       "ingredienti": [
         {
           "nome": "Aperol / Campari / Limoncello / Rabarbaro / Cynar",
-          "dose": "60 ml"
+          "dose": "fino al punto più largo del calice"
         },
         {
           "nome": "Prosecco",
-          "dose": "90 ml"
+          "dose": "top"
         },
         {
           "nome": "Soda",
-          "dose": "30 ml"
-        },
-        {
-          "nome": "Arancia",
-          "dose": "1 fetta"
+          "dose": "una spruzzata"
         }
       ],
-      "bicchiere": "Calice da vino",
-      "ghiaccio": "Cubetti, bicchiere pieno",
-      "metodo": "Build",
-      "guarnizione": "Fetta d'arancia (limone per il Limoncello)",
       "passaggi": [
-        "Riempi il calice di ghiaccio.",
-        "Versa il Prosecco.",
-        "Aggiungi il bitter o liquore scelto.",
-        "Completa con uno splash di soda.",
-        "Mescola delicatamente dal basso verso l'alto e guarnisci."
+        "Nel calice vuoto versa l'alcolico fino al punto più largo del calice.",
+        "Aggiungi il ghiaccio.",
+        "Completa con il prosecco.",
+        "Aggiungi una spruzzata di soda."
+      ]
+    },
+    {
+      "id": "hugo-spritz",
+      "nome": "Hugo Spritz",
+      "categoria": "spritz",
+      "prezzo": 7,
+      "emoji": "🌿",
+      "descrizione": "Liquore al sambuco, menta, prosecco e soda.",
+      "bicchiere": "Calice",
+      "ghiaccio": "Sì",
+      "metodo": "Nel bicchiere",
+      "ingredienti": [
+        {
+          "nome": "Liquore al sambuco",
+          "dose": "1½ oz"
+        },
+        {
+          "nome": "Menta",
+          "dose": "7–8 foglie"
+        },
+        {
+          "nome": "Prosecco",
+          "dose": "top"
+        },
+        {
+          "nome": "Soda",
+          "dose": "una spruzzata"
+        }
       ],
-      "note": "Proporzione 3-2-1 (Prosecco-bitter-soda). Prosecco ben freddo."
+      "passaggi": [
+        "Sbatti le foglie di menta tra le mani e mettile nel calice.",
+        "Versa il liquore al sambuco.",
+        "Aggiungi il ghiaccio.",
+        "Completa con prosecco e soda."
+      ]
     },
     {
       "id": "gin-tonic",
@@ -783,30 +1313,25 @@
           "info": "giapponese con Yuzu"
         }
       ],
+      "bicchiere": "Balloon",
+      "ghiaccio": "Sì, cubetti grandi, bicchiere pieno",
+      "metodo": "Nel bicchiere",
+      "guarnizione": "In base al gin (scorza di agrume, botaniche…)",
       "ingredienti": [
         {
           "nome": "Gin scelto",
-          "dose": "50 ml"
+          "dose": "1½ oz"
         },
         {
           "nome": "Acqua tonica",
-          "dose": "150 ml"
-        },
-        {
-          "nome": "Guarnizione in base al gin",
-          "dose": ""
+          "dose": "top"
         }
       ],
-      "bicchiere": "Balloon (copa)",
-      "ghiaccio": "Cubetti grandi, bicchiere pieno",
-      "metodo": "Build",
-      "guarnizione": "In base al gin (scorza di agrume, botaniche…)",
       "passaggi": [
-        "Riempi il balloon di ghiaccio e mescola per raffreddarlo, poi elimina l'acqua.",
+        "Riempi il balloon di ghiaccio, mescola per raffreddarlo e butta via l'acqua.",
         "Versa il gin.",
-        "Aggiungi la tonica lungo il bar spoon per non perdere le bollicine.",
-        "Mescola una sola volta dal basso verso l'alto.",
-        "Aggiungi la guarnizione adatta al gin."
+        "Completa con la tonica, versandola lungo il bar spoon.",
+        "Mescola una volta, dal basso verso l'alto."
       ]
     },
     {
@@ -1196,34 +1721,38 @@
       "prezzo": 10,
       "emoji": "🍃",
       "descrizione": "Tutta la freschezza del Mojito, senza alcol.",
+      "bicchiere": "Tumbler alto",
+      "ghiaccio": "4 cubetti, poi ghiaccio tritato",
+      "metodo": "Pestato + nel bicchiere",
+      "guarnizione": "Lime",
       "ingredienti": [
         {
-          "nome": "Lime",
-          "dose": "½ lime a spicchi"
+          "nome": "Zucchero di canna",
+          "dose": "3 cucchiai"
         },
         {
-          "nome": "Zucchero di canna",
-          "dose": "2 cucchiaini"
+          "nome": "Sciroppo di zucchero",
+          "dose": "½ oz"
+        },
+        {
+          "nome": "Lime a pezzetti",
+          "dose": "½ lime"
         },
         {
           "nome": "Menta",
-          "dose": "8-10 foglie"
+          "dose": "8–10 foglie"
         },
         {
           "nome": "Soda",
           "dose": "top"
         }
       ],
-      "bicchiere": "Highball",
-      "ghiaccio": "Ghiaccio tritato",
-      "metodo": "Muddle + build",
-      "guarnizione": "Rametto di menta",
       "passaggi": [
-        "Pesta lime e zucchero nel bicchiere.",
-        "Aggiungi la menta e premila delicatamente.",
-        "Riempi di ghiaccio tritato.",
-        "Completa con la soda e mescola.",
-        "Guarnisci con la menta."
+        "Nel tumbler vuoto metti zucchero di canna, sciroppo e lime a pezzetti.",
+        "Pesta.",
+        "Aggiungi 4 cubetti di ghiaccio e le foglie di menta.",
+        "Riempi di ghiaccio tritato e mescola delicatamente.",
+        "Completa con la soda."
       ]
     },
     {
@@ -1233,29 +1762,25 @@
       "prezzo": 10,
       "emoji": "🫧",
       "descrizione": "Con Tanqueray Zero.",
+      "bicchiere": "Balloon",
+      "ghiaccio": "Sì, cubetti grandi, bicchiere pieno",
+      "metodo": "Nel bicchiere",
+      "guarnizione": "Scorza di lime",
       "ingredienti": [
         {
           "nome": "Tanqueray 0.0",
-          "dose": "50 ml"
+          "dose": "1½ oz"
         },
         {
           "nome": "Acqua tonica",
-          "dose": "150 ml"
-        },
-        {
-          "nome": "Scorza di lime",
-          "dose": "1"
+          "dose": "top"
         }
       ],
-      "bicchiere": "Balloon (copa)",
-      "ghiaccio": "Cubetti grandi",
-      "metodo": "Build",
-      "guarnizione": "Scorza di lime",
       "passaggi": [
-        "Riempi il balloon di ghiaccio e raffreddalo.",
+        "Riempi il balloon di ghiaccio, mescola per raffreddarlo e butta via l'acqua.",
         "Versa il Tanqueray 0.0.",
-        "Aggiungi la tonica lungo il bar spoon.",
-        "Mescola una volta e guarnisci."
+        "Completa con la tonica, versandola lungo il bar spoon.",
+        "Mescola una volta, dal basso verso l'alto."
       ]
     },
     {
