@@ -1,5 +1,5 @@
 {
-  "versione": "2026-10-18T03:42:06.000Z",
+  "versione": "2026-10-18T03:51:06.000Z",
   "gruppi": [
     {
       "id": "drink",
@@ -1933,7 +1933,10 @@
       "cerca": [
         "campari"
       ],
-      "img": "../shared/img/prodotti/campari.jpg"
+      "img": "../shared/img/prodotti/campari.jpg",
+      "storia": "Nasce nel 1860 a Novara dalle mani di Gaspare Campari e diventa presto il simbolo dell'aperitivo milanese. La ricetta, con erbe, radici e scorze, è ancora segreta.",
+      "gusto": "Amaro deciso e avvolgente: arancia amara, erbe e una leggera dolcezza sul finale.",
+      "consigliato": "Gli aperitivi amari e i grandi classici come Negroni e Americano."
     },
     {
       "id": "vermouth-professore-rosso",
@@ -1946,7 +1949,10 @@
         "vermouth rosso",
         "vermouth del professore"
       ],
-      "img": "../shared/img/prodotti/vermouth-professore-rosso.jpg"
+      "img": "../shared/img/prodotti/vermouth-professore-rosso.jpg",
+      "storia": "Creato dai bartender romani del Jerry Thomas Speakeasy, riprende le ricette dei vermouth di Torino dell'Ottocento.",
+      "gusto": "Speziato e rotondo: vaniglia, cacao e scorza d'arancia, con un finale amaricante.",
+      "consigliato": "I Negroni morbidi e i vermouth da bere anche lisci con ghiaccio e scorza."
     },
     {
       "id": "aperol",
@@ -1958,7 +1964,10 @@
       "cerca": [
         "aperol"
       ],
-      "img": "../shared/img/prodotti/aperol.jpg"
+      "img": "../shared/img/prodotti/aperol.jpg",
+      "storia": "Nasce a Padova nel 1919 dai fratelli Barbieri. Con soli 11 gradi è diventato il re dello Spritz.",
+      "gusto": "Arancia dolce e amara, rabarbaro e radice di genziana: leggero e fresco.",
+      "consigliato": "Un aperitivo leggero e poco amaro."
     },
     {
       "id": "cynar",
@@ -1970,7 +1979,10 @@
       "cerca": [
         "cynar"
       ],
-      "img": "../shared/img/prodotti/cynar.jpg"
+      "img": "../shared/img/prodotti/cynar.jpg",
+      "storia": "Lanciato nel 1952, è l'amaro a base di carciofo e di altre 13 erbe.",
+      "gusto": "Erbaceo e amaro, con note di carciofo e caramello.",
+      "consigliato": "Gli spritz meno dolci e gli amari vegetali."
     },
     {
       "id": "rabarbaro-zucca",
@@ -1982,7 +1994,10 @@
       "drink": [
         "spritz"
       ],
-      "img": "../shared/img/prodotti/rabarbaro-zucca.jpg"
+      "img": "../shared/img/prodotti/rabarbaro-zucca.jpg",
+      "storia": "Nasce a Milano nel 1845 da Ettore Zucca. È a base di rabarbaro cinese, essiccato e leggermente affumicato.",
+      "gusto": "Amaro e affumicato, con note di agrumi e legno.",
+      "consigliato": "Gli amari decisi e uno Spritz diverso dal solito."
     },
     {
       "id": "angostura",
@@ -1994,7 +2009,10 @@
       "cerca": [
         "angostura"
       ],
-      "img": "../shared/img/prodotti/angostura.jpg"
+      "img": "../shared/img/prodotti/angostura.jpg",
+      "storia": "Nasce nel 1824 dal dottor Siegert nella città di Angostura, in Venezuela, come tonico per le truppe. Oggi si produce a Trinidad.",
+      "gusto": "Molto concentrato: chiodi di garofano, cannella, genziana e scorza d'arancia.",
+      "consigliato": "Gli Old Fashioned e i drink aromatici: bastano poche gocce."
     },
     {
       "id": "briottet-sambuco",
@@ -2007,19 +2025,25 @@
         "briottet",
         "sambuco"
       ],
-      "img": "../shared/img/prodotti/briottet-sambuco.jpg"
+      "img": "../shared/img/prodotti/briottet-sambuco.jpg",
+      "storia": "La casa Briottet produce liquori a Digione dal 1836 ed è famosa per la crème de cassis.",
+      "gusto": "Floreale e mielato, con il profumo pieno dei fiori di sambuco.",
+      "consigliato": "I drink floreali e profumati, come l'Hugo e il Sage Flower."
     },
     {
       "id": "centum-herbis",
       "nome": "Centum Herbis",
       "tipo": "Liquori",
       "produttore": "Bordiga",
-      "origine": "Torino, Italia",
+      "origine": "Cuneo, Italia",
       "descrizione": "Liquore alle cento erbe di montagna.",
       "cerca": [
         "centum herbis"
       ],
-      "img": "../shared/img/prodotti/centum-herbis.jpg"
+      "img": "../shared/img/prodotti/centum-herbis.jpg",
+      "storia": "Dalla distilleria Bordiga, fondata nel 1888: un liquore di ricetta monastica con circa cento erbe di montagna.",
+      "gusto": "Erbaceo e balsamico: menta, genepì ed erbe alpine, tra dolce e amaro.",
+      "consigliato": "Gli amari alle erbe e chi apprezza la Chartreuse."
     },
     {
       "id": "chartreuse-verte",
@@ -2031,7 +2055,10 @@
       "cerca": [
         "chartreuse"
       ],
-      "img": "../shared/img/prodotti/chartreuse-verte.jpg"
+      "img": "../shared/img/prodotti/chartreuse-verte.jpg",
+      "storia": "La producono ancora oggi i monaci certosini, seguendo un manoscritto del 1605 con 130 piante. Ricetta e produzione sono custodite dai soli monaci.",
+      "gusto": "Intensa e potente (55%): erbe, menta, pino e spezie, con un finale lunghissimo.",
+      "consigliato": "I sapori decisi e i liquori alle erbe da meditazione."
     },
     {
       "id": "ancho-reyes",
@@ -2043,7 +2070,10 @@
       "cerca": [
         "ancho reyes"
       ],
-      "img": "../shared/img/prodotti/ancho-reyes.jpg"
+      "img": "../shared/img/prodotti/ancho-reyes.jpg",
+      "storia": "Arriva da Puebla, in Messico, ed è ispirato ai liquori fatti in casa negli anni '20 con il peperoncino ancho essiccato al sole.",
+      "gusto": "Piccante ma dolce: peperoncino, cacao, tamarindo e spezie.",
+      "consigliato": "I drink piccanti e speziati."
     },
     {
       "id": "cointreau",
@@ -2055,7 +2085,10 @@
       "cerca": [
         "cointreau"
       ],
-      "img": "../shared/img/prodotti/cointreau.jpg"
+      "img": "../shared/img/prodotti/cointreau.jpg",
+      "storia": "Creato ad Angers dai fratelli Cointreau nel 1875, con scorze d'arancia dolci e amare.",
+      "gusto": "Arancia pura e intensa, pulita e luminosa.",
+      "consigliato": "Il Margarita e i classici agrumati."
     },
     {
       "id": "elisir-salvia-limone",
@@ -2064,7 +2097,9 @@
       "descrizione": "Elisir alle erbe: nel Sage Flower e liscio come digestivo.",
       "cerca": [
         "salvia"
-      ]
+      ],
+      "gusto": "Erbaceo e fresco: salvia aromatica e limone, con un finale pulito.",
+      "consigliato": "I digestivi freschi e poco amari."
     },
     {
       "id": "elisir-eucalipto-menta",
@@ -2073,7 +2108,9 @@
       "descrizione": "Elisir fresco e balsamico: nel Fresh Collins e liscio come digestivo.",
       "cerca": [
         "eucalipto"
-      ]
+      ],
+      "gusto": "Balsamico e rinfrescante: eucalipto e menta.",
+      "consigliato": "Un digestivo fresco, da bere ghiacciato."
     },
     {
       "id": "elisir-rabarbaro",
@@ -2082,7 +2119,9 @@
       "descrizione": "Nel Diversamente Simili.",
       "cerca": [
         "elisir di rabarbaro"
-      ]
+      ],
+      "gusto": "Amaro di rabarbaro, con note leggermente affumicate.",
+      "consigliato": "Gli amari decisi."
     },
     {
       "id": "labdanum",
@@ -2091,7 +2130,9 @@
       "descrizione": "Nel Fresh Collins.",
       "cerca": [
         "labdanum"
-      ]
+      ],
+      "gusto": "Resinoso e balsamico, profumato di cisto.",
+      "consigliato": "I profumi intensi e resinosi."
     },
     {
       "id": "mezcal-vida",
@@ -2103,7 +2144,10 @@
       "cerca": [
         "mezcal vida"
       ],
-      "img": "../shared/img/prodotti/mezcal-vida.jpg"
+      "img": "../shared/img/prodotti/mezcal-vida.jpg",
+      "storia": "Del Maguey nasce nel 1995 da Ron Cooper per portare nel mondo i mezcal artigianali dei villaggi di Oaxaca. Vida si fa con agave espadín a San Luis del Río.",
+      "gusto": "Affumicato e fruttato: agave cotta, frutta tropicale e zenzero.",
+      "consigliato": "I sapori affumicati e chi vuole scoprire il mezcal."
     },
     {
       "id": "tequila-reposado",
@@ -2112,7 +2156,9 @@
       "descrizione": "Tequila riposata in legno, nel Cactus del Fico.",
       "cerca": [
         "tequila reposado"
-      ]
+      ],
+      "gusto": "Agave morbida, vaniglia e legno, grazie al riposo in botte.",
+      "consigliato": "Una tequila rotonda, anche da sorseggiare."
     },
     {
       "id": "bulldog",
@@ -2124,7 +2170,10 @@
       "cerca": [
         "bulldog"
       ],
-      "img": "../shared/img/prodotti/bulldog.jpg"
+      "img": "../shared/img/prodotti/bulldog.jpg",
+      "storia": "London Dry Gin lanciato nel 2007, con 12 botaniche da tutto il mondo tra cui fiore di loto, papavero e longan.",
+      "gusto": "Fresco e morbido: ginepro, agrumi e una nota floreale.",
+      "consigliato": "I Negroni puliti e i gin tonic classici."
     },
     {
       "id": "sipsmith",
@@ -2136,7 +2185,10 @@
       "cerca": [
         "sipsmith"
       ],
-      "img": "../shared/img/prodotti/sipsmith.jpg"
+      "img": "../shared/img/prodotti/sipsmith.jpg",
+      "storia": "Nel 2009 è stata la prima distilleria con alambicchi di rame ad aprire a Londra in quasi 200 anni.",
+      "gusto": "London Dry classico: ginepro deciso, agrumi e un finale secco.",
+      "consigliato": "I Martini e i gin tonic tradizionali."
     },
     {
       "id": "gin-gold",
@@ -2145,7 +2197,9 @@
       "descrizione": "Il gin del Soledad.",
       "cerca": [
         "gin gold"
-      ]
+      ],
+      "gusto": "Agrumato e luminoso.",
+      "consigliato": "I gin tonic freschi e agrumati."
     },
     {
       "id": "jrose",
@@ -2156,7 +2210,10 @@
       "descrizione": "Bergamotto calabrese.",
       "cerca": [
         "jrose"
-      ]
+      ],
+      "storia": "Gin artigianale nato nel Salento da un'idea di Dario Roselli, con le etichette disegnate da Milo Manara.",
+      "gusto": "Bergamotto calabrese protagonista, con agrumi e note floreali.",
+      "consigliato": "Gli agrumi e i gin italiani."
     },
     {
       "id": "akori",
@@ -2168,7 +2225,10 @@
       "cerca": [
         "akori"
       ],
-      "img": "../shared/img/prodotti/akori.jpg"
+      "img": "../shared/img/prodotti/akori.jpg",
+      "storia": "Gin spagnolo delle Destilerías Campeny, ispirato al Giappone, con la sua bottiglia blu.",
+      "gusto": "Agrumato ed esotico: yuzu e pepe sansho.",
+      "consigliato": "I gin orientali e speziati."
     },
     {
       "id": "hendricks-oasium",
@@ -2180,7 +2240,10 @@
       "cerca": [
         "oasium"
       ],
-      "img": "../shared/img/prodotti/hendricks-oasium.jpg"
+      "img": "../shared/img/prodotti/hendricks-oasium.jpg",
+      "storia": "Edizione speciale di Hendrick's, il gin scozzese di Lesley Gracie, ispirata alle oasi del deserto.",
+      "gusto": "Erbaceo e caldo, con note verdi e speziate sopra la base di cetriolo e rosa di Hendrick's.",
+      "consigliato": "Chi conosce già Hendrick's e cerca qualcosa di diverso."
     },
     {
       "id": "blackwood-60",
@@ -2192,7 +2255,10 @@
       "cerca": [
         "blackwood"
       ],
-      "img": "../shared/img/prodotti/blackwood-60.jpg"
+      "img": "../shared/img/prodotti/blackwood-60.jpg",
+      "storia": "Dalle isole Shetland, in Scozia: un gin d'annata fatto con le botaniche raccolte ogni anno sulle isole. Questa versione è a 60 gradi.",
+      "gusto": "Potente ma sorprendentemente morbido: floreale, agrumato e profumato.",
+      "consigliato": "I gin forti e intensi."
     },
     {
       "id": "gin-arte",
@@ -2204,7 +2270,10 @@
       "cerca": [
         "gin arte"
       ],
-      "img": "../shared/img/prodotti/gin-arte.jpg"
+      "img": "../shared/img/prodotti/gin-arte.jpg",
+      "storia": "Gin secco italiano dalla bottiglia bianca e minimale.",
+      "gusto": "Armonia tra forza e delicatezza: ginepro, agrumi ed erbe.",
+      "consigliato": "I gin eleganti e secchi."
     },
     {
       "id": "silent-pool",
@@ -2216,7 +2285,10 @@
       "cerca": [
         "silent pool"
       ],
-      "img": "../shared/img/prodotti/silent-pool.jpg"
+      "img": "../shared/img/prodotti/silent-pool.jpg",
+      "storia": "Distillato nel Surrey, in Inghilterra, accanto al lago Silent Pool, con 24 botaniche.",
+      "gusto": "Floreale e fresco: lavanda, camomilla, agrumi e miele.",
+      "consigliato": "I gin floreali e profumati."
     },
     {
       "id": "geranium",
@@ -2228,7 +2300,10 @@
       "cerca": [
         "geranium"
       ],
-      "img": "../shared/img/prodotti/geranium.jpg"
+      "img": "../shared/img/prodotti/geranium.jpg",
+      "storia": "Creato da Henrik Hammer e da suo figlio Christoph, distillato in Inghilterra con il geranio tra le botaniche.",
+      "gusto": "London Dry decisamente secco, con una nota floreale di geranio.",
+      "consigliato": "I gin secchi e floreali."
     },
     {
       "id": "whitley-neill-pompelmo",
@@ -2240,7 +2315,10 @@
       "cerca": [
         "whitley neill"
       ],
-      "img": "../shared/img/prodotti/whitley-neill-pompelmo.jpg"
+      "img": "../shared/img/prodotti/whitley-neill-pompelmo.jpg",
+      "storia": "Johnny Neill viene da una famiglia di distillatori inglesi e ha creato una gamma di gin aromatizzati.",
+      "gusto": "Pompelmo rosa succoso e agrumato.",
+      "consigliato": "Un gin tonic fruttato e fresco."
     },
     {
       "id": "whitley-neill-lampone",
@@ -2251,7 +2329,10 @@
       "descrizione": "Al lampone.",
       "cerca": [
         "whitley neill"
-      ]
+      ],
+      "storia": "Dalla gamma di gin aromatizzati di Johnny Neill.",
+      "gusto": "Lampone dolce e fruttato.",
+      "consigliato": "Un gin tonic fruttato e colorato."
     },
     {
       "id": "lonewolf-cactus-lime",
@@ -2263,7 +2344,10 @@
       "cerca": [
         "lonewolf"
       ],
-      "img": "../shared/img/prodotti/lonewolf-cactus-lime.jpg"
+      "img": "../shared/img/prodotti/lonewolf-cactus-lime.jpg",
+      "storia": "Dalla distilleria di BrewDog a Ellon, in Scozia.",
+      "gusto": "Lime messicano e succo di cactus, con note di anguria e fragola.",
+      "consigliato": "I gin tonic fruttati e originali."
     },
     {
       "id": "lonewolf-pesca",
@@ -2274,7 +2358,10 @@
       "descrizione": "Pesca e frutto della passione.",
       "cerca": [
         "lonewolf"
-      ]
+      ],
+      "storia": "Dalla distilleria di BrewDog a Ellon, in Scozia.",
+      "gusto": "Pesca e frutto della passione: dolce e tropicale.",
+      "consigliato": "I gin tonic dolci e fruttati."
     },
     {
       "id": "condesa",
@@ -2286,7 +2373,10 @@
       "cerca": [
         "condesa"
       ],
-      "img": "../shared/img/prodotti/condesa.jpg"
+      "img": "../shared/img/prodotti/condesa.jpg",
+      "storia": "Gin messicano distillato a Città del Messico con botaniche locali.",
+      "gusto": "Erbaceo e floreale: palo santo, salvia e gelsomino.",
+      "consigliato": "I gin aromatici e insoliti."
     },
     {
       "id": "alkkemist",
@@ -2299,7 +2389,10 @@
         "alkemist",
         "alkkemist"
       ],
-      "img": "../shared/img/prodotti/alkkemist.jpg"
+      "img": "../shared/img/prodotti/alkkemist.jpg",
+      "storia": "Gin spagnolo distillato solo nelle notti di luna piena, con botaniche del Mediterraneo.",
+      "gusto": "Mediterraneo: erbe aromatiche, agrumi e note marine.",
+      "consigliato": "I gin mediterranei ed erbacei."
     },
     {
       "id": "saigon-baigur",
@@ -2311,7 +2404,10 @@
       "cerca": [
         "saigon"
       ],
-      "img": "../shared/img/prodotti/saigon-baigur.jpg"
+      "img": "../shared/img/prodotti/saigon-baigur.jpg",
+      "storia": "Distillato in piccoli lotti a Ho Chi Minh City, in Vietnam, con botaniche locali.",
+      "gusto": "Agrumi e spezie: cedro mano di Buddha, pepe di Phu Quoc, lemongrass e fiore di loto.",
+      "consigliato": "I gin speziati ed esotici."
     },
     {
       "id": "bareksten",
@@ -2322,7 +2418,10 @@
       "descrizione": "Essenze norvegesi.",
       "cerca": [
         "bareksten"
-      ]
+      ],
+      "storia": "Dalla città di Bergen, in Norvegia: un gin a base di patate con botaniche delle foreste norvegesi.",
+      "gusto": "Pino fresco, frutti di bosco e spezie.",
+      "consigliato": "I gin nordici e balsamici."
     },
     {
       "id": "ukiyo",
@@ -2333,7 +2432,10 @@
       "descrizione": "Giapponese con yuzu.",
       "cerca": [
         "ukiyo"
-      ]
+      ],
+      "storia": "Gin giapponese aromatizzato allo yuzu.",
+      "gusto": "Yuzu protagonista: agrumato, fresco e delicato.",
+      "consigliato": "Gli agrumi e i gin giapponesi."
     },
     {
       "id": "tanqueray-zero",
@@ -2345,7 +2447,10 @@
       "cerca": [
         "tanqueray"
       ],
-      "img": "../shared/img/prodotti/tanqueray-zero.jpg"
+      "img": "../shared/img/prodotti/tanqueray-zero.jpg",
+      "storia": "Dalla casa Tanqueray, fondata a Londra da Charles Tanqueray nel 1830: la versione senza alcol.",
+      "gusto": "Ginepro, lime e coriandolo, come un gin ma a zero gradi.",
+      "consigliato": "Chi non beve alcol ma vuole un vero gin tonic."
     },
     {
       "id": "glenfiddich-12",
@@ -2356,7 +2461,10 @@
       "cerca": [
         "glenfiddich"
       ],
-      "img": "../shared/img/prodotti/glenfiddich-12.jpg"
+      "img": "../shared/img/prodotti/glenfiddich-12.jpg",
+      "storia": "Distilleria fondata a Dufftown nel 1887 da William Grant e dai suoi figli, e ancora oggi della stessa famiglia.",
+      "gusto": "Fresco e morbido: pera, mela, miele e quercia.",
+      "consigliato": "Chi si avvicina ai single malt."
     },
     {
       "id": "macallan-12",
@@ -2367,7 +2475,10 @@
       "cerca": [
         "macallan"
       ],
-      "img": "../shared/img/prodotti/macallan-12.jpg"
+      "img": "../shared/img/prodotti/macallan-12.jpg",
+      "storia": "Distilleria dello Speyside fondata nel 1824, famosa per l'invecchiamento in botti di sherry.",
+      "gusto": "Miele, agrumi, zenzero e frutta secca: ricco e rotondo.",
+      "consigliato": "Gli whisky morbidi e sherried."
     },
     {
       "id": "jw-black",
@@ -2378,7 +2489,10 @@
       "cerca": [
         "black label"
       ],
-      "img": "../shared/img/prodotti/jw-black.jpg"
+      "img": "../shared/img/prodotti/jw-black.jpg",
+      "storia": "Il blend di Johnnie Walker che dal 1909 porta il nome Black Label, con whisky di almeno 12 anni.",
+      "gusto": "Frutta scura, vaniglia e un leggero fumo.",
+      "consigliato": "Un blended equilibrato e versatile."
     },
     {
       "id": "woodford-reserve",
@@ -2389,7 +2503,10 @@
       "cerca": [
         "woodford"
       ],
-      "img": "../shared/img/prodotti/woodford-reserve.jpg"
+      "img": "../shared/img/prodotti/woodford-reserve.jpg",
+      "storia": "Bourbon del Kentucky prodotto in una delle distillerie più antiche dello stato, a Versailles.",
+      "gusto": "Caramello, vaniglia, spezie e frutta secca.",
+      "consigliato": "I bourbon morbidi e dolci."
     },
     {
       "id": "ardbeg-10",
@@ -2400,7 +2517,10 @@
       "cerca": [
         "ardbeg"
       ],
-      "img": "../shared/img/prodotti/ardbeg-10.jpg"
+      "img": "../shared/img/prodotti/ardbeg-10.jpg",
+      "storia": "Distilleria dell'isola di Islay fondata nel 1815, famosa per i whisky molto torbati.",
+      "gusto": "Torba intensa e fumo, con limone e cioccolato.",
+      "consigliato": "I whisky affumicati e decisi."
     },
     {
       "id": "caol-ila-12",
@@ -2411,7 +2531,10 @@
       "cerca": [
         "caol ila"
       ],
-      "img": "../shared/img/prodotti/caol-ila-12.jpg"
+      "img": "../shared/img/prodotti/caol-ila-12.jpg",
+      "storia": "Distilleria di Islay fondata nel 1846 a Port Askaig, affacciata sul mare.",
+      "gusto": "Torba leggera, note marine, agrumi ed erbe.",
+      "consigliato": "I torbati eleganti."
     },
     {
       "id": "lagavulin-12",
@@ -2421,7 +2544,10 @@
       "origine": "Islay, Scozia",
       "cerca": [
         "lagavulin"
-      ]
+      ],
+      "storia": "Distilleria di Islay fondata nel 1816. Questa è un'edizione speciale imbottigliata a grado pieno.",
+      "gusto": "Torba, fumo, sale e agrumi.",
+      "consigliato": "I torbati intensi."
     },
     {
       "id": "clynelish-10",
@@ -2431,7 +2557,10 @@
       "origine": "Highlands, Scozia",
       "cerca": [
         "clynelish"
-      ]
+      ],
+      "storia": "Distilleria delle Highlands vicino a Brora, fondata nel 1819 e famosa per il suo carattere 'ceroso'.",
+      "gusto": "Cera d'api, miele e frutta.",
+      "consigliato": "Gli whisky ricchi e particolari."
     },
     {
       "id": "oban-11",
@@ -2441,7 +2570,10 @@
       "origine": "Highlands, Scozia",
       "cerca": [
         "oban"
-      ]
+      ],
+      "storia": "Distilleria delle West Highlands fondata nel 1794, al centro della cittadina di Oban.",
+      "gusto": "Agrumi, sale e un leggero fumo.",
+      "consigliato": "Gli whisky di mare equilibrati."
     },
     {
       "id": "talisker-ncs",
@@ -2451,7 +2583,10 @@
       "origine": "Isola di Skye, Scozia",
       "cerca": [
         "talisker"
-      ]
+      ],
+      "storia": "L'unica distilleria storica dell'isola di Skye, fondata nel 1830. Imbottigliato al grado naturale della botte.",
+      "gusto": "Pepe, fumo e sale marino.",
+      "consigliato": "I sapori intensi e marini."
     },
     {
       "id": "roseisle-12",
@@ -2462,7 +2597,10 @@
       "cerca": [
         "roseisle"
       ],
-      "img": "../shared/img/prodotti/roseisle-12.jpg"
+      "img": "../shared/img/prodotti/roseisle-12.jpg",
+      "storia": "Distilleria moderna dello Speyside, aperta nel 2009. Edizione speciale con l'etichetta dell'aquilone origami.",
+      "gusto": "Fresco ed erbaceo, con frutta gialla.",
+      "consigliato": "Chi cerca rarità da scoprire."
     },
     {
       "id": "singleton-14",
@@ -2472,7 +2610,10 @@
       "origine": "Scozia",
       "cerca": [
         "singleton"
-      ]
+      ],
+      "storia": "Edizione speciale della gamma The Singleton.",
+      "gusto": "Frutta matura e note morbide.",
+      "consigliato": "Gli whisky morbidi e fruttati."
     },
     {
       "id": "mortlach",
@@ -2482,7 +2623,10 @@
       "origine": "Speyside, Scozia",
       "cerca": [
         "mortlach"
-      ]
+      ],
+      "storia": "Distilleria di Dufftown fondata nel 1823 e soprannominata 'la Bestia di Dufftown' per il suo carattere robusto.",
+      "gusto": "Robusto e ricco, con note di sherry e frutta scura.",
+      "consigliato": "Gli whisky potenti e corposi."
     },
     {
       "id": "glenkinchie-27",
@@ -2492,7 +2636,10 @@
       "origine": "Lowlands, Scozia",
       "cerca": [
         "glenkinchie"
-      ]
+      ],
+      "storia": "Distilleria delle Lowlands vicino a Edimburgo. Questo è un imbottigliamento di 27 anni.",
+      "gusto": "Floreale e delicato, con miele e frutta.",
+      "consigliato": "Gli whisky eleganti e rari."
     },
     {
       "id": "jw-blue",
@@ -2502,7 +2649,10 @@
       "origine": "Scozia",
       "cerca": [
         "blue label"
-      ]
+      ],
+      "storia": "Il blend più prestigioso di Johnnie Walker, con whisky rarissimi.",
+      "gusto": "Vellutato: miele, frutta, fumo leggero.",
+      "consigliato": "I momenti speciali."
     },
     {
       "id": "doorlys-12",
@@ -2513,7 +2663,10 @@
       "cerca": [
         "doorly"
       ],
-      "img": "../shared/img/prodotti/doorlys-12.jpg"
+      "img": "../shared/img/prodotti/doorlys-12.jpg",
+      "storia": "Rum di Barbados della distilleria Foursquare.",
+      "gusto": "Caramello, banana, spezie e quercia.",
+      "consigliato": "I rum secchi ed eleganti."
     },
     {
       "id": "cab-ron",
@@ -2522,7 +2675,9 @@
       "origine": "Caraibi e Barbados",
       "cerca": [
         "cab ron"
-      ]
+      ],
+      "gusto": "Rum caraibico morbido.",
+      "consigliato": "I rum da sorseggiare."
     },
     {
       "id": "flor-de-cana-12",
@@ -2533,7 +2688,10 @@
       "cerca": [
         "flor de cana"
       ],
-      "img": "../shared/img/prodotti/flor-de-cana-12.jpg"
+      "img": "../shared/img/prodotti/flor-de-cana-12.jpg",
+      "storia": "Rum del Nicaragua prodotto dal 1890 ai piedi del vulcano San Cristóbal.",
+      "gusto": "Vaniglia, cacao e frutta secca.",
+      "consigliato": "I rum equilibrati, né troppo dolci né troppo secchi."
     },
     {
       "id": "relicario-supremo",
@@ -2544,7 +2702,10 @@
       "cerca": [
         "relicario"
       ],
-      "img": "../shared/img/prodotti/relicario-supremo.jpg"
+      "img": "../shared/img/prodotti/relicario-supremo.jpg",
+      "storia": "Rum della Repubblica Dominicana.",
+      "gusto": "Vaniglia, caramello e frutta secca.",
+      "consigliato": "I rum morbidi e rotondi."
     },
     {
       "id": "millonario-15",
@@ -2555,7 +2716,10 @@
       "drink": [
         "rum-elite"
       ],
-      "img": "../shared/img/prodotti/millonario-15.jpg"
+      "img": "../shared/img/prodotti/millonario-15.jpg",
+      "storia": "Rum peruviano invecchiato con il metodo solera.",
+      "gusto": "Dolce e rotondo: caramello, frutta secca e cacao.",
+      "consigliato": "I rum dolci da meditazione."
     },
     {
       "id": "zacapa-la-pasion",
@@ -2566,7 +2730,10 @@
       "drink": [
         "rum-zacapa"
       ],
-      "img": "../shared/img/prodotti/zacapa-la-pasion.jpg"
+      "img": "../shared/img/prodotti/zacapa-la-pasion.jpg",
+      "storia": "Edizione della Heavenly Cask Collection di Zacapa, il rum del Guatemala invecchiato a 2.300 metri, 'sopra le nuvole'.",
+      "gusto": "Frutta secca, spezie e cioccolato.",
+      "consigliato": "I rum ricchi e complessi."
     },
     {
       "id": "marzadro-18-lune",
@@ -2577,7 +2744,10 @@
       "cerca": [
         "18 lune"
       ],
-      "img": "../shared/img/prodotti/marzadro-18-lune.jpg"
+      "img": "../shared/img/prodotti/marzadro-18-lune.jpg",
+      "storia": "La distilleria Marzadro produce grappa in Trentino dal 1949. Questa grappa riposa per 18 lune, cioè circa 18 mesi, in botti di legni diversi.",
+      "gusto": "Morbida: vaniglia, frutta secca e legno.",
+      "consigliato": "Le grappe invecchiate e morbide."
     },
     {
       "id": "marolo-barolo-9",
@@ -2587,7 +2757,10 @@
       "origine": "Piemonte, Italia",
       "cerca": [
         "barolo 9"
-      ]
+      ],
+      "storia": "Paolo Marolo distilla ad Alba dal 1977. Questa grappa nasce dalle vinacce di nebbiolo del Barolo ed è invecchiata 9 anni.",
+      "gusto": "Frutta matura, spezie e legno.",
+      "consigliato": "Le grappe importanti e invecchiate."
     },
     {
       "id": "marolo-moscato-5",
@@ -2597,7 +2770,10 @@
       "origine": "Piemonte, Italia",
       "cerca": [
         "moscato 5"
-      ]
+      ],
+      "storia": "Dalla distilleria Marolo di Alba: grappa di vinacce di moscato invecchiata 5 anni.",
+      "gusto": "Aromatica: fiori, uva e miele.",
+      "consigliato": "Le grappe profumate e morbide."
     },
     {
       "id": "marolo-del-padre",
@@ -2609,7 +2785,10 @@
       "cerca": [
         "grappa del padre"
       ],
-      "img": "../shared/img/prodotti/marolo-del-padre.jpg"
+      "img": "../shared/img/prodotti/marolo-del-padre.jpg",
+      "storia": "Paolo Marolo l'ha dedicata a suo padre: una grappa bianca, giovane e sincera.",
+      "gusto": "Secca, intensa e decisa.",
+      "consigliato": "Le grappe bianche e tradizionali."
     },
     {
       "id": "jefferson",
@@ -2620,7 +2799,10 @@
       "cerca": [
         "jefferson"
       ],
-      "img": "../shared/img/prodotti/jefferson.jpg"
+      "img": "../shared/img/prodotti/jefferson.jpg",
+      "storia": "L'Amaro Importante del Vecchio Magazzino Doganale, nato in Calabria.",
+      "gusto": "Erbe e agrumi calabresi, morbido e avvolgente.",
+      "consigliato": "Gli amari moderni e profumati."
     },
     {
       "id": "bomba-carta",
@@ -2631,7 +2813,10 @@
       "cerca": [
         "bomba carta"
       ],
-      "img": "../shared/img/prodotti/bomba-carta.jpg"
+      "img": "../shared/img/prodotti/bomba-carta.jpg",
+      "storia": "Amaro sardo di Silvio Carta, distilleria della provincia di Oristano.",
+      "gusto": "Erbe mediterranee e agrumi.",
+      "consigliato": "Gli amari mediterranei."
     },
     {
       "id": "milla-marolo",
@@ -2642,7 +2827,10 @@
       "descrizione": "Liquore alla camomilla su base grappa.",
       "cerca": [
         "milla"
-      ]
+      ],
+      "storia": "Il liquore di Marolo con camomilla e miele su base di grappa.",
+      "gusto": "Camomilla e miele: delicato e dolce.",
+      "consigliato": "Un digestivo dolce e delicato."
     },
     {
       "id": "amaro-nazionale",
@@ -2650,7 +2838,9 @@
       "tipo": "Amari & Digestivi",
       "cerca": [
         "amaro nazionale"
-      ]
+      ],
+      "gusto": "Amaro d'erbe classico.",
+      "consigliato": "Gli amari tradizionali."
     },
     {
       "id": "braulio-riserva",
@@ -2661,7 +2851,10 @@
       "cerca": [
         "braulio"
       ],
-      "img": "../shared/img/prodotti/braulio-riserva.jpg"
+      "img": "../shared/img/prodotti/braulio-riserva.jpg",
+      "storia": "Nasce a Bormio nel 1875 con le erbe della Valtellina. La Riserva invecchia più a lungo in botti di rovere.",
+      "gusto": "Erbe alpine, genziana e ginepro: morbido e profondo.",
+      "consigliato": "Gli amari di montagna."
     },
     {
       "id": "camatti",
@@ -2672,7 +2865,10 @@
       "cerca": [
         "camatti"
       ],
-      "img": "../shared/img/prodotti/camatti.jpg"
+      "img": "../shared/img/prodotti/camatti.jpg",
+      "storia": "Amaro storico genovese.",
+      "gusto": "Amaro, con erbe e arancia.",
+      "consigliato": "Gli amari classici e decisi."
     },
     {
       "id": "adriatico",
@@ -2684,7 +2880,10 @@
       "cerca": [
         "adriatico"
       ],
-      "img": "../shared/img/prodotti/adriatico.jpg"
+      "img": "../shared/img/prodotti/adriatico.jpg",
+      "storia": "Amaretto pugliese fatto con le mandorle della Puglia.",
+      "gusto": "Mandorla tostata, con una nota sapida.",
+      "consigliato": "Un amaretto meno dolce del solito."
     },
     {
       "id": "camus-vsop",
@@ -2695,7 +2894,10 @@
       "cerca": [
         "camus"
       ],
-      "img": "../shared/img/prodotti/camus-vsop.jpg"
+      "img": "../shared/img/prodotti/camus-vsop.jpg",
+      "storia": "La famiglia Camus produce cognac dal 1863 ed è la più grande casa di cognac ancora a conduzione familiare.",
+      "gusto": "Molto aromatico: fiori, frutta e un tocco di legno.",
+      "consigliato": "I cognac profumati."
     },
     {
       "id": "drouet-vs",
@@ -2705,7 +2907,9 @@
       "origine": "Cognac, Francia",
       "cerca": [
         "drouet"
-      ]
+      ],
+      "gusto": "Cognac giovane e fruttato.",
+      "consigliato": "Un cognac semplice e piacevole."
     }
   ]
 }

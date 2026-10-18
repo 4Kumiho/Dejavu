@@ -156,8 +156,6 @@
   .hcard h3 { margin: 2px 0 0; font-size: 34px; line-height: 1; }
   .hcard .v { margin-top: auto; color: var(--muted); font-size: 14px; }
   .hcard .v b { color: var(--text); font-size: 20px; font-weight: 600; }
-  .hero-new { grid-column: 1 / -1; }
-  .hero-new .btn { width: 100%; min-height: 56px; }
 
   /* ---------- Ricette ---------- */
   .rgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
@@ -186,6 +184,7 @@
   .pcard .s { color: var(--muted); font-size: 12px; margin-top: 4px; }
   .prod-head { padding: 44px 24px 0; display: flex; justify-content: center; }
   .prod-head .pfoto { width: min(240px, 60vw); border-radius: 12px; font-size: 72px; }
+  .prod-txt { margin: 0; line-height: 1.6; font-size: 15px; }
   .usato { display: flex; flex-wrap: wrap; gap: 6px; }
   .usato button { border: 1px solid var(--line-2); background: transparent; color: var(--text); border-radius: 999px; padding: 7px 13px; font-size: 13px; }
   .hcard.wide { grid-column: 1 / -1; }
@@ -777,7 +776,6 @@
             <h3>Menu</h3>
             <div class="v">Voci, prezzi e ricette</div>
           </a>
-          <div class="hero-new"><button class="btn primary" data-action="nuovo-tavolo">+ Nuovo tavolo</button></div>
           <a class="hcard wide" href="#prodotti">
             <span class="k dv-caps">Bottigliera</span>
             <h3>I nostri Prodotti</h3>
@@ -884,6 +882,9 @@
         ${meta ? `<div class="meta">${meta}</div>` : ""}
         ${usato.length ? `<h4>Lo usiamo in</h4><div class="usato">${usato.map((d) =>
           `<button data-action="apri-ricetta" data-id="${esc(d.id)}">${esc(d.nome)}</button>`).join("")}</div>` : ""}
+        ${p.storia ? `<h4>La storia</h4><p class="prod-txt">${esc(p.storia)}</p>` : ""}
+        ${p.gusto ? `<h4>Il gusto</h4><p class="prod-txt">${esc(p.gusto)}</p>` : ""}
+        ${p.consigliato ? `<h4>Consigliato a chi ama</h4><p class="prod-txt">${esc(p.consigliato)}</p>` : ""}
       </div>`);
   }
 
