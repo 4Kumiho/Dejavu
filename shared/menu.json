@@ -1,5 +1,5 @@
 {
-  "versione": "2026-10-18T03:20:08.000Z",
+  "versione": "2026-10-18T03:42:06.000Z",
   "gruppi": [
     {
       "id": "drink",
@@ -1920,6 +1920,792 @@
       "prezzo": 0,
       "emoji": "🥨",
       "descrizione": "Offerti dalla casa."
+    }
+  ],
+  "prodotti": [
+    {
+      "id": "campari",
+      "nome": "Bitter Campari",
+      "tipo": "Bitter & Vermouth",
+      "produttore": "Campari",
+      "origine": "Italia",
+      "descrizione": "Il bitter rosso di Milano, base di Negroni, Americano e Spritz Campari.",
+      "cerca": [
+        "campari"
+      ],
+      "img": "../shared/img/prodotti/campari.jpg"
+    },
+    {
+      "id": "vermouth-professore-rosso",
+      "nome": "Vermouth del Professore Rosso",
+      "tipo": "Bitter & Vermouth",
+      "produttore": "Del Professore",
+      "origine": "Torino, Italia",
+      "descrizione": "Vermouth di Torino rosso: il nostro vermouth per Negroni, Americano e tutta la famiglia.",
+      "cerca": [
+        "vermouth rosso",
+        "vermouth del professore"
+      ],
+      "img": "../shared/img/prodotti/vermouth-professore-rosso.jpg"
+    },
+    {
+      "id": "aperol",
+      "nome": "Aperol",
+      "tipo": "Bitter & Vermouth",
+      "produttore": "Campari",
+      "origine": "Italia",
+      "descrizione": "Aperitivo arancione per lo Spritz classico.",
+      "cerca": [
+        "aperol"
+      ],
+      "img": "../shared/img/prodotti/aperol.jpg"
+    },
+    {
+      "id": "cynar",
+      "nome": "Cynar",
+      "tipo": "Bitter & Vermouth",
+      "produttore": "Campari",
+      "origine": "Italia",
+      "descrizione": "Amaro al carciofo, per lo Spritz Cynar.",
+      "cerca": [
+        "cynar"
+      ],
+      "img": "../shared/img/prodotti/cynar.jpg"
+    },
+    {
+      "id": "rabarbaro-zucca",
+      "nome": "Rabarbaro Zucca",
+      "tipo": "Bitter & Vermouth",
+      "produttore": "Zucca",
+      "origine": "Milano, Italia",
+      "descrizione": "Amaro al rabarbaro cinese, per lo Spritz Rabarbaro.",
+      "drink": [
+        "spritz"
+      ],
+      "img": "../shared/img/prodotti/rabarbaro-zucca.jpg"
+    },
+    {
+      "id": "angostura",
+      "nome": "Angostura Bitters",
+      "tipo": "Bitter & Vermouth",
+      "produttore": "House of Angostura",
+      "origine": "Trinidad e Tobago",
+      "descrizione": "Bitter aromatico: poche gocce in Old Fashioned, Tom Collins, Rum Cooler.",
+      "cerca": [
+        "angostura"
+      ],
+      "img": "../shared/img/prodotti/angostura.jpg"
+    },
+    {
+      "id": "briottet-sambuco",
+      "nome": "Briottet Liqueur de Fleur de Sureau",
+      "tipo": "Liquori",
+      "produttore": "Edmond Briottet",
+      "origine": "Digione, Francia",
+      "descrizione": "Liquore ai fiori di sambuco.",
+      "cerca": [
+        "briottet",
+        "sambuco"
+      ],
+      "img": "../shared/img/prodotti/briottet-sambuco.jpg"
+    },
+    {
+      "id": "centum-herbis",
+      "nome": "Centum Herbis",
+      "tipo": "Liquori",
+      "produttore": "Bordiga",
+      "origine": "Torino, Italia",
+      "descrizione": "Liquore alle cento erbe di montagna.",
+      "cerca": [
+        "centum herbis"
+      ],
+      "img": "../shared/img/prodotti/centum-herbis.jpg"
+    },
+    {
+      "id": "chartreuse-verte",
+      "nome": "Chartreuse Verte",
+      "tipo": "Liquori",
+      "produttore": "Pères Chartreux",
+      "origine": "Francia",
+      "descrizione": "Liquore alle erbe dei monaci certosini, 55%.",
+      "cerca": [
+        "chartreuse"
+      ],
+      "img": "../shared/img/prodotti/chartreuse-verte.jpg"
+    },
+    {
+      "id": "ancho-reyes",
+      "nome": "Ancho Reyes",
+      "tipo": "Liquori",
+      "produttore": "Ancho Reyes",
+      "origine": "Puebla, Messico",
+      "descrizione": "Liquore al peperoncino ancho, piccante e affumicato.",
+      "cerca": [
+        "ancho reyes"
+      ],
+      "img": "../shared/img/prodotti/ancho-reyes.jpg"
+    },
+    {
+      "id": "cointreau",
+      "nome": "Cointreau",
+      "tipo": "Liquori",
+      "produttore": "Rémy Cointreau",
+      "origine": "Francia",
+      "descrizione": "Triple sec all'arancia, per il Margarita delle occasioni speciali.",
+      "cerca": [
+        "cointreau"
+      ],
+      "img": "../shared/img/prodotti/cointreau.jpg"
+    },
+    {
+      "id": "elisir-salvia-limone",
+      "nome": "Elisir Salvia & Limone",
+      "tipo": "Liquori",
+      "descrizione": "Elisir alle erbe: nel Sage Flower e liscio come digestivo.",
+      "cerca": [
+        "salvia"
+      ]
+    },
+    {
+      "id": "elisir-eucalipto-menta",
+      "nome": "Elisir Eucalipto & Menta",
+      "tipo": "Liquori",
+      "descrizione": "Elisir fresco e balsamico: nel Fresh Collins e liscio come digestivo.",
+      "cerca": [
+        "eucalipto"
+      ]
+    },
+    {
+      "id": "elisir-rabarbaro",
+      "nome": "Elisir di Rabarbaro",
+      "tipo": "Liquori",
+      "descrizione": "Nel Diversamente Simili.",
+      "cerca": [
+        "elisir di rabarbaro"
+      ]
+    },
+    {
+      "id": "labdanum",
+      "nome": "Labdanum",
+      "tipo": "Liquori",
+      "descrizione": "Nel Fresh Collins.",
+      "cerca": [
+        "labdanum"
+      ]
+    },
+    {
+      "id": "mezcal-vida",
+      "nome": "Mezcal Vida",
+      "tipo": "Tequila & Mezcal",
+      "produttore": "Del Maguey",
+      "origine": "Oaxaca, Messico",
+      "descrizione": "Mezcal artigianale affumicato, nel nostro Paloma.",
+      "cerca": [
+        "mezcal vida"
+      ],
+      "img": "../shared/img/prodotti/mezcal-vida.jpg"
+    },
+    {
+      "id": "tequila-reposado",
+      "nome": "Tequila Reposado",
+      "tipo": "Tequila & Mezcal",
+      "descrizione": "Tequila riposata in legno, nel Cactus del Fico.",
+      "cerca": [
+        "tequila reposado"
+      ]
+    },
+    {
+      "id": "bulldog",
+      "nome": "Bulldog London Dry Gin",
+      "tipo": "Gin",
+      "produttore": "Bulldog",
+      "origine": "Inghilterra",
+      "descrizione": "Il gin dei nostri Negroni e del Diversamente Simili.",
+      "cerca": [
+        "bulldog"
+      ],
+      "img": "../shared/img/prodotti/bulldog.jpg"
+    },
+    {
+      "id": "sipsmith",
+      "nome": "Sipsmith London Dry Gin",
+      "tipo": "Gin",
+      "produttore": "Sipsmith",
+      "origine": "Londra, Inghilterra",
+      "descrizione": "London Dry Gin… che piace! Il gin del nostro Martini.",
+      "cerca": [
+        "sipsmith"
+      ],
+      "img": "../shared/img/prodotti/sipsmith.jpg"
+    },
+    {
+      "id": "gin-gold",
+      "nome": "Gin Gold agrumato",
+      "tipo": "Gin",
+      "descrizione": "Il gin del Soledad.",
+      "cerca": [
+        "gin gold"
+      ]
+    },
+    {
+      "id": "jrose",
+      "nome": "J.Rose London Dry Gin",
+      "tipo": "Gin",
+      "produttore": "J.Rose",
+      "origine": "Puglia, Italia",
+      "descrizione": "Bergamotto calabrese.",
+      "cerca": [
+        "jrose"
+      ]
+    },
+    {
+      "id": "akori",
+      "nome": "Akori Gin",
+      "tipo": "Gin",
+      "produttore": "Destilerías Campeny",
+      "origine": "Spagna",
+      "descrizione": "Un giapponese esotico.",
+      "cerca": [
+        "akori"
+      ],
+      "img": "../shared/img/prodotti/akori.jpg"
+    },
+    {
+      "id": "hendricks-oasium",
+      "nome": "Hendrick's Oasium",
+      "tipo": "Gin",
+      "produttore": "Hendrick's",
+      "origine": "Scozia",
+      "descrizione": "Profumi di oasi.",
+      "cerca": [
+        "oasium"
+      ],
+      "img": "../shared/img/prodotti/hendricks-oasium.jpg"
+    },
+    {
+      "id": "blackwood-60",
+      "nome": "Blackwood's Vintage Dry Gin 60%",
+      "tipo": "Gin",
+      "produttore": "Blackwood's",
+      "origine": "Isole Shetland, Scozia",
+      "descrizione": "Navy 60°, morbido e profumato.",
+      "cerca": [
+        "blackwood"
+      ],
+      "img": "../shared/img/prodotti/blackwood-60.jpg"
+    },
+    {
+      "id": "gin-arte",
+      "nome": "GinArte Dry Gin",
+      "tipo": "Gin",
+      "produttore": "GinArte",
+      "origine": "Italia",
+      "descrizione": "Armonia tra forza e delicatezza.",
+      "cerca": [
+        "gin arte"
+      ],
+      "img": "../shared/img/prodotti/gin-arte.jpg"
+    },
+    {
+      "id": "silent-pool",
+      "nome": "Silent Pool Gin",
+      "tipo": "Gin",
+      "produttore": "Silent Pool Distillers",
+      "origine": "Surrey, Inghilterra",
+      "descrizione": "Quintessenza fresca e complessa.",
+      "cerca": [
+        "silent pool"
+      ],
+      "img": "../shared/img/prodotti/silent-pool.jpg"
+    },
+    {
+      "id": "geranium",
+      "nome": "Geranium London Dry Gin",
+      "tipo": "Gin",
+      "produttore": "Hammer & Son",
+      "origine": "Inghilterra",
+      "descrizione": "London Dry Gin, decisamente secco.",
+      "cerca": [
+        "geranium"
+      ],
+      "img": "../shared/img/prodotti/geranium.jpg"
+    },
+    {
+      "id": "whitley-neill-pompelmo",
+      "nome": "Whitley Neill Pink Grapefruit",
+      "tipo": "Gin",
+      "produttore": "Whitley Neill",
+      "origine": "Inghilterra",
+      "descrizione": "Al pompelmo rosa.",
+      "cerca": [
+        "whitley neill"
+      ],
+      "img": "../shared/img/prodotti/whitley-neill-pompelmo.jpg"
+    },
+    {
+      "id": "whitley-neill-lampone",
+      "nome": "Whitley Neill Raspberry",
+      "tipo": "Gin",
+      "produttore": "Whitley Neill",
+      "origine": "Inghilterra",
+      "descrizione": "Al lampone.",
+      "cerca": [
+        "whitley neill"
+      ]
+    },
+    {
+      "id": "lonewolf-cactus-lime",
+      "nome": "LoneWolf Cactus & Lime",
+      "tipo": "Gin",
+      "produttore": "BrewDog",
+      "origine": "Scozia",
+      "descrizione": "Cactus e lime messicano.",
+      "cerca": [
+        "lonewolf"
+      ],
+      "img": "../shared/img/prodotti/lonewolf-cactus-lime.jpg"
+    },
+    {
+      "id": "lonewolf-pesca",
+      "nome": "LoneWolf Pesca & Passion Fruit",
+      "tipo": "Gin",
+      "produttore": "BrewDog",
+      "origine": "Scozia",
+      "descrizione": "Pesca e frutto della passione.",
+      "cerca": [
+        "lonewolf"
+      ]
+    },
+    {
+      "id": "condesa",
+      "nome": "Condesa Gin Clásica",
+      "tipo": "Gin",
+      "produttore": "Condesa",
+      "origine": "Messico",
+      "descrizione": "Anima messicana.",
+      "cerca": [
+        "condesa"
+      ],
+      "img": "../shared/img/prodotti/condesa.jpg"
+    },
+    {
+      "id": "alkkemist",
+      "nome": "Alkkemist Gin",
+      "tipo": "Gin",
+      "produttore": "Alkkemist",
+      "origine": "Spagna",
+      "descrizione": "Elisir del Mediterraneo spagnolo.",
+      "cerca": [
+        "alkemist",
+        "alkkemist"
+      ],
+      "img": "../shared/img/prodotti/alkkemist.jpg"
+    },
+    {
+      "id": "saigon-baigur",
+      "nome": "Saigon Baigur Premium Dry Gin",
+      "tipo": "Gin",
+      "produttore": "District 9 Distilling",
+      "origine": "Vietnam",
+      "descrizione": "Botaniche vietnamite.",
+      "cerca": [
+        "saigon"
+      ],
+      "img": "../shared/img/prodotti/saigon-baigur.jpg"
+    },
+    {
+      "id": "bareksten",
+      "nome": "Bareksten Botanical Gin",
+      "tipo": "Gin",
+      "produttore": "Bareksten",
+      "origine": "Bergen, Norvegia",
+      "descrizione": "Essenze norvegesi.",
+      "cerca": [
+        "bareksten"
+      ]
+    },
+    {
+      "id": "ukiyo",
+      "nome": "Ukiyo Yuzu Gin",
+      "tipo": "Gin",
+      "produttore": "Ukiyo",
+      "origine": "Giappone",
+      "descrizione": "Giapponese con yuzu.",
+      "cerca": [
+        "ukiyo"
+      ]
+    },
+    {
+      "id": "tanqueray-zero",
+      "nome": "Tanqueray 0.0",
+      "tipo": "Gin",
+      "produttore": "Tanqueray",
+      "origine": "Inghilterra",
+      "descrizione": "Gin analcolico per il Gin Tonic Analcolico.",
+      "cerca": [
+        "tanqueray"
+      ],
+      "img": "../shared/img/prodotti/tanqueray-zero.jpg"
+    },
+    {
+      "id": "glenfiddich-12",
+      "nome": "Glenfiddich 12",
+      "tipo": "Whiskey",
+      "produttore": "Glenfiddich",
+      "origine": "Speyside, Scozia",
+      "cerca": [
+        "glenfiddich"
+      ],
+      "img": "../shared/img/prodotti/glenfiddich-12.jpg"
+    },
+    {
+      "id": "macallan-12",
+      "nome": "The Macallan 12 Double Cask",
+      "tipo": "Whiskey",
+      "produttore": "The Macallan",
+      "origine": "Speyside, Scozia",
+      "cerca": [
+        "macallan"
+      ],
+      "img": "../shared/img/prodotti/macallan-12.jpg"
+    },
+    {
+      "id": "jw-black",
+      "nome": "Johnnie Walker Black Label",
+      "tipo": "Whiskey",
+      "produttore": "Johnnie Walker",
+      "origine": "Scozia",
+      "cerca": [
+        "black label"
+      ],
+      "img": "../shared/img/prodotti/jw-black.jpg"
+    },
+    {
+      "id": "woodford-reserve",
+      "nome": "Woodford Reserve Bourbon",
+      "tipo": "Whiskey",
+      "produttore": "Woodford Reserve",
+      "origine": "Kentucky, USA",
+      "cerca": [
+        "woodford"
+      ],
+      "img": "../shared/img/prodotti/woodford-reserve.jpg"
+    },
+    {
+      "id": "ardbeg-10",
+      "nome": "Ardbeg 10",
+      "tipo": "Whiskey",
+      "produttore": "Ardbeg",
+      "origine": "Islay, Scozia",
+      "cerca": [
+        "ardbeg"
+      ],
+      "img": "../shared/img/prodotti/ardbeg-10.jpg"
+    },
+    {
+      "id": "caol-ila-12",
+      "nome": "Caol Ila 12",
+      "tipo": "Whiskey",
+      "produttore": "Caol Ila",
+      "origine": "Islay, Scozia",
+      "cerca": [
+        "caol ila"
+      ],
+      "img": "../shared/img/prodotti/caol-ila-12.jpg"
+    },
+    {
+      "id": "lagavulin-12",
+      "nome": "Lagavulin 12 · Special Release 2023",
+      "tipo": "Whiskey",
+      "produttore": "Lagavulin",
+      "origine": "Islay, Scozia",
+      "cerca": [
+        "lagavulin"
+      ]
+    },
+    {
+      "id": "clynelish-10",
+      "nome": "Clynelish 10 · Special Release 2023",
+      "tipo": "Whiskey",
+      "produttore": "Clynelish",
+      "origine": "Highlands, Scozia",
+      "cerca": [
+        "clynelish"
+      ]
+    },
+    {
+      "id": "oban-11",
+      "nome": "Oban 11 · Special Release 2023",
+      "tipo": "Whiskey",
+      "produttore": "Oban",
+      "origine": "Highlands, Scozia",
+      "cerca": [
+        "oban"
+      ]
+    },
+    {
+      "id": "talisker-ncs",
+      "nome": "Talisker Natural Cask Strength",
+      "tipo": "Whiskey",
+      "produttore": "Talisker",
+      "origine": "Isola di Skye, Scozia",
+      "cerca": [
+        "talisker"
+      ]
+    },
+    {
+      "id": "roseisle-12",
+      "nome": "Roseisle 12 · Special Release 2023",
+      "tipo": "Whiskey",
+      "produttore": "Roseisle",
+      "origine": "Speyside, Scozia",
+      "cerca": [
+        "roseisle"
+      ],
+      "img": "../shared/img/prodotti/roseisle-12.jpg"
+    },
+    {
+      "id": "singleton-14",
+      "nome": "Singleton 14 · Special Release 2023",
+      "tipo": "Whiskey",
+      "produttore": "The Singleton",
+      "origine": "Scozia",
+      "cerca": [
+        "singleton"
+      ]
+    },
+    {
+      "id": "mortlach",
+      "nome": "Mortlach",
+      "tipo": "Whiskey",
+      "produttore": "Mortlach",
+      "origine": "Speyside, Scozia",
+      "cerca": [
+        "mortlach"
+      ]
+    },
+    {
+      "id": "glenkinchie-27",
+      "nome": "Glenkinchie 27",
+      "tipo": "Whiskey",
+      "produttore": "Glenkinchie",
+      "origine": "Lowlands, Scozia",
+      "cerca": [
+        "glenkinchie"
+      ]
+    },
+    {
+      "id": "jw-blue",
+      "nome": "Johnnie Walker Blue Label",
+      "tipo": "Whiskey",
+      "produttore": "Johnnie Walker",
+      "origine": "Scozia",
+      "cerca": [
+        "blue label"
+      ]
+    },
+    {
+      "id": "doorlys-12",
+      "nome": "Doorly's 12",
+      "tipo": "Rum",
+      "produttore": "Foursquare",
+      "origine": "Barbados",
+      "cerca": [
+        "doorly"
+      ],
+      "img": "../shared/img/prodotti/doorlys-12.jpg"
+    },
+    {
+      "id": "cab-ron",
+      "nome": "CAB Ron",
+      "tipo": "Rum",
+      "origine": "Caraibi e Barbados",
+      "cerca": [
+        "cab ron"
+      ]
+    },
+    {
+      "id": "flor-de-cana-12",
+      "nome": "Flor de Caña 12",
+      "tipo": "Rum",
+      "produttore": "Flor de Caña",
+      "origine": "Nicaragua",
+      "cerca": [
+        "flor de cana"
+      ],
+      "img": "../shared/img/prodotti/flor-de-cana-12.jpg"
+    },
+    {
+      "id": "relicario-supremo",
+      "nome": "Relicario Supremo",
+      "tipo": "Rum",
+      "produttore": "Relicario",
+      "origine": "Repubblica Dominicana",
+      "cerca": [
+        "relicario"
+      ],
+      "img": "../shared/img/prodotti/relicario-supremo.jpg"
+    },
+    {
+      "id": "millonario-15",
+      "nome": "Millonario 15 Reserva Especial",
+      "tipo": "Rum",
+      "produttore": "Millonario",
+      "origine": "Perù",
+      "drink": [
+        "rum-elite"
+      ],
+      "img": "../shared/img/prodotti/millonario-15.jpg"
+    },
+    {
+      "id": "zacapa-la-pasion",
+      "nome": "Ron Zacapa La Pasión",
+      "tipo": "Rum",
+      "produttore": "Zacapa",
+      "origine": "Guatemala",
+      "drink": [
+        "rum-zacapa"
+      ],
+      "img": "../shared/img/prodotti/zacapa-la-pasion.jpg"
+    },
+    {
+      "id": "marzadro-18-lune",
+      "nome": "Grappa 18 Lune Riserva",
+      "tipo": "Grappe",
+      "produttore": "Marzadro",
+      "origine": "Trentino, Italia",
+      "cerca": [
+        "18 lune"
+      ],
+      "img": "../shared/img/prodotti/marzadro-18-lune.jpg"
+    },
+    {
+      "id": "marolo-barolo-9",
+      "nome": "Grappa di Barolo 9 anni",
+      "tipo": "Grappe",
+      "produttore": "Marolo",
+      "origine": "Piemonte, Italia",
+      "cerca": [
+        "barolo 9"
+      ]
+    },
+    {
+      "id": "marolo-moscato-5",
+      "nome": "Grappa di Moscato 5 anni",
+      "tipo": "Grappe",
+      "produttore": "Marolo",
+      "origine": "Piemonte, Italia",
+      "cerca": [
+        "moscato 5"
+      ]
+    },
+    {
+      "id": "marolo-del-padre",
+      "nome": "Grappa del Padre",
+      "tipo": "Grappe",
+      "produttore": "Marolo",
+      "origine": "Piemonte, Italia",
+      "descrizione": "Bianca, corposa, decisa.",
+      "cerca": [
+        "grappa del padre"
+      ],
+      "img": "../shared/img/prodotti/marolo-del-padre.jpg"
+    },
+    {
+      "id": "jefferson",
+      "nome": "Amaro Importante Jefferson",
+      "tipo": "Amari & Digestivi",
+      "produttore": "Vecchio Magazzino Doganale",
+      "origine": "Calabria, Italia",
+      "cerca": [
+        "jefferson"
+      ],
+      "img": "../shared/img/prodotti/jefferson.jpg"
+    },
+    {
+      "id": "bomba-carta",
+      "nome": "Amaro Bomba Carta",
+      "tipo": "Amari & Digestivi",
+      "produttore": "Silvio Carta",
+      "origine": "Sardegna, Italia",
+      "cerca": [
+        "bomba carta"
+      ],
+      "img": "../shared/img/prodotti/bomba-carta.jpg"
+    },
+    {
+      "id": "milla-marolo",
+      "nome": "Milla di Marolo",
+      "tipo": "Amari & Digestivi",
+      "produttore": "Marolo",
+      "origine": "Piemonte, Italia",
+      "descrizione": "Liquore alla camomilla su base grappa.",
+      "cerca": [
+        "milla"
+      ]
+    },
+    {
+      "id": "amaro-nazionale",
+      "nome": "Amaro Nazionale",
+      "tipo": "Amari & Digestivi",
+      "cerca": [
+        "amaro nazionale"
+      ]
+    },
+    {
+      "id": "braulio-riserva",
+      "nome": "Braulio Riserva",
+      "tipo": "Amari & Digestivi",
+      "produttore": "Braulio",
+      "origine": "Bormio, Italia",
+      "cerca": [
+        "braulio"
+      ],
+      "img": "../shared/img/prodotti/braulio-riserva.jpg"
+    },
+    {
+      "id": "camatti",
+      "nome": "Amaro Camatti",
+      "tipo": "Amari & Digestivi",
+      "produttore": "Camatti",
+      "origine": "Genova, Italia",
+      "cerca": [
+        "camatti"
+      ],
+      "img": "../shared/img/prodotti/camatti.jpg"
+    },
+    {
+      "id": "adriatico",
+      "nome": "Amaretto Adriatico",
+      "tipo": "Amari & Digestivi",
+      "produttore": "Adriatico",
+      "origine": "Puglia, Italia",
+      "descrizione": "Amaretto con mandorle pugliesi.",
+      "cerca": [
+        "adriatico"
+      ],
+      "img": "../shared/img/prodotti/adriatico.jpg"
+    },
+    {
+      "id": "camus-vsop",
+      "nome": "Camus VSOP",
+      "tipo": "Cognac",
+      "produttore": "Camus",
+      "origine": "Cognac, Francia",
+      "cerca": [
+        "camus"
+      ],
+      "img": "../shared/img/prodotti/camus-vsop.jpg"
+    },
+    {
+      "id": "drouet-vs",
+      "nome": "Drouet VS",
+      "tipo": "Cognac",
+      "produttore": "Drouet",
+      "origine": "Cognac, Francia",
+      "cerca": [
+        "drouet"
+      ]
     }
   ]
 }

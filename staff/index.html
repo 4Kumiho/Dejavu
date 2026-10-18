@@ -169,6 +169,27 @@
   .rcard .n { font-family: var(--dv-serif); font-weight: 600; font-size: 22px; line-height: 1.1; }
   .rcard .s { color: var(--muted); font-size: 12px; margin-top: 4px; letter-spacing: .02em; }
 
+  /* ---------- I nostri Prodotti ---------- */
+  .pgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; }
+  .pcard {
+    display: flex; flex-direction: column; text-align: left; padding: 0; overflow: hidden;
+    background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  }
+  .pcard:active { border-color: var(--line-2); }
+  .pfoto {
+    aspect-ratio: 3 / 4; width: 100%; display: grid; place-items: center; font-size: 44px;
+    background: radial-gradient(circle at 50% 35%, #2a2d33, var(--dv-coal) 75%) center / contain no-repeat;
+  }
+  .pfoto.img { background-color: #fff; background-image: var(--foto); background-size: contain; background-origin: content-box; padding: 10px; }
+  .pcard .t { padding: 10px 12px 12px; }
+  .pcard .n { font-family: var(--dv-serif); font-weight: 600; font-size: 19px; line-height: 1.1; }
+  .pcard .s { color: var(--muted); font-size: 12px; margin-top: 4px; }
+  .prod-head { padding: 44px 24px 0; display: flex; justify-content: center; }
+  .prod-head .pfoto { width: min(240px, 60vw); border-radius: 12px; font-size: 72px; }
+  .usato { display: flex; flex-wrap: wrap; gap: 6px; }
+  .usato button { border: 1px solid var(--line-2); background: transparent; color: var(--text); border-radius: 999px; padding: 7px 13px; font-size: 13px; }
+  .hcard.wide { grid-column: 1 / -1; }
+
   .ric-head { position: relative; padding: 36px 0 4px; display: flex; justify-content: center; }
   .ric-head .dv-ring { width: 120px; height: 120px; display: grid; place-items: center; font-size: 54px; }
   .ric-body { padding: 18px 24px 28px; }
@@ -469,6 +490,7 @@
     .azioni .btn { min-width: 0; padding: 12px 10px; letter-spacing: .08em; }
     .thead h2 { font-size: 30px; }
     .rgrid { grid-template-columns: minmax(0, 1fr); }
+    .pgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .ric-body { padding: 16px 18px 24px; }
     .ric-body h3 { font-size: 32px; }
   }
@@ -637,6 +659,7 @@
   /* ---------- Stato interfaccia ---------- */
   const ui = {
     ricQ: "", ricCat: "tutti",
+    prodQ: "", prodTipo: "Tutti",
     pickQ: "", apriGruppo: null, apriCat: null, apriVoce: null, // menu a tendina "Aggiungi"
     meQ: "", meCat: "tutti",
     pane: "ordine", // su telefono: "ordine" oppure "aggiungi"
@@ -662,7 +685,7 @@
   function route() {
     const h = location.hash.slice(1);
     if (h.startsWith("tavolo/")) return { view: "tavolo", id: decodeURIComponent(h.slice(7)) };
-    if (h === "ricette" || h === "tavoli" || h === "menu") return { view: h };
+    if (h === "ricette" || h === "tavoli" || h === "menu" || h === "prodotti") return { view: h };
     return { view: "home" };
   }
   function paneIniziale() {
@@ -682,6 +705,7 @@
     if (r.view === "home") return viewHome();
     if (r.view === "ricette") return viewRicette();
     if (r.view === "menu") return viewMenu();
+    if (r.view === "prodotti") return viewProdotti();
     if (r.view === "tavolo") {
       const t = tavoloById(r.id);
       if (!t) { location.replace("#tavoli"); return viewTavoli(); }
@@ -754,6 +778,11 @@
             <div class="v">Voci, prezzi e ricette</div>
           </a>
           <div class="hero-new"><button class="btn primary" data-action="nuovo-tavolo">+ Nuovo tavolo</button></div>
+          <a class="hcard wide" href="#prodotti">
+            <span class="k dv-caps">Bottigliera</span>
+            <h3>I nostri Prodotti</h3>
+            <div class="v"><b>${bottiglie().length}</b> bottiglie e materie prime</div>
+          </a>
       </section>`;
     requestAnimationFrame(() => requestAnimationFrame(() => mostraSlide(0)));
   }
@@ -797,6 +826,64 @@
         ${d.varianti ? `<h4>Varianti</h4><div class="vtags">${d.varianti.map((v) => `<span>${esc(varNome(v))}</span>`).join("")}</div>` : ""}
         ${d.passaggi && d.passaggi.length ? `<h4>Procedimento</h4><ol class="steps">${d.passaggi.map((p) => `<li>${esc(p)}</li>`).join("")}</ol>` : ""}
         ${d.note ? `<div class="nota">${esc(d.note)}</div>` : ""}
+      </div>`);
+  }
+
+  /* ---------- I nostri Prodotti ---------- */
+  const bottiglie = () => (MENU && MENU.prodotti) || [];
+  const fotoProdotto = (p) => p.img
+    ? `<div class="pfoto img" style="--foto:url('${esc(p.img)}')" role="img" aria-label="${esc(p.nome)}"></div>`
+    : `<div class="pfoto">🍾</div>`;
+  // Drink che usano il prodotto: p.drink (id espliciti) oppure p.cerca (o il nome) negli ingredienti e nelle varianti
+  function drinkConProdotto(p) {
+    if (p.drink) return MENU.drinks.filter((d) => p.drink.includes(d.id));
+    const chiavi = [].concat(p.cerca || p.nome).map(norm);
+    return MENU.drinks.filter((d) => {
+      const testo = norm([...(d.ingredienti || []).map((i) => i.nome), ...(d.varianti || []).map(varNome)].join(" | "));
+      return chiavi.some((k) => testo.includes(k));
+    });
+  }
+  function viewProdotti() {
+    $("#app").innerHTML = `
+      <div class="page-title"><h2>I nostri Prodotti</h2><span class="sub">${bottiglie().length} bottiglie</span></div>
+      <input class="search" id="prodQ" type="search" placeholder="Cerca bottiglia…" value="${esc(ui.prodQ)}" autocomplete="off">
+      <div class="chips" id="prodChips"></div>
+      <div class="pgrid" id="prodLista"></div>`;
+    $("#prodQ").addEventListener("input", (e) => { ui.prodQ = e.target.value; listaProdotti(); });
+    listaProdotti();
+  }
+  function listaProdotti() {
+    const tipi = ["Tutti", ...new Set(bottiglie().map((p) => p.tipo))];
+    const sel = ui.prodQ.trim() ? "" : ui.prodTipo;
+    $("#prodChips").innerHTML = tipi.map((t) =>
+      `<button class="chip ${t === sel ? "on" : ""}" data-action="prod-tipo" data-tipo="${esc(t)}">${esc(t)}</button>`).join("");
+    const nq = norm(ui.prodQ.trim());
+    const items = bottiglie().filter((p) => nq
+      ? norm([p.nome, p.tipo, p.produttore || ""].join(" ")).includes(nq)
+      : ui.prodTipo === "Tutti" || p.tipo === ui.prodTipo);
+    $("#prodLista").innerHTML = items.length
+      ? items.map((p) => `
+        <button class="pcard" data-action="apri-prodotto" data-id="${esc(p.id)}">
+          ${fotoProdotto(p)}
+          <div class="t"><div class="n">${esc(p.nome)}</div><div class="s">${esc(p.produttore ? p.tipo + " · " + p.produttore : p.tipo)}</div></div>
+        </button>`).join("")
+      : `<div class="empty">Nessun prodotto trovato.</div>`;
+  }
+  function apriProdotto(id) {
+    const p = bottiglie().find((x) => x.id === id);
+    if (!p) return;
+    const usato = drinkConProdotto(p);
+    const meta = [["Tipo", p.tipo], ["Produttore", p.produttore], ["Origine", p.origine]]
+      .filter(([, v]) => v).map(([k, v]) => `<div><b>${k}</b>${esc(v)}</div>`).join("");
+    apriFinestra(`
+      <button class="close" data-action="chiudi-finestra" aria-label="Chiudi">✕</button>
+      <div class="prod-head">${fotoProdotto(p)}</div>
+      <div class="ric-body">
+        <h3>${esc(p.nome)}</h3>
+        ${p.descrizione ? `<p class="ric-sub" style="margin-top:14px">${esc(p.descrizione)}</p>` : ""}
+        ${meta ? `<div class="meta">${meta}</div>` : ""}
+        ${usato.length ? `<h4>Lo usiamo in</h4><div class="usato">${usato.map((d) =>
+          `<button data-action="apri-ricetta" data-id="${esc(d.id)}">${esc(d.nome)}</button>`).join("")}</div>` : ""}
       </div>`);
   }
 
@@ -1453,6 +1540,8 @@
       case "finestra-ok": return chiudiFinestra(true);
       case "ric-cat": ui.ricCat = b.dataset.cat; ui.ricQ = ""; $("#ricQ").value = ""; return listaRicette();
       case "apri-ricetta": return apriRicetta(b.dataset.id);
+      case "prod-tipo": ui.prodTipo = b.dataset.tipo; ui.prodQ = ""; $("#prodQ").value = ""; return listaProdotti();
+      case "apri-prodotto": return apriProdotto(b.dataset.id);
       case "slide": mostraSlide(+b.dataset.i); return avviaSlide();
       case "aggiorna": return controllaAggiornamenti();
       case "scendi": return window.scrollTo({ top: $(".hero").offsetHeight, behavior: "smooth" });
