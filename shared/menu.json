@@ -1,5 +1,5 @@
 {
-  "versione": "2026-10-18T03:51:06.000Z",
+  "versione": "2026-10-18T03:56:27.000Z",
   "gruppi": [
     {
       "id": "drink",
@@ -1176,12 +1176,12 @@
       "categoria": "spritz",
       "prezzo": 7,
       "emoji": "🍊",
-      "descrizione": "Aperol, Campari, Limoncello, Rabarbaro o Cynar.",
+      "descrizione": "Aperol, Campari, Limoncello, Rabarbaro Zucca o Cynar.",
       "varianti": [
         "Aperol",
         "Campari",
         "Limoncello",
-        "Rabarbaro",
+        "Rabarbaro Zucca",
         "Cynar"
       ],
       "bicchiere": "Calice",
@@ -1190,7 +1190,7 @@
       "guarnizione": "Arancia e cannuccia",
       "ingredienti": [
         {
-          "nome": "Aperol / Campari / Limoncello / Rabarbaro / Cynar",
+          "nome": "Aperol / Campari / Limoncello / Rabarbaro Zucca / Cynar",
           "dose": "fino al punto più largo del calice"
         },
         {
@@ -1991,13 +1991,13 @@
       "produttore": "Zucca",
       "origine": "Milano, Italia",
       "descrizione": "Amaro al rabarbaro cinese, per lo Spritz Rabarbaro.",
-      "drink": [
-        "spritz"
-      ],
       "img": "../shared/img/prodotti/rabarbaro-zucca.jpg",
       "storia": "Nasce a Milano nel 1845 da Ettore Zucca. È a base di rabarbaro cinese, essiccato e leggermente affumicato.",
       "gusto": "Amaro e affumicato, con note di agrumi e legno.",
-      "consigliato": "Gli amari decisi e uno Spritz diverso dal solito."
+      "consigliato": "Gli amari decisi e uno Spritz diverso dal solito.",
+      "cerca": [
+        "rabarbaro zucca"
+      ]
     },
     {
       "id": "angostura",

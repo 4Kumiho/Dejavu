@@ -185,6 +185,14 @@
   .prod-head { padding: 44px 24px 0; display: flex; justify-content: center; }
   .prod-head .pfoto { width: min(240px, 60vw); border-radius: 12px; font-size: 72px; }
   .prod-txt { margin: 0; line-height: 1.6; font-size: 15px; }
+  .btl {
+    width: 30px; height: 40px; margin-left: 8px; vertical-align: middle; flex: none;
+    border: 1px solid var(--line-2); border-radius: 6px; background: #fff center / contain no-repeat; background-origin: content-box;
+    padding: 2px; font-size: 15px; line-height: 1;
+  }
+  .btl.vuota { background: transparent; }
+  .vtags span:has(.btl) { display: inline-flex; align-items: center; padding-right: 5px; }
+  .vtags .btl { width: 24px; height: 32px; margin-left: 6px; }
   .usato { display: flex; flex-wrap: wrap; gap: 6px; }
   .usato button { border: 1px solid var(--line-2); background: transparent; color: var(--text); border-radius: 999px; padding: 7px 13px; font-size: 13px; }
   .hcard.wide { grid-column: 1 / -1; }
@@ -820,8 +828,8 @@
         ${d.descrizione ? `<p class="ric-sub" style="margin-top:14px">${esc(d.descrizione)}</p>` : ""}
         ${meta ? `<div class="meta">${meta}</div>` : ""}
         <h4>Ingredienti</h4>
-        <table class="ingr">${d.ingredienti.map((i) => `<tr><td>${esc(i.nome)}</td><td>${esc(i.dose || "")}</td></tr>`).join("")}</table>
-        ${d.varianti ? `<h4>Varianti</h4><div class="vtags">${d.varianti.map((v) => `<span>${esc(varNome(v))}</span>`).join("")}</div>` : ""}
+        <table class="ingr">${d.ingredienti.map((i) => `<tr><td>${esc(i.nome)}${miniBottiglie(i.nome)}</td><td>${esc(i.dose || "")}</td></tr>`).join("")}</table>
+        ${d.varianti ? `<h4>Varianti</h4><div class="vtags">${d.varianti.map((v) => `<span>${esc(varNome(v))}${miniBottiglie(varNome(v))}</span>`).join("")}</div>` : ""}
         ${d.passaggi && d.passaggi.length ? `<h4>Procedimento</h4><ol class="steps">${d.passaggi.map((p) => `<li>${esc(p)}</li>`).join("")}</ol>` : ""}
         ${d.note ? `<div class="nota">${esc(d.note)}</div>` : ""}
       </div>`);
@@ -832,6 +840,14 @@
   const fotoProdotto = (p) => p.img
     ? `<div class="pfoto img" style="--foto:url('${esc(p.img)}')" role="img" aria-label="${esc(p.nome)}"></div>`
     : `<div class="pfoto">🍾</div>`;
+  // Bottiglie citate in un testo (ingrediente o variante), cercando le chiavi p.cerca
+  const bottiglieIn = (testo) => {
+    const t = norm(testo);
+    return bottiglie().filter((p) => p.cerca && [].concat(p.cerca).some((k) => t.includes(norm(k))));
+  };
+  // Miniature cliccabili che aprono la scheda della bottiglia
+  const miniBottiglie = (testo) => bottiglieIn(testo).map((p) =>
+    `<button class="btl${p.img ? "" : " vuota"}" data-action="apri-prodotto" data-id="${esc(p.id)}" title="${esc(p.nome)}" aria-label="Vedi ${esc(p.nome)}"${p.img ? ` style="background-image:url('${esc(p.img)}')"` : ""}>${p.img ? "" : "🍾"}</button>`).join("");
   // Drink che usano il prodotto: p.drink (id espliciti) oppure p.cerca (o il nome) negli ingredienti e nelle varianti
   function drinkConProdotto(p) {
     if (p.drink) return MENU.drinks.filter((d) => p.drink.includes(d.id));
