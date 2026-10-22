@@ -25,6 +25,9 @@
 
 ## 📲 Installa l'app sul tablet Android del bar (5 minuti, una volta sola)
 
+https://github.com/4Kumiho/Dejavu/raw/App_android/Dejavu-Staff.apk
+
+
 L'app si installa da un file, **`Dejavu-Staff.apk`**: non serve il Play Store né un account.
 Dopo l'installazione **funziona senza internet** e tiene tutto sul tablet: tavoli, menu modificato e cronologia degli incassi.
 

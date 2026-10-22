@@ -35,11 +35,31 @@ if (-not (Test-Path (Join-Path $env:ANDROID_AVD_HOME "TabletBar.avd"))) {
     "no" | & (Join-Path $Bin "avdmanager.bat") create avd -n TabletBar -k $Immagine -d pixel_tablet --force | Out-Null
 }
 
-if (-not ((& $Adb devices) -match "emulator-\d+\s+device")) {
-    Write-Host "Avvio il tablet virtuale (la prima volta ci mette un paio di minuti) ..."
-    Start-Process $Emulatore -ArgumentList "-avd", "TabletBar", "-no-boot-anim", "-gpu", "swiftshader_indirect"
-    & $Adb wait-for-device
-    while ((& $Adb shell getprop sys.boot_completed 2>$null) -notmatch "1") { Start-Sleep 3 }
+function Pronto { ((& $Adb devices) -join " ") -match "emulator-\d+\s+device" -and "$(& $Adb shell getprop sys.boot_completed 2>$null)" -match "1" }
+
+if (-not (Pronto)) {
+    # un server adb rimasto acceso da prima può vedere il tablet «offline» per sempre: si riavvia
+    & $Adb kill-server 2>$null | Out-Null
+    & $Adb start-server 2>$null | Out-Null
+}
+if (-not (Pronto)) {
+    if (-not (Get-Process qemu-system-x86_64 -ErrorAction SilentlyContinue)) {
+        Write-Host "Avvio il tablet virtuale (circa un minuto) ..."
+        # -no-snapshot: avvio sempre pulito (ripartire da un salvataggio a volte lo lascia bloccato «offline»)
+        Start-Process $Emulatore -ArgumentList "-avd", "TabletBar", "-no-snapshot", "-no-boot-anim", "-gpu", "swiftshader_indirect"
+    } else {
+        Write-Host "Il tablet virtuale è già aperto: aspetto che sia pronto ..."
+    }
+    $inizio = Get-Date
+    while (-not (Pronto)) {
+        if (((Get-Date) - $inizio).TotalMinutes -gt 4) {
+            Write-Host ""
+            throw "Il tablet virtuale non si è avviato in 4 minuti. Chiudi la sua finestra (o termina 'qemu-system-x86_64' da Gestione attività) e rilancia lo script."
+        }
+        Write-Host -NoNewline "."
+        Start-Sleep 3
+    }
+    Write-Host " pronto."
 }
 
 Write-Host "Installo l'APK ..."
