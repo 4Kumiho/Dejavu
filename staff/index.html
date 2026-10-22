@@ -58,6 +58,12 @@
   }
   .tabs a.on { color: var(--text); }
   .tabs a.on::after { content: ""; position: absolute; left: 16px; right: 16px; bottom: 4px; height: 2px; background: var(--accent); }
+  @media (max-width: 1180px) {
+    .tabs a { padding: 12px 10px; letter-spacing: .1em; }
+    .tabs a.on::after { left: 10px; right: 10px; }
+    .top .agg-btn .tx { display: none; }
+  }
+  @media (max-width: 900px) { .tabs .lungo { display: none; } }
 
   main { max-width: 1280px; margin: 0 auto; padding: 20px; }
   body.home main { max-width: none; padding: 0; }
@@ -156,6 +162,17 @@
   .hcard h3 { margin: 2px 0 0; font-size: 34px; line-height: 1; }
   .hcard .v { margin-top: auto; color: var(--muted); font-size: 14px; }
   .hcard .v b { color: var(--text); font-size: 20px; font-weight: 600; }
+
+  /* ---------- Visualizza menu ---------- */
+  .zoom { margin-left: auto; display: flex; gap: 8px; }
+  .zoom .btn { min-height: 48px; }
+  .zoom .zoom-v { min-width: 84px; padding: 0 12px; letter-spacing: .04em; font-size: 14px; }
+  .page-title .zoom .btn { margin-left: 0; }
+  .carta { display: flex; flex-direction: column; align-items: center; gap: 24px; padding-bottom: 24px; }
+  .carta img {
+    display: block; width: min(var(--pagina, 820px), 100%); height: auto; aspect-ratio: 1 / 1;
+    border-radius: 6px; border: 1px solid var(--line-2); background: var(--panel);
+  }
 
   /* ---------- Ricette ---------- */
   .rgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
@@ -428,6 +445,88 @@
     .dlg-actions { flex-wrap: wrap; }
   }
 
+  /* ---------- Cronologia ---------- */
+  .seg { display: flex; gap: 8px; flex-wrap: wrap; }
+  .seg button {
+    min-height: 48px; padding: 10px 18px; border-radius: 10px; border: 1px solid var(--line-2); background: transparent;
+    text-transform: uppercase; letter-spacing: .12em; font-size: 12px; font-weight: 700;
+  }
+  .seg button.on { background: var(--text); border-color: var(--text); color: var(--dv-black); }
+  .cr-periodo { display: flex; align-items: center; justify-content: space-between; gap: 4px 12px; flex-wrap: wrap; margin: 6px 0 10px; }
+  .cr-nav { display: flex; align-items: center; gap: 8px; }
+  .cr-nav .btn { min-height: 48px; }
+  .btn.icona { width: 48px; padding: 0; font-size: 24px; letter-spacing: 0; font-weight: 400; }
+  .cr-etichetta {
+    min-width: 260px; min-height: 48px; padding: 6px 16px; display: grid; place-items: center; text-align: center;
+    border: 1px solid var(--line); border-radius: 10px; background: var(--panel); font-weight: 700;
+  }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 16px; }
+  .stat { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  .stat .dv-caps { color: var(--muted); }
+  .stat b { font-family: var(--dv-serif); font-size: 36px; font-weight: 600; line-height: 1.05; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+  .stat b.lungo { font-size: 24px; }
+  .stat.main b { color: var(--accent); }
+  .stat small { color: var(--muted); font-size: 13px; line-height: 1.35; }
+  .cr-box { padding: 18px 20px; margin-bottom: 16px; }
+  .cr-box-h { display: flex; align-items: baseline; justify-content: space-between; gap: 6px 12px; flex-wrap: wrap; margin-bottom: 14px; }
+  .cr-box-h .hint { color: var(--muted); font-size: 12px; }
+  .graf { position: relative; height: 260px; margin: 8px 0 30px 64px; }
+  .graf-riga { position: absolute; left: 0; right: 0; height: 1px; background: var(--line); }
+  .graf-riga:first-child { background: var(--line-2); }
+  .graf-riga span { position: absolute; right: calc(100% + 10px); bottom: -7px; font-size: 11px; color: var(--muted); white-space: nowrap; }
+  .graf-col { position: absolute; inset: 0; display: flex; }
+  .graf-col button { flex: 1 1 0; min-width: 0; position: relative; border: none; background: none; padding: 0; }
+  .graf-col i {
+    position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: min(24px, 62%);
+    background: var(--accent); border-radius: 4px 4px 0 0; transition: background .15s;
+  }
+  .graf-col button.on i { background: var(--text); }
+  .graf-col span { position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%); font-size: 11px; color: var(--muted); white-space: nowrap; }
+  .graf-col button.on span { color: var(--text); }
+  .graf-col span.nascosta { visibility: hidden; }
+  .graf-tip {
+    position: absolute; top: -6px; z-index: 2; pointer-events: none; display: flex; flex-direction: column; gap: 2px;
+    background: var(--dv-coal); border: 1px solid var(--line-2); border-radius: 10px; padding: 10px 14px; white-space: nowrap;
+    box-shadow: 0 10px 30px rgba(0,0,0,.5);
+  }
+  .graf-tip small { color: var(--muted); font-size: 12px; }
+  .graf-tip b { font-size: 18px; }
+  .cr-riga {
+    width: 100%; display: flex; align-items: center; gap: 12px; padding: 8px 6px; min-height: 54px; text-align: left;
+    border: none; border-bottom: 1px solid var(--line); background: none;
+  }
+  .cr-riga:last-child { border-bottom: none; }
+  button.cr-riga:active { background: var(--panel-2); }
+  .cr-riga .pos { flex: none; width: 28px; text-align: right; color: var(--muted); font-weight: 700; font-variant-numeric: tabular-nums; }
+  .cr-riga .tile { width: 36px; height: 36px; font-size: 17px; margin: 0; }
+  .cr-riga .n { flex: 1 1 0; min-width: 0; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .cr-riga .i, .cr-riga .q { flex: none; color: var(--muted); font-size: 13px; }
+  .cr-riga .barra { flex: 0 1 26%; height: 8px; border-radius: 4px; background: var(--line); overflow: hidden; }
+  .cr-riga .barra i { display: block; height: 100%; background: var(--accent); border-radius: 4px; }
+  .cr-riga .v { flex: none; width: 96px; text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .cr-ordina { display: flex; align-items: center; gap: 8px; margin: -6px 0 14px; flex-wrap: wrap; }
+  .cr-ordina > span { color: var(--muted); font-size: 13px; margin-right: 4px; }
+  .cr-nota { color: var(--muted); font-size: 13px; margin: 12px 0 0; }
+  .cr-gruppo { margin-top: 24px; }
+  .cr-gruppo-h { display: flex; align-items: baseline; justify-content: space-between; gap: 4px 12px; flex-wrap: wrap; margin-bottom: 10px; }
+  .cr-gruppo-h h3 { margin: 0; font-size: 24px; }
+  .cr-gruppo-h span { color: var(--muted); }
+  .dlg h4.cr-sez {
+    margin: 22px 0 6px; display: flex; align-items: center; gap: 12px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: .22em; font-size: 11px; font-weight: 600;
+  }
+  .dlg h4.cr-sez::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .cr-tab td { font-size: 15px; }
+  .cr-tab td.q { text-align: right; color: var(--muted); font-size: 13px; white-space: nowrap; padding-right: 14px; }
+  .cr-tab td.pag { color: var(--muted); font-size: 13px; line-height: 1.4; }
+  .cr-tab td:last-child { color: var(--text); }
+  @media (max-width: 700px) {
+    .cr-nav { width: 100%; }
+    .cr-etichetta { min-width: 0; flex: 1; }
+    .cr-riga .barra, .cr-riga .i { display: none; }
+    .cr-riga .v { width: 80px; }
+  }
+
   /* ---------- Pulsante Aggiorna ---------- */
   .agg-btn {
     display: inline-flex; align-items: center; gap: 8px; flex: none;
@@ -457,7 +556,6 @@
   }
   .avviso span { flex: 1; }
   .avviso .btn { min-height: 44px; background: var(--dv-black); color: var(--text); border-color: var(--dv-black); }
-  .stato-ok { color: var(--accent); }
 
   /* ---------- Telefono ---------- */
   @media (max-width: 560px) {
@@ -467,9 +565,13 @@
     .brand img { width: 42px; height: 42px; }
     .brand span { display: none; }
     .top .agg-btn { padding: 9px 11px; }
-    .top .agg-btn .tx { display: none; }
-    .tabs a { padding: 12px 10px; letter-spacing: .12em; }
-    .tabs a.on::after { left: 10px; right: 10px; }
+    .zoom { width: 100%; }
+    .page-title .zoom .btn { width: auto; }
+    .page-title .zoom .btn.icona { width: 48px; flex: none; }
+    .page-title .zoom .zoom-v { flex: 1; }
+    .tabs { gap: 0; }
+    .tabs a { padding: 12px 6px; letter-spacing: .06em; font-size: 11px; }
+    .tabs a.on::after { left: 6px; right: 6px; }
     .page-title h2 { font-size: 30px; }
     .page-title .btn { width: 100%; }
     .hero-cards { gap: 10px; padding: 0 14px calc(12px + env(safe-area-inset-bottom)); margin-top: 24px; }
@@ -509,7 +611,9 @@
     <nav class="tabs">
       <a href="#tavoli" id="tabTavoli">Tavoli</a>
       <a href="#ricette" id="tabRicette">Ricette</a>
-      <a href="#menu" id="tabMenu">Menu</a>
+      <a href="#carta" id="tabCarta"><span class="lungo">Visualizza </span>menu</a>
+      <a href="#menu" id="tabMenu">Modifica<span class="lungo"> menu</span></a>
+      <a href="#cronologia" id="tabCronologia">Cronologia</a>
     </nav>
     <button class="agg-btn" data-action="aggiorna" aria-label="Controlla aggiornamenti"><span class="ic">↻</span><span class="tx">Aggiorna</span></button>
   </div>
@@ -530,103 +634,53 @@
   const euro = (cent) => fmt.format(cent / 100);
   const norm = (s) => String(s).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
   const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
-  /* Il menu ufficiale è shared/menu.json (pubblicato su GitHub). Ogni dispositivo ne tiene una copia
-     per funzionare offline e controlla spesso se ne è uscita una versione nuova. */
-  const MENU_URL = "../shared/menu.json";
-  const MENU_CACHE = "dejavu.staff.menu.cache.v1";
-  const TOKEN_KEY = "dejavu.staff.github.token";
-  const GH = D.github;
+  // Dentro l'app Android c'è il ponte verso il tablet (file di menu e cronologia, download, link esterni)
+  const APP = window.DejavuAndroid || null;
+  /* Il menu si modifica dall'app e resta salvato SU QUESTO DISPOSITIVO
+     (nell'app Android nel file dati/menu.json, con la copia .bak; nel browser nella sua memoria).
+     Al primo avvio si parte dal menu originale, shared/menu.json, che è dentro l'app. */
+  const MENU_ORIGINALE = "../shared/menu.json";
+  const MENU_KEY = "dejavu.staff.menu.cache.v1"; // nel browser: stesso nome di prima, così il menu in uso resta
   const clona = (o) => JSON.parse(JSON.stringify(o));
   const menuValido = (m) => !!(m && Array.isArray(m.categorie) && Array.isArray(m.drinks));
-  function leggiCacheMenu() {
-    try { const m = JSON.parse(localStorage.getItem(MENU_CACHE)); return menuValido(m) ? m : null; } catch { return null; }
+  function leggiMenuSalvato() {
+    try { const m = JSON.parse(APP ? APP.leggiDati("menu.json") : localStorage.getItem(MENU_KEY)); return menuValido(m) ? m : null; } catch { return null; }
   }
-  let MENU = leggiCacheMenu();
-  let menuNuovo = null;
-  function applicaMenu(m) {
-    MENU = m;
-    menuNuovo = null;
-    try { localStorage.setItem(MENU_CACHE, JSON.stringify(m)); } catch {}
-    nascondiAvviso();
-    if (!$("#overlay").classList.contains("open")) render();
-  }
-  async function scaricaMenu() {
-    const r = await fetch(`${MENU_URL}?t=${Date.now()}`, { cache: "no-store" });
+  let MENU = leggiMenuSalvato();
+  async function menuOriginale() {
+    const r = await fetch(`${MENU_ORIGINALE}?t=${Date.now()}`, { cache: "no-store" });
     if (!r.ok) throw new Error(r.status);
     const m = await r.json();
     if (!menuValido(m)) throw new Error("menu non valido");
     return m;
   }
-  // Controlla se online c'è un menu più recente di quello in uso
-  async function controllaMenu() {
-    try {
-      const m = await scaricaMenu();
-      if (!MENU) return applicaMenu(m);
-      if ((m.versione || "") > (MENU.versione || "")) {
-        menuNuovo = m;
-        mostraAvviso("menu");
-        // un menu nuovo può richiedere anche l'app nuova: controlla subito
-        if (navigator.serviceWorker && navigator.serviceWorker.getRegistration)
-          navigator.serviceWorker.getRegistration().then((r) => r && r.update()).catch(() => {});
-      }
-    } catch {}
+  // Salva il menu sul dispositivo e da subito si usa quello
+  function salvaMenu(nuovo) {
+    nuovo.versione = new Date().toISOString();
+    const testo = JSON.stringify(nuovo, null, 2);
+    let ok = false;
+    if (APP) ok = APP.scriviDati("menu.json", testo);
+    else { try { localStorage.setItem(MENU_KEY, testo); ok = true; } catch {} }
+    if (!ok) throw new Error("Non sono riuscito a salvare il menu sul dispositivo.");
+    MENU = nuovo;
   }
+  // la vecchia chiave di pubblicazione su GitHub non serve più: si toglie dal dispositivo
+  try { localStorage.removeItem("dejavu.staff.github.token"); } catch {}
 
-  /* ---------- Avviso "aggiorna" ---------- */
+  /* ---------- Avviso "nuova versione dell'app" ---------- */
   let avvisoTipo = null;
   function mostraAvviso(tipo) {
-    if (avvisoTipo === "app") return; // l'aggiornamento dell'app include già il menu
     avvisoTipo = tipo;
-    $("#avvisoTesto").textContent = tipo === "app"
-      ? "È disponibile una nuova versione dell'app."
-      : "Il menu è stato aggiornato.";
+    $("#avvisoTesto").textContent = "È disponibile una nuova versione dell'app.";
+    $("#avvisoBtn").textContent = tipo === "apk" ? "Scarica" : "Aggiorna";
     $("#avviso").classList.add("show");
   }
-  function nascondiAvviso() { avvisoTipo = null; $("#avviso").classList.remove("show"); }
   $("#avvisoBtn").addEventListener("click", () => {
-    if (avvisoTipo === "app") return location.reload();
-    if (menuNuovo) { applicaMenu(menuNuovo); toast("Menu aggiornato"); }
+    $("#avviso").classList.remove("show");
+    if (avvisoTipo === "apk") APP.apriLink(apkNuovo.url);
+    else location.reload();
+    avvisoTipo = null;
   });
-
-  /* ---------- Pubblicazione del menu su GitHub (solo con la chiave) ---------- */
-  const leggiToken = () => { try { return localStorage.getItem(TOKEN_KEY) || ""; } catch { return ""; } };
-  const ghApi = (path, opt = {}, token = leggiToken()) =>
-    fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}${path ? "/" + path : ""}`, {
-      ...opt,
-      cache: "no-store",
-      headers: { Accept: "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28", Authorization: `Bearer ${token}`, ...(opt.headers || {}) },
-    });
-  function aBase64(testo) {
-    const bytes = new TextEncoder().encode(testo);
-    let bin = "";
-    for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
-    return btoa(bin);
-  }
-  const daBase64 = (b) => new TextDecoder().decode(Uint8Array.from(atob(b.replace(/\s/g, "")), (c) => c.charCodeAt(0)));
-  async function pubblicaMenu(nuovo, messaggio) {
-    if (!leggiToken()) throw new Error("Su questo dispositivo manca la chiave di pubblicazione: Menu → Impostazioni.");
-    let r;
-    try { r = await ghApi(`contents/${GH.menuPath}?ref=${GH.branch}`); }
-    catch { throw new Error("Serve la connessione a internet per salvare le modifiche."); }
-    if (r.status === 401 || r.status === 403) throw new Error("La chiave di pubblicazione non è valida o è scaduta: Menu → Impostazioni.");
-    if (!r.ok) throw new Error(`Non riesco a leggere il menu online (errore ${r.status}).`);
-    const attuale = await r.json();
-    const remoto = JSON.parse(daBase64(attuale.content));
-    if ((remoto.versione || "") !== (MENU.versione || "")) {
-      applicaMenu(remoto);
-      throw new Error("Il menu è stato cambiato da un altro dispositivo: ho caricato la versione più recente, rifai la modifica.");
-    }
-    nuovo.versione = new Date().toISOString();
-    const put = await ghApi(`contents/${GH.menuPath}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: messaggio, content: aBase64(JSON.stringify(nuovo, null, 2) + "\n"), sha: attuale.sha, branch: GH.branch }),
-    });
-    if (put.status === 409 || put.status === 422) throw new Error("Il menu è stato cambiato da un altro dispositivo nello stesso momento: riprova.");
-    if (put.status === 401 || put.status === 403) throw new Error("La chiave non ha il permesso di modificare il menu: Menu → Impostazioni.");
-    if (!put.ok) throw new Error(`Salvataggio non riuscito (errore ${put.status}).`);
-    applicaMenu(nuovo);
-  }
 
   const drinkById = (id) => MENU.drinks.find((d) => d.id === id);
   const catNome = (id) => (MENU.categorie.find((c) => c.id === id) || {}).nome || "";
@@ -692,7 +746,7 @@
   function route() {
     const h = location.hash.slice(1);
     if (h.startsWith("tavolo/")) return { view: "tavolo", id: decodeURIComponent(h.slice(7)) };
-    if (h === "ricette" || h === "tavoli" || h === "menu" || h === "prodotti") return { view: h };
+    if (h === "ricette" || h === "tavoli" || h === "menu" || h === "prodotti" || h === "cronologia" || h === "carta") return { view: h };
     return { view: "home" };
   }
   function paneIniziale() {
@@ -707,12 +761,16 @@
     document.body.classList.toggle("home", r.view === "home");
     if (r.view !== "home") clearInterval(slideTimer);
     $("#tabRicette").classList.toggle("on", r.view === "ricette");
+    $("#tabCarta").classList.toggle("on", r.view === "carta");
     $("#tabMenu").classList.toggle("on", r.view === "menu");
+    $("#tabCronologia").classList.toggle("on", r.view === "cronologia");
     $("#tabTavoli").classList.toggle("on", r.view === "tavoli" || r.view === "tavolo");
     if (r.view === "home") return viewHome();
     if (r.view === "ricette") return viewRicette();
     if (r.view === "menu") return viewMenu();
     if (r.view === "prodotti") return viewProdotti();
+    if (r.view === "cronologia") return viewCronologia();
+    if (r.view === "carta") return viewCarta();
     if (r.view === "tavolo") {
       const t = tavoloById(r.id);
       if (!t) { location.replace("#tavoli"); return viewTavoli(); }
@@ -751,6 +809,7 @@
     slideIdx = 0;
     avviaSlide();
     const aperti = tavoli.reduce((s, t) => s + totale(t), 0);
+    const sera = stasera();
     const oggi = new Date().toLocaleDateString("it-IT", { weekday: "long", day: "numeric", month: "long" });
     $("#app").innerHTML = `
       <section class="hero">
@@ -770,7 +829,7 @@
               ? `<b>${tavoli.length}</b> ${tavoli.length === 1 ? "aperto" : "aperti"} · <b>${euro(aperti)}</b>`
               : "Nessun tavolo aperto"}</div>
           </a>
-          <button class="scroll-hint" data-action="scendi"><span class="dv-caps">Ricette e Menu</span><span class="freccia">↓</span></button>
+          <button class="scroll-hint" data-action="scendi"><span class="dv-caps">Ricette, Prodotti, Menu e Cronologia</span><span class="freccia">↓</span></button>
         </div>
       </section>
       <section class="home-more">
@@ -779,18 +838,59 @@
             <h3>Ricette</h3>
             <div class="v"><b>${ricette().length}</b> ricette · <b>${MENU.drinks.length}</b> voci di menu</div>
           </a>
-          <a class="hcard" href="#menu">
-            <span class="k dv-caps">Gestione</span>
-            <h3>Menu</h3>
-            <div class="v">Voci, prezzi e ricette</div>
-          </a>
-          <a class="hcard wide" href="#prodotti">
+          <a class="hcard" href="#prodotti">
             <span class="k dv-caps">Bottigliera</span>
             <h3>I nostri Prodotti</h3>
             <div class="v"><b>${bottiglie().length}</b> bottiglie e materie prime</div>
           </a>
+          <a class="hcard" href="#carta">
+            <span class="k dv-caps">Menu cartaceo</span>
+            <h3>Visualizza menu</h3>
+            <div class="v">Il menu del locale · <b>${pagineCarta.length}</b> pagine</div>
+          </a>
+          <a class="hcard" href="#menu">
+            <span class="k dv-caps">Gestione</span>
+            <h3>Modifica menu</h3>
+            <div class="v">Voci, prezzi e ricette</div>
+          </a>
+          <a class="hcard wide" href="#cronologia">
+            <span class="k dv-caps">Titolare</span>
+            <h3>Cronologia</h3>
+            <div class="v">${sera.cent ? `Stasera <b>${euro(sera.cent)}</b> incassati` : "Serate, incassi, prodotti più venduti"}</div>
+          </a>
       </section>`;
     requestAnimationFrame(() => requestAnimationFrame(() => mostraSlide(0)));
+  }
+
+  /* ---------- Visualizza menu: le pagine del menu cartaceo, una sotto l'altra, con lo zoom ---------- */
+  const pagineCarta = [].concat(D.menuCartaceo || []);
+  const LIVELLI_ZOOM = [0.5, 0.65, 0.8, 1, 1.25, 1.5];
+  const ZOOM_KEY = "dejavu.staff.zoom-menu";
+  let zoomCarta = (() => { try { const z = +localStorage.getItem(ZOOM_KEY); return z >= 0 && z < LIVELLI_ZOOM.length && localStorage.getItem(ZOOM_KEY) !== null ? z : 3; } catch { return 3; } })();
+  function viewCarta() {
+    $("#app").innerHTML = `
+      <div class="page-title">
+        <h2>Menu del locale</h2>
+        <span class="sub">${pagineCarta.length} pagine</span>
+        <div class="zoom">
+          <button class="btn icona" data-action="zoom" data-passo="-1" aria-label="Rimpicciolisci">−</button>
+          <button class="btn zoom-v" data-action="zoom" data-passo="0" aria-label="Zoom normale"></button>
+          <button class="btn icona" data-action="zoom" data-passo="1" aria-label="Ingrandisci">+</button>
+        </div>
+      </div>
+      ${pagineCarta.length
+        ? `<div class="carta">${pagineCarta.map((f, i) => `<img src="${esc(f)}" alt="Pagina ${i + 1} del menu" loading="${i < 2 ? "eager" : "lazy"}">`).join("")}</div>`
+        : `<div class="empty"><div class="big">📄</div>Il menu cartaceo non è incluso in questa versione dell'app.</div>`}`;
+    applicaZoom();
+  }
+  function applicaZoom() {
+    // larghezza di una pagina: 820 px al 100%, mai più larga dello schermo
+    document.documentElement.style.setProperty("--pagina", `${Math.round(820 * LIVELLI_ZOOM[zoomCarta])}px`);
+    const v = $(".zoom-v");
+    if (!v) return;
+    v.textContent = `${Math.round(LIVELLI_ZOOM[zoomCarta] * 100)}%`;
+    document.querySelector('[data-action=zoom][data-passo="-1"]').disabled = zoomCarta === 0;
+    document.querySelector('[data-action=zoom][data-passo="1"]').disabled = zoomCarta === LIVELLI_ZOOM.length - 1;
   }
 
   /* ---------- Ricette ---------- */
@@ -1215,22 +1315,20 @@
 
   /* ---------- Gestione menu (modifiche salvate sul dispositivo) ---------- */
   function viewMenu() {
-    const conChiave = !!leggiToken();
     const agg = MENU.versione && MENU.versione > "2026-10-16"
       ? new Date(MENU.versione).toLocaleString("it-IT", { day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" }) : "";
     $("#app").innerHTML = `
       <div class="page-title">
-        <h2>Menu</h2>
-        <span class="sub">${MENU.drinks.length} voci${agg ? ` · aggiornato il ${esc(agg)}` : ""}</span>
+        <h2>Modifica menu</h2>
+        <span class="sub">${MENU.drinks.length} voci${agg ? ` · modificato il ${esc(agg)}` : ""}</span>
         <button class="btn primary" data-action="me-nuova">+ Nuova voce</button>
       </div>
-      ${conChiave ? "" : `<div class="banner"><span>Le modifiche al menu vengono pubblicate su <b>tutti i dispositivi</b>.
-        Per salvarle, su questo dispositivo serve la <b>chiave di pubblicazione</b> (solo proprietario / responsabile).</span>
-        <button class="btn accent" data-action="me-impostazioni">Inserisci chiave</button></div>`}
       <div class="me-tools">
         <button class="btn" data-action="me-categorie">Categorie</button>
         <button class="btn" data-action="me-esporta">Scarica copia</button>
-        <button class="btn" data-action="me-impostazioni">Impostazioni${conChiave ? " ✓" : ""}</button>
+        <button class="btn" data-action="me-carica">Carica copia</button>
+        <button class="btn" data-action="me-originale">Ripristina originale</button>
+        <input type="file" id="meFile" accept=".json,application/json" hidden>
       </div>
       <input class="search" id="meQ" type="search" placeholder="Cerca una voce…" value="${esc(ui.meQ)}" autocomplete="off">
       <div class="chips" id="meChips"></div>
@@ -1375,15 +1473,13 @@
     const nuovo = clona(MENU);
     nuovo.drinks = lista;
     const btn = f.querySelector("[type=submit]");
-    btn.disabled = true; btn.textContent = "Pubblico…";
     try {
-      await pubblicaMenu(nuovo, `Menu: ${vecchia ? "modificato" : "aggiunto"} «${nome}»`);
+      salvaMenu(nuovo);
     } catch (err) {
-      btn.disabled = false; btn.textContent = "Salva";
       return errore(err.message);
     }
     chiudiFinestra(null);
-    toast(vecchia ? `Salvato «${nome}» per tutti` : `Aggiunto «${nome}» per tutti`);
+    toast(vecchia ? `Salvato «${nome}»` : `Aggiunto «${nome}»`);
     if (route().view === "menu") viewMenu();
   }
 
@@ -1412,7 +1508,7 @@
       </form>`);
     finestraBloccata = true;
     apriCategorie.riga = riga;
-    $("#catForm").addEventListener("submit", async (e) => {
+    $("#catForm").addEventListener("submit", (e) => {
       e.preventDefault();
       const nuove = [];
       for (const r of document.querySelectorAll("#eCat .erow")) {
@@ -1424,72 +1520,55 @@
       }
       const nuovo = clona(MENU);
       nuovo.categorie = nuove;
-      const btn = $("#catForm [type=submit]");
-      btn.disabled = true; btn.textContent = "Pubblico…";
-      try { await pubblicaMenu(nuovo, "Menu: categorie aggiornate"); }
-      catch (err) { btn.disabled = false; btn.textContent = "Salva"; $("#catErr").textContent = err.message; return; }
+      try { salvaMenu(nuovo); }
+      catch (err) { $("#catErr").textContent = err.message; return; }
       chiudiFinestra(null);
-      toast("Categorie salvate per tutti");
+      toast("Categorie salvate");
       if (route().view === "menu") viewMenu();
     });
   }
 
-  async function esportaMenu() {
-    const dati = { app: "dejavu-staff", tipo: "menu", esportato: new Date().toISOString(), categorie: MENU.categorie, drinks: MENU.drinks };
-    const nome = `menu-dejavu-${new Date().toISOString().slice(0, 10)}.json`;
-    const blob = new Blob([JSON.stringify(dati, null, 2)], { type: "application/json" });
+  function esportaMenu() {
+    const dati = { app: "dejavu-staff", tipo: "menu", esportato: new Date().toISOString(), ...MENU };
+    return salvaFileJson(`menu-dejavu-${new Date().toISOString().slice(0, 10)}.json`, dati, "Menu Déjà Vu");
+  }
+  // Nell'app Android il file va nella cartella Download del tablet; nel browser si condivide o si scarica
+  async function salvaFileJson(nome, dati, titolo) {
+    const testo = JSON.stringify(dati, null, 2);
+    if (APP) {
+      const dove = APP.salvaFile(nome, testo);
+      return dove ? messaggio("Copia salvata", `Il file <b>${esc(nome)}</b> è nella cartella <b>${esc(dove)}</b> del tablet.`)
+                  : messaggio("Copia non salvata", "Non sono riuscito a salvare il file sul tablet.");
+    }
+    const blob = new Blob([testo], { type: "application/json" });
     try {
       const file = new File([blob], nome, { type: "application/json" });
-      if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], title: "Menu Déjà Vu" }); return; }
+      if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], title: titolo }); return; }
     } catch (err) { if (err && err.name === "AbortError") return; }
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob); a.download = nome;
     document.body.appendChild(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(a.href), 5000);
   }
-  function apriImpostazioni() {
-    const t = leggiToken();
-    apriFinestra(`
-      <button class="close" data-action="chiudi-finestra" aria-label="Chiudi">✕</button>
-      <form class="dlg editor" id="keyForm" autocomplete="off">
-        <h3>Chiave di pubblicazione</h3>
-        <p>Serve per salvare le modifiche al menu e mandarle a tutti i dispositivi.
-          Inseriscila solo sui dispositivi del proprietario o del responsabile.</p>
-        <p>Stato: ${t ? `<b class="stato-ok">chiave inserita ✓</b>` : "<b>nessuna chiave</b>"}</p>
-        <label>Chiave GitHub (inizia con github_pat_)<input name="token" type="password" placeholder="${t ? "•••••• (lascia vuoto per non cambiarla)" : "github_pat_…"}" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
-        <p class="hint">Come crearla: su github.com, account <b>${esc(GH.owner)}</b> → Settings → Developer settings →
-          Personal access tokens → Fine-grained tokens → Generate new token. Repository: solo <b>${esc(GH.repo)}</b>.
-          Permessi: <b>Contents → Read and write</b>. Le istruzioni passo passo sono nel README.</p>
-        <div class="err" id="keyErr"></div>
-        <div class="dlg-actions">
-          ${t ? `<button type="button" class="btn danger" data-action="me-chiave-rimuovi">Rimuovi chiave</button><span class="spacer"></span>` : ""}
-          <button type="button" class="btn" data-action="chiudi-finestra">Annulla</button>
-          <button type="submit" class="btn primary">Verifica e salva</button>
-        </div>
-      </form>`);
-    finestraBloccata = true;
-    $("#keyForm").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const nuovo = e.target.elements.token.value.trim();
-      if (!nuovo) return chiudiFinestra(null);
-      const btn = e.target.querySelector("[type=submit]");
-      btn.disabled = true; btn.textContent = "Verifico…";
-      let ok = false, msg = "";
-      try {
-        const r = await ghApi(`contents/${GH.menuPath}?ref=${GH.branch}`, {}, nuovo);
-        const repo = r.ok ? await (await ghApi("", {}, nuovo)).json() : null;
-        ok = r.ok && repo && repo.permissions && repo.permissions.push;
-        if (r.status === 401) msg = "Chiave non valida o scaduta.";
-        else if (!r.ok) msg = `La chiave non può leggere il repository ${GH.repo} (errore ${r.status}).`;
-        else if (!ok) msg = "La chiave può leggere ma non modificare: serve il permesso Contents → Read and write.";
-      } catch { msg = "Serve la connessione a internet per verificare la chiave."; }
-      if (!ok) { btn.disabled = false; btn.textContent = "Verifica e salva"; $("#keyErr").textContent = msg; return; }
-      try { localStorage.setItem(TOKEN_KEY, nuovo); } catch {}
-      chiudiFinestra(null);
-      toast("Chiave salvata: ora puoi modificare il menu");
-      if (route().view === "menu") viewMenu();
+  // «Carica copia»: rimette un menu salvato con «Scarica copia»
+  document.addEventListener("change", async (e) => {
+    if (e.target.id !== "meFile" || !e.target.files.length) return;
+    const file = e.target.files[0];
+    let m;
+    try { m = JSON.parse(await file.text()); } catch { m = null; }
+    if (!menuValido(m)) return messaggio("File non valido", `<b>${esc(file.name)}</b> non è una copia del menu.`);
+    const ok = await conferma({
+      titolo: "Caricare questa copia del menu?",
+      testo: `Il menu attuale viene sostituito con quello di <b>${esc(file.name)}</b> (${m.drinks.length} voci).`,
+      ok: "Carica",
     });
-  }
+    if (!ok) return;
+    const nuovo = { gruppi: m.gruppi || MENU.gruppi || [], categorie: m.categorie, drinks: m.drinks, prodotti: MENU.prodotti || [] };
+    try { salvaMenu(nuovo); }
+    catch (err) { return messaggio("Menu non caricato", esc(err.message)); }
+    toast("Menu caricato");
+    viewMenu();
+  });
 
   document.addEventListener("click", async (e) => {
     const b = e.target.closest("[data-action^='me-']");
@@ -1512,11 +1591,10 @@
         const voce = MENU.drinks.find((x) => x.id === id);
         const nuovo = clona(MENU);
         nuovo.drinks = nuovo.drinks.filter((x) => x.id !== id);
-        b.disabled = true; b.textContent = "Pubblico…";
-        try { await pubblicaMenu(nuovo, `Menu: eliminato «${voce ? voce.nome : id}»`); }
-        catch (err) { b.disabled = false; b.textContent = "Elimina voce"; b.classList.remove("fill"); $("#meErr").textContent = err.message; return; }
+        try { salvaMenu(nuovo); }
+        catch (err) { b.textContent = "Elimina voce"; b.classList.remove("fill"); $("#meErr").textContent = err.message; return; }
         chiudiFinestra(null);
-        toast(`Eliminato «${voce ? voce.nome : ""}» per tutti`);
+        toast(`Eliminato «${voce ? voce.nome : ""}»`);
         return viewMenu();
       }
       case "me-categorie": return apriCategorie();
@@ -1531,13 +1609,18 @@
       }
       case "me-cat-del": return b.closest(".erow").remove();
       case "me-esporta": return esportaMenu();
-      case "me-impostazioni": return apriImpostazioni();
-      case "me-chiave-rimuovi": {
-        try { localStorage.removeItem(TOKEN_KEY); } catch {}
-        chiudiFinestra(null);
-        toast("Chiave rimossa da questo dispositivo");
-        if (route().view === "menu") viewMenu();
-        return;
+      case "me-carica": $("#meFile").value = ""; return $("#meFile").click();
+      case "me-originale": {
+        const ok = await conferma({
+          titolo: "Ripristinare il menu originale?",
+          testo: "Tutte le modifiche fatte al menu (prezzi, voci nuove, voci tolte) vengono perse.<br>Prima puoi salvarle con <b>Scarica copia</b>.",
+          ok: "Ripristina", pericolo: true,
+        });
+        if (!ok) return;
+        try { salvaMenu(await menuOriginale()); }
+        catch (err) { return messaggio("Menu non ripristinato", esc(err.message)); }
+        toast("Menu originale ripristinato");
+        return viewMenu();
       }
     }
   });
@@ -1557,6 +1640,12 @@
       case "finestra-ok": return chiudiFinestra(true);
       case "ric-cat": ui.ricCat = b.dataset.cat; ui.ricQ = ""; $("#ricQ").value = ""; return listaRicette();
       case "apri-ricetta": return apriRicetta(b.dataset.id);
+      case "zoom": {
+        const passo = +b.dataset.passo;
+        zoomCarta = passo ? Math.max(0, Math.min(LIVELLI_ZOOM.length - 1, zoomCarta + passo)) : 3;
+        try { localStorage.setItem(ZOOM_KEY, String(zoomCarta)); } catch {}
+        return applicaZoom();
+      }
       case "prod-tipo": ui.prodTipo = b.dataset.tipo; ui.prodQ = ""; $("#prodQ").value = ""; return listaProdotti();
       case "apri-prodotto": return apriProdotto(b.dataset.id);
       case "slide": mostraSlide(+b.dataset.i); return avviaSlide();
@@ -1662,6 +1751,7 @@
       case "pay-conferma": {
         if (!pay) return;
         const incassato = t.righe.reduce((s, x) => s + (pay[x.id] || 0) * x.prezzoCent, 0);
+        registraIncasso(t, t.righe.map((x) => ({ ...x, qty: pay[x.id] || 0 })));
         t.righe.forEach((x) => (x.qty -= pay[x.id] || 0));
         t.righe = t.righe.filter((x) => x.qty > 0);
         ui.pagamento = null;
@@ -1684,18 +1774,487 @@
           ok: tot ? `Pagato ${euro(tot)} · Chiudi` : "Chiudi tavolo",
           pericolo: true,
         });
-        if (ok) eliminaTavolo(t);
+        if (!ok) return;
+        registraIncasso(t, t.righe); // «Chiudi tavolo» = ha pagato tutto quello che resta
+        eliminaTavolo(t);
         return;
       }
     }
   });
 
+  /* ---------- Incassi e cronologia ----------
+     Ogni incasso (Paga separato → Incassa, oppure Chiudi tavolo = pagato tutto) resta nel tavolo
+     in t.incassi; quando il tavolo si chiude passa nella cronologia. */
+  function registraIncasso(t, righe) {
+    const pagate = righe.filter((r) => r.qty > 0).map((r) => {
+      const d = r.drinkId ? drinkById(r.drinkId) : null;
+      return { drinkId: r.drinkId || null, nome: r.nome, categoria: d ? d.categoria : "", prezzoCent: r.prezzoCent, qty: r.qty };
+    });
+    if (!pagate.length) return;
+    if (!t.incassi) t.incassi = [];
+    t.incassi.push({ ts: Date.now(), cent: pagate.reduce((n, r) => n + r.qty * r.prezzoCent, 0), righe: pagate });
+    salva();
+  }
+
   function eliminaTavolo(t) {
+    // nella cronologia finiscono i tavoli che hanno pagato qualcosa
+    if (t.incassi && t.incassi.length) {
+      const voce = { id: t.id, nome: t.nome, aperto: t.creato, chiuso: Date.now(), incassi: t.incassi };
+      if (archivio.archivia(voce)) Crono.aggiungi(voce);
+      else alert("Attenzione: il tavolo è chiuso, ma non sono riuscito a salvarlo nella cronologia.");
+    }
     tavoli = tavoli.filter((x) => x.id !== t.id);
     salva();
     toast(`Tavolo «${t.nome}» chiuso`);
     location.hash = "#tavoli";
   }
+
+  /* ---------- Archivio della cronologia ----------
+     App Android: un file per mese sul tablet (cronologia/AAAA-MM.json, con la copia .bak), come Reef.
+     Browser: nella memoria del browser, una chiave per mese. */
+  const CRONO_KEY = "dejavu.staff.cronologia.";
+  const archivio = APP ? {
+    leggi() { try { const v = JSON.parse(APP.leggiCronologia()); return Array.isArray(v) ? v : []; } catch { return []; } },
+    archivia: (voce) => APP.archivia(JSON.stringify(voce)),
+    elimina: (id) => APP.eliminaDaCronologia(id),
+  } : {
+    mesi() { try { return Object.keys(localStorage).filter((k) => k.startsWith(CRONO_KEY)).sort(); } catch { return []; } },
+    lista(k) { try { const l = JSON.parse(localStorage.getItem(k)); return Array.isArray(l) ? l : []; } catch { return []; } },
+    leggi() { return this.mesi().flatMap((k) => this.lista(k)); },
+    archivia(voce) {
+      const d = new Date(voce.chiuso);
+      const k = CRONO_KEY + d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0");
+      try { localStorage.setItem(k, JSON.stringify([...this.lista(k), voce])); return true; } catch { return false; }
+    },
+    elimina(id) {
+      for (const k of this.mesi()) {
+        const l = this.lista(k), nuova = l.filter((v) => v.id !== id);
+        if (nuova.length === l.length) continue;
+        try { localStorage.setItem(k, JSON.stringify(nuova)); return true; } catch { return false; }
+      }
+      return false;
+    },
+  };
+  let vociCrono = null; // tavoli chiusi, letti la prima volta che servono
+  const Crono = {
+    voci: () => vociCrono || (vociCrono = archivio.leggi()),
+    aggiungi: (v) => { if (vociCrono) vociCrono.push(v); },
+    elimina: (id) => {
+      if (!archivio.elimina(id)) return false;
+      if (vociCrono) vociCrono = vociCrono.filter((v) => v.id !== id);
+      return true;
+    },
+  };
+
+  /* ---------- Cronologia: tavoli chiusi, incassi per serata, prodotti più venduti ----------
+     Una «serata» va dalle 8:00 alle 7:59 del giorno dopo: un tavolo pagato all'1:30 di notte conta
+     nella serata del giorno prima. Contano anche gli incassi dei tavoli ancora aperti. */
+  const ORA_CAMBIO = 8;
+  const cr = {
+    pagina: "serate",   // serate | prodotti | tavoli
+    tipo: "settimana",  // serata | settimana | mese | anno | tutto
+    rif: Date.now(),    // un momento dentro il periodo scelto
+    cerca: "", ordine: "pezzi", gruppo: "",
+    barre: [], apribile: false, barra: -1, // grafico: colonna toccata
+  };
+  // la serata di un istante, come data a mezzanotte (es. venerdì 17 per l'1:30 di sabato 18)
+  const giornoSerata = (ts) => { const d = new Date(ts - ORA_CAMBIO * 3600000); return new Date(d.getFullYear(), d.getMonth(), d.getDate()); };
+  const chiaveG = (d) => d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
+  const serataDi = (ts) => chiaveG(giornoSerata(ts));
+  const daChiave = (k) => new Date(Math.floor(k / 10000), Math.floor(k / 100) % 100 - 1, k % 100);
+  const piuGiorni = (d, n) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
+  const mezzogiorno = (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate(), 12).getTime();
+  const dataIt = (d, opt) => d.toLocaleDateString("it-IT", opt);
+  const maiuscola = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+  const plurale = (n, uno, tanti) => `${n} ${n === 1 ? uno : tanti}`;
+  const oraIt = (ts) => new Date(ts).toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit" });
+  function durata(ms) {
+    const min = Math.max(0, Math.round(ms / 60000));
+    return min < 60 ? `${min} min` : `${Math.floor(min / 60)} h ${min % 60} min`;
+  }
+
+  function intervallo() {
+    const b = giornoSerata(cr.rif);
+    if (cr.tipo === "serata") return { da: b, a: b };
+    if (cr.tipo === "settimana") { const lun = piuGiorni(b, -((b.getDay() + 6) % 7)); return { da: lun, a: piuGiorni(lun, 6) }; }
+    if (cr.tipo === "mese") return { da: new Date(b.getFullYear(), b.getMonth(), 1), a: new Date(b.getFullYear(), b.getMonth() + 1, 0) };
+    if (cr.tipo === "anno") return { da: new Date(b.getFullYear(), 0, 1), a: new Date(b.getFullYear(), 11, 31) };
+    const tutti = tuttiIncassi();
+    return { da: tutti.length ? daChiave(tutti[0].s) : b, a: giornoSerata(Date.now()) };
+  }
+  const dentro = (k, iv) => k >= chiaveG(iv.da) && k <= chiaveG(iv.a);
+  function spostaPeriodo(n) {
+    const b = giornoSerata(cr.rif);
+    let d;
+    if (cr.tipo === "serata") d = piuGiorni(b, n);
+    else if (cr.tipo === "settimana") d = piuGiorni(b, 7 * n);
+    else if (cr.tipo === "mese") d = new Date(b.getFullYear(), b.getMonth() + n, 1);
+    else if (cr.tipo === "anno") d = new Date(b.getFullYear() + n, 0, 1);
+    else return;
+    cr.rif = mezzogiorno(d);
+  }
+  function apriSerata(k) { cr.tipo = "serata"; cr.rif = mezzogiorno(daChiave(k)); }
+  const puoAvanti = () => cr.tipo !== "tutto" && chiaveG(intervallo().a) < serataDi(Date.now());
+  function etichettaSerata(k) {
+    const nome = maiuscola(dataIt(daChiave(k), { weekday: "long", day: "numeric", month: "long", year: "numeric" }));
+    return k === serataDi(Date.now()) ? nome + " · stasera" : k === serataDi(Date.now() - 86400000) ? nome + " · ieri" : nome;
+  }
+  function etichettaPeriodo() {
+    const iv = intervallo();
+    if (cr.tipo === "serata") return etichettaSerata(chiaveG(iv.da));
+    if (cr.tipo === "settimana") {
+      const stessoMese = iv.da.getMonth() === iv.a.getMonth();
+      return dataIt(iv.da, stessoMese ? { day: "numeric" } : { day: "numeric", month: "long" }) + " – " + dataIt(iv.a, { day: "numeric", month: "long", year: "numeric" });
+    }
+    if (cr.tipo === "mese") return maiuscola(dataIt(iv.da, { month: "long", year: "numeric" }));
+    if (cr.tipo === "anno") return String(iv.da.getFullYear());
+    return "Tutto il periodo";
+  }
+
+  // tutti gli incassi (tavoli chiusi + tavoli ancora aperti), in ordine di tempo; s = serata
+  function tuttiIncassi() {
+    const out = [];
+    const da = (t, aperto) => (t.incassi || []).forEach((i) => out.push({ ts: i.ts, s: serataDi(i.ts), cent: i.cent, righe: i.righe, tavolo: t, aperto }));
+    Crono.voci().forEach((v) => da(v, false));
+    tavoli.forEach((t) => da(t, true));
+    return out.sort((x, y) => x.ts - y.ts);
+  }
+  function incassiPeriodo() { const iv = intervallo(); return tuttiIncassi().filter((i) => dentro(i.s, iv)); }
+  const totaleTavolo = (v) => (v.incassi || []).reduce((n, i) => n + i.cent, 0);
+  const pezziTavolo = (v) => (v.incassi || []).reduce((n, i) => n + i.righe.reduce((m, r) => m + r.qty, 0), 0);
+
+  function riepilogo(inc) {
+    const tav = {}, serate = {}, ore = {};
+    let cent = 0, migliore = null, punta = null;
+    inc.forEach((i) => {
+      cent += i.cent;
+      tav[i.tavolo.id] = true;
+      serate[i.s] = (serate[i.s] || 0) + i.cent;
+      const h = new Date(i.ts).getHours();
+      ore[h] = (ore[h] || 0) + i.cent;
+    });
+    Object.keys(serate).forEach((k) => { if (!migliore || serate[k] > migliore.cent) migliore = { k: +k, cent: serate[k] }; });
+    Object.keys(ore).forEach((h) => { if (!punta || ore[h] > punta.cent) punta = { h: +h, cent: ore[h] }; });
+    const nT = Object.keys(tav).length, nS = Object.keys(serate).length;
+    return {
+      cent, tavoli: nT, serate: nS, migliore, punta,
+      mediaTavolo: nT ? Math.round(cent / nT) : 0, mediaSerata: nS ? Math.round(cent / nS) : 0,
+    };
+  }
+  // colonne del grafico: per ora (serata), per serata (settimana, mese), per mese (anno, tutto)
+  function serie(inc) {
+    const iv = intervallo();
+    const barre = [];
+    if (cr.tipo === "serata") {
+      for (let k = 0; k < 24; k++) {
+        const h = String((ORA_CAMBIO + k) % 24).padStart(2, "0");
+        barre.push({ etichetta: String(+h), titolo: `${h}:00 – ${h}:59`, cent: 0 });
+      }
+      inc.forEach((i) => { barre[(new Date(i.ts).getHours() - ORA_CAMBIO + 24) % 24].cent += i.cent; });
+      return { titolo: "Incasso per ora", barre };
+    }
+    const pos = {};
+    if (cr.tipo === "settimana" || cr.tipo === "mese") {
+      for (let d = iv.da; d <= iv.a; d = piuGiorni(d, 1)) {
+        pos[chiaveG(d)] = barre.length;
+        barre.push({
+          etichetta: cr.tipo === "settimana" ? dataIt(d, { weekday: "short", day: "numeric" }) : String(d.getDate()),
+          titolo: etichettaSerata(chiaveG(d)), cent: 0, serata: chiaveG(d),
+        });
+      }
+      inc.forEach((i) => { if (pos[i.s] !== undefined) barre[pos[i.s]].cent += i.cent; });
+      return { titolo: "Incasso per serata", barre };
+    }
+    for (let m = new Date(iv.da.getFullYear(), iv.da.getMonth(), 1); m <= iv.a; m = new Date(m.getFullYear(), m.getMonth() + 1, 1)) {
+      pos[m.getFullYear() * 100 + m.getMonth()] = barre.length;
+      barre.push({
+        etichetta: dataIt(m, cr.tipo === "anno" ? { month: "short" } : { month: "short", year: "2-digit" }),
+        titolo: maiuscola(dataIt(m, { month: "long", year: "numeric" })), cent: 0,
+      });
+    }
+    inc.forEach((i) => {
+      const d = daChiave(i.s), p = pos[d.getFullYear() * 100 + d.getMonth()];
+      if (p !== undefined) barre[p].cent += i.cent;
+    });
+    return { titolo: "Incasso per mese", barre };
+  }
+  function classificaSerate(inc) {
+    const m = {};
+    inc.forEach((i) => {
+      if (!m[i.s]) m[i.s] = { k: i.s, cent: 0, tavoli: {} };
+      m[i.s].cent += i.cent;
+      m[i.s].tavoli[i.tavolo.id] = true;
+    });
+    return Object.values(m).map((x) => ({ k: x.k, cent: x.cent, tavoli: Object.keys(x.tavoli).length })).sort((a, b) => b.cent - a.cent);
+  }
+  // tavoli chiusi del periodo (per serata di apertura), raggruppati per serata, dal più recente
+  function gruppiTavoli() {
+    const iv = intervallo();
+    const q = norm(cr.cerca.trim());
+    const scelti = Crono.voci().filter((v) => {
+      if (!dentro(serataDi(v.aperto), iv)) return false;
+      if (!q) return true;
+      return norm(v.nome).includes(q) || v.incassi.some((i) => i.righe.some((r) => norm(r.nome).includes(q)));
+    }).sort((a, b) => b.chiuso - a.chiuso);
+    const gruppi = [];
+    scelti.forEach((v) => {
+      const s = serataDi(v.aperto);
+      let g = gruppi[gruppi.length - 1];
+      if (!g || g.k !== s) gruppi.push((g = { k: s, tavoli: [], cent: 0 }));
+      g.tavoli.push(v);
+      g.cent += totaleTavolo(v);
+    });
+    return gruppi;
+  }
+  // prodotti presi da un tavolo, sommando i suoi pagamenti
+  function prodottiTavolo(v) {
+    const m = new Map();
+    (v.incassi || []).forEach((i) => i.righe.forEach((r) => {
+      const k = r.nome + "|" + r.prezzoCent;
+      if (!m.has(k)) m.set(k, { nome: r.nome, prezzoCent: r.prezzoCent, qty: 0 });
+      m.get(k).qty += r.qty;
+    }));
+    return [...m.values()];
+  }
+  const gruppoDi = (cat) => (gruppi().find((g) => g.categorie.includes(cat)) || {}).id || "";
+  function prodottiVenduti() {
+    const m = {};
+    incassiPeriodo().forEach((i) => i.righe.forEach((r) => {
+      const cat = r.categoria || ((r.drinkId && drinkById(r.drinkId)) || {}).categoria || "";
+      if (cr.gruppo && gruppoDi(cat) !== cr.gruppo) return;
+      if (!m[r.nome]) m[r.nome] = { nome: r.nome, drinkId: r.drinkId, qty: 0, cent: 0 };
+      m[r.nome].qty += r.qty;
+      m[r.nome].cent += r.qty * r.prezzoCent;
+    }));
+    const k = cr.ordine === "incasso" ? "cent" : "qty";
+    return Object.values(m).sort((a, b) => b[k] - a[k] || b.cent - a.cent || a.nome.localeCompare(b.nome));
+  }
+  // voci del menu mai vendute nel periodo (rispettando il filtro per gruppo)
+  function maiVenduti(venduti) {
+    const ids = new Set(venduti.map((p) => p.drinkId).filter(Boolean));
+    return MENU.drinks.filter((d) => !ids.has(d.id) && (!cr.gruppo || gruppoDi(d.categoria) === cr.gruppo));
+  }
+  function stasera() {
+    const oggi = serataDi(Date.now()), tav = new Set();
+    let cent = 0;
+    tuttiIncassi().forEach((i) => { if (i.s === oggi) { cent += i.cent; tav.add(i.tavolo.id); } });
+    return { cent, tavoli: tav.size };
+  }
+
+  /* ---------- Cronologia: pagine ---------- */
+  function viewCronologia() {
+    const pagine = [["serate", "Serate"], ["prodotti", "Prodotti più venduti"], ["tavoli", "Tavoli chiusi"]];
+    const tipi = [["serata", "Serata"], ["settimana", "Settimana"], ["mese", "Mese"], ["anno", "Anno"], ["tutto", "Tutto"]];
+    $("#app").innerHTML = `
+      <div class="page-title">
+        <h2>Cronologia</h2>
+        <span class="sub">le serate vanno dalle ${ORA_CAMBIO}:00 alle ${ORA_CAMBIO - 1}:59 del giorno dopo</span>
+        <button class="btn" data-action="cr-esporta">Scarica copia</button>
+      </div>
+      <div class="seg">${pagine.map(([id, t]) => `<button class="${cr.pagina === id ? "on" : ""}" data-action="cr-pagina" data-p="${id}">${t}</button>`).join("")}</div>
+      <div class="cr-periodo">
+        <div class="chips">${tipi.map(([id, t]) => `<button class="chip ${cr.tipo === id ? "on" : ""}" data-action="cr-tipo" data-t="${id}">${t}</button>`).join("")}</div>
+        <div class="cr-nav">
+          <button class="btn icona" data-action="cr-sposta" data-n="-1" ${cr.tipo === "tutto" ? "disabled" : ""} aria-label="Periodo precedente">‹</button>
+          <div class="cr-etichetta">${esc(etichettaPeriodo())}</div>
+          <button class="btn icona" data-action="cr-sposta" data-n="1" ${puoAvanti() ? "" : "disabled"} aria-label="Periodo successivo">›</button>
+          <button class="btn" data-action="cr-oggi" ${cr.tipo === "tutto" ? "disabled" : ""}>Oggi</button>
+        </div>
+      </div>
+      <div id="crCorpo"></div>`;
+    if (cr.pagina === "prodotti") crProdotti();
+    else if (cr.pagina === "tavoli") crTavoli();
+    else crSerate();
+  }
+  const stat = (etichetta, valore, nota = "", principale = false) => `
+    <div class="stat ${principale ? "main" : ""}">
+      <span class="dv-caps">${esc(etichetta)}</span>
+      <b class="${String(valore).length > 12 ? "lungo" : ""}">${esc(valore)}</b>
+      ${nota ? `<small>${esc(nota)}</small>` : ""}
+    </div>`;
+  const boxCrono = (titolo, corpo, extra = "") =>
+    `<div class="panel cr-box"><div class="cr-box-h"><span class="dv-caps">${esc(titolo)}</span>${extra}</div>${corpo}</div>`;
+
+  function crSerate() {
+    const inc = incassiPeriodo();
+    const r = riepilogo(inc);
+    const s = serie(inc);
+    const singola = cr.tipo === "serata";
+    const classifica = singola ? [] : classificaSerate(inc);
+    cr.barre = s.barre;
+    cr.apribile = cr.tipo === "settimana" || cr.tipo === "mese";
+    const righe = classifica.slice(0, 10).map((x, i) => `
+      <button class="cr-riga" data-action="cr-serata" data-k="${x.k}">
+        <span class="pos">${i + 1}</span>
+        <span class="n">${esc(etichettaSerata(x.k))}</span>
+        <span class="i">${plurale(x.tavoli, "tavolo", "tavoli")}</span>
+        <span class="barra"><i style="width:${(x.cent / classifica[0].cent) * 100}%"></i></span>
+        <span class="v">${euro(x.cent)}</span>
+      </button>`).join("");
+    $("#crCorpo").innerHTML = `
+      <div class="stats">
+        ${stat("Incasso", euro(r.cent), plurale(r.tavoli, "tavolo", "tavoli"), true)}
+        ${stat("Media per tavolo", r.tavoli ? euro(r.mediaTavolo) : "—")}
+        ${singola
+          ? stat("Ora di punta", r.punta ? String(r.punta.h).padStart(2, "0") + ":00" : "—", r.punta ? euro(r.punta.cent) + " incassati" : "")
+          : stat("Media per serata", r.serate ? euro(r.mediaSerata) : "—", plurale(r.serate, "serata", "serate") + " con incassi")
+            + stat("Serata migliore", r.migliore ? euro(r.migliore.cent) : "—", r.migliore ? etichettaSerata(r.migliore.k) : "")}
+      </div>
+      ${boxCrono(s.titolo, `<div id="crGrafico"></div>${r.cent ? "" : `<div class="empty" style="padding:14px 0 4px">Nessun incasso in questo periodo.</div>`}`,
+        `<span class="hint">Tocca una colonna per vedere l'importo${cr.apribile ? ", toccala di nuovo per aprire la serata" : ""}</span>`)}
+      ${classifica.length ? boxCrono("Serate migliori", righe) : ""}
+      ${singola && r.tavoli ? `<button class="btn" data-action="cr-pagina" data-p="tavoli">Vedi i tavoli di questa serata</button>` : ""}`;
+    crGrafico();
+  }
+
+  // fondo scala «tondo» (1, 2, 2,5, 5 × 10^n euro) diviso in 4 righe
+  function scalaGrafico(max) {
+    const e = max / 100 / 4;
+    if (e <= 0) return 400;
+    const p = Math.pow(10, Math.floor(Math.log10(e)));
+    return [1, 2, 2.5, 5, 10].map((k) => k * p).find((x) => x >= e) * 400;
+  }
+  function crGrafico() {
+    const el = $("#crGrafico");
+    if (!el) return;
+    const barre = cr.barre;
+    const scala = scalaGrafico(Math.max(0, ...barre.map((b) => b.cent)));
+    // un'etichetta dell'asse ogni «ogni» colonne, così non si sovrappongono
+    const ogni = Math.max(1, Math.ceil((barre.length * 44) / Math.max(1, el.clientWidth - 64)));
+    const sel = barre[cr.barra];
+    const dove = (cr.barra + 0.5) / barre.length;
+    el.innerHTML = `
+      <div class="graf">
+        ${[0, 1, 2, 3, 4].map((i) => `<div class="graf-riga" style="bottom:${i * 25}%"><span>${Math.round(scala * i / 400).toLocaleString("it-IT")} €</span></div>`).join("")}
+        <div class="graf-col">${barre.map((b, i) => `
+          <button class="${i === cr.barra ? "on" : ""}" data-action="cr-barra" data-i="${i}" aria-label="${esc(b.titolo)}: ${euro(b.cent)}">
+            <i style="height:${b.cent ? Math.max(0.8, (b.cent / scala) * 100) : 0}%"></i>
+            <span class="${i % ogni ? "nascosta" : ""}">${esc(b.etichetta)}</span>
+          </button>`).join("")}</div>
+        ${sel ? `<div class="graf-tip" style="left:${dove * 100}%;transform:translateX(-${dove < 0.2 ? 15 : dove > 0.8 ? 85 : 50}%)">
+          <small>${esc(sel.titolo)}</small><b>${euro(sel.cent)}</b>${cr.apribile && sel.cent ? "<small>Tocca ancora per aprire</small>" : ""}</div>` : ""}
+      </div>`;
+  }
+
+  function crProdotti() {
+    const lista = prodottiVenduti();
+    const mai = maiVenduti(lista);
+    const pezzi = lista.reduce((n, p) => n + p.qty, 0);
+    const cent = lista.reduce((n, p) => n + p.cent, 0);
+    const k = cr.ordine === "incasso" ? "cent" : "qty";
+    const massimo = lista.length ? lista[0][k] || 1 : 1;
+    const meno = lista.length > 10 ? lista.slice(-10).reverse() : [];
+    const riga = (p, pos) => `
+      <div class="cr-riga">
+        <span class="pos">${pos}</span>
+        ${tileHtml(p.drinkId ? drinkById(p.drinkId) : null)}
+        <span class="n">${esc(p.nome)}</span>
+        <span class="barra"><i style="width:${(p[k] / massimo) * 100}%"></i></span>
+        <span class="q">${p.qty} pz</span>
+        <span class="v">${euro(p.cent)}</span>
+      </div>`;
+    const chip = (azione, attr, val, on, testo) => `<button class="chip ${on ? "on" : ""}" data-action="${azione}" data-${attr}="${esc(val)}">${esc(testo)}</button>`;
+    $("#crCorpo").innerHTML = `
+      <div class="stats">
+        ${stat("Pezzi venduti", String(pezzi), euro(cent) + " incassati", true)}
+        ${stat("Prodotti diversi", String(lista.length))}
+        ${stat("Il più venduto", lista.length ? lista[0].nome : "—", lista.length ? `${lista[0].qty} pezzi · ${euro(lista[0].cent)}` : "")}
+        ${stat("Mai venduti", String(mai.length), "voci del menu senza vendite")}
+      </div>
+      <div class="chips">${chip("cr-gruppo", "g", "", !cr.gruppo, "Tutto il menu")}${gruppi().map((g) => chip("cr-gruppo", "g", g.id, cr.gruppo === g.id, g.nome)).join("")}</div>
+      <div class="cr-ordina"><span>Ordina per</span>${chip("cr-ordine", "o", "pezzi", cr.ordine === "pezzi", "Pezzi venduti")}${chip("cr-ordine", "o", "incasso", cr.ordine === "incasso", "Incasso")}</div>
+      ${boxCrono("Classifica", lista.length ? lista.map((p, i) => riga(p, i + 1)).join("") : `<div class="empty" style="padding:16px">Nessun prodotto venduto in questo periodo.</div>`)}
+      ${meno.length ? boxCrono("Meno venduti", meno.map((p, i) => riga(p, lista.length - i)).join("")) : ""}
+      ${mai.length ? boxCrono(`Mai venduti in questo periodo · ${mai.length}`, `<div class="vtags">${mai.map((d) => `<span>${esc(d.nome)}</span>`).join("")}</div>`) : ""}`;
+  }
+
+  function crTavoli() {
+    const aperti = tavoli.length;
+    $("#crCorpo").innerHTML = `
+      <input class="search" id="crQ" type="search" placeholder="Cerca un tavolo o un prodotto…" value="${esc(cr.cerca)}" autocomplete="off">
+      ${aperti ? `<p class="cr-nota">${aperti === 1 ? "1 tavolo è ancora aperto: compare qui quando lo chiudi." : `${aperti} tavoli sono ancora aperti: compaiono qui quando li chiudi.`}</p>` : ""}
+      <div id="crLista"></div>`;
+    $("#crQ").addEventListener("input", (e) => { cr.cerca = e.target.value; crListaTavoli(); });
+    crListaTavoli();
+  }
+  function crListaTavoli() {
+    const gruppiT = gruppiTavoli();
+    const q = cr.cerca.trim();
+    $("#crLista").innerHTML = gruppiT.length
+      ? gruppiT.map((g) => `
+        <div class="cr-gruppo">
+          <div class="cr-gruppo-h"><h3>${esc(etichettaSerata(g.k))}</h3><span>${plurale(g.tavoli.length, "tavolo", "tavoli")} · ${euro(g.cent)}</span></div>
+          <div class="tgrid">${g.tavoli.map((v) => `
+            <button class="tcard" data-action="cr-tavolo" data-id="${esc(v.id)}">
+              <div class="n">${esc(v.nome)}</div>
+              <div class="i">${oraIt(v.aperto)} – ${oraIt(v.chiuso)} · ${durata(v.chiuso - v.aperto)}</div>
+              <div class="i">${plurale(pezziTavolo(v), "articolo", "articoli")}${v.incassi.length > 1 ? ` · pagato in ${v.incassi.length} volte` : ""}</div>
+              <div class="t">${euro(totaleTavolo(v))}</div>
+            </button>`).join("")}</div>
+        </div>`).join("")
+      : `<div class="empty"><div class="big">🕰️</div>${q ? `Nessun tavolo trovato per «${esc(q)}».` : "Nessun tavolo chiuso in questo periodo."}</div>`;
+  }
+
+  // Dettaglio di un tavolo chiuso: cosa ha preso, quando ha pagato, quanto
+  function apriStorico(id) {
+    const v = Crono.voci().find((x) => x.id === id);
+    if (!v) return;
+    const tabella = (righe) => `<table class="ingr cr-tab">${righe}</table>`;
+    apriFinestra(`
+      <button class="close" data-action="chiudi-finestra" aria-label="Chiudi">✕</button>
+      <div class="dlg" id="storico" data-id="${esc(v.id)}">
+        <h3 style="padding-right:48px">${esc(v.nome)}</h3>
+        <p>${esc(etichettaSerata(serataDi(v.aperto)))}<br>
+          aperto alle ${oraIt(v.aperto)} · chiuso alle ${oraIt(v.chiuso)} · ${durata(v.chiuso - v.aperto)}</p>
+        <h4 class="cr-sez">Ordine</h4>
+        ${tabella(prodottiTavolo(v).map((p) => `<tr><td>${esc(p.nome)}</td><td class="q">${p.qty} × ${euro(p.prezzoCent)}</td><td>${euro(p.qty * p.prezzoCent)}</td></tr>`).join(""))}
+        <div class="totale" style="padding:16px 0 4px"><span>Totale</span><span class="v">${euro(totaleTavolo(v))}</span></div>
+        ${v.incassi.length > 1 ? `<h4 class="cr-sez">Pagamenti</h4>${tabella(v.incassi.map((i) => `<tr>
+            <td class="pag">${oraIt(i.ts)} · ${esc(i.righe.map((r) => `${r.qty}× ${r.nome}`).join(", "))}</td><td></td><td>${euro(i.cent)}</td></tr>`).join(""))}` : ""}
+        <div class="err" id="stErr"></div>
+        <div class="dlg-actions">
+          <button class="btn danger" data-action="cr-elimina">Elimina dalla cronologia</button>
+          <button class="btn primary" data-action="chiudi-finestra">Chiudi</button>
+        </div>
+      </div>`);
+  }
+
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-action^='cr-']");
+    if (!b) return;
+    const ridisegna = () => { cr.barra = -1; viewCronologia(); };
+    switch (b.dataset.action) {
+      case "cr-pagina": cr.pagina = b.dataset.p; window.scrollTo(0, 0); return ridisegna();
+      case "cr-tipo": cr.tipo = b.dataset.t; cr.rif = Date.now(); return ridisegna();
+      case "cr-sposta": spostaPeriodo(+b.dataset.n); return ridisegna();
+      case "cr-oggi": cr.rif = Date.now(); return ridisegna();
+      case "cr-serata": apriSerata(+b.dataset.k); window.scrollTo(0, 0); return ridisegna();
+      case "cr-barra": {
+        const i = +b.dataset.i, barra = cr.barre[i];
+        if (cr.barra === i && cr.apribile && barra && barra.cent) { apriSerata(barra.serata); return ridisegna(); }
+        cr.barra = i;
+        return crGrafico();
+      }
+      case "cr-gruppo": cr.gruppo = b.dataset.g; return crProdotti();
+      case "cr-ordine": cr.ordine = b.dataset.o; return crProdotti();
+      case "cr-tavolo": return apriStorico(b.dataset.id);
+      case "cr-elimina": {
+        if (!b.classList.contains("fill")) { b.classList.add("fill"); b.textContent = "Tocca ancora per eliminare"; return; }
+        const v = Crono.voci().find((x) => x.id === $("#storico").dataset.id);
+        if (!v || !Crono.elimina(v.id)) {
+          b.classList.remove("fill"); b.textContent = "Elimina dalla cronologia";
+          $("#stErr").textContent = "Non sono riuscito a modificare la cronologia.";
+          return;
+        }
+        chiudiFinestra(null);
+        toast(`Tavolo «${v.nome}» tolto dalla cronologia`);
+        return viewCronologia();
+      }
+      case "cr-esporta":
+        return salvaFileJson(`cronologia-dejavu-${new Date().toISOString().slice(0, 10)}.json`,
+          { app: "dejavu-staff", tipo: "cronologia", esportato: new Date().toISOString(), tavoli: Crono.voci() }, "Cronologia Déjà Vu");
+    }
+  });
 
   // Aggiorna i tempi "aperto da…" ogni 30 secondi
   setInterval(() => {
@@ -1737,49 +2296,78 @@
     const btns = document.querySelectorAll(".agg-btn");
     btns.forEach((b) => b.classList.add("gira"));
     const fine = () => { controlloInCorso = false; btns.forEach((b) => b.classList.remove("gira")); };
-    let online = true, menuCambiato = false;
-    try {
-      const m = await scaricaMenu();
-      if (!MENU || (m.versione || "") > (MENU.versione || "")) { applicaMenu(m); menuCambiato = true; }
-    } catch { online = false; }
-    if (!online) { fine(); return messaggio("Nessuna connessione", "Serve internet per controllare gli aggiornamenti. Riprova quando sei collegato."); }
+    const offline = () => { fine(); messaggio("Nessuna connessione", "Serve internet per controllare se c'è una nuova versione dell'app. Riprova quando sei collegato."); };
+    if (APP) {
+      const a = await controllaApk();
+      fine();
+      if (a === "offline") return offline();
+      if (a) return messaggio("Nuova versione dell'app", `È disponibile la versione <b>${esc(a.versione)}</b>.
+        Tocca <b>Scarica</b> nell'avviso in alto, poi apri il file scaricato e conferma <b>Aggiorna</b>.
+        Tavoli, menu e cronologia restano salvati.`);
+      return messaggio("App già aggiornata", `Hai già l'ultima versione dell'app (${esc(APP.versione())}).`);
+    }
+    if (!navigator.onLine) return offline();
     let appNuova = false;
     try { aggiornandoApp = true; appNuova = await nuovaVersioneApp(); } catch {}
     if (appNuova) { toast("Aggiorno l'app…"); setTimeout(() => location.reload(), 600); return; }
     aggiornandoApp = false;
     fine();
-    if (menuCambiato) return messaggio("Menu aggiornato", "Ho caricato l'ultima versione del menu.");
-    const quando = MENU && MENU.versione && MENU.versione > "2026-10-16"
-      ? ` Menu aggiornato il ${esc(new Date(MENU.versione).toLocaleString("it-IT", { day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" }))}.`
-      : "";
-    messaggio("App già aggiornata", `Hai già l'ultima versione dell'app e del menu.${quando}`);
+    messaggio("App già aggiornata", "Hai già l'ultima versione dell'app.");
   }
 
-  // Avvio: si usa subito la copia del menu salvata sul dispositivo, poi si controlla se online ce n'è una nuova
+  /* ---------- App Android: c'è un APK nuovo? (android/versione.json sul sito) ---------- */
+  let apkNuovo = null, ultimoControlloApk = 0;
+  async function controllaApk() {
+    if (!APP) return null;
+    ultimoControlloApk = Date.now();
+    try {
+      const r = await fetch(`${D.online}android/versione.json?t=${Date.now()}`, { cache: "no-store" });
+      if (!r.ok) return null;
+      const v = await r.json();
+      if (!(v.codice > APP.codice())) return null;
+      apkNuovo = { versione: v.versione, url: D.online + (v.apk || "Dejavu-Staff.apk") };
+      mostraAvviso("apk");
+      return apkNuovo;
+    } catch { return "offline"; }
+  }
+
+  // Avvio: si usa il menu salvato sul dispositivo; la prima volta quello originale
   async function avvio() {
+    if (!MENU) $("#app").innerHTML = `<div class="empty"><div class="big">🍸</div>Carico il menu…</div>`;
+    let originale = null;
+    try { originale = await menuOriginale(); } catch {}
+    if (!MENU) MENU = originale;
     if (!MENU) {
-      $("#app").innerHTML = `<div class="empty"><div class="big">🍸</div>Carico il menu…</div>`;
-      await controllaMenu();
-      if (!MENU) {
-        $("#app").innerHTML = `<div class="empty"><div class="big">📶</div>Per il primo avvio serve internet:<br>collegati e riapri l'app.</div>`;
-        return;
-      }
-    } else {
-      controllaMenu();
+      $("#app").innerHTML = `<div class="empty"><div class="big">⚠️</div>Non riesco a caricare il menu:<br>chiudi e riapri l'app.</div>`;
+      return;
     }
+    // «I nostri Prodotti» non si modificano dall'app: sempre quelli dell'app installata (shared/menu.json),
+    // così con un aggiornamento dell'app arrivano le bottiglie nuove anche se il menu è stato modificato
+    if (originale && originale.prodotti) MENU.prodotti = originale.prodotti;
     paneIniziale();
     render();
   }
   avvio();
-  setInterval(controllaMenu, 2 * 60 * 1000);
+  if (APP) controllaApk();
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) return;
-    controllaMenu();
+    if (APP && Date.now() - ultimoControlloApk > 30 * 60 * 1000) controllaApk();
     if (navigator.serviceWorker && navigator.serviceWorker.getRegistration)
       navigator.serviceWorker.getRegistration().then((r) => r && r.update()).catch(() => {});
   });
 
-  if ("serviceWorker" in navigator) {
+  // Tasto «indietro» di Android: chiude la finestra aperta o torna alla pagina precedente.
+  // Restituisce false sulla pagina iniziale (l'app allora va in secondo piano).
+  window.dejavuIndietro = () => {
+    if ($("#overlay").classList.contains("open")) { if (!finestraBloccata) chiudiFinestra(null); return true; }
+    const r = route();
+    if (r.view === "tavolo" && ui.pagamento) { ui.pagamento = null; render(); return true; }
+    if (r.view === "home") return false;
+    location.hash = r.view === "tavolo" ? "#tavoli" : "#home";
+    return true;
+  };
+
+  if ("serviceWorker" in navigator && !APP) {
     const avevaSw = !!navigator.serviceWorker.controller;
     navigator.serviceWorker.addEventListener("controllerchange", () => {
       if (aggiornandoApp) return location.reload();

@@ -1,0 +1,8 @@
+# Build e impostazioni locali
+.gradle/
+build/
+app/build/
+local.properties
+
+# Chiave di firma dell'APK: NON va nella repo (conservane una copia a parte!)
+firma/

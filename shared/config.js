@@ -1,6 +1,7 @@
 /*
  * Impostazioni dell'app Staff.
- * Il MENU (voci, prezzi, varianti, ricette) è in shared/menu.json e si modifica dall'app (sezione Menu).
+ * Il MENU originale (voci, prezzi, varianti, ricette) è in shared/menu.json: si modifica dall'app (sezione Menu)
+ * e le modifiche restano salvate sul dispositivo.
  */
 window.DEJAVU = {
   bar: {
@@ -17,6 +18,22 @@ window.DEJAVU = {
     ],
   },
 
-  // Dove l'app pubblica le modifiche al menu (repository GitHub che ospita l'app)
-  github: { owner: "4Kumiho", repo: "Dejavu", branch: "main", menuPath: "shared/menu.json" },
+  // «Visualizza menu»: le pagine del menu cartaceo, in ordine (originali in Foto/Menu/)
+  menuCartaceo: [
+    "../shared/img/menu-cartaceo/pagina-01.jpg",
+    "../shared/img/menu-cartaceo/pagina-02.jpg",
+    "../shared/img/menu-cartaceo/pagina-03.jpg",
+    "../shared/img/menu-cartaceo/pagina-04.jpg",
+    "../shared/img/menu-cartaceo/pagina-05.jpg",
+    "../shared/img/menu-cartaceo/pagina-06.jpg",
+    "../shared/img/menu-cartaceo/pagina-07.jpg",
+    "../shared/img/menu-cartaceo/pagina-08.jpg",
+    "../shared/img/menu-cartaceo/pagina-09.jpg",
+    "../shared/img/menu-cartaceo/pagina-10.jpg",
+    "../shared/img/menu-cartaceo/pagina-11.jpg",
+    "../shared/img/menu-cartaceo/pagina-12.jpg",
+  ],
+
+  // Indirizzo pubblico (GitHub Pages): l'app Android ci controlla se c'è un APK nuovo da scaricare
+  online: "https://4kumiho.github.io/Dejavu/",
 };

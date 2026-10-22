@@ -7,12 +7,12 @@
 <p align="center">
   L'app del bancone del <b>Déjà Vu</b> (Borgo Santa Caterina, Bergamo):<br>
   <b>tavoli</b> con il conto che si calcola da solo, <b>pagamenti separati</b>, <b>ricette</b> dei cocktail<br>
-  e un <b>menu modificabile dall'app</b> che si aggiorna su tutti i dispositivi.
+  un <b>menu modificabile dall'app</b> e la <b>cronologia</b> degli incassi.
 </p>
 
 <p align="center">
-  <a href="https://4kumiho.github.io/Dejavu/staff/"><b>👉 APRI L'APP 👈</b></a><br>
-  <code>https://4kumiho.github.io/Dejavu/staff/</code>
+  <a href="https://4kumiho.github.io/Dejavu/Dejavu-Staff.apk"><b>👉 SCARICA L'APP PER ANDROID (APK) 👈</b></a><br>
+  <a href="#-installa-lapp-sul-tablet-android-del-bar-5-minuti-una-volta-sola">Come si installa</a>
 </p>
 
 <p align="center">
@@ -23,15 +23,72 @@
 
 ---
 
-## 📲 Installa l'app (2 minuti, una volta sola)
+## 📲 Installa l'app sul tablet Android del bar (5 minuti, una volta sola)
 
-Non serve nessun account e nessuno store. Si apre il link e si aggiunge l'icona alla schermata Home.
-Dopo, l'app **funziona anche senza internet**.
+L'app si installa da un file, **`Dejavu-Staff.apk`**: non serve il Play Store né un account.
+Dopo l'installazione **funziona senza internet** e tiene tutto sul tablet: tavoli, menu modificato e cronologia degli incassi.
 
-> ⚠️ **Importante:** da quel momento apri l'app **sempre dall'icona** sulla schermata Home.
-> I tavoli vengono salvati dentro l'app installata: se la apri dal browser normale vedi un'altra memoria (vuota).
+> ℹ️ L'app è pensata per **un solo tablet**, quello del bar: menu e cronologia restano su quel tablet.
 
-<details open>
+### 1. Porta il file `Dejavu-Staff.apk` sul tablet
+Scegli **uno** di questi modi:
+
+- **A · Dal tablet, con il link (il più semplice)**
+  Sul tablet apri **Chrome** e vai su: **[👉 Scarica Dejavu-Staff.apk](https://4kumiho.github.io/Dejavu/Dejavu-Staff.apk)**
+  `https://4kumiho.github.io/Dejavu/Dejavu-Staff.apk`
+  Se Chrome avvisa *«Questo tipo di file può danneggiare il dispositivo»*, tocca **Scarica comunque**.
+- **B · Dal computer, con il cavo USB**
+  1. Collega il tablet al computer con il cavo.
+  2. Sul tablet tocca la notifica **«Ricarica tramite USB»** e scegli **Trasferimento file**.
+  3. Sul computer apri **Esplora file** → il tablet → **Download**, e copia lì `Dejavu-Staff.apk`.
+- **C · Con Google Drive, WhatsApp o email**
+  Mandati il file `Dejavu-Staff.apk` e aprilo dal tablet (scaricalo, poi aprilo).
+
+### 2. Installa
+1. Sul tablet apri il file: tocca la notifica del download, oppure apri l'app **File** (o **I miei file** sui Samsung) → **Download** → `Dejavu-Staff.apk`.
+2. La **prima volta** Android blocca l'installazione e dice che per sicurezza non è consentito installare app sconosciute:
+   tocca **Impostazioni** → attiva **Consenti da questa origine** → torna indietro con la freccia ←.
+3. Tocca **Installa**.
+4. Se compare **Google Play Protect** (*«App non sicura bloccata»* / *«Inviare l'app per la scansione?»*):
+   tocca **Altri dettagli** → **Installa comunque** (oppure **Non inviare**). È normale per le app che non arrivano dal Play Store.
+5. Alla fine tocca **Apri**. Trovi l'icona nera **Déjà Vu Staff** tra le app: tienila premuta e trascinala sulla schermata Home. ✅
+
+<details>
+<summary><b>Non trovo «Consenti da questa origine»</b></summary>
+
+Dipende dal modello. Vai in **Impostazioni** del tablet e cerca *«app sconosciute»* con la lente, oppure:
+- **Samsung**: Impostazioni → **Applicazioni** → ⋮ → **Accesso speciale** → **Installa app sconosciute** → scegli l'app con cui apri il file (**Chrome** o **I miei file**) → attiva.
+- **Altri tablet**: Impostazioni → **App** → **Accesso speciale per le app** → **Installa app sconosciute** → **Chrome** (o **File**) → **Consenti da questa origine**.
+
+Poi riapri il file `Dejavu-Staff.apk`.
+
+</details>
+
+### 3. Prima apertura
+- L'app parte con il **menu originale** già dentro: si può usare subito, anche senza internet.
+- Il menu si cambia da **Modifica menu** e resta salvato sul tablet (vedi [Modificare il menu](#10-modificare-il-menu--modifica-menu-proprietario--responsabile)).
+- 💡 Consigliato: in Impostazioni del tablet → **Display** → **Spegnimento schermo**, metti un tempo lungo (per esempio 10 minuti).
+
+### 🔄 Aggiornare l'app
+Quando c'è una versione nuova, l'app mostra in alto **«È disponibile una nuova versione dell'app · Scarica»**
+(puoi controllare anche tu con **↻ Aggiorna**, in alto a destra).
+1. Tocca **Scarica** e aspetta il download.
+2. Apri il file e tocca **Aggiorna**.
+3. Tavoli aperti, menu e cronologia **restano**.
+
+> ⚠️ **Non disinstallare mai l'app** per aggiornarla: disinstallando si cancellano menu modificato e cronologia degli incassi.
+> Se proprio devi (o se cambi tablet), prima fai **Scarica copia** sia in **Menu** sia in **Cronologia**: i file finiscono nella cartella **Download/Deja Vu** del tablet.
+
+---
+
+## 🌐 Usarla su altri dispositivi (web app)
+
+Sugli altri dispositivi (iPhone, iPad, computer…) l'app si può usare anche dal browser e aggiungere alla schermata Home.
+Ogni dispositivo ha i **suoi** tavoli, il **suo** menu e la **sua** cronologia: per il bar usate il tablet con l'app Android.
+
+> ⚠️ Una volta aggiunta alla schermata Home, apri l'app **sempre dall'icona**: se la apri dal browser normale vedi un'altra memoria (vuota).
+
+<details>
 <summary><b>🍏 iPhone</b></summary>
 
 1. Tocca questo link: **[👉 Apri Déjà Vu Staff](https://4kumiho.github.io/Dejavu/staff/)**
@@ -47,7 +104,7 @@ Dopo, l'app **funziona anche senza internet**.
 
 </details>
 
-<details open>
+<details>
 <summary><b>🍏 iPad</b></summary>
 
 1. Tocca questo link: **[👉 Apri Déjà Vu Staff](https://4kumiho.github.io/Dejavu/staff/)**
@@ -65,7 +122,7 @@ Dopo, l'app **funziona anche senza internet**.
 
 </details>
 
-<details open>
+<details>
 <summary><b>🤖 Telefono Android</b></summary>
 
 **Con Google Chrome** (consigliato)
@@ -84,8 +141,8 @@ Dopo, l'app **funziona anche senza internet**.
 
 </details>
 
-<details open>
-<summary><b>🤖 Tablet Android</b></summary>
+<details>
+<summary><b>🤖 Tablet Android — come web app</b></summary>
 
 1. Tocca questo link: **[👉 Apri Déjà Vu Staff](https://4kumiho.github.io/Dejavu/staff/)**
 2. Deve aprirsi in **Chrome**.
@@ -98,7 +155,7 @@ Dopo, l'app **funziona anche senza internet**.
 
 </details>
 
-<details open>
+<details>
 <summary><b>💻 Computer (Windows o Mac)</b></summary>
 
 **Google Chrome**
@@ -127,7 +184,8 @@ Dopo, l'app **funziona anche senza internet**.
 
 ### 1. Pagina iniziale
 Le foto del locale scorrono dietro il logo e c'è subito il riquadro **Tavoli**, con quanti tavoli sono aperti e quanto c'è ancora da incassare.
-**Scorrendo verso il basso** trovi **Ricette**, **Menu** e il pulsante **+ Nuovo tavolo**.
+**Scorrendo verso il basso** trovi **Ricette**, **I nostri Prodotti**, **Visualizza menu**, **Modifica menu** e **Cronologia**.
+Le stesse voci sono anche nella barra in alto, in ogni pagina.
 
 <p align="center">
   <img src="docs/screenshots/phone-home.jpg" width="200" alt="Pagina iniziale">
@@ -136,7 +194,7 @@ Le foto del locale scorrono dietro il logo e c'è subito il riquadro **Tavoli**,
 </p>
 
 ### 2. Arriva un tavolo → **+ Nuovo tavolo**
-Scrivi il nome che vuoi (*Tavolo 4*, *Divanetto*, *Esterno 2*…) e premi **Crea tavolo**.
+Dalla pagina **Tavoli** premi **+ Nuovo tavolo**. Scrivi il nome che vuoi (*Tavolo 4*, *Divanetto*, *Esterno 2*…) e premi **Crea tavolo**.
 
 <p align="center"><img src="docs/screenshots/ipad-nuovo-tavolo.jpg" width="560" alt="Nuovo tavolo"></p>
 
@@ -178,8 +236,18 @@ Anche dall'ordine di un tavolo puoi toccare il nome di un cocktail per aprirne l
   <img src="docs/screenshots/ipad-ricetta.jpg" width="420" alt="Ricetta del Negroni">
 </p>
 
-### 8. Modificare il menu (proprietario / responsabile)
-Dalla scheda **Menu** puoi cambiare tutto senza toccare il codice:
+### 8. I nostri Prodotti
+La bottigliera del locale: foto di ogni bottiglia, tipo, produttore e origine, la storia, il gusto e *«consigliato a chi ama»*.
+In **Lo usiamo in** trovi i drink che la usano (toccali per aprire la ricetta). Nelle ricette, accanto agli ingredienti,
+c'è la miniatura della bottiglia: toccandola si apre la sua scheda.
+
+### 9. Mostrare il menu del locale → **Visualizza menu**
+Le pagine del menu cartaceo del Déjà Vu, una sotto l'altra: si scorrono col dito, per farle vedere ai clienti.
+Con **−** e **+** in alto a destra cambi la grandezza delle pagine; toccando la percentuale torni al 100%.
+Le immagini sono in `shared/img/menu-cartaceo/` (gli originali in `Foto/Menu/`).
+
+### 10. Modificare il menu → **Modifica menu** (proprietario / responsabile)
+Da **Modifica menu** puoi cambiare tutto senza toccare il codice:
 
 - **Modificare una voce**: toccala → cambi nome, prezzo, categoria, icona, descrizione → **Salva**.
 - **Varianti**: le scelte che compaiono quando aggiungi la voce a un tavolo (gusti dello spritz, gin, piccola/media, calice/bottiglia…), ognuna con il suo prezzo se diverso.
@@ -193,39 +261,37 @@ Dalla scheda **Menu** puoi cambiare tutto senza toccare il codice:
   <img src="docs/screenshots/ipad-modifica-voce.jpg" width="420" alt="Modifica di una voce">
 </p>
 
-#### 🔄 Le modifiche arrivano a tutti
-Quando premi **Salva**, il nuovo menu viene pubblicato online. Tutti gli altri dispositivi con l'app,
-entro un paio di minuti (o appena riaprono l'app), mostrano in alto **«Il menu è stato aggiornato · Aggiorna»**:
-basta toccare **Aggiorna**.
-
-<p align="center"><img src="docs/screenshots/ipad-avviso-aggiornamento.jpg" width="560" alt="Avviso menu aggiornato"></p>
+#### 💾 Le modifiche restano sul dispositivo
+Quando premi **Salva**, il menu nuovo si usa subito ed è salvato sul dispositivo (non serve internet, non serve nessuna chiave).
+L'app è pensata per **un solo tablet**, quello del bar: le modifiche fatte lì non vanno su altri dispositivi.
 
 - I **tavoli già aperti** mantengono i prezzi con cui sono stati segnati; i nuovi ordini usano il menu nuovo.
-- Per salvare serve **internet**.
-- **Scarica copia** salva un file con tutto il menu (utile come backup).
+- **Scarica copia** salva un file con tutto il menu (nell'app Android: cartella **Download/Deja Vu**). Fallo ogni tanto, come backup.
+- **Carica copia** rimette un menu salvato con *Scarica copia* (per esempio su un tablet nuovo).
+- **Ripristina originale** torna al menu di partenza (`shared/menu.json`).
 
-#### 🔑 La chiave di pubblicazione (una volta sola, solo sui dispositivi di chi modifica il menu)
-Per poter **salvare** le modifiche, il dispositivo deve avere la *chiave di pubblicazione*.
-Chi non ha la chiave può usare l'app normalmente ma non può cambiare il menu (così nessuno lo modifica per sbaglio).
+### 11. Cronologia (titolare)
+Tutto quello che viene incassato resta salvato: ogni **Incassa** di *Paga separato* e ogni **Chiudi tavolo**
+(che vuol dire «pagato tutto»), con data, ora e prodotti. I prodotti tolti con **−** prima del pagamento non contano.
 
-**Crea la chiave** (da computer o telefono, con l'account GitHub **4Kumiho**):
-1. Apri questo link (molti campi sono già compilati): **[👉 Crea la chiave su GitHub](https://github.com/settings/personal-access-tokens/new?name=D%C3%A9j%C3%A0%20Vu%20menu&description=Chiave%20per%20modificare%20il%20menu%20dall%27app%20staff&target_name=4Kumiho&expires_in=366&contents=write)** (accedi con l'account 4Kumiho se te lo chiede).
-2. **Token name**: scrivi `Déjà Vu menu`.
-3. **Expiration**: scegli la durata più lunga disponibile (quando scade, basta crearne una nuova).
-4. **Repository access**: scegli **Only select repositories** e seleziona **4Kumiho/Dejavu**.
-5. **Permissions** → **Repository permissions** → **Contents**: scegli **Read and write**.
-6. In fondo premi **Generate token** (e conferma).
-7. **Copia** la chiave che compare (inizia con `github_pat_…`). ⚠️ GitHub la mostra una volta sola.
+Una **serata** va dalle **8:00 alle 7:59 del giorno dopo**: un tavolo pagato all'1:30 di notte conta nella serata del giorno prima.
 
-**Inseriscila nell'app**:
-1. Apri l'app → scheda **Menu** → **Impostazioni** (oppure **Inserisci chiave**).
-2. Incolla la chiave e premi **Verifica e salva**.
-3. Se è tutto giusto compare *«Chiave salvata»* e il pulsante diventa **Impostazioni ✓**.
+In alto scegli il **periodo**: *Serata*, *Settimana*, *Mese*, *Anno* o *Tutto*; con **‹ ›** vai al periodo prima o dopo,
+con **Oggi** torni a quello attuale. Il periodo vale per tutte e tre le pagine:
 
-<p align="center"><img src="docs/screenshots/ipad-chiave.jpg" width="560" alt="Inserire la chiave"></p>
+- **Serate**: incasso del periodo, media per tavolo e per serata, serata migliore e il grafico dell'incasso
+  (per ora dentro una serata, per serata in una settimana o un mese, per mese in un anno).
+  Tocca una colonna per vedere l'importo, toccala di nuovo per aprire quella serata. Sotto, la classifica delle serate migliori.
+- **Prodotti più venduti**: la classifica per pezzi o per incasso, filtrabile per gruppo del menu,
+  i **meno venduti** e le voci del menu **mai vendute** nel periodo.
+- **Tavoli chiusi**: tutti i tavoli divisi per serata, con orari, durata e totale; si cerca per nome del tavolo o per prodotto.
+  Toccando un tavolo vedi cosa ha preso e i singoli pagamenti; da lì lo puoi anche **eliminare dalla cronologia**
+  (per esempio un tavolo segnato per sbaglio: va toccato due volte).
 
-> 🔒 Inserisci la chiave solo sui dispositivi del proprietario o del responsabile.
-> Se un dispositivo con la chiave viene perso: su GitHub vai in **Settings → Developer settings → Personal access tokens → Fine-grained tokens** ed elimina la chiave.
+Gli incassi dei tavoli ancora aperti contano già nelle serate e nei prodotti; nei *Tavoli chiusi* compaiono quando li chiudi.
+**Scarica copia** salva tutta la cronologia in un file (cartella **Download/Deja Vu** del tablet): fallo ogni tanto, come backup.
+
+Dalla pagina iniziale, il riquadro **Cronologia** mostra quanto si è incassato stasera.
 
 ### Sul telefono
 Stessa app, adattata allo schermo: dentro un tavolo usi le due schede **Ordine** e **+ Aggiungi**.
@@ -241,7 +307,7 @@ Stessa app, adattata allo schermo: dentro un tavolo usi le due schede **Ordine**
 ## ❓ Domande frequenti
 
 **Serve internet?**
-Solo la prima volta (per installarla) e per ricevere gli aggiornamenti del menu. Poi funziona anche offline.
+No: funziona tutto senza internet. Serve solo per installarla e per controllare se c'è una nuova versione dell'app.
 
 **Se chiudo l'app o spengo l'iPad perdo i tavoli?**
 No, restano salvati sul dispositivo.
@@ -249,25 +315,22 @@ No, restano salvati sul dispositivo.
 **I tavoli si vedono su tutti gli iPad?**
 No: ogni dispositivo ha i suoi tavoli. Usate un solo dispositivo per segnare i tavoli.
 
-**Ho cambiato il menu ma un dispositivo non lo vede.**
-Deve essere collegato a internet: aprendo l'app compare in alto **«Il menu è stato aggiornato · Aggiorna»**. Tocca **Aggiorna**.
-Se hai appena salvato, aspetta un paio di minuti: la pubblicazione online richiede 1–2 minuti.
-
-**Quando salvo il menu dice che manca la chiave / che la chiave non è valida.**
-Vedi [La chiave di pubblicazione](#-la-chiave-di-pubblicazione-una-volta-sola-solo-sui-dispositivi-di-chi-modifica-il-menu): probabilmente non è stata inserita su quel dispositivo oppure è scaduta.
+**Ho cambiato il menu su un dispositivo ma un altro non lo vede.**
+È normale: il menu modificato resta sul dispositivo dove l'hai cambiato. Per copiarlo su un altro: **Scarica copia** sul primo, **Carica copia** sull'altro (in **Modifica menu**).
 
 **Esce «È disponibile una nuova versione dell'app».**
 È un aggiornamento dell'app: tocca **Aggiorna** e si ricarica con le novità.
 
 **Voglio controllare io se ci sono aggiornamenti.**
-Tocca **↻ Aggiorna** (in alto a destra, in ogni pagina). Se c'è una nuova versione dell'app o del menu si aggiorna subito,
+Tocca **↻ Aggiorna** (in alto a destra, in ogni pagina). Se c'è una nuova versione dell'app te lo dice,
 altrimenti compare *«App già aggiornata»*.
 
 **L'icona apre GitHub invece dell'app.**
 Hai aggiunto la pagina sbagliata. Tieni premuto sull'icona → **Rimuovi**, poi rifai l'installazione da questo link: **[👉 Apri Déjà Vu Staff](https://4kumiho.github.io/Dejavu/staff/)**
 
-**Ho cancellato i dati di Safari / rimosso l'icona.**
-I tavoli aperti in quel momento vengono cancellati. Il menu e le ricette invece si riscaricano da soli.
+**Ho cancellato i dati di Safari / rimosso l'icona / disinstallato l'app.**
+I tavoli aperti, il menu modificato e la cronologia di quel dispositivo vengono cancellati.
+Si rimettono con **Carica copia** (menu) se avevi salvato una copia. Per questo conviene fare ogni tanto **Scarica copia** di menu e cronologia.
 
 ---
 
@@ -276,28 +339,44 @@ I tavoli aperti in quel momento vengono cancellati. Il menu e le ricette invece 
 ### Cosa c'è dentro
 | Cartella | Cosa contiene |
 |---|---|
-| `staff/` | L'app: pagina iniziale, tavoli, ricette |
-| `shared/menu.json` | **Il menu**: voci, prezzi, varianti e ricette. Si modifica dall'app (sezione Menu) |
-| `shared/config.js` | Nome del locale, logo, foto della pagina iniziale, repository dove pubblicare il menu |
+| `staff/` | L'app: pagina iniziale, tavoli, ricette, menu, cronologia |
+| `android/` | L'app Android (APK) |
+| `shared/menu.json` | **Il menu originale**: voci, prezzi, varianti e ricette. Si modifica dall'app (sezione Menu) |
+| `shared/config.js` | Nome del locale, logo, foto della pagina iniziale, indirizzo del sito |
 | `shared/img/` | Foto che scorrono nella pagina iniziale |
+| `shared/img/menu-cartaceo/` | Le pagine del menu cartaceo per **Visualizza menu** (elenco in `shared/config.js`) |
+| `shared/img/prodotti/` | Le foto delle bottiglie di **I nostri Prodotti** |
 | `shared/` | Logo, colori, caratteri |
 | `Foto/Menu/`, `Foto/Locale/` | Foto originali del menu e del locale |
 | `docs/screenshots/` | Le immagini di questo README |
 
-### Come funziona l'aggiornamento del menu
-- Il menu ufficiale è `shared/menu.json`. L'app lo modifica tramite l'API di GitHub (commit su `main`) usando la chiave
-  di pubblicazione salvata sul dispositivo; GitHub Pages lo rimette online in 1–2 minuti.
-- Ogni dispositivo tiene una copia del menu per funzionare offline e controlla `menu.json` ogni 2 minuti e a ogni apertura:
-  se il campo `versione` è più recente, mostra l'avviso **Aggiorna**.
-- Se due persone salvano insieme, la seconda riceve un avviso e ricarica il menu più recente prima di riprovare.
-- Si può anche modificare `shared/menu.json` a mano: ricordati di aggiornare `versione` (data e ora ISO) perché gli altri dispositivi se ne accorgano.
+### Come funziona il menu
+- `shared/menu.json` è il **menu originale**: è quello che si usa al primo avvio e con *Ripristina originale*.
+- Le modifiche fatte dall'app restano sul dispositivo (app Android: file `dati/menu.json` con la copia `.bak`; browser: nella sua memoria).
+  Cambiare `shared/menu.json` non tocca il menu già modificato su un dispositivo.
+- **I nostri Prodotti** (`prodotti` in `shared/menu.json`) non si modificano dall'app: si usano sempre quelli di `shared/menu.json`,
+  quindi le bottiglie nuove arrivano sul tablet con un aggiornamento dell'app anche se lì il menu è stato modificato.
 
-Ogni modifica pubblicata su `main` va online da sola in 1–2 minuti. Le modifiche al codice dell'app mostrano l'avviso
-«nuova versione dell'app» quando cambia `CACHE` in `staff/sw.js`.
+Ogni modifica pubblicata su `main` va online da sola in 1–2 minuti. Le modifiche al codice della web app mostrano l'avviso
+«nuova versione dell'app» quando cambia `CACHE` in `staff/sw.js`; per l'app Android vedi sotto.
 
 ### Provarla sul computer senza installarla
 - Doppio clic su `staff/index.html` (con Chrome o Edge), oppure
 - dal terminale nella cartella del progetto: `python -m http.server 8000` e apri http://localhost:8000/staff/
+
+### App Android (`android/`)
+- È la stessa web app di `staff/` + `shared/`, copiata dentro l'APK e aperta in una WebView.
+  Funziona senza internet: menu modificato (`dati/menu.json`) e cronologia restano in file dentro l'app.
+- La cronologia è in file dentro l'app (`dati/cronologia/AAAA-MM.json` + `.bak`), come in Reef; nel browser sta nella memoria del browser.
+- **Ricreare l'APK** (PowerShell, dalla radice della repo): `.\android\build.ps1` → `Dejavu-Staff.apk`.
+  La prima volta scarica Java, Android SDK e Gradle in `..\.android-tools` (fuori dalla repo).
+- **Provare l'APK sul computer**, senza tablet: `.\android\prova-emulatore.ps1`. Apre un tablet Android virtuale (emulatore),
+  installa `Dejavu-Staff.apk` e avvia l'app. La prima volta scarica emulatore e Android 15 (circa 2 GB).
+  Si usa con il mouse come un tablet; il tasto ◀ in basso è il tasto indietro. Dopo una nuova build basta rilanciarlo.
+- **Nuova versione**: aumenta `codice` (e `versione`) in `android/versione.json`, ricrea l'APK e pubblica su `main`:
+  i tablet vedono l'avviso *nuova versione* (leggono `android/versione.json` dal sito).
+- 🔑 **Chiave di firma**: `android/firma/` (creata da `build.ps1`, **non** va nella repo). Conservane una copia sicura:
+  senza la stessa chiave il tablet non accetta gli aggiornamenti.
 
 ### Pubblicazione
 L'app è pubblicata con **GitHub Pages** (Settings → Pages → Branch `main`, cartella `/ (root)`).

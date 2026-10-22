@@ -1,0 +1,67 @@
+import groovy.json.JsonSlurper
+
+plugins {
+    id "com.android.application"
+}
+
+// La versione dell'app è in android/versione.json: lo stesso file che l'app legge online
+// per sapere se c'è un APK nuovo. Per pubblicare un aggiornamento aumenta «codice» (e «versione»).
+def versione = new JsonSlurper().parse(rootProject.file("versione.json"))
+
+// Chiave di firma in android/firma/ (creata da build.ps1, fuori dalla repo)
+def firma = new Properties()
+def fileFirma = rootProject.file("firma/firma.properties")
+if (fileFirma.exists()) fileFirma.withInputStream { firma.load(it) }
+
+// La web app (staff/ e shared/) viene copiata dentro l'APK a ogni build
+def cartellaWeb = layout.buildDirectory.dir("web")
+def copiaWeb = tasks.register("copiaWeb", Sync) {
+    from(rootProject.file("..")) {
+        include "staff/**", "shared/**"
+        exclude "staff/sw.js", "staff/manifest.json"
+    }
+    into cartellaWeb
+}
+
+android {
+    namespace "it.dejavu.staff"
+    compileSdk 35
+    buildToolsVersion "35.0.0"
+
+    defaultConfig {
+        applicationId "it.dejavu.staff"
+        minSdk 24
+        targetSdk 35
+        versionCode versione.codice as int
+        versionName versione.versione as String
+    }
+
+    signingConfigs {
+        release {
+            if (fileFirma.exists()) {
+                storeFile rootProject.file("firma/" + firma.storeFile)
+                storePassword firma.storePassword
+                keyAlias firma.keyAlias
+                keyPassword firma.keyPassword
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+    }
+
+    sourceSets {
+        main.assets.srcDirs += cartellaWeb.get().asFile
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+tasks.named("preBuild") { dependsOn copiaWeb }
