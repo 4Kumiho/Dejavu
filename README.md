@@ -25,8 +25,7 @@
 
 ## 📲 Installa l'app sul tablet Android del bar (5 minuti, una volta sola)
 
-https://github.com/4Kumiho/Dejavu/raw/App_android/Dejavu-Staff.apk
-
+**[👉 Scarica Dejavu-Staff.apk](https://4kumiho.github.io/Dejavu/Dejavu-Staff.apk)**
 
 L'app si installa da un file, **`Dejavu-Staff.apk`**: non serve il Play Store né un account.
 Dopo l'installazione **funziona senza internet** e tiene tutto sul tablet: tavoli, menu modificato e cronologia degli incassi.
@@ -322,7 +321,8 @@ No: ogni dispositivo ha i suoi tavoli. Usate un solo dispositivo per segnare i t
 È normale: il menu modificato resta sul dispositivo dove l'hai cambiato. Per copiarlo su un altro: **Scarica copia** sul primo, **Carica copia** sull'altro (in **Modifica menu**).
 
 **Esce «È disponibile una nuova versione dell'app».**
-È un aggiornamento dell'app: tocca **Aggiorna** e si ricarica con le novità.
+È un aggiornamento dell'app. Sul tablet con l'app Android tocca **Scarica** e installa il file (vedi [Aggiornare l'app](#-aggiornare-lapp));
+nel browser tocca **Aggiorna** e si ricarica con le novità.
 
 **Voglio controllare io se ci sono aggiornamenti.**
 Tocca **↻ Aggiorna** (in alto a destra, in ogni pagina). Se c'è una nuova versione dell'app te lo dice,
