@@ -24,6 +24,7 @@
     --muted: var(--dv-muted);
     --accent: var(--dv-tq);
     --danger: var(--dv-red);
+    --evento: #d9a441; /* serate con un evento, in Cronologia */
     --radius: 12px;
     --top-h: 64px;
   }
@@ -446,6 +447,21 @@
   }
 
   /* ---------- Cronologia ---------- */
+  .crono-blocco { max-width: 420px; margin: 40px auto; padding: 28px 24px; text-align: center; display: flex; flex-direction: column; gap: 12px; }
+  .crono-blocco .big { font-size: 44px; }
+  .crono-blocco h2 { margin: 0; font-size: 36px; }
+  .crono-blocco p { color: var(--muted); line-height: 1.5; margin: 0 0 6px; }
+  .crono-blocco .err { color: var(--danger); min-height: 20px; font-size: 14px; }
+  .crono-blocco .btn { min-height: 52px; }
+  .cr-azioni { display: flex; gap: 8px; flex-wrap: wrap; margin-left: auto; }
+  .cr-evento { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 16px 18px; margin-bottom: 16px; }
+  .cr-evento > span { color: var(--muted); }
+  .cr-evento.on { border-color: var(--evento); }
+  .cr-evento .dv-caps { color: var(--evento); }
+  .cr-evento h3 { margin: 4px 0 0; font-size: 28px; line-height: 1.1; }
+  .cr-evento p { margin: 4px 0 0; color: var(--muted); }
+  .cr-evento-az { display: flex; gap: 8px; }
+  .graf-col button.ev i { background: var(--evento); }
   .seg { display: flex; gap: 8px; flex-wrap: wrap; }
   .seg button {
     min-height: 48px; padding: 10px 18px; border-radius: 10px; border: 1px solid var(--line-2); background: transparent;
@@ -574,6 +590,8 @@
     .tabs a.on::after { left: 6px; right: 6px; }
     .page-title h2 { font-size: 30px; }
     .page-title .btn { width: 100%; }
+    .cr-azioni { width: 100%; }
+    .cr-azioni .btn { width: auto; flex: 1; }
     .hero-cards { gap: 10px; padding: 0 14px calc(12px + env(safe-area-inset-bottom)); margin-top: 24px; }
     .home-more { grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 20px 14px calc(28px + env(safe-area-inset-bottom)); }
     .hcard { min-height: 0; padding: 18px; }
@@ -758,6 +776,7 @@
 
   function render() {
     const r = route();
+    if (r.view !== "cronologia") cronoAperta = false; // uscendo dalla Cronologia si richiude
     document.body.classList.toggle("home", r.view === "home");
     if (r.view !== "home") clearInterval(slideTimer);
     $("#tabRicette").classList.toggle("on", r.view === "ricette");
@@ -809,7 +828,6 @@
     slideIdx = 0;
     avviaSlide();
     const aperti = tavoli.reduce((s, t) => s + totale(t), 0);
-    const sera = stasera();
     const oggi = new Date().toLocaleDateString("it-IT", { weekday: "long", day: "numeric", month: "long" });
     $("#app").innerHTML = `
       <section class="hero">
@@ -856,7 +874,7 @@
           <a class="hcard wide" href="#cronologia">
             <span class="k dv-caps">Titolare</span>
             <h3>Cronologia</h3>
-            <div class="v">${sera.cent ? `Stasera <b>${euro(sera.cent)}</b> incassati` : "Serate, incassi, prodotti più venduti"}</div>
+            <div class="v">🔒 Con password · serate, incassi, eventi</div>
           </a>
       </section>`;
     requestAnimationFrame(() => requestAnimationFrame(() => mostraSlide(0)));
@@ -1278,7 +1296,7 @@
     apriFinestra(`
       <form class="dlg" id="dlgForm" autocomplete="off">
         <h3>${esc(titolo)}</h3>
-        ${campi.map((c) => `<label>${esc(c.label)}<input name="${c.name}" value="${esc(c.value || "")}" placeholder="${esc(c.placeholder || "")}" ${c.inputmode ? `inputmode="${c.inputmode}"` : ""}></label>`).join("")}
+        ${campi.map((c) => `<label>${esc(c.label)}<input name="${c.name}" type="${c.type || "text"}" value="${esc(c.value || "")}" placeholder="${esc(c.placeholder || "")}" ${c.inputmode ? `inputmode="${c.inputmode}"` : ""}></label>`).join("")}
         <div class="err" id="dlgErr"></div>
         <div class="dlg-actions">
           <button type="button" class="btn" data-action="chiudi-finestra">Annulla</button>
@@ -1897,7 +1915,9 @@
   const puoAvanti = () => cr.tipo !== "tutto" && chiaveG(intervallo().a) < serataDi(Date.now());
   function etichettaSerata(k) {
     const nome = maiuscola(dataIt(daChiave(k), { weekday: "long", day: "numeric", month: "long", year: "numeric" }));
-    return k === serataDi(Date.now()) ? nome + " · stasera" : k === serataDi(Date.now() - 86400000) ? nome + " · ieri" : nome;
+    const ev = eventoDi(k);
+    return (k === serataDi(Date.now()) ? nome + " · stasera" : k === serataDi(Date.now() - 86400000) ? nome + " · ieri" : nome)
+      + (ev ? " · 🎉 " + ev.nome : "");
   }
   function etichettaPeriodo() {
     const iv = intervallo();
@@ -1959,7 +1979,7 @@
         pos[chiaveG(d)] = barre.length;
         barre.push({
           etichetta: cr.tipo === "settimana" ? dataIt(d, { weekday: "short", day: "numeric" }) : String(d.getDate()),
-          titolo: etichettaSerata(chiaveG(d)), cent: 0, serata: chiaveG(d),
+          titolo: etichettaSerata(chiaveG(d)), cent: 0, serata: chiaveG(d), evento: !!eventoDi(chiaveG(d)),
         });
       }
       inc.forEach((i) => { if (pos[i.s] !== undefined) barre[pos[i.s]].cent += i.cent; });
@@ -2034,22 +2054,131 @@
     const ids = new Set(venduti.map((p) => p.drinkId).filter(Boolean));
     return MENU.drinks.filter((d) => !ids.has(d.id) && (!cr.gruppo || gruppoDi(d.categoria) === cr.gruppo));
   }
-  function stasera() {
-    const oggi = serataDi(Date.now()), tav = new Set();
-    let cent = 0;
-    tuttiIncassi().forEach((i) => { if (i.s === oggi) { cent += i.cent; tav.add(i.tavolo.id); } });
-    return { cent, tavoli: tav.size };
+
+  /* ---------- Cronologia: password del titolare ed eventi delle serate ----------
+     La Cronologia si apre solo con la password, scelta al primo accesso e cambiabile solo da dentro la Cronologia.
+     Si richiude uscendo dalla pagina o quando l'app va in secondo piano.
+     App Android: file dati/cronologia-chiave.json e dati/eventi.json; browser: memoria del browser. */
+  const datiCrono = (file, chiave) => ({
+    leggi() { try { return JSON.parse(APP ? APP.leggiDati(file) : localStorage.getItem(chiave)) || null; } catch { return null; } },
+    scrivi(v) {
+      const testo = JSON.stringify(v);
+      if (APP) return APP.scriviDati(file, testo);
+      try { localStorage.setItem(chiave, testo); return true; } catch { return false; }
+    },
+  });
+  const chiaveCrono = datiCrono("cronologia-chiave.json", "dejavu.staff.chiave-cronologia");
+  const fileEventi = datiCrono("eventi.json", "dejavu.staff.eventi");
+  let cronoAperta = false;
+  let eventi = null; // { "20261017": { nome, nota } }, chiave = serata
+  const tuttiEventi = () => eventi || (eventi = fileEventi.leggi() || {});
+  const eventoDi = (k) => tuttiEventi()[k] || null;
+
+  // Impronta della password (non si salva mai la password in chiaro)
+  async function impronta(password, sale) {
+    const testo = sale + ":" + password;
+    if (window.crypto && crypto.subtle) {
+      const h = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(testo));
+      return "sha256:" + [...new Uint8Array(h)].map((b) => b.toString(16).padStart(2, "0")).join("");
+    }
+    // senza https (es. pagina aperta con doppio clic) crypto.subtle non c'è: impronta semplice
+    let a = 0x811c9dc5, b = 0x01000193;
+    for (let giro = 0; giro < 5000; giro++) for (let i = 0; i < testo.length; i++) {
+      a = Math.imul(a ^ testo.charCodeAt(i), 16777619);
+      b = Math.imul(b ^ (a >>> 7), 2246822519);
+    }
+    return "semplice:" + (a >>> 0).toString(16) + (b >>> 0).toString(16);
+  }
+  async function salvaPassword(password) {
+    const sale = [...crypto.getRandomValues(new Uint8Array(16))].map((b) => b.toString(16).padStart(2, "0")).join("");
+    return chiaveCrono.scrivi({ sale, impronta: await impronta(password, sale) });
+  }
+  async function passwordGiusta(password) {
+    const c = chiaveCrono.leggi();
+    return !!(c && c.sale && (await impronta(password, c.sale)) === c.impronta);
+  }
+  const erroreNuovaPassword = (p1, p2) => (p1.length < 4 ? "Almeno 4 caratteri." : p1 !== p2 ? "Le due password non sono uguali." : "");
+
+  function viewCronoBloccata() {
+    const nuova = !chiaveCrono.leggi();
+    $("#app").innerHTML = `
+      <form class="panel crono-blocco" id="cbForm" autocomplete="off">
+        <div class="big">🔒</div>
+        <h2>Cronologia</h2>
+        <p>${nuova
+          ? "Gli incassi sono un dato riservato. Scegli la password del titolare: servirà ogni volta per aprire la Cronologia."
+          : "Riservata al titolare: inserisci la password."}</p>
+        <input class="search" type="password" name="p1" placeholder="${nuova ? "Nuova password" : "Password"}" autocomplete="${nuova ? "new-password" : "current-password"}">
+        ${nuova ? `<input class="search" type="password" name="p2" placeholder="Ripeti la password" autocomplete="new-password">` : ""}
+        <div class="err" id="cbErr"></div>
+        <button class="btn primary" type="submit">${nuova ? "Salva e apri" : "Apri"}</button>
+      </form>`;
+    const f = $("#cbForm");
+    f.p1.focus();
+    f.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const errore = (m) => { $("#cbErr").textContent = m; };
+      if (nuova) {
+        const m = erroreNuovaPassword(f.p1.value, f.p2.value);
+        if (m) return errore(m);
+        if (!(await salvaPassword(f.p1.value))) return errore("Non sono riuscito a salvare la password.");
+      } else if (!(await passwordGiusta(f.p1.value))) {
+        f.p1.value = ""; f.p1.focus();
+        return errore("Password sbagliata.");
+      }
+      cronoAperta = true;
+      viewCronologia();
+    });
+  }
+  async function cambiaPassword() {
+    const v = await chiedi({
+      titolo: "Cambia password", ok: "Salva",
+      campi: [{ name: "p1", label: "Nuova password", type: "password" }, { name: "p2", label: "Ripeti la nuova password", type: "password" }],
+      valida: (v) => erroreNuovaPassword(v.p1, v.p2),
+    });
+    if (v) toast((await salvaPassword(v.p1)) ? "Password cambiata" : "Non sono riuscito a salvare la password");
+  }
+
+  function salvaEvento(k, ev) {
+    const nuovi = { ...tuttiEventi() };
+    if (ev) nuovi[k] = ev; else delete nuovi[k];
+    if (!fileEventi.scrivi(nuovi)) { toast("Non sono riuscito a salvare l'evento"); return false; }
+    eventi = nuovi;
+    return true;
+  }
+  async function modificaEvento(k) {
+    const ev = eventoDi(k);
+    const v = await chiedi({
+      titolo: ev ? "Modifica evento" : "Segna come evento", ok: "Salva",
+      campi: [
+        { name: "nome", label: "Nome dell'evento", value: ev ? ev.nome : "", placeholder: "Es. Halloween, Partita Atalanta, Compleanno…" },
+        { name: "nota", label: "Nota (facoltativa)", value: ev ? ev.nota || "" : "", placeholder: "Es. DJ set, 80 persone" },
+      ],
+      valida: (v) => (v.nome.trim() ? "" : "Scrivi il nome dell'evento."),
+    });
+    if (v && salvaEvento(k, { nome: v.nome.trim(), nota: v.nota.trim() })) { toast("Evento salvato"); viewCronologia(); }
+  }
+  async function togliEvento(k) {
+    const ev = eventoDi(k);
+    if (!ev) return;
+    const ok = await conferma({ titolo: "Togliere l'evento?", testo: `La serata resta, toglie solo l'evento «${esc(ev.nome)}».`, ok: "Togli", pericolo: true });
+    if (ok && salvaEvento(k, null)) { toast("Evento tolto"); viewCronologia(); }
   }
 
   /* ---------- Cronologia: pagine ---------- */
   function viewCronologia() {
+    if (!cronoAperta) return viewCronoBloccata();
     const pagine = [["serate", "Serate"], ["prodotti", "Prodotti più venduti"], ["tavoli", "Tavoli chiusi"]];
     const tipi = [["serata", "Serata"], ["settimana", "Settimana"], ["mese", "Mese"], ["anno", "Anno"], ["tutto", "Tutto"]];
     $("#app").innerHTML = `
       <div class="page-title">
         <h2>Cronologia</h2>
         <span class="sub">le serate vanno dalle ${ORA_CAMBIO}:00 alle ${ORA_CAMBIO - 1}:59 del giorno dopo</span>
-        <button class="btn" data-action="cr-esporta">Scarica copia</button>
+        <div class="cr-azioni">
+          <button class="btn" data-action="cr-esporta">Scarica copia</button>
+          <button class="btn" data-action="cr-password">Password</button>
+          <button class="btn" data-action="cr-blocca">🔒 Blocca</button>
+        </div>
       </div>
       <div class="seg">${pagine.map(([id, t]) => `<button class="${cr.pagina === id ? "on" : ""}" data-action="cr-pagina" data-p="${id}">${t}</button>`).join("")}</div>
       <div class="cr-periodo">
@@ -2091,7 +2220,28 @@
         <span class="barra"><i style="width:${(x.cent / classifica[0].cent) * 100}%"></i></span>
         <span class="v">${euro(x.cent)}</span>
       </button>`).join("");
+    // evento della serata (vista Serata) oppure eventi del periodo (le altre viste)
+    const iv = intervallo(), k = chiaveG(iv.da), ev = singola ? eventoDi(k) : null;
+    const boxEvento = !singola ? "" : ev
+      ? `<div class="panel cr-evento on">
+          <div><span class="dv-caps">Evento</span><h3>🎉 ${esc(ev.nome)}</h3>${ev.nota ? `<p>${esc(ev.nota)}</p>` : ""}</div>
+          <div class="cr-evento-az">
+            <button class="btn" data-action="cr-evento" data-k="${k}">Modifica</button>
+            <button class="btn danger" data-action="cr-evento-togli" data-k="${k}">Togli</button>
+          </div>
+        </div>`
+      : `<div class="panel cr-evento"><span>Questa serata era un evento del bar?</span>
+          <button class="btn" data-action="cr-evento" data-k="${k}">🎉 Segna come evento</button></div>`;
+    const incassoSerata = {};
+    classifica.forEach((x) => { incassoSerata[x.k] = x.cent; });
+    const evPeriodo = singola ? [] : Object.keys(tuttiEventi()).map(Number).filter((s) => dentro(s, iv)).sort((a, b) => b - a);
+    const righeEventi = evPeriodo.map((s) => `
+      <button class="cr-riga" data-action="cr-serata" data-k="${s}">
+        <span class="n">${esc(etichettaSerata(s))}</span>
+        <span class="v">${euro(incassoSerata[s] || 0)}</span>
+      </button>`).join("");
     $("#crCorpo").innerHTML = `
+      ${boxEvento}
       <div class="stats">
         ${stat("Incasso", euro(r.cent), plurale(r.tavoli, "tavolo", "tavoli"), true)}
         ${stat("Media per tavolo", r.tavoli ? euro(r.mediaTavolo) : "—")}
@@ -2101,7 +2251,8 @@
             + stat("Serata migliore", r.migliore ? euro(r.migliore.cent) : "—", r.migliore ? etichettaSerata(r.migliore.k) : "")}
       </div>
       ${boxCrono(s.titolo, `<div id="crGrafico"></div>${r.cent ? "" : `<div class="empty" style="padding:14px 0 4px">Nessun incasso in questo periodo.</div>`}`,
-        `<span class="hint">Tocca una colonna per vedere l'importo${cr.apribile ? ", toccala di nuovo per aprire la serata" : ""}</span>`)}
+        `<span class="hint">Tocca una colonna per vedere l'importo${cr.apribile ? ", toccala di nuovo per aprire la serata" : ""}${s.barre.some((x) => x.evento) ? " · in oro le serate con un evento" : ""}</span>`)}
+      ${evPeriodo.length ? boxCrono(`Eventi · ${evPeriodo.length}`, righeEventi) : ""}
       ${classifica.length ? boxCrono("Serate migliori", righe) : ""}
       ${singola && r.tavoli ? `<button class="btn" data-action="cr-pagina" data-p="tavoli">Vedi i tavoli di questa serata</button>` : ""}`;
     crGrafico();
@@ -2127,7 +2278,7 @@
       <div class="graf">
         ${[0, 1, 2, 3, 4].map((i) => `<div class="graf-riga" style="bottom:${i * 25}%"><span>${Math.round(scala * i / 400).toLocaleString("it-IT")} €</span></div>`).join("")}
         <div class="graf-col">${barre.map((b, i) => `
-          <button class="${i === cr.barra ? "on" : ""}" data-action="cr-barra" data-i="${i}" aria-label="${esc(b.titolo)}: ${euro(b.cent)}">
+          <button class="${i === cr.barra ? "on" : ""}${b.evento ? " ev" : ""}" data-action="cr-barra" data-i="${i}" aria-label="${esc(b.titolo)}: ${euro(b.cent)}">
             <i style="height:${b.cent ? Math.max(0.8, (b.cent / scala) * 100) : 0}%"></i>
             <span class="${i % ogni ? "nascosta" : ""}">${esc(b.etichetta)}</span>
           </button>`).join("")}</div>
@@ -2238,6 +2389,10 @@
       case "cr-gruppo": cr.gruppo = b.dataset.g; return crProdotti();
       case "cr-ordine": cr.ordine = b.dataset.o; return crProdotti();
       case "cr-tavolo": return apriStorico(b.dataset.id);
+      case "cr-evento": return modificaEvento(+b.dataset.k);
+      case "cr-evento-togli": return togliEvento(+b.dataset.k);
+      case "cr-password": return cambiaPassword();
+      case "cr-blocca": cronoAperta = false; return viewCronologia();
       case "cr-elimina": {
         if (!b.classList.contains("fill")) { b.classList.add("fill"); b.textContent = "Tocca ancora per eliminare"; return; }
         const v = Crono.voci().find((x) => x.id === $("#storico").dataset.id);
@@ -2252,7 +2407,7 @@
       }
       case "cr-esporta":
         return salvaFileJson(`cronologia-dejavu-${new Date().toISOString().slice(0, 10)}.json`,
-          { app: "dejavu-staff", tipo: "cronologia", esportato: new Date().toISOString(), tavoli: Crono.voci() }, "Cronologia Déjà Vu");
+          { app: "dejavu-staff", tipo: "cronologia", esportato: new Date().toISOString(), tavoli: Crono.voci(), eventi: tuttiEventi() }, "Cronologia Déjà Vu");
     }
   });
 
@@ -2350,7 +2505,11 @@
   avvio();
   if (APP) controllaApk();
   document.addEventListener("visibilitychange", () => {
-    if (document.hidden) return;
+    if (document.hidden) {
+      // app in secondo piano: la Cronologia si richiude
+      if (cronoAperta) { cronoAperta = false; if (route().view === "cronologia") { chiudiFinestra(null); viewCronologia(); } }
+      return;
+    }
     if (APP && Date.now() - ultimoControlloApk > 30 * 60 * 1000) controllaApk();
     if (navigator.serviceWorker && navigator.serviceWorker.getRegistration)
       navigator.serviceWorker.getRegistration().then((r) => r && r.update()).catch(() => {});

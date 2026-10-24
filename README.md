@@ -276,6 +276,24 @@ L'app è pensata per **un solo tablet**, quello del bar: le modifiche fatte lì 
 Tutto quello che viene incassato resta salvato: ogni **Incassa** di *Paga separato* e ogni **Chiudi tavolo**
 (che vuol dire «pagato tutto»), con data, ora e prodotti. I prodotti tolti con **−** prima del pagamento non contano.
 
+#### 🔒 Password del titolare
+Gli incassi sono un dato riservato: la Cronologia si apre **solo con la password**.
+- La **prima volta** che apri la Cronologia scegli la password (almeno 4 caratteri, da scrivere due volte).
+  👉 Fallo **subito tu (titolare)**, appena installata l'app: chi apre per primo la Cronologia sceglie la password.
+- Per **cambiarla**: entra nella Cronologia → **Password**. Si può cambiare solo da dentro, quindi serve quella attuale per entrare.
+- La Cronologia **si richiude da sola** quando esci dalla pagina o quando il tablet va in standby / l'app va in secondo piano.
+  Con **🔒 Blocca** la richiudi subito.
+- Senza password lo staff usa normalmente tavoli, ricette, prodotti e menu; nella pagina iniziale non compare più l'incasso della serata.
+- ⚠️ **Non dimenticarla**: non c'è un modo per recuperarla dall'app.
+
+#### 🎉 Eventi
+Una serata può essere segnata come **evento del bar** (es. *Halloween*, *Partita Atalanta*, *Compleanno di…*):
+apri la serata (periodo **Serata**) → **🎉 Segna come evento**, scrivi il nome ed eventualmente una nota (*DJ set, 80 persone*).
+Da lì la puoi anche **Modificare** o **Togliere**.
+- Il nome dell'evento compare accanto alla data ovunque: classifica delle serate, tavoli chiusi, grafico.
+- Nei grafici per settimana e per mese le serate con un evento sono **in oro**, e sotto c'è il riquadro **Eventi** con l'incasso di ognuno.
+- Gli eventi finiscono anche nel file di **Scarica copia**.
+
 Una **serata** va dalle **8:00 alle 7:59 del giorno dopo**: un tavolo pagato all'1:30 di notte conta nella serata del giorno prima.
 
 In alto scegli il **periodo**: *Serata*, *Settimana*, *Mese*, *Anno* o *Tutto*; con **‹ ›** vai al periodo prima o dopo,
@@ -293,7 +311,7 @@ con **Oggi** torni a quello attuale. Il periodo vale per tutte e tre le pagine:
 Gli incassi dei tavoli ancora aperti contano già nelle serate e nei prodotti; nei *Tavoli chiusi* compaiono quando li chiudi.
 **Scarica copia** salva tutta la cronologia in un file (cartella **Download/Deja Vu** del tablet): fallo ogni tanto, come backup.
 
-Dalla pagina iniziale, il riquadro **Cronologia** mostra quanto si è incassato stasera.
+Dalla pagina iniziale, il riquadro **Cronologia** porta alla Cronologia (con la password).
 
 ### Sul telefono
 Stessa app, adattata allo schermo: dentro un tavolo usi le due schede **Ordine** e **+ Aggiungi**.
@@ -323,6 +341,9 @@ No: ogni dispositivo ha i suoi tavoli. Usate un solo dispositivo per segnare i t
 **Esce «È disponibile una nuova versione dell'app».**
 È un aggiornamento dell'app. Sul tablet con l'app Android tocca **Scarica** e installa il file (vedi [Aggiornare l'app](#-aggiornare-lapp));
 nel browser tocca **Aggiorna** e si ricarica con le novità.
+
+**Ho dimenticato la password della Cronologia.**
+Dall'app non si può recuperare né azzerare (altrimenti chiunque potrebbe farlo). Chiedi a chi gestisce il progetto.
 
 **Voglio controllare io se ci sono aggiornamenti.**
 Tocca **↻ Aggiorna** (in alto a destra, in ogni pagina). Se c'è una nuova versione dell'app te lo dice,
@@ -371,6 +392,7 @@ Ogni modifica pubblicata su `main` va online da sola in 1–2 minuti. Le modific
 - È la stessa web app di `staff/` + `shared/`, copiata dentro l'APK e aperta in una WebView.
   Funziona senza internet: menu modificato (`dati/menu.json`) e cronologia restano in file dentro l'app.
 - La cronologia è in file dentro l'app (`dati/cronologia/AAAA-MM.json` + `.bak`), come in Reef; nel browser sta nella memoria del browser.
+  Password della Cronologia (solo l'impronta SHA-256 con sale, mai in chiaro) in `dati/cronologia-chiave.json`, eventi delle serate in `dati/eventi.json`.
 - **Ricreare l'APK** (PowerShell, dalla radice della repo): `.\android\build.ps1` → `Dejavu-Staff.apk`.
   La prima volta scarica Java, Android SDK e Gradle in `..\.android-tools` (fuori dalla repo).
 - **Provare l'APK sul computer**, senza tablet: `.\android\prova-emulatore.ps1`. Apre un tablet Android virtuale (emulatore),
