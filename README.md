@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <img src="docs/screenshots/ipad-home.jpg" width="560" alt="Pagina iniziale su iPad">
+  <img src="docs/screenshots/ipad-home.jpg" width="560" alt="Pagina iniziale sul tablet">
   &nbsp;
   <img src="docs/screenshots/phone-home.jpg" width="190" alt="Pagina iniziale su telefono">
 </p>
@@ -80,105 +80,6 @@ Quando c'è una versione nuova, l'app mostra in alto **«È disponibile una nuov
 
 > ⚠️ **Non disinstallare mai l'app** per aggiornarla: disinstallando si cancellano menu modificato e cronologia degli incassi.
 > Se proprio devi (o se cambi tablet), prima fai **Scarica copia** sia in **Menu** sia in **Cronologia**: i file finiscono nella cartella **Download/Deja Vu** del tablet.
-
----
-
-## 🌐 Usarla su altri dispositivi (web app)
-
-Sugli altri dispositivi (iPhone, iPad, computer…) l'app si può usare anche dal browser e aggiungere alla schermata Home.
-Ogni dispositivo ha i **suoi** tavoli, il **suo** menu e la **sua** cronologia: per il bar usate il tablet con l'app Android.
-
-> ⚠️ Una volta aggiunta alla schermata Home, apri l'app **sempre dall'icona**: se la apri dal browser normale vedi un'altra memoria (vuota).
-
-<details>
-<summary><b>🍏 iPhone</b></summary>
-
-1. Tocca questo link: **[👉 Apri Déjà Vu Staff](https://4kumiho.github.io/Dejavu/staff/)**
-2. Deve aprirsi in **Safari** (l'icona con la bussola blu).
-   *Se si apre dentro un'altra app* (GitHub, WhatsApp, Instagram…): tocca **⋯** o l'icona della bussola e scegli **Apri in Safari**.
-3. Aspetta che compaia la pagina nera con il logo Déjà Vu.
-4. Tocca il tasto **Condividi** (il quadrato con la freccia verso l'alto ⬆️) nella barra in basso.
-   *Se non lo vedi:* tocca **⋯** (tre puntini) in basso a destra, poi **Condividi**.
-5. Scorri l'elenco verso il basso e tocca **Aggiungi alla schermata Home** ➕.
-6. Se c'è l'opzione **Apri come app web**, lasciala **attiva**.
-7. Tocca **Aggiungi** in alto a destra.
-8. Sulla schermata Home trovi l'icona nera **Déjà Vu Staff**. ✅
-
-</details>
-
-<details>
-<summary><b>🍏 iPad</b></summary>
-
-1. Tocca questo link: **[👉 Apri Déjà Vu Staff](https://4kumiho.github.io/Dejavu/staff/)**
-2. Deve aprirsi in **Safari** (l'icona con la bussola blu).
-   *Se si apre dentro un'altra app* (GitHub, WhatsApp, Instagram…): tocca **⋯** o l'icona della bussola e scegli **Apri in Safari**.
-3. Aspetta che compaia la pagina nera con il logo Déjà Vu.
-4. Tocca il tasto **Condividi** (il quadrato con la freccia ⬆️) **in alto a destra**, accanto alla barra dell'indirizzo.
-   *Se non lo vedi:* tocca **⋯** (tre puntini) in alto, poi **Condividi**.
-5. Tocca **Aggiungi alla schermata Home** ➕.
-6. Se c'è l'opzione **Apri come app web**, lasciala **attiva**.
-7. Tocca **Aggiungi**.
-8. Sulla schermata Home trovi l'icona nera **Déjà Vu Staff**. ✅
-
-💡 L'app è pensata soprattutto per l'iPad: in orizzontale vedi l'ordine a sinistra e i drink a destra.
-
-</details>
-
-<details>
-<summary><b>🤖 Telefono Android</b></summary>
-
-**Con Google Chrome** (consigliato)
-1. Tocca questo link: **[👉 Apri Déjà Vu Staff](https://4kumiho.github.io/Dejavu/staff/)**
-2. Deve aprirsi in **Chrome**.
-   *Se si apre dentro un'altra app* (GitHub, WhatsApp, Instagram…): tocca **⋮** e scegli **Apri in Chrome**.
-3. Tocca **⋮** (tre puntini) in alto a destra.
-4. Tocca **Installa app** oppure **Aggiungi a schermata Home**.
-5. Conferma con **Installa** (o **Aggiungi**).
-6. Trovi l'icona **Déjà Vu Staff** nella schermata Home e tra le app. ✅
-
-**Con Samsung Internet**
-1. Tocca il link **[👉 Apri Déjà Vu Staff](https://4kumiho.github.io/Dejavu/staff/)** e aprilo con **Samsung Internet**.
-2. Tocca **☰** (tre righe) in basso a destra.
-3. Tocca **Aggiungi pagina a** → **Schermata Home**.
-
-</details>
-
-<details>
-<summary><b>🤖 Tablet Android — come web app</b></summary>
-
-1. Tocca questo link: **[👉 Apri Déjà Vu Staff](https://4kumiho.github.io/Dejavu/staff/)**
-2. Deve aprirsi in **Chrome**.
-   *Se si apre dentro un'altra app* (GitHub, WhatsApp, Instagram…): tocca **⋮** e scegli **Apri in Chrome**.
-3. Tocca **⋮** (tre puntini) **a destra della barra dell'indirizzo**.
-   Su alcuni tablet compare direttamente un'icona **Installa** (uno schermo con una freccia) dentro la barra dell'indirizzo: puoi toccare quella.
-4. Tocca **Installa app** oppure **Aggiungi a schermata Home**.
-5. Conferma con **Installa**.
-6. Trovi l'icona **Déjà Vu Staff** nella schermata Home. ✅
-
-</details>
-
-<details>
-<summary><b>💻 Computer (Windows o Mac)</b></summary>
-
-**Google Chrome**
-1. Clicca il link **[👉 Apri Déjà Vu Staff](https://4kumiho.github.io/Dejavu/staff/)** (si apre in Chrome se è il tuo browser predefinito).
-2. Nella barra dell'indirizzo, a destra, clicca l'icona **Installa** (uno schermo con una freccia ⬇️).
-   *Se non c'è:* menu **⋮** → **Trasmetti, salva e condividi** → **Installa pagina come app…**
-3. Clicca **Installa**. L'app si apre in una finestra sua e trovi l'icona nel menu Start / nel Launchpad.
-
-**Microsoft Edge**
-1. Clicca il link **[👉 Apri Déjà Vu Staff](https://4kumiho.github.io/Dejavu/staff/)**
-2. Menu **⋯** in alto a destra → **App** → **Installa questo sito come app**.
-3. Clicca **Installa**.
-
-**Safari su Mac**
-1. Clicca il link **[👉 Apri Déjà Vu Staff](https://4kumiho.github.io/Dejavu/staff/)**
-2. Menu **File** → **Aggiungi al Dock**.
-3. Clicca **Aggiungi**.
-
-*Firefox non permette di installare app: puoi usarla normalmente nel browser, magari con un segnalibro.*
-
-</details>
 
 ---
 
@@ -313,8 +214,9 @@ Gli incassi dei tavoli ancora aperti contano già nelle serate e nei prodotti; n
 
 Dalla pagina iniziale, il riquadro **Cronologia** porta alla Cronologia (con la password).
 
-### Sul telefono
-Stessa app, adattata allo schermo: dentro un tavolo usi le due schede **Ordine** e **+ Aggiungi**.
+### Sul telefono Android
+L'APK si installa anche su un telefono Android, con gli stessi passaggi del tablet. L'app si adatta allo schermo:
+dentro un tavolo usi le due schede **Ordine** e **+ Aggiungi**.
 
 <p align="center">
   <img src="docs/screenshots/phone-tavolo.jpg" width="220" alt="Ordine su telefono">
@@ -329,18 +231,20 @@ Stessa app, adattata allo schermo: dentro un tavolo usi le due schede **Ordine**
 **Serve internet?**
 No: funziona tutto senza internet. Serve solo per installarla e per controllare se c'è una nuova versione dell'app.
 
-**Se chiudo l'app o spengo l'iPad perdo i tavoli?**
-No, restano salvati sul dispositivo.
+**Se chiudo l'app o spengo il tablet perdo i tavoli?**
+No, restano salvati sul tablet.
 
-**I tavoli si vedono su tutti gli iPad?**
-No: ogni dispositivo ha i suoi tavoli. Usate un solo dispositivo per segnare i tavoli.
+**I tavoli si vedono su più dispositivi?**
+No: ogni dispositivo ha i suoi tavoli. Usate un solo tablet per segnare i tavoli.
+
+**Se apro il sito dal browser (iPhone, iPad, computer)?**
+Compare solo la pagina per **scaricare l'app Android**: l'app si usa esclusivamente dall'APK.
 
 **Ho cambiato il menu su un dispositivo ma un altro non lo vede.**
 È normale: il menu modificato resta sul dispositivo dove l'hai cambiato. Per copiarlo su un altro: **Scarica copia** sul primo, **Carica copia** sull'altro (in **Modifica menu**).
 
 **Esce «È disponibile una nuova versione dell'app».**
-È un aggiornamento dell'app. Sul tablet con l'app Android tocca **Scarica** e installa il file (vedi [Aggiornare l'app](#-aggiornare-lapp));
-nel browser tocca **Aggiorna** e si ricarica con le novità.
+È un aggiornamento dell'app: tocca **Scarica** e installa il file (vedi [Aggiornare l'app](#-aggiornare-lapp)).
 
 **Ho dimenticato la password della Cronologia.**
 Dall'app non si può recuperare né azzerare (altrimenti chiunque potrebbe farlo). Chiedi a chi gestisce il progetto.
@@ -349,11 +253,8 @@ Dall'app non si può recuperare né azzerare (altrimenti chiunque potrebbe farlo
 Tocca **↻ Aggiorna** (in alto a destra, in ogni pagina). Se c'è una nuova versione dell'app te lo dice,
 altrimenti compare *«App già aggiornata»*.
 
-**L'icona apre GitHub invece dell'app.**
-Hai aggiunto la pagina sbagliata. Tieni premuto sull'icona → **Rimuovi**, poi rifai l'installazione da questo link: **[👉 Apri Déjà Vu Staff](https://4kumiho.github.io/Dejavu/staff/)**
-
-**Ho cancellato i dati di Safari / rimosso l'icona / disinstallato l'app.**
-I tavoli aperti, il menu modificato e la cronologia di quel dispositivo vengono cancellati.
+**Ho disinstallato l'app.**
+I tavoli aperti, il menu modificato e la cronologia del tablet vengono cancellati.
 Si rimettono con **Carica copia** (menu) se avevi salvato una copia. Per questo conviene fare ogni tanto **Scarica copia** di menu e cronologia.
 
 ---
@@ -376,17 +277,19 @@ Si rimettono con **Carica copia** (menu) se avevi salvato una copia. Per questo 
 
 ### Come funziona il menu
 - `shared/menu.json` è il **menu originale**: è quello che si usa al primo avvio e con *Ripristina originale*.
-- Le modifiche fatte dall'app restano sul dispositivo (app Android: file `dati/menu.json` con la copia `.bak`; browser: nella sua memoria).
+- Le modifiche fatte dall'app restano sul tablet (file `dati/menu.json` con la copia `.bak`).
   Cambiare `shared/menu.json` non tocca il menu già modificato su un dispositivo.
 - **I nostri Prodotti** (`prodotti` in `shared/menu.json`) non si modificano dall'app: si usano sempre quelli di `shared/menu.json`,
   quindi le bottiglie nuove arrivano sul tablet con un aggiornamento dell'app anche se lì il menu è stato modificato.
 
-Ogni modifica pubblicata su `main` va online da sola in 1–2 minuti. Le modifiche al codice della web app mostrano l'avviso
-«nuova versione dell'app» quando cambia `CACHE` in `staff/sw.js`; per l'app Android vedi sotto.
+Il **sito** (GitHub Pages) serve solo a scaricare l'APK e a far sapere al tablet che c'è una nuova versione
+(`android/versione.json`). Aperto da un browser mostra la pagina «Scarica l'app Android»: l'app vera e propria
+funziona solo dentro l'APK (e in prova sul computer, vedi sotto).
 
-### Provarla sul computer senza installarla
+### Provarla sul computer senza installarla (solo per chi modifica il codice)
 - Doppio clic su `staff/index.html` (con Chrome o Edge), oppure
 - dal terminale nella cartella del progetto: `python -m http.server 8000` e apri http://localhost:8000/staff/
+- Da `file://` e `localhost` l'app si apre normalmente; dal sito pubblico no.
 
 ### App Android (`android/`)
 - È la stessa web app di `staff/` + `shared/`, copiata dentro l'APK e aperta in una WebView.
@@ -400,8 +303,10 @@ Ogni modifica pubblicata su `main` va online da sola in 1–2 minuti. Le modific
   Si usa con il mouse come un tablet; il tasto ◀ in basso è il tasto indietro. Dopo una nuova build basta rilanciarlo.
 - **Nuova versione**: aumenta `codice` (e `versione`) in `android/versione.json`, ricrea l'APK e pubblica su `main`:
   i tablet vedono l'avviso *nuova versione* (leggono `android/versione.json` dal sito).
-- 🔑 **Chiave di firma**: `android/firma/` (creata da `build.ps1`, **non** va nella repo). Conservane una copia sicura:
+- 🔑 **Chiave di firma**: `android/firma/` (`dejavu.jks` + `firma.properties`, **non** va nella repo). Conservane una copia sicura:
   senza la stessa chiave il tablet non accetta gli aggiornamenti.
+  ⚠️ **Su un altro computer**: prima di lanciare `build.ps1` copia lì la cartella `android/firma/` dal computer che ha creato l'APK.
+  Se manca, `build.ps1` crea una chiave **nuova** e l'APK che ne esce non si installa sopra l'app già presente sul tablet.
 
 ### Pubblicazione
 L'app è pubblicata con **GitHub Pages** (Settings → Pages → Branch `main`, cartella `/ (root)`).

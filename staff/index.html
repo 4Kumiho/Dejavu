@@ -573,6 +573,18 @@
   .avviso span { flex: 1; }
   .avviso .btn { min-height: 44px; background: var(--dv-black); color: var(--text); border-color: var(--dv-black); }
 
+  /* ---------- Pagina «scarica l'app Android» (quando si apre dal browser) ---------- */
+  .scarica {
+    min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 32px 20px; gap: 18px; max-width: 520px; margin: 0 auto;
+  }
+  .scarica img { width: 180px; height: auto; filter: drop-shadow(0 0 30px rgba(255,255,255,.15)); }
+  .scarica h1 { font-family: var(--dv-serif); font-weight: 600; font-size: 40px; margin: 6px 0 0; }
+  .scarica p { color: var(--muted); line-height: 1.6; margin: 0; }
+  .scarica p b { color: var(--text); }
+  .scarica .btn { text-decoration: none; display: inline-flex; align-items: center; justify-content: center; padding: 16px 28px; }
+  .scarica .come { color: var(--accent); }
+
   /* ---------- Telefono ---------- */
   @media (max-width: 560px) {
     :root { --top-h: 60px; }
@@ -654,6 +666,26 @@
   const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
   // Dentro l'app Android c'è il ponte verso il tablet (file di menu e cronologia, download, link esterni)
   const APP = window.DejavuAndroid || null;
+
+  /* L'app si usa solo sul tablet Android. Aperta da un browser mostra la pagina per scaricare l'APK
+     (tranne quando la si prova sul computer: file:// o localhost). */
+  const PROVA = location.protocol === "file:" || ["localhost", "127.0.0.1"].includes(location.hostname);
+  if (!APP && !PROVA) {
+    document.title = "Déjà Vu · Staff";
+    document.body.className = "dv-bg solo-android";
+    document.body.innerHTML = `
+      <main class="scarica">
+        <img src="../shared/logo-white.png" alt="Déjà Vu">
+        <h1>Déjà Vu · Staff</h1>
+        <p>L'app del bar si usa sul <b>tablet Android</b>.<br>Scaricala e installala: funziona anche senza internet.</p>
+        <a class="btn primary" href="../Dejavu-Staff.apk" download>Scarica l'app Android</a>
+        <a class="come" href="https://github.com/4Kumiho/Dejavu#-installa-lapp-sul-tablet-android-del-bar-5-minuti-una-volta-sola">Come si installa</a>
+      </main>`;
+    // chi l'aveva aggiunta alla schermata Home come sito non riceve più la versione web
+    if ("serviceWorker" in navigator) navigator.serviceWorker.getRegistrations().then((rs) => rs.forEach((r) => r.unregister())).catch(() => {});
+    return;
+  }
+
   /* Il menu si modifica dall'app e resta salvato SU QUESTO DISPOSITIVO
      (nell'app Android nel file dati/menu.json, con la copia .bak; nel browser nella sua memoria).
      Al primo avvio si parte dal menu originale, shared/menu.json, che è dentro l'app. */
