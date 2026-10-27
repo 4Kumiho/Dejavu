@@ -76,7 +76,7 @@ Quando c'è una versione nuova, l'app mostra in alto **«È disponibile una nuov
 (puoi controllare anche tu con **↻ Aggiorna**, in alto a destra).
 1. Tocca **Scarica** e aspetta il download.
 2. Apri il file e tocca **Aggiorna**.
-3. Tavoli aperti, menu e cronologia **restano**.
+3. Tavoli aperti, menu modificato, cronologia, **password della Cronologia** ed eventi delle serate **restano** (provato: aggiornando non si perde nulla).
 
 > ⚠️ **Non disinstallare mai l'app** per aggiornarla: disinstallando si cancellano menu modificato e cronologia degli incassi.
 > Se proprio devi (o se cambi tablet), prima fai **Scarica copia** sia in **Menu** sia in **Cronologia**: i file finiscono nella cartella **Download/Deja Vu** del tablet.
