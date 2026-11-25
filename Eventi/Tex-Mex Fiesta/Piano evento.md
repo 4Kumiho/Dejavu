@@ -14,53 +14,23 @@ Il menu usa quasi solo quello che c'è già al bar: Mezcal Vida, Tequila Reposad
 | `Instagram post.png` | Post per il feed (1080×1350) |
 | `Instagram storia.png` | Storia (1080×1920) |
 | `Menu da tavolo A5.pdf` | Menu della serata, da stampare in **A5** (o due per foglio A4) e mettere sui tavoli |
+| `Istruzioni per il personale.pdf` | **Per lo staff**, 2 pagine A4 da tenere al bancone: come fare i drink e come preparare i cibi, più la lista «Prima di aprire» |
 | `sorgente/` | Il file da cui nascono tutte le grafiche (data, prezzi, testi) |
 
 ---
 
-## 🍹 Drink della serata (ricette per il barista)
+## 🍹 Drink della serata
 
-Stesse misure del ricettario del bar. **Sale e peperoncino per i bordi**: 3 cucchiai di sale fino + 1 di peperoncino in polvere (o paprika piccante), mescolati in un piattino.
+| Drink | Prezzo | In breve |
+|---|---|---|
+| Margarita Picante 🌶️🌶️ | 10 € | Tequila, Cointreau, Ancho Reyes, agave, lime · mezzo bordo sale e peperoncino |
+| El Diablo 🌶️ | 10 € | Tequila Reposado, purea di lampone, lime, ginger beer |
+| Il nostro Paloma 🌶️🌶️ | 10 € | La ricetta di sempre, con mezzo bordo sale e peperoncino |
+| Oaxaca Old Fashioned | 10 € | Tequila Reposado e Mezcal, agave, Angostura |
+| Mezcal Negroni | 10 € | Mezcal, Campari, Vermouth del Professore |
+| Shot Fuego 🌶️🌶️🌶️ | 4 € | Tequila e Ancho Reyes, lime e sale a parte |
 
-### Margarita Picante 🌶️🌶️ · 10 €
-- Tequila **1½ oz** · Cointreau **¾ oz** · Ancho Reyes **¼ oz** · Sciroppo d'agave **¼ oz** · Lime spremuto **½ lime**
-- Coppetta fredda con **mezzo bordo di sale e peperoncino**. Shaker + strain.
-1. Bagna metà bordo della coppetta con il lime e passala nel sale e peperoncino.
-2. Nello shaker con ghiaccio versa tutto, shakera forte.
-3. Filtra nella coppetta. Guarnisci con una rotella di lime.
-
-### El Diablo 🌶️ · 10 €
-- Tequila Reposado **1½ oz** · Purea di lampone **½ oz** · Lime spremuto **½ lime** · Ginger beer **top**
-- Tumbler alto con ghiaccio. Nel bicchiere.
-1. Nel tumbler pieno di ghiaccio versa tequila, purea di lampone e lime.
-2. Completa con ginger beer, mescola dal basso. Guarnisci con una fetta di lime.
-
-### Il nostro Paloma 🌶️🌶️ · 10 €
-La ricetta di sempre (Mezcal Vida 1½ oz, Ancho Reyes ½ oz, ½ lime, top di tonica al pompelmo).
-**Per la serata:** mezzo bordo di sale e peperoncino sul tumbler.
-
-### Oaxaca Old Fashioned · 10 €
-- Tequila Reposado **1½ oz** · Mezcal Vida **½ oz** · Sciroppo d'agave **1 bar spoon** · Angostura **2 dash**
-- Tumbler basso, cubo grande. Mixing glass.
-1. Nel mixing glass con ghiaccio versa tutto e mescola 20–30 secondi.
-2. Filtra sul cubo grande. Spremi una scorza d'arancia sopra e lasciala nel bicchiere.
-
-### Mezcal Negroni · 10 €
-- Mezcal Vida **1 oz** · Bitter Campari **1 oz** · Vermouth del Professore **1 oz**
-- Come il Negroni: mixing glass, tumbler basso con cubo grande, scorza d'arancia.
-
-### Chela Fiesta 🌶️ · 7 €
-- Birra bionda **media** · Lime spremuto **½ lime** · bordo di sale e peperoncino
-1. Bagna il bordo del bicchiere della birra con il lime e passalo nel sale e peperoncino.
-2. Spremi mezzo lime nel bicchiere e spilla la bionda.
-
-### Paloma Zero (analcolico) · 8 €
-- Sciroppo d'agave **½ oz** · Lime spremuto **½ lime** · un pizzico di sale · Tonica al pompelmo **top**
-- Tumbler alto con ghiaccio, mezzo bordo di sale. Mescola delicatamente.
-
-### Shot Fuego 🌶️🌶️🌶️ · 4 €
-- Tequila **½ oz** · Ancho Reyes **½ oz**, freddi (shaker con ghiaccio e strain)
-- Servito con uno spicchio di lime e un pizzico di sale a parte.
+👉 Dosi e passaggi per il barista: **`Istruzioni per il personale.pdf`**, pagina 1.
 
 ---
 
@@ -77,6 +47,8 @@ La ricetta di sempre (Mezcal Vida 1½ oz, Ancho Reyes ½ oz, ½ lime, top di ton
 | **Churros** | 6 € | — | Churros surgelati in **friggitrice** (175 °C, 3–4 min), passati in zucchero e cannella, crema al cioccolato a parte |
 
 **Fiesta Combo · 16 €** = un cocktail della serata + Nachos Fiesta (invece di 18 €).
+
+👉 Preparazione passo passo, salse e allergeni: **`Istruzioni per il personale.pdf`**, pagina 2.
 
 **Ricette veloci**
 - **Guacamole** (10 porzioni): 6 avocado maturi schiacciati, 2 lime, ½ cipolla rossa tritata, coriandolo, sale. Pellicola a contatto, si annerisce in poche ore: farlo il giorno stesso.

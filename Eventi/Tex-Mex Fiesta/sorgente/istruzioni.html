@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Tex-Mex Fiesta · Istruzioni per il personale</title>
+<!-- Foglio per il personale (A4, da stampare e tenere al bancone). Si genera in PDF con Edge. -->
+<style>
+  @font-face { font-family: "Rye"; src: url("font/rye.woff2") format("woff2"); }
+  @font-face { font-family: "Pacifico"; src: url("font/pacifico.woff2") format("woff2"); }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat.woff2") format("woff2"); font-weight: 100 900; }
+  @page { size: A4; margin: 0; }
+  :root { --notte: #2a0a3a; --vino: #7a0f4f; --rosa: #ff2d87; --arancio: #ff7a00; --giallo: #ffc300; --turchese: #00b4c5; --verde: #6cc04a; --testo: #2a1a26; --grigio: #6b5a66; }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-family: "Montserrat", sans-serif; color: var(--testo); background: #888; -webkit-font-smoothing: antialiased; }
+  .pagina { width: 210mm; height: 297mm; background: #fff; margin: 0 auto 10mm; position: relative; overflow: hidden; page-break-after: always; }
+  .pagina:last-child { page-break-after: auto; margin-bottom: 0; }
+  @media print { body { background: none; } .pagina { margin: 0; } }
+
+  .testa {
+    height: 20mm; padding: 0 12mm; display: flex; align-items: center; justify-content: space-between; color: #fff3d6;
+    background: linear-gradient(100deg, var(--notte), var(--vino) 55%, #c2283a 85%, var(--arancio));
+    border-bottom: 1.6mm solid; border-image: repeating-linear-gradient(90deg, #ff2d87 0 8mm, #ffc300 8mm 16mm, #00b4c5 16mm 24mm, #6cc04a 24mm 32mm, #ff7a00 32mm 40mm) 1;
+  }
+  .testa .tit { line-height: .9; }
+  .testa .tit b { font-family: "Rye", serif; font-weight: 400; font-size: 21pt; letter-spacing: .03em; text-shadow: .05em .05em 0 var(--arancio); }
+  .testa .tit i { font-family: "Pacifico", cursive; font-style: normal; color: var(--giallo); font-size: 15pt; margin-left: 2mm; }
+  .testa .cosa { text-align: right; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; font-size: 9pt; }
+  .testa .cosa span { display: block; font-weight: 600; letter-spacing: .06em; text-transform: none; font-size: 8pt; opacity: .85; margin-top: 1mm; }
+  .corpo { padding: 4.5mm 10mm 0; }
+  .avviso { background: #fff4dc; border-left: 1.4mm solid var(--giallo); padding: 2mm 3.5mm; font-size: 8pt; line-height: 1.4; margin-bottom: 3.5mm; }
+  .avviso b { color: var(--vino); }
+
+  .griglia { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
+  .scheda { border: .35mm solid #e7d9e2; border-radius: 2.5mm; padding: 2.6mm 3.6mm 2.8mm; break-inside: avoid; position: relative; }
+  .scheda::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1.4mm; border-radius: 2.5mm 0 0 2.5mm; background: var(--c, var(--rosa)); }
+  .scheda h2 { font-size: 11.5pt; font-weight: 900; text-transform: uppercase; letter-spacing: .04em; color: var(--vino); display: flex; justify-content: space-between; align-items: baseline; gap: 2mm; }
+  .scheda h2 small { font-size: 9.5pt; color: var(--testo); font-weight: 800; white-space: nowrap; }
+  .scheda .sub { font-size: 7.3pt; color: var(--grigio); margin: .4mm 0 1.4mm; }
+  .info { display: flex; flex-wrap: wrap; gap: 1mm; margin-bottom: 1.4mm; }
+  .info span { background: #f6eef3; border-radius: 1mm; padding: .7mm 1.8mm; font-size: 7.2pt; font-weight: 600; }
+  .info span b { color: var(--grigio); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; font-size: 6.4pt; margin-right: 1mm; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 1.4mm; }
+  td { font-size: 8.6pt; padding: .75mm 0; border-bottom: .25mm dashed #e7d9e2; }
+  td:last-child { text-align: right; font-weight: 800; color: var(--vino); white-space: nowrap; padding-left: 2mm; }
+  ol { padding-left: 4.6mm; font-size: 8.5pt; line-height: 1.36; }
+  ol li { margin-bottom: .2mm; }
+  ol li::marker { font-weight: 800; color: var(--rosa); }
+  .tip { font-size: 7.6pt; color: var(--grigio); margin-top: 1.6mm; font-style: italic; }
+  .etic { font-size: 6.8pt; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--turchese); margin: 1.2mm 0 .5mm; }
+  .scheda p.t { font-size: 8.4pt; line-height: 1.36; }
+  .allerg { font-size: 7.2pt; margin-top: 1.6mm; color: var(--grigio); }
+  .allerg b { color: var(--testo); }
+
+  .lista { columns: 2; column-gap: 8mm; font-size: 8.6pt; line-height: 1.45; margin-top: 1.5mm; }
+  .lista li { list-style: none; break-inside: avoid; padding-left: 5.5mm; position: relative; margin-bottom: .6mm; }
+  .lista li::before { content: ""; position: absolute; left: 0; top: .9mm; width: 3mm; height: 3mm; border: .4mm solid var(--vino); border-radius: .6mm; }
+  h3 { font-family: "Rye", serif; font-weight: 400; color: var(--vino); font-size: 12pt; margin: 3.5mm 0 .5mm; display: flex; align-items: center; gap: 3mm; }
+  h3::after { content: ""; flex: 1; height: .5mm; background: repeating-linear-gradient(90deg, var(--rosa) 0 3mm, var(--giallo) 3mm 6mm, var(--turchese) 6mm 9mm, var(--verde) 9mm 12mm); }
+  .piede { position: absolute; left: 10mm; right: 10mm; bottom: 5mm; font-size: 7pt; color: var(--grigio); display: flex; justify-content: space-between; border-top: .3mm solid #eee; padding-top: 2mm; }
+</style>
+</head>
+<body>
+
+<!-- ======================= PAGINA 1: DRINK ======================= -->
+<section class="pagina">
+  <div class="testa">
+    <div class="tit"><b>TEX-MEX</b><i>Fiesta</i></div>
+    <div class="cosa">I drink della serata<span>Istruzioni per il personale · 1/2</span></div>
+  </div>
+  <div class="corpo">
+    <div class="avviso">
+      <b>Sale e peperoncino per i bordi</b> (prepararlo prima di aprire): 3 cucchiai di sale fino + 1 cucchiaio di peperoncino in polvere (o paprika piccante), mescolati in un piattino.
+      Per fare il bordo: bagna il bordo del bicchiere con uno spicchio di lime e appoggialo nel piattino. <b>Mezzo bordo</b> = solo da un lato, così chi non lo vuole beve dall'altro.
+    </div>
+    <div class="griglia">
+
+      <div class="scheda" style="--c:#ff2d87">
+        <h2>Margarita Picante 🌶️🌶️ <small>10 €</small></h2>
+        <div class="sub">Il drink simbolo della serata: Margarita con Ancho Reyes.</div>
+        <div class="info"><span><b>Bicchiere</b>Coppetta fredda</span><span><b>Ghiaccio</b>No</span><span><b>Metodo</b>Shaker + strain</span></div>
+        <table>
+          <tr><td>Tequila</td><td>1½ oz</td></tr>
+          <tr><td>Cointreau</td><td>¾ oz</td></tr>
+          <tr><td>Ancho Reyes</td><td>¼ oz</td></tr>
+          <tr><td>Sciroppo d'agave</td><td>¼ oz</td></tr>
+          <tr><td>Lime spremuto</td><td>½ lime</td></tr>
+        </table>
+        <ol>
+          <li>Mezzo bordo di sale e peperoncino sulla coppetta fredda.</li>
+          <li>Nello shaker con ghiaccio versa tutti gli ingredienti.</li>
+          <li>Shakera forte per 10–12 secondi.</li>
+          <li>Filtra nella coppetta. Rotella di lime sul bordo.</li>
+        </ol>
+      </div>
+
+      <div class="scheda" style="--c:#e0262b">
+        <h2>El Diablo 🌶️ <small>10 €</small></h2>
+        <div class="sub">Tequila, lampone e ginger beer: fresco e leggermente piccante.</div>
+        <div class="info"><span><b>Bicchiere</b>Tumbler alto</span><span><b>Ghiaccio</b>Sì, pieno</span><span><b>Metodo</b>Nel bicchiere</span></div>
+        <table>
+          <tr><td>Tequila Reposado</td><td>1½ oz</td></tr>
+          <tr><td>Purea di lampone</td><td>½ oz</td></tr>
+          <tr><td>Lime spremuto</td><td>½ lime</td></tr>
+          <tr><td>Ginger beer</td><td>top</td></tr>
+        </table>
+        <ol>
+          <li>Riempi il tumbler di ghiaccio.</li>
+          <li>Versa tequila, purea di lampone e lime.</li>
+          <li>Completa con la ginger beer e mescola dal basso.</li>
+          <li>Fetta di lime.</li>
+        </ol>
+      </div>
+
+      <div class="scheda" style="--c:#ff7a00">
+        <h2>Il nostro Paloma 🌶️🌶️ <small>10 €</small></h2>
+        <div class="sub">La ricetta di sempre. Per la serata: mezzo bordo di sale e peperoncino.</div>
+        <div class="info"><span><b>Bicchiere</b>Tumbler alto</span><span><b>Ghiaccio</b>Sì</span><span><b>Metodo</b>Nel bicchiere</span></div>
+        <table>
+          <tr><td>Mezcal Vida</td><td>1½ oz</td></tr>
+          <tr><td>Ancho Reyes Rosso</td><td>½ oz</td></tr>
+          <tr><td>Lime spremuto</td><td>½ lime</td></tr>
+          <tr><td>Tonica al pompelmo</td><td>top</td></tr>
+        </table>
+        <ol>
+          <li>Mezzo bordo di sale e peperoncino sul tumbler, poi ghiaccio.</li>
+          <li>Versa mezcal, Ancho Reyes e lime.</li>
+          <li>Completa con la tonica al pompelmo, mescola delicatamente.</li>
+          <li>Fetta di lime.</li>
+        </ol>
+      </div>
+
+      <div class="scheda" style="--c:#7a0f4f">
+        <h2>Oaxaca Old Fashioned <small>10 €</small></h2>
+        <div class="sub">Old Fashioned con tequila e un tocco affumicato di mezcal. Non piccante.</div>
+        <div class="info"><span><b>Bicchiere</b>Tumbler basso</span><span><b>Ghiaccio</b>Cubo grande</span><span><b>Metodo</b>Mixing glass</span></div>
+        <table>
+          <tr><td>Tequila Reposado</td><td>1½ oz</td></tr>
+          <tr><td>Mezcal Vida</td><td>½ oz</td></tr>
+          <tr><td>Sciroppo d'agave</td><td>1 bar spoon</td></tr>
+          <tr><td>Angostura</td><td>2 dash</td></tr>
+        </table>
+        <ol>
+          <li>Nel mixing glass con ghiaccio versa tutti gli ingredienti.</li>
+          <li>Mescola 20–30 secondi.</li>
+          <li>Filtra nel tumbler sul cubo grande.</li>
+          <li>Spremi una scorza d'arancia sopra e lasciala nel bicchiere.</li>
+        </ol>
+      </div>
+
+      <div class="scheda" style="--c:#00b4c5">
+        <h2>Mezcal Negroni <small>10 €</small></h2>
+        <div class="sub">Il Negroni con il mezcal al posto del gin. Non piccante.</div>
+        <div class="info"><span><b>Bicchiere</b>Tumbler basso</span><span><b>Ghiaccio</b>Cubo grande</span><span><b>Metodo</b>Mixing glass</span></div>
+        <table>
+          <tr><td>Mezcal Vida</td><td>1 oz</td></tr>
+          <tr><td>Bitter Campari</td><td>1 oz</td></tr>
+          <tr><td>Vermouth del Professore</td><td>1 oz</td></tr>
+        </table>
+        <ol>
+          <li>Nel mixing glass con ghiaccio versa i tre ingredienti.</li>
+          <li>Mescola 20–30 secondi.</li>
+          <li>Filtra nel tumbler sul cubo grande.</li>
+          <li>Scorza d'arancia spremuta sopra.</li>
+        </ol>
+      </div>
+
+      <div class="scheda" style="--c:#6cc04a">
+        <h2>Shot Fuego 🌶️🌶️🌶️ <small>4 €</small></h2>
+        <div class="sub">Lo shot dei coraggiosi: avvisa sempre che è molto piccante.</div>
+        <div class="info"><span><b>Bicchiere</b>Bicchierino</span><span><b>Ghiaccio</b>Solo nello shaker</span><span><b>Metodo</b>Shaker + strain</span></div>
+        <table>
+          <tr><td>Tequila</td><td>½ oz</td></tr>
+          <tr><td>Ancho Reyes</td><td>½ oz</td></tr>
+        </table>
+        <ol>
+          <li>Shakera tequila e Ancho Reyes con ghiaccio, per servirlo freddo.</li>
+          <li>Filtra nel bicchierino.</li>
+          <li>Servi con uno spicchio di lime e un pizzico di sale a parte.</li>
+        </ol>
+        <div class="tip">Con tanti shot per lo stesso tavolo: shakera tutto insieme e dividi.</div>
+      </div>
+
+    </div>
+  </div>
+  <div class="piede"><span>Déjà Vu · Tex-Mex Fiesta</span><span>Misure come nel ricettario del bar · 1 oz ≈ 3 cl</span></div>
+</section>
+
+<!-- ======================= PAGINA 2: CIBO ======================= -->
+<section class="pagina">
+  <div class="testa">
+    <div class="tit"><b>TEX-MEX</b><i>Fiesta</i></div>
+    <div class="cosa">Il cibo della serata<span>Istruzioni per il personale · 2/2</span></div>
+  </div>
+  <div class="corpo">
+    <div class="avviso">
+      In cucina ci sono solo <b>fornetto</b> e <b>friggitrice</b>: tutto è <b>preparato prima</b> e al momento si scalda e si monta il piatto.
+      Le preparazioni stanno in <b>frigo</b> e si servono <b>ben calde</b> (seguire le regole HACCP del bar).
+      Per allergie: controllare sempre anche le etichette dei prodotti comprati.
+    </div>
+    <div class="griglia">
+
+      <div class="scheda" style="--c:#ffc300">
+        <h2>Nachos Fiesta 🌶️ <small>8 €</small></h2>
+        <div class="etic">Pronto prima</div>
+        <p class="t">Tortilla chips · fagioli (scaldati) · Branzi grattugiato · guacamole e pico de gallo in frigo · jalapeños.</p>
+        <div class="etic">Al momento</div>
+        <ol>
+          <li>Chips nel piatto da forno, sopra 2 cucchiai di fagioli e una manciata di Branzi.</li>
+          <li><b>Fornetto 3–4 minuti</b>, finché il formaggio fonde.</li>
+          <li>Sopra: 1 cucchiaio di guacamole, 1 di pico de gallo, 3–4 jalapeños.</li>
+        </ol>
+        <div class="allerg"><b>Allergeni:</b> latte (Branzi). Le chips possono contenere glutine: controllare l'etichetta.</div>
+      </div>
+
+      <div class="scheda" style="--c:#ff7a00">
+        <h2>Quesadilla Bergamasca <small>9 €</small></h2>
+        <div class="etic">Pronto prima</div>
+        <p class="t">Tortillas grandi · Branzi a fette o grattugiato · porchetta a fette sottili · salsa piccante.</p>
+        <div class="etic">Al momento</div>
+        <ol>
+          <li>Su metà tortilla: Branzi, 2–3 fette di porchetta, ancora un po' di Branzi.</li>
+          <li>Chiudi a mezzaluna.</li>
+          <li><b>Fornetto 5–6 minuti</b>, finché è dorata e il formaggio filante.</li>
+          <li>Taglia in 3 spicchi. Salsa piccante in una ciotolina a parte.</li>
+        </ol>
+        <div class="allerg"><b>Allergeni:</b> glutine (tortilla), latte (Branzi).</div>
+      </div>
+
+      <div class="scheda" style="--c:#e0262b">
+        <h2>Fajitas di pollo 🌶️ <small>12 €</small></h2>
+        <div class="etic">Pronto prima (il giorno prima)</div>
+        <p class="t">Pollo a striscioline marinato (olio, lime, aglio, paprika affumicata, cumino, peperoncino, sale) e <b>cotto</b> con peperoni e cipolla, diviso in porzioni in frigo.</p>
+        <div class="etic">Al momento</div>
+        <ol>
+          <li>Una porzione in alluminio nel <b>fornetto 6–8 minuti</b>: deve essere ben calda.</li>
+          <li>2 tortillas medie avvolte in alluminio, <b>fornetto 1 minuto</b>.</li>
+          <li>Servi pollo, tortillas, 1 cucchiaio di guacamole e 1 di crema acida: il cliente si fa le fajitas da solo.</li>
+        </ol>
+        <div class="allerg"><b>Allergeni:</b> glutine (tortillas), latte (crema acida).</div>
+      </div>
+
+      <div class="scheda" style="--c:#6cc04a">
+        <h2>Papas Picantes 🌶️ <small>6 €</small></h2>
+        <div class="etic">Pronto prima</div>
+        <p class="t">Crema acida in frigo · sale e peperoncino (lo stesso dei bordi) · lime.</p>
+        <div class="etic">Al momento</div>
+        <ol>
+          <li>Patatine in <b>friggitrice</b> come sempre.</li>
+          <li>Appena scolate: sale e peperoncino al posto del sale normale, e mezzo lime spremuto sopra.</li>
+          <li>Crema acida in una ciotolina a parte.</li>
+        </ol>
+        <div class="allerg"><b>Allergeni:</b> latte (crema acida).</div>
+      </div>
+
+      <div class="scheda" style="--c:#7a0f4f">
+        <h2>Churros <small>6 €</small></h2>
+        <div class="etic">Pronto prima</div>
+        <p class="t">Churros surgelati · zucchero e cannella già mescolati (4 cucchiai di zucchero + 1 cucchiaino di cannella) · crema al cioccolato.</p>
+        <div class="etic">Al momento</div>
+        <ol>
+          <li><b>Friggitrice a 175 °C per 3–4 minuti</b>, ancora surgelati.</li>
+          <li>Scola e passali subito nello zucchero e cannella.</li>
+          <li>Crema al cioccolato in una ciotolina a parte per intingere.</li>
+        </ol>
+        <div class="allerg"><b>Allergeni:</b> glutine; latte e uova a seconda della marca (controllare l'etichetta).</div>
+      </div>
+
+      <div class="scheda" style="--c:#00b4c5">
+        <h2>Le salse <small>fatte prima</small></h2>
+        <div class="etic">Guacamole (il giorno stesso)</div>
+        <p class="t">6 avocado schiacciati, 2 lime, ½ cipolla rossa tritata, coriandolo, sale. Pellicola <b>a contatto</b>, altrimenti diventa scuro.</p>
+        <div class="etic">Pico de gallo</div>
+        <p class="t">6 pomodori a cubetti, ½ cipolla rossa, coriandolo, 1 lime, sale.</p>
+        <div class="etic">Crema acida</div>
+        <p class="t">Panna fresca + succo di 1 lime + un pizzico di sale, mescolata: in frigo 30 minuti prima di usarla.</p>
+      </div>
+
+    </div>
+
+    <h3>Prima di aprire</h3>
+    <ul class="lista">
+      <li>Piattino con sale e peperoncino al bancone</li>
+      <li>Lime tagliati a spicchi e a rotelle</li>
+      <li>Coppette per la Margarita in frigo</li>
+      <li>Ghiaccio in più (cubi grandi per gli Old Fashioned)</li>
+      <li>Ancho Reyes, Mezcal e Tequila Reposado a portata di mano</li>
+      <li>Ginger beer e tonica al pompelmo in frigo</li>
+      <li>Guacamole, pico de gallo, crema acida pronti in frigo</li>
+      <li>Porzioni di fajitas e Branzi grattugiato pronti</li>
+      <li>Fornetto acceso e friggitrice in temperatura</li>
+      <li>Menu della serata sui tavoli</li>
+      <li>Combo: cocktail della serata + Nachos = <b>16 €</b></li>
+      <li>Nell'app: Cronologia → Serata → <b>🎉 Segna come evento</b></li>
+    </ul>
+  </div>
+  <div class="piede"><span>Déjà Vu · Tex-Mex Fiesta</span><span>Dubbi sul piccante? Fai assaggiare prima e avvisa il cliente.</span></div>
+</section>
+
+</body>
+</html>
