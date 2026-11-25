@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Christmas Jumper Night · Déjà Vu</title>
+<!--
+  Grafiche della Christmas Jumper Night. Un solo file per tutti i formati, scelti con l'indirizzo:
+    grafiche.html#locandina   vetrina A3
+    grafiche.html#post        Instagram 1080×1350
+    grafiche.html#storia      Instagram storia 1080×1920
+    grafiche.html#menu        menu da tavolo A5 (stampabile)
+  Date, orario e menu si cambiano in EVENTO, qui sotto nello script.
+-->
+<style>
+  @font-face { font-family: "Natale"; src: url("font/natale.woff2") format("woff2"); font-weight: 700; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-400.woff2") format("woff2"); font-weight: 400; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-500.woff2") format("woff2"); font-weight: 500; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-600.woff2") format("woff2"); font-weight: 600; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-700.woff2") format("woff2"); font-weight: 700; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-800.woff2") format("woff2"); font-weight: 800; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-900.woff2") format("woff2"); font-weight: 900; }
+
+  :root {
+    --rosso: #b71c1c;
+    --rosso-scuro: #6d0f12;
+    --verde: #0f4d2e;
+    --verde-chiaro: #2e7d4f;
+    --oro: #f2c14e;
+    --oro-chiaro: #ffe3a1;
+    --neve: #fffaf2;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { background: #111; }
+  body { font-family: "Montserrat", system-ui, sans-serif; color: var(--neve); -webkit-font-smoothing: antialiased; }
+
+  .tela {
+    position: relative; overflow: hidden; margin: 0 auto;
+    background:
+      radial-gradient(ellipse 65% 40% at 50% 45%, rgba(255,200,120,.22), transparent 70%),
+      radial-gradient(ellipse 90% 60% at 50% 110%, rgba(0,0,0,.4), transparent 70%),
+      linear-gradient(180deg, var(--rosso-scuro) 0%, var(--rosso) 45%, #a3171a 100%);
+  }
+  .neve { position: absolute; inset: 0; opacity: .5; }
+  .neve svg { width: 100%; height: 100%; }
+  /* fascia "maglione di lana" */
+  .maglia { position: absolute; left: 0; right: 0; }
+  .maglia svg { width: 100%; height: 100%; display: block; }
+
+  /* logo del bar grande in alto: si deve vedere che la serata è del Déjà Vu */
+  .presenta { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .35em; letter-spacing: .4em; text-transform: uppercase; font-weight: 700; color: var(--oro-chiaro); }
+  .presenta img { height: 9.5em; width: auto; filter: drop-shadow(0 0 .6em rgba(0,0,0,.35)); }
+  .titolo { text-align: center; font-family: "Natale", cursive; font-weight: 700; line-height: .9; }
+  .titolo .uno { display: block; color: var(--neve); text-shadow: .04em .05em 0 var(--verde), 0 .12em .3em rgba(0,0,0,.35); }
+  .titolo .due { display: block; color: var(--oro); text-shadow: .04em .05em 0 var(--rosso-scuro), 0 .12em .3em rgba(0,0,0,.35); margin-top: .05em; }
+  .invito { text-align: center; font-weight: 700; letter-spacing: .06em; color: var(--neve); line-height: 1.4; }
+  .invito b { color: var(--oro); }
+  .premio { display: inline-block; background: var(--verde); border: .1em solid var(--oro); border-radius: 999px; padding: .4em 1.1em; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+
+  .drink-top { display: flex; justify-content: center; gap: .9em; flex-wrap: wrap; }
+  .drink-top div {
+    background: rgba(109,15,18,.55); border: .1em solid var(--neve); border-radius: 999px; color: var(--neve);
+    padding: .5em 1.2em; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap;
+  }
+  .cibo-top { text-align: center; font-weight: 600; letter-spacing: .04em; }
+  .cibo-top b { color: var(--oro); }
+  .data {
+    text-align: center; color: var(--rosso-scuro); font-weight: 900; text-transform: uppercase; letter-spacing: .12em; line-height: 1.25;
+    background: var(--neve); border-radius: .3em; padding: .45em 1.4em; box-shadow: 0 0 0 .12em var(--verde), 0 0 0 .22em var(--oro);
+  }
+  .data small { display: block; font-weight: 700; letter-spacing: .2em; font-size: .55em; margin-top: .15em; color: var(--verde); }
+  .piede { text-align: center; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--oro-chiaro); }
+  .piede b { color: var(--neve); }
+
+  .decoro { position: absolute; pointer-events: none; }
+  .decoro svg { width: 100%; height: 100%; display: block; overflow: visible; }
+
+  /* ---------------- formati ---------------- */
+  .locandina { width: 1123px; height: 1587px; font-size: 26px; }
+  .post { width: 1080px; height: 1350px; font-size: 24px; }
+  .storia { width: 1080px; height: 1920px; font-size: 29px; }
+  .colonna { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .9em; padding: 7em 2.4em 6em; }
+  .storia .colonna { justify-content: space-evenly; gap: 0; padding: 8.5em 1.6em 7.5em; }
+  .post .colonna { gap: .65em; padding-top: 6em; padding-bottom: 5em; }
+  .post .presenta img { height: 8em; }
+  .titolo .uno { font-size: 4.4em; }
+  .titolo .due { font-size: 4.9em; }
+  .invito { font-size: 1.05em; }
+  .data { font-size: 1.45em; }
+
+  /* ---------------- menu da tavolo A5 ---------------- */
+  .menu { width: 148mm; height: 210mm; font-size: 9.4pt; background: var(--neve); color: #3a0d0f; }
+  .menu .testa {
+    position: relative; height: 62mm; overflow: hidden; color: var(--neve);
+    background: radial-gradient(ellipse 70% 70% at 50% 60%, rgba(255,200,120,.25), transparent 70%), linear-gradient(180deg, var(--rosso-scuro), var(--rosso));
+  }
+  .menu .testa .colonna { padding: 14mm 6mm 2mm; gap: 1mm; justify-content: flex-start; }
+  .menu .presenta { font-size: 6.5pt; gap: .6mm; }
+  .menu .presenta img { height: 20mm; }
+  .menu .titolo .uno { font-size: 20pt; }
+  .menu .titolo .due { font-size: 22pt; }
+  .menu .sotto { font-size: 6.6pt; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--oro-chiaro); margin-top: 1mm; }
+  .menu .corpo { padding: 3mm 10mm 0; }
+  .menu h2 {
+    font-family: "Natale", cursive; font-weight: 700; font-size: 15pt; color: var(--rosso);
+    display: flex; align-items: center; gap: 3mm; margin: 3.6mm 0 .6mm;
+  }
+  .menu h2::after { content: ""; flex: 1; height: .45mm; background: repeating-linear-gradient(90deg, var(--rosso) 0 3mm, var(--verde) 3mm 6mm, var(--oro) 6mm 9mm); }
+  .menu .voce { display: grid; grid-template-columns: 1fr auto; column-gap: 3mm; padding: 1.2mm 0; }
+  .menu .voce .n { font-weight: 800; text-transform: uppercase; letter-spacing: .04em; font-size: 9pt; }
+  .menu .voce .p { font-weight: 800; color: var(--rosso); font-size: 9.5pt; }
+  .menu .voce .d { grid-column: 1 / -1; font-size: 7.3pt; color: #6b4a4c; line-height: 1.3; margin-top: .2mm; }
+  .menu .combo {
+    margin: 3mm 0 0; background: var(--verde); color: var(--oro-chiaro); border: .5mm solid var(--oro); border-radius: 2mm; padding: 2mm 3.5mm;
+    display: flex; justify-content: space-between; align-items: center; font-weight: 800; font-size: 8.6pt;
+  }
+  .menu .combo span { font-weight: 600; font-size: 7.4pt; color: var(--neve); }
+  .menu .regalo { text-align: center; margin-top: 2.2mm; font-size: 8pt; font-weight: 700; color: var(--verde); }
+  .menu .note { text-align: center; font-size: 6.4pt; color: #8a6a6c; margin-top: 1.2mm; line-height: 1.35; }
+  .menu .piede { position: absolute; left: 0; right: 0; bottom: 3.5mm; font-size: 6.2pt; color: var(--rosso-scuro); }
+  .menu .piede b { color: var(--rosso); }
+
+  @media print { html, body { background: none; } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <!-- fiocco di neve -->
+    <symbol id="fiocco" viewBox="-50 -50 100 100">
+      <g stroke="currentColor" stroke-width="5" stroke-linecap="round" fill="none">
+        <path d="M0-44V44M-38-22 38 22M-38 22 38-22"/>
+        <path d="M0-30-9-40M0-30 9-40M0 30-9 40M0 30 9 40"/>
+        <path d="M-26-15-38-13M-26-15-30-27M26 15 38 13M26 15 30 27M-26 15-38 13M-26 15-30 27M26-15 38-13M26-15 30-27"/>
+      </g>
+    </symbol>
+    <!-- alberello -->
+    <symbol id="albero" viewBox="0 0 100 130">
+      <path d="M50 4 86 52H66l26 34H62l22 30H16l22-30H8l26-34H14z" fill="#2e7d4f"/>
+      <rect x="42" y="116" width="16" height="14" fill="#7a4a24"/>
+      <path d="M50 0l4 8 9 1-7 6 2 9-8-5-8 5 2-9-7-6 9-1z" fill="#f2c14e"/>
+      <g fill="#f2c14e"><circle cx="40" cy="44" r="4"/><circle cx="60" cy="70" r="4"/><circle cx="34" cy="92" r="4"/><circle cx="68" cy="100" r="4"/></g>
+      <g fill="#fffaf2"><circle cx="58" cy="40" r="3"/><circle cx="42" cy="74" r="3"/><circle cx="52" cy="100" r="3"/></g>
+    </symbol>
+    <!-- trama della neve che cade -->
+    <pattern id="tramaneve" width="140" height="140" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="30" r="3" fill="#fffaf2"/><circle cx="90" cy="12" r="2" fill="#fffaf2"/><circle cx="60" cy="80" r="2.5" fill="#fffaf2"/>
+      <circle cx="120" cy="100" r="3" fill="#fffaf2"/><circle cx="30" cy="120" r="2" fill="#fffaf2"/><circle cx="110" cy="55" r="1.6" fill="#fffaf2"/>
+    </pattern>
+  </defs>
+</svg>
+<div id="root"></div>
+
+<script>
+/* =================== DA CAMBIARE QUI =================== */
+const EVENTO = {
+  date: "Sabato 19 e sabato 26 dicembre",
+  orario: "",            // es. "dalle 19:00"
+  luogo: "Via Borgo Santa Caterina 24a · Bergamo",
+  instagram: "@dejavu.bergamo",
+};
+const DRINK = [
+  { n: "Negroni di Natale", p: 10, d: "Gin, Campari e Vermouth del Professore, con arancia e cannella." },
+  { n: "Bianco Natale", p: 10, d: "Vodka, liquore al caffè e panna, con una spolverata di cannella." },
+  { n: "Rudolph Spritz", p: 8, d: "Campari, lampone e Prosecco, con un rametto di rosmarino." },
+  { n: "Old Fashioned Pan di Zenzero", p: 10, d: "Bourbon, zenzero e miele, Angostura e scorza d'arancia." },
+  { n: "Brindisi delle Feste", p: 8, d: "Un calice di Trento DOC." },
+  { n: "Shot Neve", p: 4, d: "Crema Whisky e amaretto, con cannella." },
+];
+const CIBO = [
+  { n: "Panettone salato", p: 10, d: "Il panettone gastronomico farcito a strati: salumi, formaggi e salse. Da dividere in due." },
+  { n: "Salatini caldi", p: 7, d: "Un cestino di salatini di pasta sfoglia appena sfornati." },
+  { n: "Crostini Branzi e porchetta", p: 8, d: "Pane malfatto caldo con Branzi fuso e porchetta di Ariccia." },
+];
+const COMBO = { n: "Combo delle Feste", d: "un cocktail della serata + Salatini caldi", p: 15 };
+const PREMIO = "🏆 Premio al maglione di Natale più brutto";
+/* ======================================================= */
+
+const formato = (location.hash.slice(1) || "locandina");
+const euro = (p) => (Number.isInteger(p) ? p : p.toFixed(2).replace(".", ",")) + " €";
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const deco = (id, css, colore = "") => `<div class="decoro" style="${css};${colore ? "color:" + colore : ""}"><svg><use href="#${id}"/></svg></div>`;
+const neve = `<div class="neve"><svg><rect width="100%" height="100%" fill="url(#tramaneve)"/></svg></div>`;
+
+// fascia «maglione di Natale»: righe a zig-zag, fiocchi e alberelli lavorati a maglia
+function maglia(W, h, sopra) {
+  const n = Math.round(W / (h * .9));
+  const step = W / n;
+  let s = `<svg viewBox="0 0 ${W} ${h}" preserveAspectRatio="none"><rect width="${W}" height="${h}" fill="#0f4d2e"/>`;
+  const zz = (y, col) => {
+    let d = `M0 ${y}`;
+    for (let x = 0; x <= W; x += h * .12) d += ` L${x + h * .06} ${y - h * .05} L${x + h * .12} ${y}`;
+    return `<path d="${d}" fill="none" stroke="${col}" stroke-width="${h * .035}"/>`;
+  };
+  s += `<rect y="0" width="${W}" height="${h * .1}" fill="#b71c1c"/><rect y="${h * .9}" width="${W}" height="${h * .1}" fill="#b71c1c"/>`;
+  s += zz(h * .2, "#fffaf2") + zz(h * .85, "#fffaf2");
+  for (let i = 0; i < n; i++) {
+    const cx = step * (i + .5), cy = h * .53, r = h * .22;
+    s += i % 2
+      ? `<use href="#albero" x="${cx - r * .8}" y="${cy - r}" width="${r * 1.6}" height="${r * 2}"/>`
+      : `<use href="#fiocco" x="${cx - r}" y="${cy - r}" width="${r * 2}" height="${r * 2}" color="#fffaf2"/>`;
+  }
+  return `<div class="maglia" style="${sopra ? "top:0" : "bottom:0"};height:${h}px">${s}</svg></div>`;
+}
+
+function grafica(cls) {
+  const W = { locandina: 1123, post: 1080, storia: 1080 }[cls];
+  const H = { locandina: 1587, post: 1350, storia: 1920 }[cls];
+  const fascia = cls === "storia" ? 170 : 150;
+  return `<div class="tela ${cls}">
+    ${neve}
+    ${maglia(W, fascia, true)}
+    ${maglia(W, fascia * .8, false)}
+    ${deco("fiocco", `width:${W * .1}px;height:${W * .1}px;left:${W * .07}px;top:${H * .2}px`, "rgba(255,250,242,.8)")}
+    ${deco("fiocco", `width:${W * .065}px;height:${W * .065}px;right:${W * .1}px;top:${H * .25}px`, "rgba(255,250,242,.7)")}
+    ${deco("albero", `width:${W * .085}px;height:${W * .11}px;left:${W * .025}px;top:${H * (cls === "storia" ? .58 : .6)}px`)}
+    ${deco("albero", `width:${W * .07}px;height:${W * .091}px;right:${W * .03}px;top:${H * (cls === "storia" ? .6 : .62)}px`)}
+    <div class="colonna">
+      <div class="presenta"><img src="logo.png" alt="Déjà Vu"><span>presenta</span></div>
+      <div class="titolo"><span class="uno">Christmas</span><span class="due">Jumper Night</span></div>
+      <div class="invito">Vieni con il tuo <b>maglione di Natale</b><br>più brutto (o più bello!)</div>
+      <div class="premio">${esc(PREMIO)}</div>
+      <div class="drink-top">${DRINK.slice(0, 3).map((d) => `<div>${esc(d.n)}</div>`).join("")}</div>
+      <div class="cibo-top"><b>Panettone salato</b> · <b>Salatini caldi</b> · <b>Crostini Branzi e porchetta</b></div>
+      <div class="data">${esc(EVENTO.date)}${EVENTO.orario ? `<small>${esc(EVENTO.orario)}</small>` : ""}</div>
+      <div class="piede">Déjà Vu · ${esc(EVENTO.luogo)}<br><b>${esc(EVENTO.instagram)}</b></div>
+    </div>
+  </div>`;
+}
+
+function menu() {
+  const voce = (x) => `<div class="voce"><span class="n">${esc(x.n)}</span><span class="p">${euro(x.p)}</span><span class="d">${esc(x.d)}</span></div>`;
+  return `<div class="tela menu" style="background:var(--neve)">
+    <div class="testa">
+      ${neve}
+      ${maglia(560, 42, true)}
+      ${deco("albero", "width:12mm;height:15.6mm;left:9mm;top:30mm")}
+      ${deco("albero", "width:12mm;height:15.6mm;right:9mm;top:30mm")}
+      <div class="colonna">
+        <div class="presenta"><img src="logo.png" alt="Déjà Vu"><span>presenta</span></div>
+        <div class="titolo"><span class="uno">Christmas</span><span class="due">Jumper Night</span></div>
+        <div class="sotto">${esc(EVENTO.date)}</div>
+      </div>
+    </div>
+    <div class="corpo">
+      <h2>Da bere</h2>
+      ${DRINK.map(voce).join("")}
+      <h2>Da mangiare</h2>
+      ${CIBO.map(voce).join("")}
+      <div class="combo">${esc(COMBO.n)} <span>${esc(COMBO.d)}</span> ${euro(COMBO.p)}</div>
+      <div class="regalo">${esc(PREMIO)} · Buone Feste!</div>
+      <div class="note">Per allergie e intolleranze chiedi al personale.</div>
+    </div>
+    <div class="piede">Déjà Vu · ${esc(EVENTO.luogo)} · <b>${esc(EVENTO.instagram)}</b></div>
+  </div>`;
+}
+
+document.head.insertAdjacentHTML("beforeend", `<style>@page { size: ${formato === "menu" ? "148mm 210mm" : "297mm 420mm"}; margin: 0; }</style>`);
+document.getElementById("root").innerHTML = formato === "menu" ? menu() : grafica(formato);
+</script>
+</body>
+</html>

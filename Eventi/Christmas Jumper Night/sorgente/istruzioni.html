@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Christmas Jumper Night · Istruzioni per il personale</title>
+<!-- Foglio per il personale (A4, da stampare e tenere al bancone). Si genera in PDF con Edge. -->
+<style>
+  @font-face { font-family: "Natale"; src: url("font/natale.woff2") format("woff2"); font-weight: 700; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-400.woff2") format("woff2"); font-weight: 400; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-500.woff2") format("woff2"); font-weight: 500; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-600.woff2") format("woff2"); font-weight: 600; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-700.woff2") format("woff2"); font-weight: 700; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-800.woff2") format("woff2"); font-weight: 800; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-900.woff2") format("woff2"); font-weight: 900; }
+  @page { size: A4; margin: 0; }
+  :root { --rosso: #b71c1c; --rosso-scuro: #6d0f12; --verde: #0f4d2e; --verde-chiaro: #2e7d4f; --oro: #f2c14e; --oro-chiaro: #ffe3a1; --testo: #2c1214; --grigio: #6b5153; }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-family: "Montserrat", sans-serif; color: var(--testo); background: #888; -webkit-font-smoothing: antialiased; }
+  .pagina { width: 210mm; height: 297mm; background: #fff; margin: 0 auto 10mm; position: relative; overflow: hidden; page-break-after: always; }
+  .pagina:last-child { page-break-after: auto; margin-bottom: 0; }
+  @media print { body { background: none; } .pagina { margin: 0; } }
+
+  .testa {
+    height: 20mm; padding: 0 12mm; display: flex; align-items: center; justify-content: space-between; color: var(--oro-chiaro);
+    background: linear-gradient(100deg, var(--rosso-scuro), var(--rosso));
+    border-bottom: 1.6mm solid; border-image: repeating-linear-gradient(90deg, #0f4d2e 0 6mm, #fffaf2 6mm 8mm, #0f4d2e 8mm 14mm, #f2c14e 14mm 16mm) 1;
+  }
+  .testa .tit b { font-family: "Natale", cursive; font-weight: 700; font-size: 20pt; color: #fffaf2; }
+  .testa .tit i { font-family: "Natale", cursive; font-style: normal; font-weight: 700; font-size: 20pt; color: var(--oro); margin-left: 2mm; }
+  .testa .cosa { text-align: right; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; font-size: 9pt; }
+  .testa .cosa span { display: block; font-weight: 600; letter-spacing: .06em; text-transform: none; font-size: 8pt; opacity: .85; margin-top: 1mm; }
+  .corpo { padding: 4.5mm 10mm 0; }
+  .avviso { background: #fff4f2; border-left: 1.4mm solid var(--rosso); padding: 2mm 3.5mm; font-size: 8pt; line-height: 1.4; margin-bottom: 3.5mm; }
+  .avviso b { color: var(--rosso); }
+
+  .griglia { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
+  .scheda { border: .35mm solid #ecd6d4; border-radius: 2.5mm; padding: 2.6mm 3.6mm 2.8mm; break-inside: avoid; position: relative; }
+  .scheda::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1.4mm; border-radius: 2.5mm 0 0 2.5mm; background: var(--c, var(--rosso)); }
+  .scheda.larga { grid-column: 1 / -1; }
+  .scheda h2 { font-size: 11.5pt; font-weight: 900; text-transform: uppercase; letter-spacing: .04em; color: var(--rosso); display: flex; justify-content: space-between; align-items: baseline; gap: 2mm; }
+  .scheda h2 small { font-size: 9.5pt; color: var(--testo); font-weight: 800; white-space: nowrap; }
+  .scheda .sub { font-size: 7.3pt; color: var(--grigio); margin: .4mm 0 1.4mm; }
+  .info { display: flex; flex-wrap: wrap; gap: 1mm; margin-bottom: 1.4mm; }
+  .info span { background: #f8eeed; border-radius: 1mm; padding: .7mm 1.8mm; font-size: 7.2pt; font-weight: 600; }
+  .info span b { color: var(--grigio); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; font-size: 6.4pt; margin-right: 1mm; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 1.4mm; }
+  td { font-size: 8.6pt; padding: .75mm 0; border-bottom: .25mm dashed #ecd6d4; }
+  td:last-child { text-align: right; font-weight: 800; color: var(--rosso); white-space: nowrap; padding-left: 2mm; }
+  ol { padding-left: 4.6mm; font-size: 8.5pt; line-height: 1.36; }
+  ol li { margin-bottom: .2mm; }
+  ol li::marker { font-weight: 800; color: var(--verde-chiaro); }
+  .tip { font-size: 7.6pt; color: var(--grigio); margin-top: 1.4mm; font-style: italic; }
+  .etic { font-size: 6.8pt; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--verde-chiaro); margin: 1.2mm 0 .5mm; }
+  .scheda p.t { font-size: 8.4pt; line-height: 1.36; }
+  .allerg { font-size: 7.2pt; margin-top: 1.4mm; color: var(--grigio); }
+  .allerg b { color: var(--testo); }
+
+  .lista { columns: 2; column-gap: 8mm; font-size: 8.6pt; line-height: 1.45; margin-top: 1.5mm; }
+  .lista li { list-style: none; break-inside: avoid; padding-left: 5.5mm; position: relative; margin-bottom: .6mm; }
+  .lista li::before { content: ""; position: absolute; left: 0; top: .9mm; width: 3mm; height: 3mm; border: .4mm solid var(--rosso); border-radius: .6mm; }
+  h3 { font-family: "Natale", cursive; font-weight: 700; color: var(--rosso); font-size: 15pt; margin: 3.5mm 0 .5mm; display: flex; align-items: center; gap: 3mm; }
+  h3::after { content: ""; flex: 1; height: .45mm; background: repeating-linear-gradient(90deg, var(--rosso) 0 3mm, var(--verde) 3mm 6mm, var(--oro) 6mm 9mm); }
+  .piede { position: absolute; left: 10mm; right: 10mm; bottom: 5mm; font-size: 7pt; color: var(--grigio); display: flex; justify-content: space-between; border-top: .3mm solid #eee; padding-top: 2mm; }
+</style>
+</head>
+<body>
+
+<!-- ======================= PAGINA 1: DA BERE ======================= -->
+<section class="pagina">
+  <div class="testa">
+    <div class="tit"><b>Christmas</b><i>Jumper Night</i></div>
+    <div class="cosa">Da bere<span>Sabato 19 e 26 dicembre · Istruzioni per il personale · 1/2</span></div>
+  </div>
+  <div class="corpo">
+    <div class="avviso">
+      Tutto è già al bar: da comprare solo <b>stecche di cannella</b>, <b>cannella in polvere</b> e <b>rosmarino</b> per le guarnizioni.
+      La serata si fa <b>due sabati</b> (19 e 26 dicembre): dopo il primo, controllate subito le scorte per il secondo.
+      E lo staff… in <b>maglione di Natale</b> anche lui!
+    </div>
+    <div class="griglia">
+
+      <div class="scheda" style="--c:#b71c1c">
+        <h2>Negroni di Natale <small>10 €</small></h2>
+        <div class="sub">Il Negroni di sempre con il profumo delle feste.</div>
+        <div class="info"><span><b>Bicchiere</b>Tumbler basso</span><span><b>Ghiaccio</b>Cubo grande</span><span><b>Metodo</b>Mixing glass</span></div>
+        <table>
+          <tr><td>Gin Bulldog</td><td>1 oz</td></tr>
+          <tr><td>Bitter Campari</td><td>1 oz</td></tr>
+          <tr><td>Vermouth del Professore</td><td>1 oz</td></tr>
+          <tr><td>Scorza d'arancia + stecca di cannella</td><td>guarnizione</td></tr>
+        </table>
+        <ol>
+          <li>Nel mixing glass con ghiaccio versa i tre ingredienti e mescola 20–30 secondi.</li>
+          <li>Filtra nel tumbler sul cubo grande.</li>
+          <li>Spremi la scorza d'arancia sopra e lasciala dentro.</li>
+          <li>Scalda un attimo la stecca di cannella con l'accendino (profuma) e appoggiala nel bicchiere.</li>
+        </ol>
+      </div>
+
+      <div class="scheda" style="--c:#f2c14e">
+        <h2>Bianco Natale <small>10 €</small></h2>
+        <div class="sub">Un White Russian vestito da festa: cremoso e morbido.</div>
+        <div class="info"><span><b>Bicchiere</b>Tumbler basso</span><span><b>Ghiaccio</b>Sì</span><span><b>Metodo</b>Nel bicchiere</span></div>
+        <table>
+          <tr><td>Vodka</td><td>1½ oz</td></tr>
+          <tr><td>Liquore al caffè</td><td>¾ oz</td></tr>
+          <tr><td>Panna fresca</td><td>¾ oz</td></tr>
+          <tr><td>Cannella in polvere</td><td>un pizzico</td></tr>
+        </table>
+        <ol>
+          <li>Tumbler pieno di ghiaccio: versa vodka e liquore al caffè, mescola.</li>
+          <li>Versa la panna piano sul dorso del bar spoon, che resti sopra.</li>
+          <li>Spolvera di cannella. Si serve con una cannuccia: lo mescola il cliente.</li>
+        </ol>
+      </div>
+
+      <div class="scheda" style="--c:#2e7d4f">
+        <h2>Rudolph Spritz <small>8 €</small></h2>
+        <div class="sub">Rosso come il naso della renna, con il rosmarino come un alberello.</div>
+        <div class="info"><span><b>Bicchiere</b>Calice</span><span><b>Ghiaccio</b>Sì</span><span><b>Metodo</b>Nel bicchiere</span></div>
+        <table>
+          <tr><td>Prosecco</td><td>3 oz</td></tr>
+          <tr><td>Bitter Campari</td><td>1 oz</td></tr>
+          <tr><td>Purea di lampone</td><td>½ oz</td></tr>
+          <tr><td>Soda</td><td>splash</td></tr>
+        </table>
+        <ol>
+          <li>Calice pieno di ghiaccio: versa Campari e purea di lampone, mescola.</li>
+          <li>Aggiungi il Prosecco e uno splash di soda, mescola piano.</li>
+          <li>Guarnisci con un rametto di rosmarino e una fetta d'arancia.</li>
+        </ol>
+      </div>
+
+      <div class="scheda" style="--c:#7a4a24">
+        <h2>Old Fashioned Pan di Zenzero <small>10 €</small></h2>
+        <div class="sub">Sa di biscotti di Natale: zenzero, miele e spezie.</div>
+        <div class="info"><span><b>Bicchiere</b>Tumbler basso</span><span><b>Ghiaccio</b>Cubo grande</span><span><b>Metodo</b>Mixing glass</span></div>
+        <table>
+          <tr><td>Bourbon</td><td>1½ oz</td></tr>
+          <tr><td>Purea di zenzero</td><td>¼ oz</td></tr>
+          <tr><td>Miele</td><td>¼ oz</td></tr>
+          <tr><td>Angostura</td><td>2 dash</td></tr>
+        </table>
+        <ol>
+          <li>Nel mixing glass <b>senza ghiaccio</b> mescola miele e zenzero finché il miele si scioglie.</li>
+          <li>Aggiungi bourbon, Angostura e ghiaccio; mescola 20–30 secondi.</li>
+          <li>Filtra sul cubo grande. Scorza d'arancia spremuta sopra.</li>
+        </ol>
+      </div>
+
+      <div class="scheda" style="--c:#6d0f12">
+        <h2>Brindisi delle Feste <small>8 €</small></h2>
+        <div class="sub">Un calice di Trento DOC, per brindare.</div>
+        <ol>
+          <li>Bottiglia ben fredda, calice o flûte asciutto.</li>
+          <li>Versa piano inclinando il bicchiere, fino a ⅔.</li>
+        </ol>
+        <div class="tip">Chi prende la bottiglia intera: 40 € (prezzo del menu).</div>
+      </div>
+
+      <div class="scheda" style="--c:#0f4d2e">
+        <h2>Shot Neve <small>4 €</small></h2>
+        <div class="sub">Dolce e cremoso, per i brindisi in compagnia.</div>
+        <div class="info"><span><b>Bicchiere</b>Bicchierino</span><span><b>Metodo</b>Shaker + strain</span></div>
+        <table>
+          <tr><td>Crema Whisky</td><td>½ oz</td></tr>
+          <tr><td>Amaretto Adriatico</td><td>½ oz</td></tr>
+        </table>
+        <ol>
+          <li>Shakera con ghiaccio, filtra nel bicchierino.</li>
+          <li>Un pizzico di cannella sopra.</li>
+        </ol>
+      </div>
+
+    </div>
+  </div>
+  <div class="piede"><span>Déjà Vu · Christmas Jumper Night</span><span>Misure come nel ricettario del bar · 1 oz = circa 3 cl</span></div>
+</section>
+
+<!-- ======================= PAGINA 2: DA MANGIARE ======================= -->
+<section class="pagina">
+  <div class="testa">
+    <div class="tit"><b>Christmas</b><i>Jumper Night</i></div>
+    <div class="cosa">Da mangiare<span>Sabato 19 e 26 dicembre · Istruzioni per il personale · 2/2</span></div>
+  </div>
+  <div class="corpo">
+    <div class="avviso">
+      In cucina c'è <b>solo il fornetto</b>: tutto è <b>comprato o preparato prima</b>, e al momento si scalda e si monta il piatto.
+      Le preparazioni stanno in <b>frigo</b> (seguire le regole HACCP del bar). Per allergie controllare sempre le etichette dei prodotti comprati.
+    </div>
+    <div class="griglia">
+
+      <div class="scheda" style="--c:#f2c14e">
+        <h2>Panettone salato <small>10 €</small></h2>
+        <div class="etic">Pronto prima</div>
+        <p class="t">Panettone gastronomico <b>già farcito</b> (comprato in pasticceria o al supermercato, oppure farcito il giorno prima con salumi, formaggi e salse). Coperto, in frigo.</p>
+        <div class="etic">Al momento</div>
+        <ol>
+          <li>Tiralo fuori dal frigo <b>15 minuti prima</b> di aprire.</li>
+          <li>Una porzione = <b>un piano</b> del panettone (circa 6 spicchi): da dividere in due.</li>
+          <li>Si serve <b>freddo</b>, su un piatto o un tagliere.</li>
+        </ol>
+        <div class="allerg"><b>Allergeni:</b> glutine, latte, uova; spesso senape (vedi etichetta o ricetta).</div>
+      </div>
+
+      <div class="scheda" style="--c:#b71c1c">
+        <h2>Salatini caldi <small>7 €</small></h2>
+        <div class="etic">Pronto prima</div>
+        <p class="t">Salatini di pasta sfoglia <b>surgelati</b> (pizzette, würstel in sfoglia, rustici). Prima di aprire cuocine una teglia seguendo la confezione.</p>
+        <div class="etic">Al momento</div>
+        <ol>
+          <li>Circa <b>12 salatini</b> già cotti nel <b>fornetto 3–4 minuti</b>, per riscaldarli.</li>
+          <li>Nel cestino con un tovagliolo, e serviti caldi.</li>
+          <li>Quando la teglia sta finendo, infornane un'altra.</li>
+        </ol>
+        <div class="tip">Combo delle Feste (15 €): un cocktail della serata + Salatini caldi.</div>
+        <div class="allerg"><b>Allergeni:</b> glutine, latte; uova o pesce in alcuni ripieni (vedi etichetta).</div>
+      </div>
+
+      <div class="scheda" style="--c:#2e7d4f">
+        <h2>Crostini Branzi e porchetta <small>8 €</small></h2>
+        <div class="etic">Pronto prima</div>
+        <p class="t">Pane malfatto a fette · Branzi a fette sottili · porchetta di Ariccia a fette.</p>
+        <div class="etic">Al momento</div>
+        <ol>
+          <li>4 fette di pane malfatto: su ognuna una fetta di Branzi.</li>
+          <li><b>Fornetto 4–5 minuti</b>, finché il Branzi fonde.</li>
+          <li>Appena sfornati, una fetta di porchetta sopra ogni crostino.</li>
+        </ol>
+        <div class="allerg"><b>Allergeni:</b> glutine, latte.</div>
+      </div>
+
+      <div class="scheda" style="--c:#6d0f12">
+        <h2>Il premio al maglione <small>tutte e due le sere</small></h2>
+        <div class="etic">Come si fa</div>
+        <ol>
+          <li>Durante la serata fai una <b>foto</b> ai maglioni più brutti (chiedendo il permesso): si possono mettere nelle storie Instagram.</li>
+          <li>Verso <b>le 23:30</b> lo staff sceglie il vincitore e lo annuncia al bancone.</li>
+          <li>Il premio (deciso dal titolare) si consegna subito. Applauso!</li>
+        </ol>
+      </div>
+
+    </div>
+
+    <h3>Prima di aprire</h3>
+    <ul class="lista">
+      <li>Fornetto acceso · teglia di salatini già cotta</li>
+      <li>Panettone salato fuori dal frigo da 15 minuti</li>
+      <li>Pane malfatto, Branzi e porchetta a fette</li>
+      <li>Stecche di cannella, cannella in polvere, rosmarino</li>
+      <li>Arance per le scorze · panna fresca in frigo</li>
+      <li>Trento DOC e Prosecco ben freddi</li>
+      <li>Ghiaccio in più (cubi grandi per Negroni e Old Fashioned)</li>
+      <li>Premio per il maglione più brutto pronto</li>
+      <li>Menu della serata sui tavoli · staff in maglione</li>
+      <li>Combo delle Feste: cocktail + Salatini = <b>15 €</b></li>
+      <li>Nell'app: Cronologia → Serata → <b>🎉 Segna come evento</b> (entrambe le sere)</li>
+    </ul>
+  </div>
+  <div class="piede"><span>Déjà Vu · Christmas Jumper Night</span><span>Buone Feste! 🎄</span></div>
+</section>
+
+</body>
+</html>
