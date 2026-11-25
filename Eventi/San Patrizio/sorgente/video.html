@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>San Patrizio · video storia</title>
+<!--
+  Video di 10 secondi per le storie / Reel (1080×1920).
+  Aperto nel browser parte da solo (ricarica la pagina per rivederlo).
+  video.html#t=3.5 mostra il fotogramma fermo al secondo 3,5.
+  Il file MP4 si crea con:  python ..\..\video.py "San Patrizio"
+  Testi e drink si cambiano in VIDEO, qui sotto nello script.
+-->
+<style>
+  @font-face { font-family: "Uncial"; src: url("font/uncial.woff2") format("woff2"); }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-600.woff2") format("woff2"); font-weight: 600; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-700.woff2") format("woff2"); font-weight: 700; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-800.woff2") format("woff2"); font-weight: 800; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-900.woff2") format("woff2"); font-weight: 900; }
+
+  :root {
+    --verde-notte: #052a19; --verde-scuro: #0a4a2c; --verde: #138a4b; --trifoglio: #2fb36a;
+    --oro: #f2c14e; --oro-chiaro: #ffe3a1; --crema: #fdf6e3; --arancio: #f28c28;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #111; }
+  body { font-family: "Montserrat", system-ui, sans-serif; color: var(--crema); -webkit-font-smoothing: antialiased; }
+
+  .tela {
+    position: relative; overflow: hidden; width: 1080px; height: 1920px; font-size: 29px;
+    background: linear-gradient(180deg, var(--verde-notte) 0%, var(--verde-scuro) 35%, var(--verde) 80%, #0f7a41 100%);
+  }
+  .bagliore { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 40% at 50% 45%, rgba(47,179,106,.45), transparent 70%);
+    animation: pulsa 2.5s ease-in-out infinite alternate; }
+  .trama { position: absolute; left: 0; top: -340px; width: 100%; height: 2600px; opacity: .08; animation: sale 10s linear both; }
+  .trama svg { width: 100%; height: 100%; }
+  .cornice { position: absolute; left: 27px; right: 27px; top: 27px; bottom: 27px; border: .1em solid var(--oro); border-radius: .5em;
+    animation: appare .8s ease .1s both; }
+  .cornice::after { content: ""; position: absolute; inset: .35em; border: .05em solid rgba(242,193,78,.55); border-radius: .35em; }
+
+  .decoro { position: absolute; pointer-events: none; }
+  .decoro svg { width: 100%; height: 100%; display: block; overflow: visible; }
+
+  /* festone di bandierine: le bandierine si aprono una alla volta, poi il festone ondeggia */
+  .festone { position: absolute; left: 0; right: 0; top: 0; transform-origin: 50% 0; animation: ondeggia 3s ease-in-out infinite alternate; }
+  .festone svg { width: 100%; height: auto; display: block; }
+  .festone path { stroke-dasharray: 1300; animation: filo .7s ease-out both; }
+  .bandierina { transform-box: fill-box; transform-origin: 50% 0; animation: bandiera .5s cubic-bezier(.2,1.6,.4,1) both; }
+
+  .cade { animation: cade linear infinite; }
+  .cade > div { width: 100%; height: 100%; animation: gira 3s ease-in-out infinite alternate; }
+  .spunta { animation: spunta 1.6s ease-out both; }
+  .pinta { animation: entra-pinta .8s cubic-bezier(.2,1.3,.4,1) both; }
+  .pinta > div { width: 100%; height: 100%; transform-origin: 50% 100%; animation: brinda-sx 10s linear both; }
+  .pinta.dx > div { animation-name: brinda-dx; }
+
+  /* scene */
+  .scena { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 300px 70px 200px; }
+  .scena > * { animation-fill-mode: both; }
+  .s1 { gap: .7em; animation: esce .45s ease-in 4.3s both; }
+  .s2 { gap: .6em; animation: entra-esce 3.4s linear 4.5s both; }
+  .s3 { gap: .85em; animation: appare .4s ease 7.7s both; }
+
+  .presenta { display: flex; flex-direction: column; align-items: center; gap: .5em; letter-spacing: .4em; text-transform: uppercase; font-weight: 700; color: var(--oro-chiaro); }
+  .presenta img { width: auto; filter: drop-shadow(0 0 .6em rgba(0,0,0,.35)); }
+  .presenta .logo { animation: logo 1s cubic-bezier(.2,1.4,.4,1) .2s both; }
+  .presenta span { animation: sale-su .6s ease .9s both; }
+  .s1 .presenta img { height: 13em; }
+  .s1 .titolo .san { font-size: 3.4em; }
+  .s1 .titolo .pat { font-size: 6.4em; }
+  .s1 .sottotitolo { font-size: 1.35em; }
+
+  .titolo { text-align: center; font-family: "Uncial", serif; line-height: .95; }
+  .titolo .san { display: block; color: var(--crema); letter-spacing: .04em; font-size: 3em; text-shadow: .05em .05em 0 var(--verde-notte), 0 .15em .3em rgba(0,0,0,.4); }
+  .titolo .pat {
+    display: block; letter-spacing: .03em; margin-top: .05em; font-size: 5.6em;
+    background:
+      linear-gradient(105deg, transparent 42%, rgba(255,255,255,.95) 50%, transparent 58%) no-repeat,
+      linear-gradient(180deg, var(--oro-chiaro) 0%, var(--oro) 55%, #c9922e 100%);
+    background-size: 300% 100%, 100% 100%; background-position: 150% 0, 0 0;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(.04em .05em 0 var(--verde-notte)) drop-shadow(0 .12em .25em rgba(0,0,0,.35));
+  }
+  .s1 .titolo .san { animation: lettere .8s ease-out 1.3s both; }
+  .s1 .titolo .pat { animation: grande .8s cubic-bezier(.2,1.3,.4,1) 1.7s both, luccica 1s ease-in-out 2.9s both; }
+  .sottotitolo { text-align: center; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--oro-chiaro); font-size: 1.2em; white-space: nowrap; }
+  .sottotitolo span { color: var(--trifoglio); }
+  .s1 .sottotitolo { animation: sale-su .6s ease 2.6s both; margin-top: .4em; }
+
+  .intesta { font-family: "Uncial", serif; color: var(--oro); letter-spacing: .04em; font-size: 2.3em; text-align: center;
+    display: flex; align-items: center; gap: .6em; }
+  .intesta::before, .intesta::after { content: ""; width: 2em; height: .07em; background: var(--oro); }
+  .voce {
+    width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 1em;
+    background: rgba(5,42,25,.62); border: .1em solid var(--oro); border-radius: 999px; padding: .62em 1.3em;
+    font-weight: 800; text-transform: uppercase; letter-spacing: .07em; font-size: 1.45em; white-space: nowrap;
+  }
+  .voce b { color: var(--oro); font-weight: 900; }
+  .da-sx { animation: da-sx .55s cubic-bezier(.2,1.3,.4,1) both; }
+  .da-dx { animation: da-dx .55s cubic-bezier(.2,1.3,.4,1) both; }
+  .cibo { display: flex; flex-direction: column; align-items: center; gap: .35em; font-weight: 700; font-size: 1.65em; letter-spacing: .03em; }
+  .cibo div { animation: pop .45s cubic-bezier(.2,1.5,.4,1) both; }
+  .cibo b { color: var(--trifoglio); }
+  .pop { animation: pop .45s cubic-bezier(.2,1.5,.4,1) both; }
+
+  .s3 .presenta img { height: 11em; }
+  .s3 .presenta .logo { animation: logo .8s cubic-bezier(.2,1.4,.4,1) 7.7s both; }
+  .s3 .titolo { animation: sale-su .6s ease 7.95s both; }
+  .s3 .titolo .pat { font-size: 5.4em; animation: luccica 1s ease-in-out 9s both; }
+  .data {
+    text-align: center; color: var(--verde-notte); font-weight: 900; text-transform: uppercase; letter-spacing: .12em; font-size: 2.05em; white-space: nowrap;
+    background: linear-gradient(180deg, var(--oro-chiaro), var(--oro) 60%, #e0a93a);
+    padding: .5em 1.7em; clip-path: polygon(0 0, 100% 0, 96% 50%, 100% 100%, 0 100%, 4% 50%);
+    animation: nastro .7s cubic-bezier(.2,1.4,.4,1) 8.3s both;
+  }
+  .data small { display: block; font-weight: 700; letter-spacing: .2em; font-size: .55em; margin-top: .15em; }
+  .verde { text-align: center; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; font-size: 1.3em; white-space: nowrap;
+    animation: pop .5s cubic-bezier(.2,1.5,.4,1) 8.75s both; }
+  .verde b { color: var(--trifoglio); }
+  .slainte { font-family: "Uncial", serif; color: var(--trifoglio); font-size: 2.2em; text-shadow: 0 .05em 0 var(--verde-notte);
+    animation: pop .5s cubic-bezier(.2,1.5,.4,1) 9s both; }
+  .piede { text-align: center; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--oro-chiaro); font-size: 1.15em; line-height: 1.55; white-space: nowrap;
+    animation: sale-su .6s ease 9.2s both; }
+  .piede b { color: var(--oro); font-size: 1.15em; }
+
+  @keyframes appare { from { opacity: 0 } to { opacity: 1 } }
+  @keyframes esce { to { opacity: 0; transform: translateY(-60px) scale(.96) } }
+  @keyframes entra-esce { 0% { opacity: 0 } 6% { opacity: 1 } 88% { opacity: 1; transform: none } 100% { opacity: 0; transform: translateY(-60px) } }
+  @keyframes pulsa { from { opacity: .55 } to { opacity: 1 } }
+  @keyframes sale { from { transform: translateY(0) } to { transform: translateY(-260px) } }
+  @keyframes ondeggia { from { transform: rotate(-.6deg) } to { transform: rotate(.6deg) } }
+  @keyframes filo { from { stroke-dashoffset: 1300 } to { stroke-dashoffset: 0 } }
+  @keyframes bandiera { from { transform: scaleY(0) } to { transform: none } }
+  @keyframes cade { from { transform: translateY(-200px) } to { transform: translateY(2150px) } }
+  @keyframes gira { from { transform: rotate(-35deg) translateX(-20px) } to { transform: rotate(35deg) translateX(20px) } }
+  @keyframes spunta { 0% { opacity: 0; transform: scale(0) rotate(-120deg) } 25% { opacity: 1; transform: scale(1.15) rotate(10deg) } 35% { transform: scale(1) rotate(0) } 75% { opacity: 1 } 100% { opacity: 0; transform: scale(.85) rotate(15deg) } }
+  @keyframes entra-pinta { from { opacity: 0; transform: translateY(260px) } to { opacity: 1; transform: none } }
+  @keyframes brinda-sx { 0%, 30% { transform: none } 33% { transform: rotate(22deg) translateX(30px) } 37%, 88% { transform: none } 91% { transform: rotate(22deg) translateX(30px) } 95%, 100% { transform: none } }
+  @keyframes brinda-dx { 0%, 30% { transform: none } 33% { transform: rotate(-22deg) translateX(-30px) } 37%, 88% { transform: none } 91% { transform: rotate(-22deg) translateX(-30px) } 95%, 100% { transform: none } }
+  @keyframes logo { from { opacity: 0; transform: scale(.4) } to { opacity: 1; transform: none } }
+  @keyframes sale-su { from { opacity: 0; transform: translateY(40px) } to { opacity: 1; transform: none } }
+  @keyframes lettere { from { opacity: 0; letter-spacing: .5em } to { opacity: 1; letter-spacing: .04em } }
+  @keyframes grande { from { opacity: 0; transform: scale(1.6) } to { opacity: 1; transform: none } }
+  @keyframes luccica { from { background-position: 150% 0, 0 0 } to { background-position: -50% 0, 0 0 } }
+  @keyframes da-sx { from { opacity: 0; transform: translateX(-120%) } to { opacity: 1; transform: none } }
+  @keyframes da-dx { from { opacity: 0; transform: translateX(120%) } to { opacity: 1; transform: none } }
+  @keyframes pop { from { opacity: 0; transform: scale(.3) } to { opacity: 1; transform: none } }
+  @keyframes nastro { from { opacity: 0; transform: scaleX(0) } to { opacity: 1; transform: none } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="trifoglio" viewBox="0 0 100 110">
+      <g fill="currentColor">
+        <path d="M50 50C38 40 22 42 20 28 18 14 34 6 44 16c4 4 6 10 6 16z"/>
+        <path d="M50 50C62 40 78 42 80 28 82 14 66 6 56 16c-4 4-6 10-6 16z"/>
+        <path d="M50 50C40 60 40 78 26 80 12 82 6 66 16 56c4-4 10-6 16-6z" transform="rotate(45 50 50) translate(10 -4)"/>
+        <path d="M50 52c2 20 4 38 14 54" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+      </g>
+    </symbol>
+    <symbol id="pinta" viewBox="0 0 120 220">
+      <path d="M14 10h92l-10 196c-1 8-6 12-14 12H38c-8 0-13-4-14-12z" fill="rgba(255,255,255,.18)" stroke="#fdf6e3" stroke-width="3"/>
+      <path d="M18 44h84l-8 160c-1 6-4 9-10 9H36c-6 0-9-3-10-9z" fill="#1a0e0a"/>
+      <path d="M16 14h88l-2 32H18z" fill="#f3e6c8"/>
+      <path d="M22 60l-4 140" stroke="rgba(255,255,255,.15)" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+    <pattern id="tramatrifogli" width="180" height="180" patternUnits="userSpaceOnUse">
+      <use href="#trifoglio" x="20" y="20" width="50" height="55" color="#2fb36a"/>
+      <use href="#trifoglio" x="110" y="105" width="40" height="44" color="#2fb36a"/>
+    </pattern>
+  </defs>
+</svg>
+<div id="root"></div>
+
+<script>
+/* =================== DA CAMBIARE QUI =================== */
+const VIDEO = {
+  data: "Sabato 13 marzo",
+  orario: "",            // es. "dalle 19:00"
+  luogo: "Via Borgo Santa Caterina 24a · Bergamo",
+  instagram: "@dejavu.bergamo",
+  drink: [["Guinness alla spina", "6,50"], ["Irish Coffee", 8], ["Black Velvet", 8], ["Trifoglio", 10]],
+  cibo: ["Toastie irlandese", "Guinness Pie", "Tagliere di Dublino"],
+};
+/* ======================================================= */
+
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+let seme = 11;
+const caso = () => ((seme = (seme * 9301 + 49297) % 233280) / 233280);
+
+// festone con i colori dell'Irlanda: le bandierine si aprono da sinistra a destra
+function festone(n) {
+  const colori = ["#169b62", "#fdf6e3", "#f28c28"];
+  const w = 100, gap = 10, tot = n * w + (n - 1) * gap;
+  let s = `<svg viewBox="0 0 ${tot} 140" preserveAspectRatio="none"><path d="M0 12 Q ${tot / 2} 40 ${tot} 12" fill="none" stroke="#f2c14e" stroke-width="3"/>`;
+  for (let i = 0; i < n; i++) {
+    const x = i * (w + gap), y = 12 + 26 * Math.sin(Math.PI * (i + .5) / n);
+    s += `<polygon class="bandierina" style="animation-delay:${.25 + i * .07}s" points="${x + 6},${y} ${x + w - 6},${y} ${x + w / 2},${y + 100}" fill="${colori[i % 3]}"/>`;
+  }
+  return s + "</svg>";
+}
+
+// trifogli che cadono girando
+let cadono = "";
+for (let i = 0; i < 16; i++) {
+  const s = 30 + caso() * 40, dur = 7 + caso() * 5;
+  const colore = i % 4 === 0 ? "#f2c14e" : "#2fb36a";
+  cadono += `<div class="decoro cade" style="width:${s}px;height:${s * 1.1}px;left:${40 + caso() * 980}px;top:0;color:${colore};opacity:.55;animation-duration:${dur}s;animation-delay:-${caso() * dur}s">
+    <div style="animation-delay:-${caso() * 3}s"><svg><use href="#trifoglio"/></svg></div></div>`;
+}
+
+// trifogli che spuntano: [x, y, dimensione, secondo, colore]
+const SPUNTANO = [[150, 430, 130, 1.9, "#2fb36a"], [930, 520, 100, 2.3, "#f2c14e"], [170, 1620, 90, 3.0, "#f2c14e"], [910, 1600, 110, 3.3, "#2fb36a"],
+                  [160, 420, 120, 8.3, "#2fb36a"], [920, 470, 100, 8.6, "#f2c14e"]];
+const spuntano = SPUNTANO.map(([x, y, s, t, c]) =>
+  `<div class="decoro spunta" style="width:${s}px;height:${s * 1.1}px;left:${x - s / 2}px;top:${y - s / 2}px;color:${c};animation-delay:${t}s"><svg><use href="#trifoglio"/></svg></div>`).join("");
+
+const pinte = `
+  <div class="decoro pinta" style="width:95px;height:174px;left:60px;top:1680px;animation-delay:.5s"><div><svg><use href="#pinta"/></svg></div></div>
+  <div class="decoro pinta dx" style="width:95px;height:174px;right:60px;top:1680px;animation-delay:.65s"><div><svg><use href="#pinta"/></svg></div></div>`;
+
+const logo = `<img class="logo" src="logo.png" alt="Déjà Vu">`;
+
+document.getElementById("root").innerHTML = `<div class="tela">
+  <div class="bagliore"></div>
+  <div class="trama"><svg><rect width="100%" height="100%" fill="url(#tramatrifogli)"/></svg></div>
+  ${cadono}
+  ${spuntano}
+  <div class="cornice"></div>
+  <div class="festone">${festone(11)}</div>
+  ${pinte}
+
+  <div class="scena s1">
+    <div class="presenta">${logo}<span>presenta</span></div>
+    <div class="titolo"><span class="san">Festa di</span><span class="pat">San Patrizio</span></div>
+    <div class="sottotitolo">St. Patrick's Day · <span>Irish Night</span></div>
+  </div>
+
+  <div class="scena s2">
+    <div class="intesta pop" style="animation-delay:4.6s">Da bere</div>
+    ${VIDEO.drink.map(([n, p], i) => `<div class="voce ${i % 2 ? "da-dx" : "da-sx"}" style="animation-delay:${4.85 + i * .25}s"><span>${esc(n)}</span><b>${p} €</b></div>`).join("")}
+    <div class="intesta pop" style="animation-delay:5.95s;margin-top:.6em">Da mangiare</div>
+    <div class="cibo">${VIDEO.cibo.map((c, i) => `<div style="animation-delay:${6.15 + i * .2}s"><b>☘</b> ${esc(c)} <b>☘</b></div>`).join("")}</div>
+  </div>
+
+  <div class="scena s3">
+    <div class="presenta">${logo}</div>
+    <div class="titolo"><span class="pat">San Patrizio</span></div>
+    <div class="data">${esc(VIDEO.data)}${VIDEO.orario ? `<small>${esc(VIDEO.orario)}</small>` : ""}</div>
+    <div class="verde">🍀 Vieni vestito di <b>verde</b> 🍀</div>
+    <div class="slainte">Sláinte!</div>
+    <div class="piede">Déjà Vu · ${esc(VIDEO.luogo).replace(" · ", "<br>")}<br><b>${esc(VIDEO.instagram)}</b></div>
+  </div>
+</div>`;
+
+// vai(t): ferma tutto al secondo t (lo usa video.py per registrare fotogramma per fotogramma)
+window.vai = (t) => { for (const a of document.getAnimations()) { a.pause(); a.currentTime = t * 1000; } };
+const fermo = /t=([\d.]+)/.exec(location.hash);
+if (fermo) document.fonts.ready.then(() => vai(parseFloat(fermo[1])));
+</script>
+</body>
+</html>

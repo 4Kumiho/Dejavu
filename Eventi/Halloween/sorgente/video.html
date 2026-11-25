@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Halloween · video storia</title>
+<!--
+  Video di 10 secondi per le storie / Reel (1080×1920).
+  Aperto nel browser parte da solo (ricarica la pagina per rivederlo).
+  video.html#t=3.5 mostra il fotogramma fermo al secondo 3,5.
+  Il file MP4 si crea con:  python ..\..\video.py "Halloween"
+  Testi e drink si cambiano in VIDEO, qui sotto nello script.
+-->
+<style>
+  @font-face { font-family: "Creepster"; src: url("font/creepster.woff2") format("woff2"); }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-600.woff2") format("woff2"); font-weight: 600; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-700.woff2") format("woff2"); font-weight: 700; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-800.woff2") format("woff2"); font-weight: 800; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-900.woff2") format("woff2"); font-weight: 900; }
+
+  :root {
+    --notte: #0d0416; --viola-scuro: #22093a; --viola: #4a1466;
+    --zucca: #ff7518; --zucca-chiaro: #ffb347; --veleno: #8fe34a; --luna: #fff1c4; --osso: #f5ecdc;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #111; }
+  body { font-family: "Montserrat", system-ui, sans-serif; color: var(--osso); -webkit-font-smoothing: antialiased; }
+
+  .tela {
+    position: relative; overflow: hidden; width: 1080px; height: 1920px; font-size: 29px;
+    background: linear-gradient(180deg, var(--notte) 0%, var(--viola-scuro) 45%, var(--viola) 80%, #5a1a5a 100%);
+  }
+  .bagliore { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 45% at 50% 100%, rgba(255,117,24,.45), transparent 70%);
+    animation: pulsa 1.8s ease-in-out infinite alternate; }
+  .stelle { position: absolute; inset: 0; animation: brilla 1.6s ease-in-out infinite alternate; }
+  .stelle svg { width: 100%; height: 100%; }
+  .lampo { position: absolute; inset: 0; background: #e9dcff; opacity: 0; mix-blend-mode: screen; animation: lampo .7s linear 1.85s both; }
+
+  .luna { position: absolute; width: 470px; height: 470px; right: -85px; top: -70px; border-radius: 50%;
+    background: radial-gradient(circle at 40% 38%, #fffbe8, var(--luna) 55%, #e8d49a 100%);
+    animation: luna 1.4s ease-out both, alone 2s ease-in-out 1.4s infinite alternate; }
+  .luna::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background:
+      radial-gradient(circle at 30% 60%, rgba(200,180,120,.35) 0 8%, transparent 9%),
+      radial-gradient(circle at 62% 30%, rgba(200,180,120,.3) 0 6%, transparent 7%),
+      radial-gradient(circle at 70% 70%, rgba(200,180,120,.25) 0 10%, transparent 11%); }
+
+  .decoro { position: absolute; pointer-events: none; }
+  .decoro svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .ragnatela { transform-origin: 0 0; animation: tela-ragno 1s ease-out .2s both; }
+  .ragno { animation: scende 1.4s cubic-bezier(.3,1.4,.5,1) .8s both; }
+  .ragno > div { width: 100%; height: 100%; animation: dondola 1.6s ease-in-out infinite alternate; }
+  .zucca { animation: zucca .8s cubic-bezier(.2,1.5,.4,1) both; }
+  .zucca svg { animation: fiamma .35s steps(2) infinite alternate; }
+
+  /* pipistrelli che attraversano lo schermo, con le ali che sbattono */
+  .vola, .stormo, .ragno { filter: drop-shadow(0 0 6px rgba(255,170,80,.75)) drop-shadow(0 0 14px rgba(180,110,255,.45)); }
+  .vola { animation: vola linear infinite; }
+  .vola > div { width: 100%; height: 100%; animation: ali .22s ease-in-out infinite alternate; }
+  .stormo { opacity: 0; animation: stormo 1.6s ease-out both; }
+  .stormo > div { width: 100%; height: 100%; animation: ali .2s ease-in-out infinite alternate; }
+  .brace { position: absolute; border-radius: 50%; background: var(--zucca-chiaro); box-shadow: 0 0 10px 3px rgba(255,117,24,.7); animation: sale-brace linear infinite; }
+
+  /* scene */
+  .scena { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 300px 70px 260px; }
+  .scena > * { animation-fill-mode: both; }
+  .s1 { gap: 1.1em; animation: esce .45s ease-in 4.3s both; }
+  .s2 { gap: .6em; animation: entra-esce 3.4s linear 4.5s both; }
+  .s3 { gap: .85em; animation: appare .4s ease 7.7s both; }
+
+  .presenta { display: flex; flex-direction: column; align-items: center; gap: .5em; letter-spacing: .4em; text-transform: uppercase; font-weight: 700; color: var(--zucca-chiaro); }
+  .presenta img { width: auto; filter: drop-shadow(0 0 .8em rgba(0,0,0,.6)); }
+  .presenta .logo { animation: logo 1s cubic-bezier(.2,1.4,.4,1) .2s both; }
+  .presenta span { animation: sale-su .6s ease .9s both; }
+  .s1 .presenta img { height: 13em; }
+
+  .titolo { text-align: center; font-family: "Creepster", cursive; line-height: .9; }
+  .titolo .hal { display: block; color: var(--zucca); letter-spacing: .04em; font-size: 7.2em; text-shadow: 0 0 .25em rgba(255,117,24,.55), .04em .05em 0 #000; }
+  .s1 .titolo .hal { animation: urlo .7s cubic-bezier(.2,1.3,.4,1) 1.9s both, trema .5s linear 2.6s both; }
+  .notte { text-align: center; font-family: "Creepster", cursive; color: var(--veleno); letter-spacing: .06em; font-size: 3.2em; text-shadow: .04em .04em 0 #000, 0 0 .4em rgba(143,227,74,.4); }
+  .s1 .notte { animation: neon 1s linear 2.8s both; }
+
+  .intesta { font-family: "Creepster", cursive; color: var(--veleno); letter-spacing: .06em; font-size: 2.6em; text-align: center;
+    display: flex; align-items: center; gap: .5em; text-shadow: .04em .04em 0 #000; }
+  .intesta::before, .intesta::after { content: ""; width: 1.8em; height: .06em; background: currentColor; }
+  .intesta.arancio { color: var(--zucca); }
+  .voce {
+    width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 1em;
+    background: rgba(13,4,22,.7); border: .1em solid var(--veleno); border-radius: 999px; padding: .62em 1.3em;
+    font-weight: 800; text-transform: uppercase; letter-spacing: .07em; font-size: 1.45em; white-space: nowrap;
+  }
+  .voce b { color: var(--zucca-chiaro); font-weight: 900; }
+  .da-sx { animation: da-sx .55s cubic-bezier(.2,1.3,.4,1) both; }
+  .da-dx { animation: da-dx .55s cubic-bezier(.2,1.3,.4,1) both; }
+  .cibo { display: flex; flex-direction: column; align-items: center; gap: .35em; font-weight: 700; font-size: 1.65em; letter-spacing: .03em; }
+  .cibo div { animation: pop .45s cubic-bezier(.2,1.5,.4,1) both; }
+  .cibo b { color: var(--zucca); }
+  .pop { animation: pop .45s cubic-bezier(.2,1.5,.4,1) both; }
+
+  .s3 .presenta img { height: 11em; }
+  .s3 .presenta .logo { animation: logo .8s cubic-bezier(.2,1.4,.4,1) 7.7s both; }
+  .s3 .titolo { animation: urlo .6s cubic-bezier(.2,1.3,.4,1) 7.95s both; }
+  .s3 .titolo .hal { font-size: 6.2em; }
+  .data {
+    text-align: center; color: var(--notte); font-weight: 900; text-transform: uppercase; letter-spacing: .12em; font-size: 2.05em; white-space: nowrap;
+    background: linear-gradient(180deg, var(--zucca-chiaro), var(--zucca)); border-radius: .3em; padding: .5em 1.5em;
+    box-shadow: 0 0 1em rgba(255,117,24,.5);
+    animation: nastro .7s cubic-bezier(.2,1.4,.4,1) 8.3s both;
+  }
+  .data small { display: block; font-weight: 700; letter-spacing: .2em; font-size: .55em; margin-top: .15em; }
+  .costume { text-align: center; background: rgba(13,4,22,.7); border: .1em solid var(--zucca); border-radius: 1em; padding: .5em 1.2em;
+    font-weight: 800; letter-spacing: .08em; text-transform: uppercase; font-size: 1.2em; line-height: 1.4;
+    animation: pop .5s cubic-bezier(.2,1.5,.4,1) 8.8s both; }
+  .piede { text-align: center; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--zucca-chiaro); font-size: 1.15em; line-height: 1.55; white-space: nowrap;
+    animation: sale-su .6s ease 9.1s both; }
+  .piede b { color: var(--osso); font-size: 1.15em; }
+
+  @keyframes appare { from { opacity: 0 } to { opacity: 1 } }
+  @keyframes esce { to { opacity: 0; transform: translateY(-60px) scale(.96) } }
+  @keyframes entra-esce { 0% { opacity: 0 } 6% { opacity: 1 } 88% { opacity: 1; transform: none } 100% { opacity: 0; transform: translateY(-60px) } }
+  @keyframes pulsa { from { opacity: .5 } to { opacity: 1 } }
+  @keyframes brilla { from { opacity: .35 } to { opacity: .75 } }
+  @keyframes lampo { 0% { opacity: 0 } 8% { opacity: .75 } 18% { opacity: .1 } 30% { opacity: .55 } 55%, 100% { opacity: 0 } }
+  @keyframes luna { from { opacity: 0; transform: translateY(-120px) } to { opacity: 1; transform: none } }
+  @keyframes alone { from { box-shadow: 0 0 60px 20px rgba(255,241,196,.2) } to { box-shadow: 0 0 110px 45px rgba(255,241,196,.35) } }
+  @keyframes tela-ragno { from { opacity: 0; transform: scale(.2) } to { opacity: 1; transform: none } }
+  @keyframes scende { from { transform: translateY(-300px) } to { transform: none } }
+  @keyframes dondola { from { transform: translateY(0) rotate(-3deg) } to { transform: translateY(22px) rotate(3deg) } }
+  @keyframes zucca { from { opacity: 0; transform: translateY(240px) } to { opacity: 1; transform: none } }
+  @keyframes fiamma { from { filter: drop-shadow(0 0 14px rgba(255,140,30,.55)) brightness(1) } to { filter: drop-shadow(0 0 26px rgba(255,170,40,.85)) brightness(1.12) } }
+  @keyframes vola { 0% { transform: translate(-260px, 0) } 25% { transform: translate(120px, -60px) } 50% { transform: translate(520px, 30px) } 75% { transform: translate(900px, -50px) } 100% { transform: translate(1400px, 10px) } }
+  @keyframes ali { from { transform: scaleY(1) } to { transform: scaleY(.35) } }
+  @keyframes stormo { 0% { opacity: 0; transform: translate(0, 0) scale(.2) } 15% { opacity: 1 } 80% { opacity: 1 } 100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.2) } }
+  @keyframes sale-brace { from { transform: translateY(0); opacity: 0 } 15% { opacity: .9 } 80% { opacity: .9 } to { transform: translateY(-650px); opacity: 0 } }
+  @keyframes logo { from { opacity: 0; transform: scale(.4) } to { opacity: 1; transform: none } }
+  @keyframes sale-su { from { opacity: 0; transform: translateY(40px) } to { opacity: 1; transform: none } }
+  @keyframes urlo { from { opacity: 0; transform: scale(2.4) } to { opacity: 1; transform: none } }
+  @keyframes trema { 0%, 100% { transform: none } 10% { transform: translate(-6px, 3px) rotate(-1deg) } 30% { transform: translate(6px, -3px) rotate(1deg) } 50% { transform: translate(-5px, 2px) } 70% { transform: translate(4px, -2px) rotate(.5deg) } 90% { transform: translate(-2px, 1px) } }
+  @keyframes neon { 0% { opacity: 0 } 10% { opacity: 1 } 18% { opacity: .1 } 30% { opacity: 1 } 38% { opacity: .2 } 50%, 100% { opacity: 1 } }
+  @keyframes da-sx { from { opacity: 0; transform: translateX(-120%) } to { opacity: 1; transform: none } }
+  @keyframes da-dx { from { opacity: 0; transform: translateX(120%) } to { opacity: 1; transform: none } }
+  @keyframes pop { from { opacity: 0; transform: scale(.3) } to { opacity: 1; transform: none } }
+  @keyframes nastro { from { opacity: 0; transform: scaleX(0) } to { opacity: 1; transform: none } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="zucca" viewBox="0 0 140 130">
+      <path d="M66 20c-2-10 2-18 10-20l4 4c-6 2-8 8-6 16z" fill="#3f6b2a"/>
+      <ellipse cx="40" cy="74" rx="34" ry="50" fill="#e8620f"/>
+      <ellipse cx="100" cy="74" rx="34" ry="50" fill="#e8620f"/>
+      <ellipse cx="70" cy="74" rx="38" ry="54" fill="#ff7518"/>
+      <g fill="#ffd54a">
+        <path d="M44 58l14 14H34zM96 58l10 14H82z"/>
+        <path d="M66 80l4 8 4-8z"/>
+        <path d="M34 92c10 14 62 14 72 0-6 16-18 22-36 22s-30-6-36-22zm14 6v8l6-6zm18 2v10l6-8zm18-2v8l6-8z"/>
+      </g>
+    </symbol>
+    <symbol id="pipistrello" viewBox="0 0 120 50">
+      <path d="M60 18c-4-8-4-12 0-16 1 4 3 6 0 0 3 6 5 4 6 0 4 4 4 8 0 16 10-10 28-18 54-14-10 4-14 10-14 18-8-6-18-4-22 6-6-8-16-6-20 4-2-8-6-12-4-14zM60 18c-4 4-6 12-4 14" fill="#0d0416"/>
+      <path d="M60 18c-10-10-28-18-54-14 10 4 14 10 14 18 8-6 18-4 22 6 6-8 16-6 18 4z" fill="#0d0416"/>
+      <ellipse cx="60" cy="22" rx="7" ry="10" fill="#0d0416"/>
+    </symbol>
+    <!-- ragnatela d'angolo (il ragno è a parte, così scende) -->
+    <symbol id="ragnatela" viewBox="0 0 200 200">
+      <g fill="none" stroke="rgba(245,236,220,.55)" stroke-width="2">
+        <path d="M0 0L200 200M0 0L200 70M0 0L70 200M0 0L200 0M0 0L0 200"/>
+        <path d="M0 50Q30 40 40 40Q42 30 50 0"/><path d="M0 100Q60 80 75 75Q85 55 100 0"/>
+        <path d="M0 150Q90 120 110 110Q125 80 150 0"/><path d="M0 200Q120 165 145 145Q165 105 200 0"/>
+      </g>
+    </symbol>
+    <symbol id="ragno" viewBox="0 -300 40 340">
+      <line x1="20" y1="-300" x2="20" y2="10" stroke="rgba(245,236,220,.6)" stroke-width="1.5"/>
+      <g fill="#0d0416" stroke="#0d0416"><ellipse cx="20" cy="22" rx="9" ry="11"/><circle cx="20" cy="8" r="6"/>
+        <path d="M12 18l-12-8M12 24l-14 0M12 30l-12 8M28 18l12-8M28 24l14 0M28 30l12 8" stroke-width="3" fill="none"/></g>
+      <g fill="#ff7518"><circle cx="17" cy="7" r="1.6"/><circle cx="23" cy="7" r="1.6"/></g>
+    </symbol>
+    <pattern id="tramastelle" width="160" height="160" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="30" r="1.8" fill="#fff"/><circle cx="110" cy="18" r="1.2" fill="#fff"/><circle cx="70" cy="90" r="1.5" fill="#fff"/>
+      <circle cx="140" cy="120" r="1.8" fill="#fff"/><circle cx="35" cy="140" r="1" fill="#fff"/>
+    </pattern>
+  </defs>
+</svg>
+<div id="root"></div>
+
+<script>
+/* =================== DA CAMBIARE QUI =================== */
+const VIDEO = {
+  data: "Sabato 30 ottobre",
+  orario: "",            // es. "dalle 19:00"
+  luogo: "Via Borgo Santa Caterina 24a · Bergamo",
+  instagram: "@dejavu.bergamo",
+  drink: [["Pozione Nera", 10], ["Zombie", 10], ["Strega Verde", 10], ["Zucca Spritz", 8]],
+  cibo: ["Mummie", "Pizzette ragno", "Crostone zucca e Branzi"],
+  premio: "🏆 Premio al costume|più spaventoso",   // | = a capo
+};
+/* ======================================================= */
+
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const svg = (id) => `<svg><use href="#${id}"/></svg>`;
+let seme = 5;
+const caso = () => ((seme = (seme * 9301 + 49297) % 233280) / 233280);
+
+// pipistrelli che attraversano lo schermo: [y, larghezza, durata, ritardo]
+const VOLANO = [[250, 190, 5.5, -1], [540, 130, 7, -4.5], [1180, 160, 6.2, -2.5], [1480, 110, 8, -6], [860, 100, 9, -0.5]];
+const volano = VOLANO.map(([y, w, d, r]) =>
+  `<div class="decoro vola" style="width:${w}px;height:${w * .42}px;left:0;top:${y}px;animation-duration:${d}s;animation-delay:${r}s"><div>${svg("pipistrello")}</div></div>`).join("");
+
+// stormo di pipistrelli che esplode dal centro quando compare il titolo (e alla fine)
+function stormo(cx, cy, t, n) {
+  let s = "";
+  for (let i = 0; i < n; i++) {
+    const ang = (Math.PI * 2 * i) / n + caso() * .4, dist = 650 + caso() * 350, w = 90 + caso() * 80;
+    s += `<div class="decoro stormo" style="width:${w}px;height:${w * .42}px;left:${cx - w / 2}px;top:${cy}px;--dx:${Math.cos(ang) * dist}px;--dy:${Math.sin(ang) * dist}px;animation-delay:${t + caso() * .15}s">
+      <div style="animation-delay:-${caso()}s">${svg("pipistrello")}</div></div>`;
+  }
+  return s;
+}
+
+let braci = "";
+for (let i = 0; i < 22; i++) {
+  const r = 3 + caso() * 4, dur = 4 + caso() * 4;
+  braci += `<div class="brace" style="width:${r}px;height:${r}px;left:${40 + caso() * 1000}px;top:${1300 + caso() * 650}px;animation-duration:${dur}s;animation-delay:-${caso() * dur}s"></div>`;
+}
+
+const logo = `<img class="logo" src="logo.png" alt="Déjà Vu">`;
+
+document.getElementById("root").innerHTML = `<div class="tela">
+  <div class="bagliore"></div>
+  <div class="stelle"><svg><rect width="100%" height="100%" fill="url(#tramastelle)"/></svg></div>
+  <div class="luna"></div>
+  <div class="decoro ragnatela" style="width:290px;height:290px;left:0;top:0">${svg("ragnatela")}</div>
+  <div class="decoro ragno" style="width:64px;height:544px;left:150px;top:-60px"><div>${svg("ragno")}</div></div>
+  ${braci}
+  ${volano}
+  ${stormo(540, 1000, 1.95, 12)}
+  ${stormo(540, 1050, 7.75, 10)}
+  <div class="decoro zucca" style="width:216px;height:200px;left:30px;bottom:30px;animation-delay:.4s">${svg("zucca")}</div>
+  <div class="decoro zucca" style="width:160px;height:149px;right:40px;bottom:30px;animation-delay:.6s">${svg("zucca")}</div>
+  <div class="lampo"></div>
+
+  <div class="scena s1">
+    <div class="presenta">${logo}<span>presenta</span></div>
+    <div class="titolo"><span class="hal">HALLOWEEN</span></div>
+    <div class="notte">Notte da brividi</div>
+  </div>
+
+  <div class="scena s2">
+    <div class="intesta pop" style="animation-delay:4.6s">Le pozioni</div>
+    ${VIDEO.drink.map(([n, p], i) => `<div class="voce ${i % 2 ? "da-dx" : "da-sx"}" style="animation-delay:${4.85 + i * .25}s"><span>${esc(n)}</span><b>${p} €</b></div>`).join("")}
+    <div class="intesta arancio pop" style="animation-delay:5.95s;margin-top:.5em">In cucina</div>
+    <div class="cibo">${VIDEO.cibo.map((c, i) => `<div style="animation-delay:${6.15 + i * .2}s"><b>✦</b> ${esc(c)} <b>✦</b></div>`).join("")}</div>
+  </div>
+
+  <div class="scena s3">
+    <div class="presenta">${logo}</div>
+    <div class="titolo"><span class="hal">HALLOWEEN</span></div>
+    <div class="data">${esc(VIDEO.data)}${VIDEO.orario ? `<small>${esc(VIDEO.orario)}</small>` : ""}</div>
+    <div class="costume">${esc(VIDEO.premio).replace("|", "<br>")}</div>
+    <div class="piede">Déjà Vu · ${esc(VIDEO.luogo).replace(" · ", "<br>")}<br><b>${esc(VIDEO.instagram)}</b></div>
+  </div>
+</div>`;
+
+// vai(t): ferma tutto al secondo t (lo usa video.py per registrare fotogramma per fotogramma)
+window.vai = (t) => { for (const a of document.getAnimations()) { a.pause(); a.currentTime = t * 1000; } };
+const fermo = /t=([\d.]+)/.exec(location.hash);
+if (fermo) document.fonts.ready.then(() => vai(parseFloat(fermo[1])));
+</script>
+</body>
+</html>

@@ -14,6 +14,7 @@ Cocktail delle feste fatti con quello che c'è già al bar, e **3 cose salate** 
 | `Locandina vetrina A3.png` | Stessa locandina in immagine ad alta risoluzione |
 | `Instagram post.png` | Post per il feed (1080×1350) |
 | `Instagram storia.png` | Storia (1080×1920) |
+| `Instagram video storia.mp4` | **Video animato di 10 secondi** per storie e Reel (1080×1920): la musica si aggiunge da Instagram |
 | `Menu da tavolo A5.pdf` | Menu della serata da mettere sui tavoli (A5, o due per foglio A4) |
 | `Istruzioni per il personale.pdf` | **Per lo staff**, 2 pagine A4: drink, cibo, premio e lista «Prima di aprire» |
 | `sorgente/` | I file da cui nascono le grafiche (data, prezzi, testi) |

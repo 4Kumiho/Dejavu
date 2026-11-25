@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Christmas Jumper Night · video storia</title>
+<!--
+  Video di 10 secondi per le storie / Reel (1080×1920).
+  Aperto nel browser parte da solo (ricarica la pagina per rivederlo).
+  video.html#t=3.5 mostra il fotogramma fermo al secondo 3,5.
+  Il file MP4 si crea con:  python ..\..\video.py "Christmas Jumper Night"
+  Testi e drink si cambiano in VIDEO, qui sotto nello script.
+-->
+<style>
+  @font-face { font-family: "Natale"; src: url("font/natale.woff2") format("woff2"); font-weight: 700; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-600.woff2") format("woff2"); font-weight: 600; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-700.woff2") format("woff2"); font-weight: 700; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-800.woff2") format("woff2"); font-weight: 800; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-900.woff2") format("woff2"); font-weight: 900; }
+
+  :root {
+    --rosso: #b71c1c; --rosso-scuro: #6d0f12; --verde: #0f4d2e; --verde-chiaro: #2e7d4f;
+    --oro: #f2c14e; --oro-chiaro: #ffe3a1; --neve: #fffaf2;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #111; }
+  body { font-family: "Montserrat", system-ui, sans-serif; color: var(--neve); -webkit-font-smoothing: antialiased; }
+
+  .tela {
+    position: relative; overflow: hidden; width: 1080px; height: 1920px; font-size: 29px;
+    background: linear-gradient(180deg, var(--rosso-scuro) 0%, var(--rosso) 45%, #a3171a 100%);
+  }
+  .bagliore { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 40% at 50% 47%, rgba(255,200,120,.32), transparent 70%);
+    animation: pulsa 2.5s ease-in-out infinite alternate; }
+
+  /* fasce «maglione di lana» in alto e in basso, che scorrono piano */
+  .maglia { position: absolute; left: 0; overflow: hidden; width: 100%; }
+  .maglia svg { display: block; height: 100%; animation: scorre 10s linear both; }
+  .maglia.su { top: 0; animation: da-su .7s cubic-bezier(.2,1.3,.4,1) both; }
+  .maglia.giu { bottom: 0; animation: da-giu .7s cubic-bezier(.2,1.3,.4,1) .15s both; }
+  .maglia.giu svg { animation-direction: reverse; }
+
+  /* lucine colorate sotto la fascia in alto */
+  .filo { position: absolute; left: 0; top: 0; width: 1080px; height: 320px; animation: appare .4s ease .6s both; }
+  .lucina { position: absolute; width: 22px; height: 32px; border-radius: 50% 50% 45% 45%; animation: appare .3s ease both; }
+  .lucina::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: inherit; animation: lampeggia .9s steps(1) infinite; }
+  .lucina.b::before { animation-delay: -.45s; }
+
+  .decoro { position: absolute; pointer-events: none; }
+  .decoro svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .fiocco-gira { animation: appare .6s ease both; }
+  .fiocco-gira svg { animation: ruota 12s linear infinite; }
+  .albero { animation: albero .7s cubic-bezier(.2,1.6,.4,1) both; transform-origin: 50% 100%; }
+  .stellina { animation: stellina 1.4s ease-out both; }
+  .neve { position: absolute; top: 0; border-radius: 50%; background: var(--neve); animation: nevica linear infinite; }
+  .neve > i { display: block; width: 100%; height: 100%; border-radius: 50%; background: inherit; }
+
+  /* scene */
+  .scena { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 330px 70px 200px; }
+  .scena > * { animation-fill-mode: both; }
+  .s1 { gap: .8em; animation: esce .45s ease-in 4.3s both; }
+  .s2 { gap: .6em; animation: entra-esce 3.4s linear 4.5s both; }
+  .s3 { gap: .8em; animation: appare .4s ease 7.7s both; }
+
+  .presenta { display: flex; flex-direction: column; align-items: center; gap: .5em; letter-spacing: .4em; text-transform: uppercase; font-weight: 700; color: var(--oro-chiaro); }
+  .presenta img { width: auto; filter: drop-shadow(0 0 .6em rgba(0,0,0,.35)); }
+  .presenta .logo { animation: logo 1s cubic-bezier(.2,1.4,.4,1) .2s both; }
+  .presenta span { animation: sale-su .6s ease .9s both; }
+  .s1 .presenta img { height: 12em; }
+
+  .titolo { text-align: center; font-family: "Natale", cursive; font-weight: 700; line-height: .9; }
+  .titolo .uno { display: block; color: var(--neve); font-size: 5em; text-shadow: .04em .05em 0 var(--verde), 0 .12em .3em rgba(0,0,0,.35); }
+  .titolo .due { display: block; color: var(--oro); font-size: 5.5em; margin-top: .05em; text-shadow: .04em .05em 0 var(--rosso-scuro), 0 .12em .3em rgba(0,0,0,.35); }
+  .s1 .titolo .uno { animation: cade-giu .9s cubic-bezier(.3,1.6,.5,1) 1.3s both; }
+  .s1 .titolo .due { animation: grande .8s cubic-bezier(.2,1.4,.4,1) 1.85s both; }
+  .invito { text-align: center; font-weight: 700; letter-spacing: .05em; color: var(--neve); line-height: 1.4; font-size: 1.35em; }
+  .invito b { color: var(--oro); }
+  .s1 .invito { animation: sale-su .6s ease 2.7s both; margin-top: .3em; }
+
+  .intesta { font-family: "Natale", cursive; font-weight: 700; color: var(--oro); font-size: 3em; text-align: center; line-height: 1;
+    display: flex; align-items: center; gap: .45em; text-shadow: .04em .05em 0 var(--rosso-scuro); }
+  .intesta::before, .intesta::after { content: ""; width: 1.4em; height: .06em; background: repeating-linear-gradient(90deg, var(--neve) 0 .25em, var(--verde-chiaro) .25em .5em); }
+  .voce {
+    width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 1em;
+    background: rgba(109,15,18,.6); border: .1em solid var(--neve); border-radius: 999px; padding: .62em 1.3em;
+    font-weight: 800; text-transform: uppercase; letter-spacing: .07em; font-size: 1.45em; white-space: nowrap;
+  }
+  .voce b { color: var(--oro); font-weight: 900; }
+  .da-sx { animation: da-sx .55s cubic-bezier(.2,1.3,.4,1) both; }
+  .da-dx { animation: da-dx .55s cubic-bezier(.2,1.3,.4,1) both; }
+  .cibo { display: flex; flex-direction: column; align-items: center; gap: .35em; font-weight: 700; font-size: 1.6em; letter-spacing: .03em; }
+  .cibo div { animation: pop .45s cubic-bezier(.2,1.5,.4,1) both; white-space: nowrap; }
+  .cibo b { color: var(--oro); }
+  .pop { animation: pop .45s cubic-bezier(.2,1.5,.4,1) both; }
+
+  .s3 .presenta img { height: 10em; }
+  .s3 .presenta .logo { animation: logo .8s cubic-bezier(.2,1.4,.4,1) 7.7s both; }
+  .s3 .titolo { animation: sale-su .6s ease 7.95s both; }
+  .s3 .titolo .uno { font-size: 4.2em; }
+  .s3 .titolo .due { font-size: 4.6em; }
+  .data {
+    text-align: center; color: var(--rosso-scuro); font-weight: 900; text-transform: uppercase; letter-spacing: .12em; font-size: 2em; white-space: nowrap;
+    background: var(--neve); border-radius: .3em; padding: .45em 1.3em; box-shadow: 0 0 0 .12em var(--verde), 0 0 0 .22em var(--oro);
+    animation: nastro .7s cubic-bezier(.2,1.4,.4,1) 8.3s both;
+  }
+  .data small { display: block; font-weight: 700; letter-spacing: .2em; font-size: .55em; margin-top: .15em; color: var(--verde); }
+  .premio { text-align: center; background: var(--verde); border: .1em solid var(--oro); border-radius: 1em; padding: .5em 1.2em;
+    font-weight: 800; letter-spacing: .08em; text-transform: uppercase; font-size: 1.2em; line-height: 1.4; margin-top: .3em;
+    animation: pop .5s cubic-bezier(.2,1.5,.4,1) 8.8s both; }
+  .piede { text-align: center; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--oro-chiaro); font-size: 1.15em; line-height: 1.55; white-space: nowrap;
+    animation: sale-su .6s ease 9.1s both; }
+  .piede b { color: var(--neve); font-size: 1.15em; }
+
+  @keyframes appare { from { opacity: 0 } to { opacity: 1 } }
+  @keyframes esce { to { opacity: 0; transform: translateY(-60px) scale(.96) } }
+  @keyframes entra-esce { 0% { opacity: 0 } 6% { opacity: 1 } 88% { opacity: 1; transform: none } 100% { opacity: 0; transform: translateY(-60px) } }
+  @keyframes pulsa { from { opacity: .55 } to { opacity: 1 } }
+  @keyframes scorre { from { transform: translateX(0) } to { transform: translateX(var(--passo)) } }
+  @keyframes da-su { from { transform: translateY(-100%) } to { transform: none } }
+  @keyframes da-giu { from { transform: translateY(100%) } to { transform: none } }
+  @keyframes lampeggia { 0% { opacity: 1; box-shadow: 0 0 18px 6px currentColor } 50% { opacity: .35; box-shadow: none } }
+  @keyframes ruota { to { transform: rotate(360deg) } }
+  @keyframes albero { from { opacity: 0; transform: scale(0) } to { opacity: 1; transform: none } }
+  @keyframes stellina { 0% { opacity: 0; transform: scale(0) rotate(-90deg) } 25% { opacity: 1; transform: scale(1.15) rotate(0) } 70% { opacity: 1; transform: scale(1) } 100% { opacity: 0; transform: scale(.6) rotate(30deg) } }
+  @keyframes nevica { from { transform: translate(0, -40px) } 25% { transform: translate(25px, 460px) } 50% { transform: translate(-10px, 960px) } 75% { transform: translate(20px, 1460px) } to { transform: translate(0, 1960px) } }
+  @keyframes logo { from { opacity: 0; transform: scale(.4) } to { opacity: 1; transform: none } }
+  @keyframes sale-su { from { opacity: 0; transform: translateY(40px) } to { opacity: 1; transform: none } }
+  @keyframes cade-giu { from { opacity: 0; transform: translateY(-260px) } to { opacity: 1; transform: none } }
+  @keyframes grande { from { opacity: 0; transform: scale(1.6) } to { opacity: 1; transform: none } }
+  @keyframes da-sx { from { opacity: 0; transform: translateX(-120%) } to { opacity: 1; transform: none } }
+  @keyframes da-dx { from { opacity: 0; transform: translateX(120%) } to { opacity: 1; transform: none } }
+  @keyframes pop { from { opacity: 0; transform: scale(.3) } to { opacity: 1; transform: none } }
+  @keyframes nastro { from { opacity: 0; transform: scaleX(0) } to { opacity: 1; transform: none } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="fiocco" viewBox="-50 -50 100 100">
+      <g stroke="currentColor" stroke-width="5" stroke-linecap="round" fill="none">
+        <path d="M0-44V44M-38-22 38 22M-38 22 38-22"/>
+        <path d="M0-30-9-40M0-30 9-40M0 30-9 40M0 30 9 40"/>
+        <path d="M-26-15-38-13M-26-15-30-27M26 15 38 13M26 15 30 27M-26 15-38 13M-26 15-30 27M26-15 38-13M26-15 30-27"/>
+      </g>
+    </symbol>
+    <symbol id="albero" viewBox="0 0 100 130">
+      <path d="M50 4 86 52H66l26 34H62l22 30H16l22-30H8l26-34H14z" fill="#2e7d4f"/>
+      <rect x="42" y="116" width="16" height="14" fill="#7a4a24"/>
+      <path d="M50 0l4 8 9 1-7 6 2 9-8-5-8 5 2-9-7-6 9-1z" fill="#f2c14e"/>
+      <g fill="#f2c14e"><circle cx="40" cy="44" r="4"/><circle cx="60" cy="70" r="4"/><circle cx="34" cy="92" r="4"/><circle cx="68" cy="100" r="4"/></g>
+      <g fill="#fffaf2"><circle cx="58" cy="40" r="3"/><circle cx="42" cy="74" r="3"/><circle cx="52" cy="100" r="3"/></g>
+    </symbol>
+    <symbol id="stella" viewBox="-50 -50 100 100">
+      <path d="M0-48C4-12 12-4 48 0 12 4 4 12 0 48-4 12-12 4-48 0-12-4-4-12 0-48z" fill="#ffe3a1"/>
+    </symbol>
+  </defs>
+</svg>
+<div id="root"></div>
+
+<script>
+/* =================== DA CAMBIARE QUI =================== */
+const VIDEO = {
+  data: "Sabato 26 dicembre",
+  orario: "",            // es. "dalle 19:00"
+  luogo: "Via Borgo Santa Caterina 24a · Bergamo",
+  instagram: "@dejavu.bergamo",
+  drink: [["Negroni di Natale", 10], ["Bianco Natale", 10], ["Rudolph Spritz", 8], ["Brindisi delle Feste", 8]],
+  cibo: ["Panettone salato", "Salatini caldi", "Crostini Branzi e porchetta"],
+  premio: "🏆 Premio al maglione|di Natale più brutto",   // | = a capo
+};
+/* ======================================================= */
+
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const svg = (id) => `<svg><use href="#${id}"/></svg>`;
+let seme = 3;
+const caso = () => ((seme = (seme * 9301 + 49297) % 233280) / 233280);
+const W = 1080;
+
+// fascia «maglione di Natale»: righe a zig-zag, fiocchi e alberelli; è più larga dello schermo così può scorrere
+function maglia(h, dove) {
+  const step = h * .9 * (W / (h * .9) / Math.round(W / (h * .9)));
+  const larga = W + step * 2;
+  const n = Math.ceil(larga / step);
+  let s = `<svg viewBox="0 0 ${larga} ${h}" width="${larga}" style="--passo:${dove === "su" ? -step * 2 : step * 2}px;${dove === "giu" ? `margin-left:${-step * 2}px` : ""}"><rect width="${larga}" height="${h}" fill="#0f4d2e"/>`;
+  const zz = (y) => {
+    let d = `M0 ${y}`;
+    for (let x = 0; x <= larga; x += h * .12) d += ` L${x + h * .06} ${y - h * .05} L${x + h * .12} ${y}`;
+    return `<path d="${d}" fill="none" stroke="#fffaf2" stroke-width="${h * .035}"/>`;
+  };
+  s += `<rect width="${larga}" height="${h * .1}" fill="#b71c1c"/><rect y="${h * .9}" width="${larga}" height="${h * .1}" fill="#b71c1c"/>`;
+  s += zz(h * .2) + zz(h * .85);
+  for (let i = 0; i < n; i++) {
+    const cx = step * (i + .5), cy = h * .53, r = h * .22;
+    s += i % 2
+      ? `<use href="#albero" x="${cx - r * .8}" y="${cy - r}" width="${r * 1.6}" height="${r * 2}"/>`
+      : `<use href="#fiocco" x="${cx - r}" y="${cy - r}" width="${r * 2}" height="${r * 2}" color="#fffaf2"/>`;
+  }
+  return `<div class="maglia ${dove}" style="height:${h}px">${s}</svg></div>`;
+}
+
+// filo di lucine colorate con tre curve, sotto la fascia in alto
+function lucine() {
+  const colori = ["#ffd54a", "#4fc3f7", "#ff5252", "#69f0ae", "#ffffff"];
+  const archi = 3, y0 = 190, freccia = 55;
+  let d = "", luci = "";
+  for (let a = 0; a < archi; a++) {
+    const x1 = (W / archi) * a, x2 = (W / archi) * (a + 1);
+    d += `${a ? "" : `M${x1} ${y0}`} Q ${(x1 + x2) / 2} ${y0 + freccia * 2} ${x2} ${y0}`;
+    for (let k = 1; k <= 5; k++) {
+      const t = k / 6, x = x1 + (x2 - x1) * t, y = y0 + freccia * 2 * 2 * t * (1 - t);
+      const i = a * 5 + k, c = colori[i % colori.length];
+      luci += `<div class="lucina ${i % 2 ? "a" : "b"}" style="left:${x - 11}px;top:${y + 4}px;background:${c};color:${c};animation-delay:${.6 + i * .04}s"></div>`;
+    }
+  }
+  return `<div class="filo"><svg width="${W}" height="320"><path d="${d}" fill="none" stroke="#0b3a22" stroke-width="4"/></svg>${luci}</div>`;
+}
+
+let neve = "";
+for (let i = 0; i < 70; i++) {
+  const r = 4 + caso() * 9, dur = 6 + caso() * 6;
+  neve += `<div class="neve" style="width:${r}px;height:${r}px;left:${caso() * 1080}px;opacity:${.45 + caso() * .5};animation-duration:${dur}s;animation-delay:-${caso() * dur}s"></div>`;
+}
+
+// stelline che brillano: [x, y, dimensione, secondo]
+const STELLE = [[170, 520, 120, 1.9], [920, 600, 90, 2.2], [150, 1500, 80, 2.6], [935, 1480, 110, 3.0],
+                [180, 480, 110, 8.3], [900, 540, 90, 8.6], [170, 1560, 80, 9.0], [910, 1580, 100, 9.3]];
+const stelle = STELLE.map(([x, y, s, t]) =>
+  `<div class="decoro stellina" style="width:${s}px;height:${s}px;left:${x - s / 2}px;top:${y - s / 2}px;animation-delay:${t}s">${svg("stella")}</div>`).join("");
+
+const logo = `<img class="logo" src="logo.png" alt="Déjà Vu">`;
+const titolo = `<div class="titolo"><span class="uno">Christmas</span><span class="due">Jumper Night</span></div>`;
+
+document.getElementById("root").innerHTML = `<div class="tela">
+  <div class="bagliore"></div>
+  ${neve}
+  ${stelle}
+  <div class="decoro fiocco-gira" style="width:110px;height:110px;left:60px;top:560px;color:rgba(255,250,242,.75);animation-delay:.5s">${svg("fiocco")}</div>
+  <div class="decoro fiocco-gira" style="width:75px;height:75px;right:85px;top:520px;color:rgba(255,250,242,.65);animation-delay:.7s">${svg("fiocco")}</div>
+  <div class="decoro albero" style="width:92px;height:120px;left:40px;top:1560px;animation-delay:.8s">${svg("albero")}</div>
+  <div class="decoro albero" style="width:76px;height:99px;right:46px;top:1580px;animation-delay:1s">${svg("albero")}</div>
+  ${maglia(170, "su")}
+  ${maglia(136, "giu")}
+  ${lucine()}
+
+  <div class="scena s1">
+    <div class="presenta">${logo}<span>presenta</span></div>
+    ${titolo}
+    <div class="invito">Vieni con il tuo <b>maglione di Natale</b><br>più brutto (o più bello!)</div>
+  </div>
+
+  <div class="scena s2">
+    <div class="intesta pop" style="animation-delay:4.6s">Da bere</div>
+    ${VIDEO.drink.map(([n, p], i) => `<div class="voce ${i % 2 ? "da-dx" : "da-sx"}" style="animation-delay:${4.85 + i * .25}s"><span>${esc(n)}</span><b>${p} €</b></div>`).join("")}
+    <div class="intesta pop" style="animation-delay:5.95s;margin-top:.4em">Da mangiare</div>
+    <div class="cibo">${VIDEO.cibo.map((c, i) => `<div style="animation-delay:${6.15 + i * .2}s"><b>✦</b> ${esc(c)} <b>✦</b></div>`).join("")}</div>
+  </div>
+
+  <div class="scena s3">
+    <div class="presenta">${logo}</div>
+    ${titolo}
+    <div class="data">${esc(VIDEO.data)}${VIDEO.orario ? `<small>${esc(VIDEO.orario)}</small>` : ""}</div>
+    <div class="premio">${esc(VIDEO.premio).replace("|", "<br>")}</div>
+    <div class="piede">Déjà Vu · ${esc(VIDEO.luogo).replace(" · ", "<br>")}<br><b>${esc(VIDEO.instagram)}</b></div>
+  </div>
+</div>`;
+
+// vai(t): ferma tutto al secondo t (lo usa video.py per registrare fotogramma per fotogramma)
+window.vai = (t) => { for (const a of document.getAnimations()) { a.pause(); a.currentTime = t * 1000; } };
+const fermo = /t=([\d.]+)/.exec(location.hash);
+if (fermo) document.fonts.ready.then(() => vai(parseFloat(fermo[1])));
+</script>
+</body>
+</html>

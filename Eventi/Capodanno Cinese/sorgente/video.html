@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Capodanno Cinese · video storia</title>
+<!--
+  Video di 10 secondi per le storie / Reel (1080×1920).
+  Aperto nel browser parte da solo (ricarica la pagina per rivederlo).
+  video.html#t=3.5 mostra il fotogramma fermo al secondo 3,5.
+  Il file MP4 si crea con:  python ..\..\video.py "Capodanno Cinese"
+  Testi e drink si cambiano in VIDEO, qui sotto nello script.
+-->
+<style>
+  @font-face { font-family: "Cinzel"; src: url("font/cinzel-400.woff2") format("woff2"); font-weight: 400; }
+  @font-face { font-family: "Cinzel"; src: url("font/cinzel-700.woff2") format("woff2"); font-weight: 700; }
+  @font-face { font-family: "Pennello"; src: url("font/fu.woff2") format("woff2"); }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-600.woff2") format("woff2"); font-weight: 600; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-700.woff2") format("woff2"); font-weight: 700; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-800.woff2") format("woff2"); font-weight: 800; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-900.woff2") format("woff2"); font-weight: 900; }
+
+  :root {
+    --rosso: #c8102e; --rosso-scuro: #6e0a17; --notte: #3a0610;
+    --oro: #f2c14e; --oro-chiaro: #ffe3a1; --oro-scuro: #b8862b; --avorio: #fff8ea;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #111; }
+  body { font-family: "Montserrat", system-ui, sans-serif; color: var(--avorio); -webkit-font-smoothing: antialiased; }
+
+  .tela {
+    position: relative; overflow: hidden; width: 1080px; height: 1920px; font-size: 29px;
+    background: linear-gradient(180deg, var(--notte) 0%, var(--rosso-scuro) 30%, var(--rosso) 70%, #a50d25 100%);
+  }
+  .bagliore { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 40% at 50% 45%, rgba(242,193,78,.3), transparent 70%);
+    animation: pulsa 2.5s ease-in-out infinite alternate; }
+  .nuvole { position: absolute; left: 0; top: -340px; width: 100%; height: 2600px; opacity: .1; animation: sale 10s linear both; }
+  .nuvole svg { width: 100%; height: 100%; }
+  .cornice { position: absolute; left: 27px; right: 27px; top: 27px; bottom: 27px; border: .12em solid var(--oro); border-radius: .4em;
+    animation: appare .8s ease .1s both; }
+  .cornice::after { content: ""; position: absolute; inset: .35em; border: .05em solid rgba(242,193,78,.6); border-radius: .25em; }
+
+  .decoro { position: absolute; pointer-events: none; }
+  .decoro svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .lanterna { animation: cala 1.1s cubic-bezier(.3,1.5,.5,1) both; }
+  .lanterna > div { width: 100%; height: 100%; transform-origin: 50% 0; animation: oscilla 2.2s ease-in-out infinite alternate; }
+  .fuoco { opacity: 0; animation: scoppio 1.5s ease-out both; }
+  .scintilla { position: absolute; border-radius: 50%; background: var(--oro-chiaro); box-shadow: 0 0 10px 3px rgba(242,193,78,.7);
+    animation: vola linear infinite; }
+
+  /* scene */
+  .scena { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 300px 70px 170px; }
+  .scena > * { animation-fill-mode: both; }
+  .s1 { gap: .7em; animation: esce .45s ease-in 4.3s both; }
+  .s2 { gap: .6em; animation: entra-esce 3.4s linear 4.5s both; }
+  .s3 { gap: .9em; animation: appare .4s ease 7.7s both; }
+
+  .presenta { display: flex; flex-direction: column; align-items: center; gap: .5em; letter-spacing: .4em; text-transform: uppercase; font-weight: 700; color: var(--oro-chiaro); }
+  .presenta img { width: auto; filter: drop-shadow(0 0 .6em rgba(0,0,0,.35)); }
+  .presenta .logo { animation: logo 1s cubic-bezier(.2,1.4,.4,1) .2s both; }
+  .presenta span { animation: sale-su .6s ease .9s both; }
+  .s1 .presenta img { height: 13em; }
+  .s1 .fu { width: 7em; height: 7em; margin: 1.1em 0 1em; }
+  .s1 .fu span { font-size: 5.2em; }
+  .s1 .titolo .cap { font-size: 3.2em; }
+  .s1 .titolo .cin { font-size: 6.6em; }
+  .s1 .anno { font-size: 1.45em; }
+
+  .fu {
+    width: 5.6em; height: 5.6em; margin: .8em 0 .7em; background: var(--rosso); border: .14em solid var(--oro);
+    box-shadow: 0 0 0 .3em var(--rosso), 0 0 0 .38em var(--oro), 0 .5em 1.2em rgba(0,0,0,.4);
+    display: grid; place-items: center; transform: rotate(45deg);
+  }
+  .s1 .fu { animation: fu 1s cubic-bezier(.3,1.3,.5,1) 1.15s both; }
+  .fu span { transform: rotate(-45deg) rotate(180deg); font-family: "Pennello", "KaiTi", serif; color: var(--oro); font-size: 4.2em; line-height: 1; }
+
+  .titolo { text-align: center; font-family: "Cinzel", serif; font-weight: 700; line-height: 1; }
+  .titolo .cap { display: block; color: var(--oro); letter-spacing: .12em; font-size: 2.6em; }
+  .titolo .cin {
+    display: block; letter-spacing: .06em; margin-top: .05em; font-size: 5.1em;
+    background:
+      linear-gradient(105deg, transparent 42%, rgba(255,255,255,.95) 50%, transparent 58%) no-repeat,
+      linear-gradient(180deg, var(--oro-chiaro) 0%, var(--oro) 50%, var(--oro-scuro) 100%);
+    background-size: 300% 100%, 100% 100%; background-position: 150% 0, 0 0;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 .06em 0 var(--notte)) drop-shadow(0 .15em .25em rgba(0,0,0,.35));
+  }
+  .s1 .titolo .cap { animation: lettere .8s ease-out 1.9s both; }
+  .s1 .titolo .cin { animation: grande .8s cubic-bezier(.2,1.3,.4,1) 2.2s both, luccica 1s ease-in-out 3.1s both; }
+  .anno { text-align: center; font-family: "Cinzel", serif; letter-spacing: .25em; color: var(--oro-chiaro); font-size: 1.2em; }
+  .anno b { color: var(--oro); }
+  .s1 .anno { animation: sale-su .6s ease 2.9s both; }
+
+  .intesta { font-family: "Cinzel", serif; font-weight: 700; color: var(--oro); letter-spacing: .14em; font-size: 2.1em; text-align: center;
+    display: flex; align-items: center; gap: .6em; }
+  .intesta::before, .intesta::after { content: ""; width: 2.2em; height: .08em; background: var(--oro); }
+  .voce {
+    width: 100%; display: flex; justify-content: space-between; align-items: center;
+    background: rgba(58,6,16,.6); border: .1em solid var(--oro); border-radius: 999px; padding: .62em 1.3em; gap: 1em;
+    font-weight: 800; text-transform: uppercase; letter-spacing: .07em; font-size: 1.45em; white-space: nowrap;
+  }
+  .voce b { color: var(--oro); font-weight: 900; }
+  .da-sx { animation: da-sx .55s cubic-bezier(.2,1.3,.4,1) both; }
+  .da-dx { animation: da-dx .55s cubic-bezier(.2,1.3,.4,1) both; }
+  .cibo { display: flex; flex-direction: column; align-items: center; gap: .35em; font-weight: 700; font-size: 1.65em; letter-spacing: .03em; }
+  .cibo div { animation: pop .45s cubic-bezier(.2,1.5,.4,1) both; }
+  .cibo b { color: var(--oro); }
+  .pop { animation: pop .45s cubic-bezier(.2,1.5,.4,1) both; }
+
+  .s3 .presenta img { height: 11em; }
+  .s3 .presenta .logo { animation: logo .8s cubic-bezier(.2,1.4,.4,1) 7.7s both; }
+  .s3 .titolo { animation: sale-su .6s ease 7.95s both; }
+  .s3 .titolo .cin { font-size: 5.6em; animation: luccica 1s ease-in-out 9s both; }
+  .s3 .titolo .cap { font-size: 2.8em; }
+  .data {
+    text-align: center; color: var(--rosso-scuro); font-weight: 900; text-transform: uppercase; letter-spacing: .12em; font-size: 2.05em; white-space: nowrap;
+    background: linear-gradient(180deg, var(--oro-chiaro), var(--oro) 60%, #e0a93a);
+    padding: .5em 1.7em; clip-path: polygon(0 0, 100% 0, 96% 50%, 100% 100%, 0 100%, 4% 50%);
+    animation: nastro .7s cubic-bezier(.2,1.4,.4,1) 8.3s both;
+  }
+  .data small { display: block; font-weight: 700; letter-spacing: .2em; font-size: .55em; margin-top: .15em; }
+  .regalo { font-weight: 700; color: var(--oro-chiaro); font-size: 1.4em; line-height: 1.35; text-align: center; animation: pop .5s cubic-bezier(.2,1.5,.4,1) 8.8s both; }
+  .piede { text-align: center; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--oro-chiaro); font-size: 1.15em; line-height: 1.55; white-space: nowrap;
+    animation: sale-su .6s ease 9.1s both; }
+  .piede b { color: var(--oro); font-size: 1.15em; }
+
+  @keyframes appare { from { opacity: 0 } to { opacity: 1 } }
+  @keyframes esce { to { opacity: 0; transform: translateY(-60px) scale(.96) } }
+  @keyframes entra-esce { 0% { opacity: 0 } 6% { opacity: 1 } 88% { opacity: 1; transform: none } 100% { opacity: 0; transform: translateY(-60px) } }
+  @keyframes pulsa { from { opacity: .55 } to { opacity: 1 } }
+  @keyframes sale { from { transform: translateY(0) } to { transform: translateY(-260px) } }
+  @keyframes cala { from { transform: translateY(-110%) } to { transform: none } }
+  @keyframes oscilla { from { transform: rotate(-5deg) } to { transform: rotate(5deg) } }
+  @keyframes scoppio { 0% { opacity: 0; transform: scale(.1) rotate(0) } 15% { opacity: 1 } 70% { opacity: 1 } 100% { opacity: 0; transform: scale(1.15) rotate(20deg) } }
+  @keyframes vola { from { transform: translateY(0); opacity: 0 } 15% { opacity: 1 } 85% { opacity: 1 } to { transform: translateY(-700px); opacity: 0 } }
+  @keyframes logo { from { opacity: 0; transform: scale(.4) } to { opacity: 1; transform: none } }
+  @keyframes sale-su { from { opacity: 0; transform: translateY(40px) } to { opacity: 1; transform: none } }
+  @keyframes fu { from { opacity: 0; transform: rotate(-315deg) scale(0) } to { opacity: 1; transform: rotate(45deg) scale(1) } }
+  @keyframes lettere { from { opacity: 0; letter-spacing: .6em } to { opacity: 1; letter-spacing: .12em } }
+  @keyframes grande { from { opacity: 0; transform: scale(1.6) } to { opacity: 1; transform: none } }
+  @keyframes luccica { from { background-position: 150% 0, 0 0 } to { background-position: -50% 0, 0 0 } }
+  @keyframes da-sx { from { opacity: 0; transform: translateX(-120%) } to { opacity: 1; transform: none } }
+  @keyframes da-dx { from { opacity: 0; transform: translateX(120%) } to { opacity: 1; transform: none } }
+  @keyframes pop { from { opacity: 0; transform: scale(.3) } to { opacity: 1; transform: none } }
+  @keyframes nastro { from { opacity: 0; transform: scaleX(0) } to { opacity: 1; transform: none } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="lanterna" viewBox="0 0 120 260">
+      <line x1="60" y1="0" x2="60" y2="40" stroke="#f2c14e" stroke-width="3"/>
+      <rect x="40" y="38" width="40" height="12" rx="3" fill="#f2c14e"/>
+      <ellipse cx="60" cy="110" rx="54" ry="62" fill="#e0182f"/>
+      <ellipse cx="60" cy="110" rx="54" ry="62" fill="url(#lucelanterna)"/>
+      <g fill="none" stroke="#a50d25" stroke-width="3"><ellipse cx="60" cy="110" rx="18" ry="62"/><ellipse cx="60" cy="110" rx="38" ry="62"/></g>
+      <rect x="40" y="168" width="40" height="12" rx="3" fill="#f2c14e"/>
+      <line x1="60" y1="180" x2="60" y2="200" stroke="#f2c14e" stroke-width="3"/>
+      <path d="M50 200h20l6 56H44z" fill="#f2c14e"/>
+      <g stroke="#b8862b" stroke-width="2"><path d="M52 206v48M58 206v50M64 206v50M70 206v48"/></g>
+      <radialGradient id="lucelanterna" cx=".45" cy=".4" r=".6"><stop offset="0" stop-color="#ffcf6b" stop-opacity=".55"/><stop offset="1" stop-color="#e0182f" stop-opacity="0"/></radialGradient>
+    </symbol>
+    <symbol id="fuoco" viewBox="-50 -50 100 100">
+      <g stroke="#f2c14e" stroke-width="2.4" stroke-linecap="round"><path d="M0-18V-46M0 18V46M-18 0H-46M18 0H46M-13-13-32-32M13 13 32 32M-13 13-32 32M13-13 32-32"/></g>
+      <g fill="#ffe3a1"><circle cx="0" cy="-48" r="3"/><circle cx="0" cy="48" r="3"/><circle cx="-48" cy="0" r="3"/><circle cx="48" cy="0" r="3"/>
+        <circle cx="-34" cy="-34" r="3"/><circle cx="34" cy="34" r="3"/><circle cx="-34" cy="34" r="3"/><circle cx="34" cy="-34" r="3"/></g>
+    </symbol>
+    <symbol id="nuvola" viewBox="0 0 200 90">
+      <path d="M20 70c-14 0-18-20-4-24 0-18 22-26 34-14 6-18 34-22 44-4 10-14 36-10 38 8 14-4 26 8 20 22 10 2 12 12 2 12z" fill="none" stroke="#f2c14e" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M58 62c0-10 14-10 14 0M110 60c0-12 16-12 16 0" fill="none" stroke="#f2c14e" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+    <pattern id="tramanuvole" width="260" height="170" patternUnits="userSpaceOnUse">
+      <use href="#nuvola" x="10" y="20" width="110" height="50"/>
+      <use href="#nuvola" x="140" y="105" width="110" height="50"/>
+    </pattern>
+  </defs>
+</svg>
+<div id="root"></div>
+
+<script>
+/* =================== DA CAMBIARE QUI =================== */
+const VIDEO = {
+  data: "Sabato 6 febbraio",
+  orario: "",            // es. "dalle 19:00"
+  anno: "Anno della Capra · 2027",
+  luogo: "Via Borgo Santa Caterina 24a · Bergamo",
+  instagram: "@dejavu.bergamo",
+  drink: [["Drago Rosso", 10], ["Gin Tonic della Fortuna", 10], ["Lanterna d'Oro", 10], ["Fiore di Pesco", 8]],
+  cibo: ["Ravioli al vapore", "Bao Bergamasco", "Pollo agrodolce"],
+  regalo: "🥠 Un biscotto della fortuna|in regalo per tutti",   // | = a capo
+};
+/* ======================================================= */
+
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const deco = (id, css, cls = "") => `<div class="decoro ${cls}" style="${css}"><svg><use href="#${id}"/></svg></div>`;
+
+// numeri pseudo-casuali sempre uguali: il video viene identico ogni volta
+let seme = 7;
+const caso = () => ((seme = (seme * 9301 + 49297) % 233280) / 233280);
+
+let lanterne = "";
+[[180, 300, .15], [540, 230, 0], [900, 300, .3]].forEach(([x, h, rit], i) => {
+  const w = h * 120 / 260;
+  lanterne += `<div class="decoro lanterna" style="width:${w}px;height:${h}px;left:${x - w / 2}px;top:-${h * .1}px;animation-delay:${rit}s">
+    <div style="animation-delay:-${i * .9}s"><svg><use href="#lanterna"/></svg></div></div>`;
+});
+
+// fuochi d'artificio: [x, y, dimensione, secondo]
+const FUOCHI = [[160, 470, 170, 2.6], [910, 560, 120, 2.9], [150, 1730, 110, 3.3], [880, 1150, 150, 3.6],
+                [150, 1650, 120, 5.2], [930, 1700, 100, 6.4], [170, 420, 150, 8.4], [910, 480, 130, 8.7], [900, 1770, 110, 9.0], [180, 1770, 100, 9.3]];
+const fuochi = FUOCHI.map(([x, y, s, t]) => (s *= 1.7, deco("fuoco", `width:${s}px;height:${s}px;left:${x - s / 2}px;top:${y - s / 2}px;animation-delay:${t}s`, "fuoco"))).join("");
+
+let scintille = "";
+for (let i = 0; i < 34; i++) {
+  const r = 3 + caso() * 5, dur = 4 + caso() * 4;
+  scintille += `<div class="scintilla" style="width:${r}px;height:${r}px;left:${40 + caso() * 1000}px;top:${900 + caso() * 1100}px;animation-duration:${dur}s;animation-delay:-${caso() * dur}s"></div>`;
+}
+
+const logo = `<img class="logo" src="logo.png" alt="Déjà Vu">`;
+const titolo = `<div class="titolo"><span class="cap">Capodanno</span><span class="cin">CINESE</span></div>`;
+
+document.getElementById("root").innerHTML = `<div class="tela">
+  <div class="bagliore"></div>
+  <div class="nuvole"><svg><rect width="100%" height="100%" fill="url(#tramanuvole)"/></svg></div>
+  ${scintille}
+  ${fuochi}
+  <div class="cornice"></div>
+  ${lanterne}
+
+  <div class="scena s1">
+    <div class="presenta">${logo}<span>presenta</span></div>
+    <div class="fu"><span>福</span></div>
+    ${titolo}
+    <div class="anno">${esc(VIDEO.anno).replace("Capra", "<b>Capra</b>")} 🐐</div>
+  </div>
+
+  <div class="scena s2">
+    <div class="intesta pop" style="animation-delay:4.6s">Nel bicchiere</div>
+    ${VIDEO.drink.map(([n, p], i) => `<div class="voce ${i % 2 ? "da-dx" : "da-sx"}" style="animation-delay:${4.85 + i * .25}s"><span>${esc(n)}</span><b>${p} €</b></div>`).join("")}
+    <div class="intesta pop" style="animation-delay:5.95s;margin-top:.8em">In cucina</div>
+    <div class="cibo">${VIDEO.cibo.map((c, i) => `<div style="animation-delay:${6.15 + i * .2}s"><b>✦</b> ${esc(c)} <b>✦</b></div>`).join("")}</div>
+  </div>
+
+  <div class="scena s3">
+    <div class="presenta">${logo}</div>
+    ${titolo}
+    <div class="data">${esc(VIDEO.data)}${VIDEO.orario ? `<small>${esc(VIDEO.orario)}</small>` : ""}</div>
+    <div class="regalo">${esc(VIDEO.regalo).replace("|", "<br>")}</div>
+    <div class="piede">Déjà Vu · ${esc(VIDEO.luogo).replace(" · ", "<br>")}<br><b>${esc(VIDEO.instagram)}</b></div>
+  </div>
+</div>`;
+
+// vai(t): ferma tutto al secondo t (lo usa video.py per registrare fotogramma per fotogramma)
+window.vai = (t) => { for (const a of document.getAnimations()) { a.pause(); a.currentTime = t * 1000; } };
+const fermo = /t=([\d.]+)/.exec(location.hash);
+if (fermo) document.fonts.ready.then(() => vai(parseFloat(fermo[1])));
+</script>
+</body>
+</html>
