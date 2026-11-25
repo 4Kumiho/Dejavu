@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Tex-Mex Fiesta · Déjà Vu</title>
+<!--
+  Grafiche della Tex-Mex Fiesta. Un solo file per tutti i formati, scelti con l'indirizzo:
+    grafiche.html#locandina   vetrina A3
+    grafiche.html#post        Instagram 1080×1350
+    grafiche.html#storia      Instagram storia 1080×1920
+    grafiche.html#menu        menu da tavolo A5 (stampabile)
+  Data, orario e menu si cambiano in EVENTO, qui sotto nello script.
+-->
+<style>
+  @font-face { font-family: "Rye"; src: url("font/rye.woff2") format("woff2"); }
+  @font-face { font-family: "Pacifico"; src: url("font/pacifico.woff2") format("woff2"); }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat.woff2") format("woff2"); font-weight: 100 900; }
+
+  :root {
+    --notte: #2a0a3a;
+    --vino: #7a0f4f;
+    --rosa: #ff2d87;
+    --arancio: #ff7a00;
+    --giallo: #ffc300;
+    --turchese: #00b4c5;
+    --verde: #6cc04a;
+    --crema: #fff3d6;
+    --rosso: #e0262b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { background: #111; }
+  body { font-family: "Montserrat", system-ui, sans-serif; color: var(--crema); -webkit-font-smoothing: antialiased; }
+
+  .tela {
+    position: relative; overflow: hidden; margin: 0 auto;
+    background:
+      radial-gradient(ellipse 70% 40% at 50% 36%, rgba(255,195,0,.28), transparent 70%),
+      linear-gradient(172deg, var(--notte) 0%, #4a0c4a 28%, var(--vino) 52%, #c2283a 76%, var(--arancio) 100%);
+  }
+  /* raggi di sole dietro al titolo */
+  .sole {
+    position: absolute; left: 50%; transform: translateX(-50%); border-radius: 50%; opacity: .22;
+    background: repeating-conic-gradient(from 0deg, var(--giallo) 0 6deg, transparent 6deg 18deg);
+    -webkit-mask: radial-gradient(circle, #000 25%, transparent 70%); mask: radial-gradient(circle, #000 25%, transparent 70%);
+  }
+  .festone { position: absolute; left: 0; right: 0; top: 0; }
+  .festone svg { width: 100%; height: auto; display: block; }
+
+  .presenta { display: flex; align-items: center; justify-content: center; gap: .5em; letter-spacing: .3em; text-transform: uppercase; font-weight: 700; }
+  .presenta img { height: 4.2em; width: auto; }
+  .titolo { text-align: center; line-height: .9; position: relative; }
+  .titolo .tex {
+    display: block; font-family: "Rye", serif; color: var(--crema); letter-spacing: .03em;
+    text-shadow: .045em .045em 0 var(--arancio), .09em .09em 0 var(--rosa), 0 .2em .35em rgba(0,0,0,.35);
+  }
+  .titolo .fiesta {
+    display: block; font-family: "Pacifico", cursive; color: var(--giallo); transform: rotate(-6deg); margin-top: -.08em;
+    text-shadow: .04em .05em 0 var(--rosso), 0 .12em .3em rgba(0,0,0,.4);
+  }
+  .sottotitolo { text-align: center; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
+  .sottotitolo span { color: var(--giallo); }
+
+  .drink-top { display: flex; justify-content: center; gap: 1em; flex-wrap: wrap; }
+  .drink-top div {
+    background: rgba(42,10,58,.55); border: .12em solid var(--giallo); border-radius: 999px;
+    padding: .5em 1.2em; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap;
+  }
+  .drink-top i { font-style: normal; color: var(--rosa); margin-left: .25em; }
+  .cibo-top { text-align: center; font-weight: 600; letter-spacing: .04em; }
+  .cibo-top b { color: var(--giallo); }
+
+  .data {
+    text-align: center; background: var(--turchese); color: var(--notte); font-weight: 900; text-transform: uppercase;
+    letter-spacing: .12em; border-radius: .35em; padding: .45em 1.2em; display: inline-block; transform: rotate(-2deg);
+    box-shadow: .18em .18em 0 var(--notte);
+  }
+  .data small { display: block; font-weight: 700; letter-spacing: .2em; font-size: .55em; margin-top: .2em; }
+  .piede { text-align: center; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; opacity: .95; }
+  .piede b { color: var(--giallo); }
+
+  .decoro { position: absolute; pointer-events: none; }
+  .decoro svg { width: 100%; height: 100%; display: block; }
+
+  /* ---------------- formati ---------------- */
+  .locandina { width: 1123px; height: 1587px; font-size: 26px; }
+  .post { width: 1080px; height: 1350px; font-size: 24px; }
+  .storia { width: 1080px; height: 1920px; font-size: 29px; }
+  .storia .colonna { justify-content: space-evenly; gap: 0; padding: 7.5em 1.6em 8.5em; }
+  .colonna { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.1em; padding: 6em 2.2em 9em; }
+  .locandina .titolo .tex { font-size: 7.4em; }
+  .locandina .titolo .fiesta { font-size: 6.2em; }
+  .post .titolo .tex { font-size: 6.4em; }
+  .post .titolo .fiesta { font-size: 5.4em; }
+  .storia .titolo .tex { font-size: 6.3em; }
+  .storia .titolo .fiesta { font-size: 6em; }
+  .locandina .sottotitolo, .post .sottotitolo, .storia .sottotitolo { font-size: 1.05em; }
+  .locandina .data, .post .data, .storia .data { font-size: 1.6em; }
+
+  /* ---------------- menu da tavolo A5 ---------------- */
+  .menu { width: 148mm; height: 210mm; font-size: 9.4pt; background: #fff6e5; color: #2a0a3a; }
+  .menu .testa {
+    position: relative; height: 33mm; overflow: hidden; color: var(--crema);
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 70%, rgba(255,195,0,.3), transparent 70%),
+      linear-gradient(170deg, var(--notte) 0%, var(--vino) 55%, #c2283a 85%, var(--arancio) 100%);
+  }
+  .menu .testa .colonna { padding: 4mm 6mm 2mm; gap: 1mm; justify-content: flex-start; }
+  .menu .testa { border-bottom: 1.6mm solid; border-image: repeating-linear-gradient(90deg, #ff2d87 0 8mm, #ffc300 8mm 16mm, #00b4c5 16mm 24mm, #6cc04a 24mm 32mm, #ff7a00 32mm 40mm) 1; }
+  .menu .presenta img { height: 3.2em; }
+  .menu .presenta { font-size: 6.5pt; }
+  .menu .titolo .tex { font-size: 27pt; }
+  .menu .titolo .fiesta { font-size: 21pt; }
+  .menu .corpo { padding: 2mm 9mm 0; }
+  .menu h2 {
+    font-family: "Rye", serif; font-weight: 400; font-size: 13pt; color: var(--vino); letter-spacing: .04em;
+    display: flex; align-items: center; gap: 3mm; margin: 3mm 0 .6mm;
+  }
+  .menu h2::after { content: ""; flex: 1; height: .5mm; background: repeating-linear-gradient(90deg, var(--rosa) 0 3mm, var(--giallo) 3mm 6mm, var(--turchese) 6mm 9mm, var(--verde) 9mm 12mm); }
+  .menu .voce { display: grid; grid-template-columns: 1fr auto; column-gap: 3mm; padding: 1.05mm 0; break-inside: avoid; }
+  .menu .voce .n { font-weight: 800; text-transform: uppercase; letter-spacing: .04em; font-size: 9pt; }
+  .menu .voce .n i { font-style: normal; font-size: 7.5pt; margin-left: 1mm; }
+  .menu .voce .p { font-weight: 800; color: var(--vino); font-size: 9.5pt; }
+  .menu .voce .d { grid-column: 1 / -1; font-size: 7.2pt; color: #5b4a55; line-height: 1.28; margin-top: .1mm; }
+  .menu .combo {
+    margin: 2.4mm 0 0; background: var(--turchese); color: var(--notte); border-radius: 2mm; padding: 2mm 3.5mm;
+    display: flex; justify-content: space-between; align-items: center; font-weight: 800; font-size: 8.6pt; transform: rotate(-.6deg);
+  }
+  .menu .combo span { font-weight: 600; font-size: 7.4pt; }
+  .menu .note { text-align: center; font-size: 6.4pt; color: #7b6a75; margin-top: 1.8mm; line-height: 1.35; }
+  .menu .piede { position: absolute; left: 0; right: 0; bottom: 3.5mm; font-size: 6.2pt; color: var(--vino); }
+  .menu .piede b { color: var(--rosa); }
+
+  @media print { html, body { background: none; } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <!-- peperoncino -->
+    <symbol id="chili" viewBox="0 0 120 220">
+      <path d="M62 34c-6-14-2-26 10-32" fill="none" stroke="#3f8f2f" stroke-width="7" stroke-linecap="round"/>
+      <path d="M40 40c10-10 34-10 42 2 6 10 0 18 0 18H38s-6-10 2-20z" fill="#4caf3a"/>
+      <path d="M38 58h44c8 40 6 92-14 132-6 12-14 22-24 28-6 4-12-2-8-8 14-24 14-64 6-100-4-20-8-38-4-52z" fill="#e0262b"/>
+      <path d="M56 70c4 30 4 62-4 96" fill="none" stroke="#ff7b6b" stroke-width="7" stroke-linecap="round" opacity=".7"/>
+    </symbol>
+    <!-- cactus -->
+    <symbol id="cactus" viewBox="0 0 160 240">
+      <path d="M62 236V40c0-22 36-22 36 0v196z" fill="#4caf3a"/>
+      <path d="M62 150H40c-16 0-24-10-24-24V86c0-16 26-16 26 0v38h20z" fill="#3f9a32"/>
+      <path d="M98 120h22c10 0 16-8 16-18V70c0-16 24-16 24 0v34c0 24-16 40-38 40H98z" fill="#3f9a32"/>
+      <g stroke="#2d6e24" stroke-width="3" stroke-linecap="round">
+        <path d="M80 40v190M28 86v40M148 70v34"/>
+      </g>
+      <circle cx="80" cy="22" r="10" fill="#ff2d87"/><circle cx="72" cy="16" r="6" fill="#ffc300"/>
+      <path d="M50 236h60l-6 4H56z" fill="#c2621d"/>
+    </symbol>
+    <!-- stella -->
+    <symbol id="stella" viewBox="0 0 100 100">
+      <path d="M50 0l12 36 38 2-30 22 11 37-31-22-31 22 11-37L0 38l38-2z" fill="currentColor"/>
+    </symbol>
+  </defs>
+</svg>
+<div id="root"></div>
+
+<script>
+/* =================== DA CAMBIARE QUI =================== */
+const EVENTO = {
+  data: "",            // es. "Venerdì 12 dicembre"   (vuoto = «Data in arrivo»)
+  orario: "",          // es. "dalle 19:00"
+  luogo: "Via Borgo Santa Caterina 24a · Bergamo",
+  instagram: "@dejavu.bergamo",
+};
+// 🌶 = piccante, 🌶🌶 = molto piccante, 🌶🌶🌶 = fuoco
+const DRINK = [
+  { n: "Margarita Picante", p: 10, h: 2, d: "Tequila, Cointreau, lime, sciroppo d'agave e Ancho Reyes. Bordo di sale e peperoncino." },
+  { n: "El Diablo", p: 10, h: 1, d: "Tequila Reposado, purea di lampone, lime e ginger beer." },
+  { n: "Il nostro Paloma", p: 10, h: 2, d: "Mezcal Vida, Ancho Reyes Rosso, lime e tonica al pompelmo." },
+  { n: "Oaxaca Old Fashioned", p: 10, h: 0, d: "Tequila Reposado e Mezcal Vida, agave e Angostura. Affumicato e morbido." },
+  { n: "Mezcal Negroni", p: 10, h: 0, d: "Mezcal Vida, Bitter Campari e Vermouth del Professore." },
+  { n: "Chela Fiesta", p: 7, h: 1, d: "Birra bionda media con lime e bordo di sale e peperoncino." },
+  { n: "Paloma Zero", p: 8, h: 0, d: "Analcolico: lime, agave, tonica al pompelmo e un pizzico di sale." },
+  { n: "Shot Fuego", p: 4, h: 3, d: "Tequila e Ancho Reyes, con lime e sale. Per i coraggiosi." },
+];
+const CIBO = [
+  { n: "Nachos Fiesta", p: 8, h: 1, d: "Tortilla chips, fagioli, Branzi fuso, guacamole, pico de gallo e jalapeños." },
+  { n: "Quesadilla Bergamasca", p: 9, h: 0, d: "Tortilla dorata con Branzi fuso e porchetta di Ariccia, salsa piccante a parte." },
+  { n: "Fajitas di pollo", p: 12, h: 1, d: "Pollo marinato con peperoni e cipolla, 2 tortillas calde, guacamole e crema acida." },
+  { n: "Papas Picantes", p: 6, h: 1, d: "Patatine fritte con sale al peperoncino e lime, crema acida." },
+  { n: "Churros", p: 6, h: 0, d: "Con zucchero e cannella e crema al cioccolato da intingere." },
+];
+const COMBO = { n: "Fiesta Combo", d: "un cocktail della serata + Nachos Fiesta", p: 16 };
+/* ======================================================= */
+
+const formato = (location.hash.slice(1) || "locandina");
+const euro = (p) => (Number.isInteger(p) ? p : p.toFixed(2).replace(".", ",")) + " €";
+const pep = (h) => "🌶️".repeat(h);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+// festone di bandierine (papel picado)
+function festone(n, alto) {
+  const colori = ["#ff2d87", "#ffc300", "#00b4c5", "#6cc04a", "#ff7a00"];
+  const w = 100, gap = 14, tot = n * w + (n - 1) * gap;
+  let s = `<svg viewBox="0 0 ${tot} ${alto + 40}" preserveAspectRatio="none"><defs>`;
+  // mascherina con i "ritagli" della carta
+  s += `<mask id="ritagli" maskContentUnits="objectBoundingBox"><rect width="1" height="1" fill="#fff"/>
+        <circle cx=".5" cy=".44" r=".07" fill="#000"/>
+        <circle cx=".5" cy=".24" r=".07" fill="#000"/><circle cx=".5" cy=".64" r=".07" fill="#000"/>
+        <circle cx=".3" cy=".44" r=".07" fill="#000"/><circle cx=".7" cy=".44" r=".07" fill="#000"/>
+        <path d="M.15 .16 L.22 .1 L.29 .16 L.22 .22Z M.71 .16 L.78 .1 L.85 .16 L.78 .22Z M.15 .72 L.22 .66 L.29 .72 L.22 .78Z M.71 .72 L.78 .66 L.85 .72 L.78 .78Z" fill="#000"/></mask></defs>`;
+  s += `<path d="M0 14 Q ${tot / 2} 44 ${tot} 14" fill="none" stroke="#fff3d6" stroke-width="3" opacity=".8"/>`;
+  for (let i = 0; i < n; i++) {
+    const x = i * (w + gap), sag = 14 + 30 * Math.sin(Math.PI * (i + .5) / n) * 0.95;
+    const y = sag;
+    const z = [0, 15, 30, 50, 70, 85, 100].map((px, k) => `${x + px},${y + alto - (k % 2 ? 0 : 14)}`).join(" ");
+    s += `<polygon points="${x},${y} ${x + w},${y} ${z.split(" ").reverse().join(" ")}" fill="${colori[i % colori.length]}" mask="url(#ritagli)"/>`;
+  }
+  return s + "</svg>";
+}
+const deco = (id, css, ruota = 0, colore = "") =>
+  `<div class="decoro" style="${css};transform:rotate(${ruota}deg);${colore ? "color:" + colore : ""}"><svg><use href="#${id}"/></svg></div>`;
+
+function blocchiTitolo() {
+  const data = EVENTO.data
+    ? `<div class="data">${esc(EVENTO.data)}${EVENTO.orario ? `<small>${esc(EVENTO.orario)}</small>` : ""}</div>`
+    : `<div class="data">Data in arrivo<small>seguici su Instagram ${esc(EVENTO.instagram)}</small></div>`;
+  return {
+    presenta: `<div class="presenta"><img src="logo.png" alt="Déjà Vu"><span>presenta</span></div>`,
+    titolo: `<div class="titolo"><span class="tex">TEX-MEX</span><span class="fiesta">Fiesta</span></div>`,
+    sotto: `<div class="sottotitolo">Cocktail <span>piccanti</span> · Cucina <span>messicana</span></div>`,
+    drink: `<div class="drink-top">${DRINK.slice(0, 3).map((d) => `<div>${esc(d.n)}<i>${pep(d.h)}</i></div>`).join("")}</div>`,
+    cibo: `<div class="cibo-top"><b>Nachos</b> · <b>Fajitas</b> · <b>Quesadillas</b> · <b>Churros</b></div>`,
+    data,
+    piede: `<div class="piede">Déjà Vu · ${esc(EVENTO.luogo)}<br><b>${esc(EVENTO.instagram)}</b></div>`,
+  };
+}
+
+function grafica(cls) {
+  const b = blocchiTitolo();
+  const W = { locandina: 1123, post: 1080, storia: 1080 }[cls];
+  const H = { locandina: 1587, post: 1350, storia: 1920 }[cls];
+  const sole = Math.round(W * 1.05);
+  return `<div class="tela ${cls}">
+    <div class="sole" style="width:${sole}px;height:${sole}px;top:${Math.round(H * (cls === "storia" ? .2 : .14))}px"></div>
+    <div class="festone">${festone(cls === "storia" ? 9 : 10, 120)}</div>
+    ${deco("chili", `width:${W * .13}px;height:${W * .24}px;left:${W * .02}px;top:${H * .42}px`, -28)}
+    ${deco("chili", `width:${W * .11}px;height:${W * .2}px;right:${W * .025}px;top:${H * .5}px`, 32)}
+    ${deco("cactus", `width:${W * .2}px;height:${W * .3}px;left:-${W * .02}px;bottom:-${W * .01}px`)}
+    ${deco("cactus", `width:${W * .16}px;height:${W * .24}px;right:-${W * .01}px;bottom:-${W * .01}px`, 0)}
+    ${deco("stella", `width:${W * .05}px;height:${W * .05}px;left:${W * .14}px;top:${H * .2}px`, 12, "#ffc300")}
+    ${deco("stella", `width:${W * .035}px;height:${W * .035}px;right:${W * .16}px;top:${H * .18}px`, -8, "#ff2d87")}
+    ${deco("stella", `width:${W * .03}px;height:${W * .03}px;right:${W * .1}px;top:${H * .56}px`, 20, "#00b4c5")}
+    <div class="colonna">
+      ${b.presenta}${b.titolo}${b.sotto}${b.drink}${b.cibo}${b.data}${b.piede}
+    </div>
+  </div>`;
+}
+
+function menu() {
+  const voce = (x) => `<div class="voce"><span class="n">${esc(x.n)}${x.h ? `<i>${pep(x.h)}</i>` : ""}</span><span class="p">${euro(x.p)}</span><span class="d">${esc(x.d)}</span></div>`;
+  return `<div class="tela menu" style="background:#fff6e5">
+    <div class="testa">
+      ${deco("chili", "width:11mm;height:20mm;left:7mm;top:7mm", -25)}
+      ${deco("chili", "width:10mm;height:18mm;right:8mm;top:6mm", 30)}
+      <div class="colonna">
+        <div class="presenta"><img src="logo.png" alt="Déjà Vu"><span>presenta</span></div>
+        <div class="titolo"><span class="tex">TEX-MEX</span><span class="fiesta">Fiesta</span></div>
+      </div>
+    </div>
+    <div class="corpo">
+      <h2>Drink</h2>
+      ${DRINK.map(voce).join("")}
+      <h2>Cibo</h2>
+      ${CIBO.map(voce).join("")}
+      <div class="combo">${esc(COMBO.n)} <span>${esc(COMBO.d)}</span> ${euro(COMBO.p)}</div>
+      <div class="note">🌶️ piccante · 🌶️🌶️ molto piccante · 🌶️🌶️🌶️ fuoco<br>Per allergie e intolleranze chiedi al personale.</div>
+    </div>
+    <div class="piede">Déjà Vu · ${esc(EVENTO.luogo)} · <b>${esc(EVENTO.instagram)}</b></div>
+  </div>`;
+}
+
+// formato della pagina per i PDF: A3 per la locandina, A5 per il menu
+document.head.insertAdjacentHTML("beforeend", `<style>@page { size: ${formato === "menu" ? "148mm 210mm" : "297mm 420mm"}; margin: 0; }</style>`);
+document.getElementById("root").innerHTML = formato === "menu" ? menu() : grafica(formato);
+</script>
+</body>
+</html>
