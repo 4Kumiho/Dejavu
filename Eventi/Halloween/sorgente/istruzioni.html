@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Halloween · Istruzioni per il personale</title>
+<!-- Foglio per il personale (A4, da stampare e tenere al bancone). Si genera in PDF con Edge. -->
+<style>
+  @font-face { font-family: "Creepster"; src: url("font/creepster.woff2") format("woff2"); }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-400.woff2") format("woff2"); font-weight: 400; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-500.woff2") format("woff2"); font-weight: 500; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-600.woff2") format("woff2"); font-weight: 600; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-700.woff2") format("woff2"); font-weight: 700; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-800.woff2") format("woff2"); font-weight: 800; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-900.woff2") format("woff2"); font-weight: 900; }
+  @page { size: A4; margin: 0; }
+  :root { --rosso: #4a1466; --rosso-scuro: #0d0416; --verde: #ff7518; --verde-chiaro: #c24f00; --oro: #8fe34a; --oro-chiaro: #ffb347; --testo: #1e0b2a; --grigio: #5d4a66; }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-family: "Montserrat", sans-serif; color: var(--testo); background: #888; -webkit-font-smoothing: antialiased; }
+  .pagina { width: 210mm; height: 297mm; background: #fff; margin: 0 auto 10mm; position: relative; overflow: hidden; page-break-after: always; }
+  .pagina:last-child { page-break-after: auto; margin-bottom: 0; }
+  @media print { body { background: none; } .pagina { margin: 0; } }
+
+  .testa {
+    height: 20mm; padding: 0 12mm; display: flex; align-items: center; justify-content: space-between; color: var(--oro-chiaro);
+    background: linear-gradient(100deg, #0d0416, #22093a 50%, #4a1466);
+    border-bottom: 1.6mm solid; border-image: repeating-linear-gradient(90deg, #ff7518 0 10mm, #0d0416 10mm 12mm) 1;
+  }
+  .testa .tit b { font-family: "Creepster", cursive; font-weight: 400; font-size: 22pt; color: #ff7518; letter-spacing: .04em; }
+  .testa .tit i { font-style: normal; font-size: 18pt; margin-right: 2mm; }
+  .testa .cosa { text-align: right; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; font-size: 9pt; }
+  .testa .cosa span { display: block; font-weight: 600; letter-spacing: .06em; text-transform: none; font-size: 8pt; opacity: .85; margin-top: 1mm; }
+  .corpo { padding: 4.5mm 10mm 0; }
+  .avviso { background: #fff3e8; border-left: 1.4mm solid var(--rosso); padding: 2mm 3.5mm; font-size: 8pt; line-height: 1.4; margin-bottom: 3.5mm; }
+  .avviso b { color: var(--rosso); }
+
+  .griglia { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
+  .scheda { border: .35mm solid #e2d6ea; border-radius: 2.5mm; padding: 2.6mm 3.6mm 2.8mm; break-inside: avoid; position: relative; }
+  .scheda::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1.4mm; border-radius: 2.5mm 0 0 2.5mm; background: var(--c, var(--rosso)); }
+  .scheda.larga { grid-column: 1 / -1; }
+  .scheda h2 { font-size: 11.5pt; font-weight: 900; text-transform: uppercase; letter-spacing: .04em; color: var(--rosso); display: flex; justify-content: space-between; align-items: baseline; gap: 2mm; }
+  .scheda h2 small { font-size: 9.5pt; color: var(--testo); font-weight: 800; white-space: nowrap; }
+  .scheda .sub { font-size: 7.3pt; color: var(--grigio); margin: .4mm 0 1.4mm; }
+  .info { display: flex; flex-wrap: wrap; gap: 1mm; margin-bottom: 1.4mm; }
+  .info span { background: #f3ecf7; border-radius: 1mm; padding: .7mm 1.8mm; font-size: 7.2pt; font-weight: 600; }
+  .info span b { color: var(--grigio); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; font-size: 6.4pt; margin-right: 1mm; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 1.4mm; }
+  td { font-size: 8.6pt; padding: .75mm 0; border-bottom: .25mm dashed #e2d6ea; }
+  td:last-child { text-align: right; font-weight: 800; color: var(--rosso); white-space: nowrap; padding-left: 2mm; }
+  ol { padding-left: 4.6mm; font-size: 8.5pt; line-height: 1.36; }
+  ol li { margin-bottom: .2mm; }
+  ol li::marker { font-weight: 800; color: var(--verde-chiaro); }
+  .tip { font-size: 7.6pt; color: var(--grigio); margin-top: 1.4mm; font-style: italic; }
+  .etic { font-size: 6.8pt; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--verde-chiaro); margin: 1.2mm 0 .5mm; }
+  .scheda p.t { font-size: 8.4pt; line-height: 1.36; }
+  .allerg { font-size: 7.2pt; margin-top: 1.4mm; color: var(--grigio); }
+  .allerg b { color: var(--testo); }
+
+  .lista { columns: 2; column-gap: 8mm; font-size: 8.6pt; line-height: 1.45; margin-top: 1.5mm; }
+  .lista li { list-style: none; break-inside: avoid; padding-left: 5.5mm; position: relative; margin-bottom: .6mm; }
+  .lista li::before { content: ""; position: absolute; left: 0; top: .9mm; width: 3mm; height: 3mm; border: .4mm solid var(--rosso); border-radius: .6mm; }
+  h3 { font-family: "Creepster", cursive; font-weight: 400; color: var(--rosso); font-size: 15pt; letter-spacing: .04em; margin: 3.5mm 0 .5mm; display: flex; align-items: center; gap: 3mm; }
+  h3::after { content: ""; flex: 1; height: .45mm; background: linear-gradient(90deg, #ff7518, rgba(255,117,24,.15)); }
+  .piede { position: absolute; left: 10mm; right: 10mm; bottom: 5mm; font-size: 7pt; color: var(--grigio); display: flex; justify-content: space-between; border-top: .3mm solid #eee; padding-top: 2mm; }
+</style>
+</head>
+<body>
+
+<!-- ======================= PAGINA 1: POZIONI ======================= -->
+<section class="pagina">
+  <div class="testa">
+    <div class="tit"><i>🎃</i><b>Halloween</b></div>
+    <div class="cosa">Pozioni<span>Sabato 30 ottobre · Istruzioni per il personale · 1/2</span></div>
+  </div>
+  <div class="corpo">
+    <div class="avviso">
+      Tutto è già al bar: da comprare solo <b>menta fresca</b> per lo Zombie. Le «pozioni» si servono con un po' di teatro:
+      lo staff può <b>truccarsi o mascherarsi</b> anche lui. Il piccante dello Shot del Vampiro va <b>sempre annunciato</b>.
+    </div>
+    <div class="griglia">
+
+      <div class="scheda" style="--c:#0d0416">
+        <h2>Pozione Nera <small>10 €</small></h2>
+        <div class="sub">Un Black Russian con il «sangue»: scuro e morbido.</div>
+        <div class="info"><span><b>Bicchiere</b>Tumbler basso</span><span><b>Ghiaccio</b>Sì</span><span><b>Metodo</b>Nel bicchiere</span></div>
+        <table>
+          <tr><td>Vodka</td><td>1½ oz</td></tr>
+          <tr><td>Liquore al caffè</td><td>¾ oz</td></tr>
+          <tr><td>Angostura</td><td>3–4 gocce sopra</td></tr>
+        </table>
+        <ol>
+          <li>Tumbler pieno di ghiaccio: versa vodka e liquore al caffè, mescola.</li>
+          <li>Lascia cadere 3–4 gocce di Angostura sopra, senza mescolare: sembrano gocce di sangue.</li>
+        </ol>
+      </div>
+
+      <div class="scheda" style="--c:#c24f00">
+        <h2>Zombie <small>10 €</small></h2>
+        <div class="sub">Il classico tiki con due rum: forte, va servito con prudenza.</div>
+        <div class="info"><span><b>Bicchiere</b>Tumbler alto</span><span><b>Ghiaccio</b>Sì</span><span><b>Metodo</b>Shaker + strain</span></div>
+        <table>
+          <tr><td>Rum chiaro</td><td>1 oz</td></tr>
+          <tr><td>Rum scuro</td><td>1 oz</td></tr>
+          <tr><td>Purea di lampone</td><td>½ oz</td></tr>
+          <tr><td>Sciroppo di zucchero</td><td>¼ oz</td></tr>
+          <tr><td>Lime spremuto</td><td>½ lime</td></tr>
+          <tr><td>Angostura</td><td>2 dash</td></tr>
+        </table>
+        <ol>
+          <li>Nello shaker con ghiaccio versa tutto e shakera forte.</li>
+          <li>Filtra nel tumbler pieno di ghiaccio.</li>
+          <li>Guarnisci con un rametto di menta.</li>
+        </ol>
+      </div>
+
+      <div class="scheda" style="--c:#8fe34a">
+        <h2>Strega Verde <small>10 €</small></h2>
+        <div class="sub">Verde veleno, erbaceo e fresco.</div>
+        <div class="info"><span><b>Bicchiere</b>Coppetta fredda</span><span><b>Ghiaccio</b>No</span><span><b>Metodo</b>Shaker + doppio strain</span></div>
+        <table>
+          <tr><td>Gin Bulldog</td><td>1½ oz</td></tr>
+          <tr><td>Chartreuse</td><td>½ oz</td></tr>
+          <tr><td>Sciroppo di zucchero</td><td>¼ oz</td></tr>
+          <tr><td>Lime spremuto</td><td>½ lime</td></tr>
+        </table>
+        <ol>
+          <li>Nello shaker con ghiaccio versa tutti gli ingredienti.</li>
+          <li>Shakera forte 10–12 secondi.</li>
+          <li>Filtra con il colino fine nella coppetta fredda. Rotella di lime.</li>
+        </ol>
+      </div>
+
+      <div class="scheda" style="--c:#ff7518">
+        <h2>Zucca Spritz <small>8 €</small></h2>
+        <div class="sub">Lo spritz con il Rabarbaro Zucca: il gioco di parole della serata.</div>
+        <div class="info"><span><b>Bicchiere</b>Calice</span><span><b>Ghiaccio</b>Sì</span><span><b>Metodo</b>Nel bicchiere</span></div>
+        <table>
+          <tr><td>Rabarbaro Zucca</td><td>2 oz</td></tr>
+          <tr><td>Prosecco</td><td>3 oz</td></tr>
+          <tr><td>Soda</td><td>splash</td></tr>
+        </table>
+        <ol>
+          <li>Calice pieno di ghiaccio: versa Prosecco e Rabarbaro Zucca.</li>
+          <li>Uno splash di soda, mescola piano. Fetta d'arancia.</li>
+        </ol>
+      </div>
+
+      <div class="scheda larga" style="--c:#4a1466">
+        <h2>Shot del Vampiro 🌶️ <small>4 €</small></h2>
+        <div class="sub">Rosso sangue e piccante: avvisa sempre il cliente.</div>
+        <div class="info"><span><b>Bicchiere</b>Bicchierino</span><span><b>Ghiaccio</b>Solo nello shaker</span><span><b>Metodo</b>Shaker + strain</span></div>
+        <table>
+          <tr><td>Ancho Reyes</td><td>¾ oz</td></tr>
+          <tr><td>Purea di lampone</td><td>¼ oz</td></tr>
+          <tr><td>Lime spremuto</td><td>qualche goccia</td></tr>
+        </table>
+        <ol>
+          <li>Shakera tutto con ghiaccio, filtra nel bicchierino.</li>
+          <li>Con tanti shot per lo stesso tavolo: shakera tutto insieme e dividi.</li>
+        </ol>
+      </div>
+
+    </div>
+  </div>
+  <div class="piede"><span>Déjà Vu · Halloween</span><span>Misure come nel ricettario del bar · 1 oz = circa 3 cl</span></div>
+</section>
+
+<!-- ======================= PAGINA 2: DA MANGIARE ======================= -->
+<section class="pagina">
+  <div class="testa">
+    <div class="tit"><i>🎃</i><b>Halloween</b></div>
+    <div class="cosa">Da mangiare<span>Sabato 30 ottobre · Istruzioni per il personale · 2/2</span></div>
+  </div>
+  <div class="corpo">
+    <div class="avviso">
+      In cucina c'è <b>solo il fornetto</b>: tutto è <b>comprato o preparato prima</b>, e al momento si scalda e si monta il piatto.
+      Le preparazioni stanno in <b>frigo</b> (seguire le regole HACCP del bar). Per allergie controllare sempre le etichette dei prodotti comprati.
+    </div>
+    <div class="griglia">
+
+      <div class="scheda" style="--c:#f5ecdc">
+        <h2>Mummie <small>7 €</small></h2>
+        <div class="etic">Pronto prima (il giorno stesso)</div>
+        <p class="t">Würstel avvolti in <b>strisce di pasta sfoglia</b> (come bende), lasciando libero uno spazio per la «faccia». Su una teglia, coperti, in frigo.</p>
+        <div class="etic">Al momento</div>
+        <ol>
+          <li>4 mummie nel <b>fornetto 12–15 minuti</b>, finché la sfoglia è dorata.</li>
+          <li>Due puntini di senape come occhi.</li>
+          <li>Ketchup («sangue») in una ciotolina.</li>
+        </ol>
+        <div class="tip">Combo Brivido (15 €): un cocktail della serata + Mummie. Per servire più in fretta: cuocine una teglia prima di aprire e ripassale 3–4 minuti.</div>
+        <div class="allerg"><b>Allergeni:</b> glutine, latte, senape; vedi etichetta dei würstel.</div>
+      </div>
+
+      <div class="scheda" style="--c:#0d0416">
+        <h2>Pizzette ragno <small>6 €</small></h2>
+        <div class="etic">Pronto prima</div>
+        <p class="t">Pizzette <b>surgelate</b> (o fatte prima) · olive nere denocciolate: metà per il corpo, l'altra metà a striscioline per le zampe.</p>
+        <div class="etic">Al momento</div>
+        <ol>
+          <li>6 pizzette: su ognuna metti un «ragno» di olive.</li>
+          <li><b>Fornetto 5–6 minuti</b> (o come indica la confezione).</li>
+        </ol>
+        <div class="allerg"><b>Allergeni:</b> glutine, latte.</div>
+      </div>
+
+      <div class="scheda" style="--c:#ff7518">
+        <h2>Crostone zucca e Branzi <small>8 €</small></h2>
+        <div class="etic">Pronto prima (il giorno prima)</div>
+        <p class="t">Zucca a cubetti <b>cotta al forno</b> con olio, sale e rosmarino, tenuta in frigo · pane malfatto a fette · Branzi a fette.</p>
+        <div class="etic">Al momento</div>
+        <ol>
+          <li>2 fette di pane malfatto, sopra un cucchiaio di zucca e una fetta di Branzi.</li>
+          <li><b>Fornetto 5 minuti</b>, finché il Branzi fonde e la zucca è calda.</li>
+        </ol>
+        <div class="allerg"><b>Allergeni:</b> glutine, latte.</div>
+      </div>
+
+      <div class="scheda" style="--c:#4a1466">
+        <h2>Il premio al costume <small>a fine serata</small></h2>
+        <div class="etic">Come si fa</div>
+        <ol>
+          <li>Durante la serata fai una <b>foto</b> ai costumi migliori (chiedendo il permesso): perfette per le storie Instagram.</li>
+          <li>Verso <b>le 23:30</b> lo staff sceglie il costume più spaventoso e lo annuncia al bancone.</li>
+          <li>Il premio (deciso dal titolare) si consegna subito.</li>
+        </ol>
+      </div>
+
+    </div>
+
+    <h3>Prima di aprire</h3>
+    <ul class="lista">
+      <li>Fornetto acceso · una teglia di mummie già cotta</li>
+      <li>Pizzette con i ragni di olive pronte</li>
+      <li>Zucca cotta, pane malfatto e Branzi pronti</li>
+      <li>Senape e ketchup nelle ciotoline</li>
+      <li>Menta fresca · lime · arance</li>
+      <li>Rabarbaro Zucca, Chartreuse, Ancho Reyes a portata di mano</li>
+      <li>Prosecco freddo · coppette in frigo</li>
+      <li>Ghiaccio in più</li>
+      <li>Decorazioni: zucche, ragnatele, luci arancioni</li>
+      <li>Premio per il costume più spaventoso pronto</li>
+      <li>Combo Brivido: cocktail + Mummie = <b>15 €</b></li>
+      <li>Nell'app: Cronologia → Serata → <b>🎉 Segna come evento</b></li>
+    </ul>
+  </div>
+  <div class="piede"><span>Déjà Vu · Halloween</span><span>Tutto ben caldo anche all'interno prima di servirlo. 🎃</span></div>
+</section>
+
+</body>
+
+</html>
