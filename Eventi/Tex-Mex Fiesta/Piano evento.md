@@ -1,6 +1,6 @@
 # 🌶️ Tex-Mex Fiesta · Déjà Vu
 
-Una serata a tema messicano: **cocktail piccanti**, **nachos, fajitas, quesadillas** e churros.
+Una serata a tema messicano: **cocktail piccanti**, **nachos, quesadillas e fajitas**.
 Il menu usa quasi solo quello che c'è già al bar: Mezcal Vida, Tequila Reposado, **Ancho Reyes** (liquore al peperoncino), agave, lime, tonica al pompelmo, ginger beer, purea di lampone, Branzi e porchetta.
 
 **Data:** da decidere → quando la sapete, si cambia in `sorgente/grafiche.html` (riga `data:`) e si rigenerano le grafiche.
@@ -34,7 +34,7 @@ Il menu usa quasi solo quello che c'è già al bar: Mezcal Vida, Tequila Reposad
 
 ---
 
-## 🌮 Cibo (solo fornetto e friggitrice: tutto preparato prima)
+## 🌮 Cibo: 3 piatti, solo fornetto (tutto comprato o preparato prima)
 
 > ⚠️ Preparazioni fatte in anticipo: tenerle in frigo e scaldarle bene prima di servirle, seguendo le vostre regole HACCP.
 
@@ -43,8 +43,6 @@ Il menu usa quasi solo quello che c'è già al bar: Mezcal Vida, Tequila Reposad
 | **Nachos Fiesta** 🌶️ | 8 € | Guacamole e pico de gallo (in giornata), fagioli scaldati | Chips nel piatto + fagioli + Branzi grattugiato → **fornetto 3–4 min** finché fonde. Sopra guacamole, pico de gallo, jalapeños |
 | **Quesadilla Bergamasca** | 9 € | — | Tortilla + Branzi + fette di porchetta, chiusa a mezzaluna → **fornetto 5–6 min** finché dorata. Tagliata in 3, salsa piccante a parte |
 | **Fajitas di pollo** 🌶️ | 12 € | Pollo a striscioline marinato e **cotto** con peperoni e cipolla (il giorno prima), porzionato | Porzione nel **fornetto 6–8 min** (in alluminio), 2 tortillas scaldate 1 min. Con guacamole e crema acida |
-| **Papas Picantes** 🌶️ | 6 € | Crema acida | Patatine in **friggitrice** come sempre + sale al peperoncino + lime spremuto, crema acida a parte |
-| **Churros** | 6 € | — | Churros surgelati in **friggitrice** (175 °C, 3–4 min), passati in zucchero e cannella, crema al cioccolato a parte |
 
 **Fiesta Combo · 16 €** = un cocktail della serata + Nachos Fiesta (invece di 18 €).
 
@@ -60,7 +58,7 @@ Il menu usa quasi solo quello che c'è già al bar: Mezcal Vida, Tequila Reposad
 
 ## 🛒 Lista della spesa
 
-**Già al bar:** Mezcal Vida, Tequila / Tequila Reposado, Ancho Reyes, Cointreau, Campari, Vermouth del Professore, Angostura, sciroppo d'agave, purea di lampone, ginger beer, tonica al pompelmo, lime, sale, birra bionda, panna fresca, Branzi, porchetta, patatine, friggitrice e fornetto.
+**Già al bar:** Mezcal Vida, Tequila / Tequila Reposado, Ancho Reyes, Cointreau, Campari, Vermouth del Professore, Angostura, sciroppo d'agave, purea di lampone, ginger beer, tonica al pompelmo, lime, sale, birra bionda, panna fresca, Branzi, porchetta, fornetto.
 
 **Da controllare le scorte** (si useranno molto più del solito): **Ancho Reyes**, Mezcal Vida, Tequila Reposado, **lime** (circa uno ogni due drink), ginger beer, tonica al pompelmo, ghiaccio.
 
@@ -80,8 +78,6 @@ Il menu usa quasi solo quello che c'è già al bar: Mezcal Vida, Tequila Reposad
 | Paprika affumicata, cumino, peperoncino in polvere | Marinata, bordi, patatine | 1 confezione ciascuno |
 | Branzi in più | Nachos e quesadillas | 1,3 kg |
 | Porchetta in più | Quesadillas | 600 g |
-| Churros surgelati | Churros | 1 kg |
-| Zucchero, cannella, crema al cioccolato | Churros | 150 g, 1 bustina, 400 g |
 
 ---
 
@@ -91,7 +87,7 @@ Il menu usa quasi solo quello che c'è già al bar: Mezcal Vida, Tequila Reposad
 |---|---|
 | **2 settimane prima** | Decidere la data · rigenerare le grafiche con la data · pubblicare il **post** |
 | **1 settimana prima** | Locandina in **vetrina** · prima **storia** |
-| **3 giorni prima** | Spesa del secco (tortillas, chips, fagioli, spezie, churros) · controllo scorte del bar · stampa dei **menu da tavolo** |
+| **3 giorni prima** | Spesa del secco (tortillas, chips, fagioli, spezie, salsa piccante) · controllo scorte del bar · stampa dei **menu da tavolo** |
 | **Il giorno prima** | Pollo marinato e cotto con peperoni e cipolle, porzionato in frigo · storia «domani!» |
 | **Il giorno stesso** | Guacamole, pico de gallo, crema acida · piattino sale e peperoncino al bancone · lime tagliati · ghiaccio extra · storia «stasera!» |
 | **Durante la serata** | Nell'app: **Cronologia → Serata → 🎉 Segna come evento → «Tex-Mex Fiesta»**, così poi si vede quanto ha reso |
@@ -103,7 +99,7 @@ Il menu usa quasi solo quello che c'è già al bar: Mezcal Vida, Tequila Reposad
 > 🌶️ **TEX-MEX FIESTA** al Déjà Vu! 🌵
 >
 > Una notte di fiesta messicana in Borgo Santa Caterina: **Margarita Picante**, **El Diablo**, il nostro **Paloma** con Mezcal e Ancho Reyes… e per i coraggiosi lo **Shot Fuego** 🔥
-> Da mangiare **nachos**, **fajitas**, **quesadillas** al Branzi e **churros** 🌮
+> Da mangiare **nachos**, **quesadillas** al Branzi e **fajitas** 🌮
 >
 > 📅 [data] · dalle [orario]
 > 📍 Via Borgo Santa Caterina 24a, Bergamo

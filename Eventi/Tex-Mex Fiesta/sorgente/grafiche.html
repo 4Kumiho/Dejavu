@@ -46,8 +46,9 @@
   .festone { position: absolute; left: 0; right: 0; top: 0; }
   .festone svg { width: 100%; height: auto; display: block; }
 
-  .presenta { display: flex; align-items: center; justify-content: center; gap: .5em; letter-spacing: .3em; text-transform: uppercase; font-weight: 700; }
-  .presenta img { height: 4.2em; width: auto; }
+  /* logo del bar grande in alto: si deve vedere che la serata è del Déjà Vu */
+  .presenta { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .35em; letter-spacing: .4em; text-transform: uppercase; font-weight: 700; }
+  .presenta img { height: 9.5em; width: auto; filter: drop-shadow(0 0 .6em rgba(0,0,0,.35)); }
   .titolo { text-align: center; line-height: .9; position: relative; }
   .titolo .tex {
     display: block; font-family: "Rye", serif; color: var(--crema); letter-spacing: .03em;
@@ -99,14 +100,15 @@
   /* ---------------- menu da tavolo A5 ---------------- */
   .menu { width: 148mm; height: 210mm; font-size: 9.4pt; background: #fff6e5; color: #2a0a3a; }
   .menu .testa {
-    position: relative; height: 33mm; overflow: hidden; color: var(--crema);
+    position: relative; height: 56mm; overflow: hidden; color: var(--crema);
     background:
       radial-gradient(ellipse 70% 60% at 50% 70%, rgba(255,195,0,.3), transparent 70%),
       linear-gradient(170deg, var(--notte) 0%, var(--vino) 55%, #c2283a 85%, var(--arancio) 100%);
   }
   .menu .testa .colonna { padding: 4mm 6mm 2mm; gap: 1mm; justify-content: flex-start; }
   .menu .testa { border-bottom: 1.6mm solid; border-image: repeating-linear-gradient(90deg, #ff2d87 0 8mm, #ffc300 8mm 16mm, #00b4c5 16mm 24mm, #6cc04a 24mm 32mm, #ff7a00 32mm 40mm) 1; }
-  .menu .presenta img { height: 3.2em; }
+  .menu .presenta img { height: 22mm; }
+  .menu .presenta { flex-direction: column; gap: .6mm; }
   .menu .presenta { font-size: 6.5pt; }
   .menu .titolo .tex { font-size: 27pt; }
   .menu .titolo .fiesta { font-size: 21pt; }
@@ -183,8 +185,6 @@ const CIBO = [
   { n: "Nachos Fiesta", p: 8, h: 1, d: "Tortilla chips, fagioli, Branzi fuso, guacamole, pico de gallo e jalapeños." },
   { n: "Quesadilla Bergamasca", p: 9, h: 0, d: "Tortilla dorata con Branzi fuso e porchetta di Ariccia, salsa piccante a parte." },
   { n: "Fajitas di pollo", p: 12, h: 1, d: "Pollo marinato con peperoni e cipolla, 2 tortillas calde, guacamole e crema acida." },
-  { n: "Papas Picantes", p: 6, h: 1, d: "Patatine fritte con sale al peperoncino e lime, crema acida." },
-  { n: "Churros", p: 6, h: 0, d: "Con zucchero e cannella e crema al cioccolato da intingere." },
 ];
 const COMBO = { n: "Fiesta Combo", d: "un cocktail della serata + Nachos Fiesta", p: 16 };
 /* ======================================================= */
@@ -226,7 +226,7 @@ function blocchiTitolo() {
     titolo: `<div class="titolo"><span class="tex">TEX-MEX</span><span class="fiesta">Fiesta</span></div>`,
     sotto: `<div class="sottotitolo">Cocktail <span>piccanti</span> · Cucina <span>messicana</span></div>`,
     drink: `<div class="drink-top">${DRINK.slice(0, 3).map((d) => `<div>${esc(d.n)}<i>${pep(d.h)}</i></div>`).join("")}</div>`,
-    cibo: `<div class="cibo-top"><b>Nachos</b> · <b>Fajitas</b> · <b>Quesadillas</b> · <b>Churros</b></div>`,
+    cibo: `<div class="cibo-top"><b>Nachos</b> · <b>Quesadillas</b> · <b>Fajitas</b></div>`,
     data,
     piede: `<div class="piede">Déjà Vu · ${esc(EVENTO.luogo)}<br><b>${esc(EVENTO.instagram)}</b></div>`,
   };
@@ -242,8 +242,8 @@ function grafica(cls) {
     <div class="festone">${festone(cls === "storia" ? 9 : 10, 120)}</div>
     ${deco("chili", `width:${W * .13}px;height:${W * .24}px;left:${W * .02}px;top:${H * .42}px`, -28)}
     ${deco("chili", `width:${W * .11}px;height:${W * .2}px;right:${W * .025}px;top:${H * .5}px`, 32)}
-    ${deco("cactus", `width:${W * .2}px;height:${W * .3}px;left:-${W * .02}px;bottom:-${W * .01}px`)}
-    ${deco("cactus", `width:${W * .16}px;height:${W * .24}px;right:-${W * .01}px;bottom:-${W * .01}px`, 0)}
+    ${deco("cactus", `width:${W * .15}px;height:${W * .22}px;left:-${W * .025}px;bottom:-${W * .01}px`)}
+    ${deco("cactus", `width:${W * .12}px;height:${W * .18}px;right:-${W * .015}px;bottom:-${W * .01}px`, 0)}
     ${deco("stella", `width:${W * .05}px;height:${W * .05}px;left:${W * .14}px;top:${H * .2}px`, 12, "#ffc300")}
     ${deco("stella", `width:${W * .035}px;height:${W * .035}px;right:${W * .16}px;top:${H * .18}px`, -8, "#ff2d87")}
     ${deco("stella", `width:${W * .03}px;height:${W * .03}px;right:${W * .1}px;top:${H * .56}px`, 20, "#00b4c5")}

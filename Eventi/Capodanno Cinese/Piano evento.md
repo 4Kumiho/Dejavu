@@ -2,9 +2,9 @@
 
 **Sabato 6 febbraio 2027**: è proprio il giorno del Capodanno cinese, che apre l'**Anno della Capra** 🐐.
 Rosso e oro (i colori della fortuna), lanterne, il carattere **福** («fortuna», appeso capovolto: *la fortuna è arrivata*),
-cocktail con zenzero, mandarino e fiori di pesco, e cucina cinese fritta e al vapore.
+cocktail con zenzero, mandarino e fiori di pesco, e 3 piatti di cucina cinese.
 
-Tutti i drink usano bottiglie già al bar; la cucina è pensata per **fornetto e friggitrice**, con prodotti surgelati pronti.
+Tutti i drink usano bottiglie già al bar; la cucina è di **3 piatti** da scaldare nel **fornetto**: tutto comprato o preparato prima.
 
 **Orario:** da decidere → si aggiunge in `sorgente/grafiche.html` (riga `orario:`) e si rigenerano le grafiche.
 
@@ -38,13 +38,11 @@ Tutti i drink usano bottiglie già al bar; la cucina è pensata per **fornetto e
 
 | Piatto | Prezzo | Come si fa |
 |---|---|---|
-| Involtini primavera (3) | 6 € | Surgelati, friggitrice · salsa agrodolce |
-| Ravioli fritti (6) | 7 € | Surgelati, friggitrice · salsa di soia |
-| Bao Bergamasco (2) | 9 € | Bao surgelati scaldati nel fornetto in alluminio con un po' d'acqua · porchetta, hoisin, cetriolo, cipollotto |
-| Pollo croccante agrodolce | 8 € | Bocconcini impanati surgelati, friggitrice · agrodolce e sesamo |
-| Nuvolette di gamberi | 4 € | Fritte **prima di aprire** e tenute in un contenitore chiuso |
+| Ravioli al vapore (6) | 7 € | Surgelati, nel fornetto in un pacchetto di alluminio con un po' d'acqua (fa vapore) · salsa di soia |
+| Bao Bergamasco (2) | 9 € | Bao surgelati, stesso sistema del pacchetto · porchetta, hoisin, cetriolo, cipollotto |
+| Pollo agrodolce | 8 € | Pollo **cotto il giorno prima** (o comprato pronto), scaldato nel fornetto con la salsa agrodolce · sesamo |
 
-**Combo Fortuna · 15 €** = un cocktail della serata + Ravioli fritti (invece di 17 €).
+**Combo Fortuna · 15 €** = un cocktail della serata + Ravioli al vapore (invece di 17 €).
 **🥠 Biscotto della fortuna in omaggio** per ogni persona, portato con il conto.
 
 👉 Preparazione passo passo, salse e allergeni: **`Istruzioni per il personale.pdf`**, pagina 2.
@@ -63,12 +61,10 @@ purea di lampone, succo di pesca, Prosecco, ghiaccio.
 
 | Cosa | Per | Quanto |
 |---|---|---|
-| Involtini primavera surgelati | Involtini | 30 pezzi |
-| Ravioli / gyoza surgelati (carne e verdure) | Ravioli fritti | 60 pezzi |
+| Ravioli / dim sum surgelati (carne e verdure) | Ravioli al vapore | 60 pezzi |
 | Bao (panini al vapore) surgelati | Bao Bergamasco | 20 pezzi |
-| Bocconcini di pollo impanati surgelati | Pollo agrodolce | 1,5 kg |
-| Chips di gamberi da friggere (secche) | Nuvolette | 1 confezione da 200–250 g |
-| Salsa agrodolce | Involtini, pollo | 2 bottiglie |
+| Petto di pollo a bocconcini (o bocconcini già cotti) | Pollo agrodolce | 1,5 kg |
+| Salsa agrodolce | Pollo | 2 bottiglie |
 | Salsa di soia | Ravioli | 1 bottiglia |
 | Salsa hoisin | Bao | 1 vasetto |
 | Cetriolo e cipollotto | Bao | 2 cetrioli, 1 mazzetto |
@@ -76,7 +72,7 @@ purea di lampone, succo di pesca, Prosecco, ghiaccio.
 | Porchetta in più | Bao | 500 g |
 | **Anice stellato** | Gin Tonic della Fortuna | 1 bustina |
 | **Biscotti della fortuna** | Omaggio | uno a persona (calcolate gli ospiti previsti) |
-| Olio per friggitrice | Tutto il fritto | cambio olio pulito per la serata |
+| Fogli e vaschette di alluminio | Fornetto | 1 rotolo + 20 vaschette |
 
 ---
 
@@ -86,9 +82,9 @@ purea di lampone, succo di pesca, Prosecco, ghiaccio.
 |---|---|
 | **Entro sabato 23 gennaio** | Decidere l'orario · rigenerare le grafiche · pubblicare il **post** |
 | **Sabato 30 gennaio** | Locandina in **vetrina** · prima **storia** |
-| **Mercoledì 3 febbraio** | Spesa (surgelati, salse, chips di gamberi, anice stellato, biscotti della fortuna) · controllo scorte del bar · stampa dei **menu da tavolo** e delle **istruzioni** |
-| **Venerdì 5 febbraio** | Prova dei drink nuovi con il barista · storia «domani!» |
-| **Sabato 6 febbraio, prima di aprire** | Olio pulito · **nuvolette fritte** · salse nelle ciotoline · porchetta e verdure tagliate · lista «Prima di aprire» delle istruzioni · storia «stasera!» |
+| **Mercoledì 3 febbraio** | Spesa (surgelati, salse, anice stellato, biscotti della fortuna) · controllo scorte del bar · stampa dei **menu da tavolo** e delle **istruzioni** |
+| **Venerdì 5 febbraio** | Prova dei drink nuovi con il barista · **pollo cotto e porzionato** in frigo · storia «domani!» |
+| **Sabato 6 febbraio, prima di aprire** | Salse nelle ciotoline · porchetta e verdure tagliate · lista «Prima di aprire» delle istruzioni · storia «stasera!» |
 | **Durante la serata** | Nell'app: **Cronologia → Serata → 🎉 Segna come evento → «Capodanno Cinese»** |
 
 ---
@@ -99,7 +95,7 @@ purea di lampone, succo di pesca, Prosecco, ghiaccio.
 >
 > Sabato 6 febbraio festeggiamo l'arrivo dell'**Anno della Capra** 🐐 con lanterne, rosso e oro.
 > Nel bicchiere il **Drago Rosso**, il **Gin Tonic della Fortuna** al mandarino e la **Lanterna d'Oro** con whisky, miele e zenzero 🥃
-> Da mangiare **involtini primavera**, **ravioli**, **bao** con porchetta e **pollo agrodolce** 🥟
+> Da mangiare **ravioli al vapore**, **bao** con porchetta e **pollo agrodolce** 🥟
 > E con il conto… un **biscotto della fortuna** per tutti 🥠
 >
 > 📅 Sabato 6 febbraio

@@ -44,8 +44,9 @@
   .cornice { position: absolute; border: .12em solid var(--oro); border-radius: .4em; pointer-events: none; }
   .cornice::after { content: ""; position: absolute; inset: .35em; border: .05em solid rgba(242,193,78,.6); border-radius: .25em; }
 
-  .presenta { display: flex; align-items: center; justify-content: center; gap: .5em; letter-spacing: .3em; text-transform: uppercase; font-weight: 700; color: var(--oro-chiaro); }
-  .presenta img { height: 4.2em; width: auto; }
+  /* logo del bar grande in alto: si deve vedere che la serata è del Déjà Vu */
+  .presenta { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .35em; letter-spacing: .4em; text-transform: uppercase; font-weight: 700; color: var(--oro-chiaro); }
+  .presenta img { height: 9.5em; width: auto; filter: drop-shadow(0 0 .6em rgba(0,0,0,.35)); }
   .fu {
     width: 5.2em; height: 5.2em; transform: rotate(45deg); margin: 1em 0 .9em; background: var(--rosso); border: .14em solid var(--oro);
     box-shadow: 0 0 0 .3em var(--rosso), 0 0 0 .38em var(--oro), 0 .5em 1.2em rgba(0,0,0,.4);
@@ -90,6 +91,10 @@
   .storia { width: 1080px; height: 1920px; font-size: 29px; }
   .colonna { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1em; padding: 7.5em 2.4em 4.5em; }
   .storia .colonna { justify-content: space-evenly; gap: 0; padding: 9em 1.6em 6em; }
+  .post .colonna { gap: .75em; padding-top: 6.5em; padding-bottom: 5.5em; }
+  .post .presenta img { height: 8em; }
+  .post .fu { width: 4.4em; height: 4.4em; margin: .6em 0 .5em; }
+  .post .fu span { font-size: 3.3em; }
   .locandina .titolo .cap, .post .titolo .cap { font-size: 2.6em; }
   .locandina .titolo .cin, .post .titolo .cin { font-size: 5.4em; }
   .storia .titolo .cap { font-size: 2.5em; }
@@ -100,7 +105,7 @@
   /* ---------------- menu da tavolo A5 ---------------- */
   .menu { width: 148mm; height: 210mm; font-size: 9.4pt; background: var(--avorio); color: #3a0610; }
   .menu .testa {
-    position: relative; height: 40mm; overflow: hidden; color: var(--avorio);
+    position: relative; height: 60mm; overflow: hidden; color: var(--avorio);
     background:
       radial-gradient(ellipse 70% 70% at 50% 60%, rgba(242,193,78,.25), transparent 70%),
       linear-gradient(180deg, var(--notte), var(--rosso-scuro) 45%, var(--rosso));
@@ -108,7 +113,8 @@
   }
   .menu .testa .colonna { padding: 4.5mm 6mm 2mm; gap: 1.2mm; justify-content: flex-start; }
   .menu .presenta { font-size: 6.5pt; }
-  .menu .presenta img { height: 3.2em; }
+  .menu .presenta img { height: 22mm; }
+  .menu .presenta { flex-direction: column; gap: .6mm; }
   .menu .titolo .cap { font-size: 12pt; }
   .menu .titolo .cin { font-size: 25pt; }
   .menu .anno { font-size: 6.6pt; }
@@ -192,13 +198,11 @@ const DRINK = [
   { n: "Shot Gānbēi", p: 4, d: "Cointreau e zenzero, con lime. Gānbēi: «alla salute!»." },
 ];
 const CIBO = [
-  { n: "Involtini primavera", p: 6, d: "3 involtini croccanti con salsa agrodolce." },
-  { n: "Ravioli fritti", p: 7, d: "6 ravioli di carne e verdure, salsa di soia." },
+  { n: "Ravioli al vapore", p: 7, d: "6 ravioli di carne e verdure, salsa di soia." },
   { n: "Bao Bergamasco", p: 9, d: "2 panini al vapore con porchetta di Ariccia, salsa hoisin, cetriolo e cipollotto." },
-  { n: "Pollo croccante agrodolce", p: 8, d: "Bocconcini di pollo fritti con salsa agrodolce e sesamo." },
-  { n: "Nuvolette di gamberi", p: 4, d: "Una ciotola di chips di gamberi, appena fritte." },
+  { n: "Pollo agrodolce", p: 8, d: "Bocconcini di pollo in salsa agrodolce con sesamo." },
 ];
-const COMBO = { n: "Combo Fortuna", d: "un cocktail della serata + Ravioli fritti", p: 15 };
+const COMBO = { n: "Combo Fortuna", d: "un cocktail della serata + Ravioli al vapore", p: 15 };
 const REGALO = "🥠 Con il conto, un biscotto della fortuna in regalo per tutti";
 /* ======================================================= */
 
@@ -229,7 +233,7 @@ function grafica(cls) {
     ${lanterne(W, cls === "storia" ? 3 : 4, cls === "storia" ? 300 : 250)}
     ${deco("fuoco", `width:${W * .14}px;height:${W * .14}px;left:${W * .08}px;top:${H * (cls === "storia" ? .2 : .2)}px`)}
     ${deco("fuoco", `width:${W * .1}px;height:${W * .1}px;right:${W * .1}px;top:${H * (cls === "storia" ? .24 : .26)}px`)}
-    ${deco("fuoco", `width:${W * .11}px;height:${W * .11}px;right:${W * .07}px;bottom:${H * .045}px`)}
+    ${deco("fuoco", `width:${W * .09}px;height:${W * .09}px;right:${W * .05}px;bottom:${H * .03}px`)}
     ${deco("nuvola", `width:${W * .3}px;height:${W * .135}px;left:${W * .04}px;bottom:${H * .025}px;opacity:.55`)}
     <div class="colonna">
       <div class="presenta"><img src="logo.png" alt="Déjà Vu"><span>presenta</span></div>
@@ -237,7 +241,7 @@ function grafica(cls) {
       <div class="titolo"><span class="cap">Capodanno</span><span class="cin">CINESE</span></div>
       <div class="anno">${esc(EVENTO.anno).replace("Capra", "<b>Capra</b>")} 🐐</div>
       <div class="drink-top">${DRINK.slice(0, 3).map((d) => `<div>${esc(d.n)}</div>`).join("")}</div>
-      <div class="cibo-top"><b>Involtini primavera</b> · <b>Ravioli</b> · <b>Bao</b> · <b>Pollo agrodolce</b></div>
+      <div class="cibo-top"><b>Ravioli al vapore</b> · <b>Bao</b> · <b>Pollo agrodolce</b></div>
       ${data}
       <div class="piede">Déjà Vu · ${esc(EVENTO.luogo)}<br><b>${esc(EVENTO.instagram)}</b></div>
     </div>
