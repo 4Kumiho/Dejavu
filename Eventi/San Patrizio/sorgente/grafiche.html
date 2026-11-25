@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>San Patrizio · Déjà Vu</title>
+<!--
+  Grafiche di San Patrizio. Un solo file per tutti i formati, scelti con l'indirizzo:
+    grafiche.html#locandina   vetrina A3
+    grafiche.html#post        Instagram 1080×1350
+    grafiche.html#storia      Instagram storia 1080×1920
+    grafiche.html#menu        menu da tavolo A5 (stampabile)
+  Data, orario e menu si cambiano in EVENTO, qui sotto nello script.
+-->
+<style>
+  @font-face { font-family: "Uncial"; src: url("font/uncial.woff2") format("woff2"); }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-400.woff2") format("woff2"); font-weight: 400; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-500.woff2") format("woff2"); font-weight: 500; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-600.woff2") format("woff2"); font-weight: 600; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-700.woff2") format("woff2"); font-weight: 700; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-800.woff2") format("woff2"); font-weight: 800; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-900.woff2") format("woff2"); font-weight: 900; }
+
+  :root {
+    --verde-notte: #052a19;
+    --verde-scuro: #0a4a2c;
+    --verde: #138a4b;
+    --trifoglio: #2fb36a;
+    --oro: #f2c14e;
+    --oro-chiaro: #ffe3a1;
+    --crema: #fdf6e3;
+    --arancio: #f28c28;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { background: #111; }
+  body { font-family: "Montserrat", system-ui, sans-serif; color: var(--crema); -webkit-font-smoothing: antialiased; }
+
+  .tela {
+    position: relative; overflow: hidden; margin: 0 auto;
+    background:
+      radial-gradient(ellipse 65% 40% at 50% 40%, rgba(47,179,106,.35), transparent 70%),
+      radial-gradient(ellipse 90% 60% at 50% 110%, rgba(0,0,0,.45), transparent 70%),
+      linear-gradient(180deg, var(--verde-notte) 0%, var(--verde-scuro) 35%, var(--verde) 80%, #0f7a41 100%);
+  }
+  .trifogli { position: absolute; inset: 0; opacity: .08; }
+  .trifogli svg { width: 100%; height: 100%; }
+  .cornice { position: absolute; border: .1em solid var(--oro); border-radius: .5em; pointer-events: none; }
+  .cornice::after { content: ""; position: absolute; inset: .35em; border: .05em solid rgba(242,193,78,.55); border-radius: .35em; }
+  .festone { position: absolute; left: 0; right: 0; top: 0; }
+  .festone svg { width: 100%; height: auto; display: block; }
+
+  /* logo del bar grande in alto: si deve vedere che la serata è del Déjà Vu */
+  .presenta { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .35em; letter-spacing: .4em; text-transform: uppercase; font-weight: 700; color: var(--oro-chiaro); }
+  .presenta img { height: 9.5em; width: auto; filter: drop-shadow(0 0 .6em rgba(0,0,0,.35)); }
+  .titolo { text-align: center; font-family: "Uncial", serif; line-height: .95; }
+  .titolo .san { display: block; color: var(--crema); letter-spacing: .04em; text-shadow: .05em .05em 0 var(--verde-notte), 0 .15em .3em rgba(0,0,0,.4); }
+  .titolo .pat {
+    display: block; letter-spacing: .03em; margin-top: .02em;
+    background: linear-gradient(180deg, var(--oro-chiaro) 0%, var(--oro) 55%, #c9922e 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(.04em .05em 0 var(--verde-notte)) drop-shadow(0 .12em .25em rgba(0,0,0,.35));
+  }
+  .sottotitolo { text-align: center; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; color: var(--oro-chiaro); }
+  .sottotitolo span { color: var(--trifoglio); }
+  .slainte { font-family: "Uncial", serif; color: var(--trifoglio); text-align: center; text-shadow: 0 .05em 0 var(--verde-notte); }
+
+  .drink-top { display: flex; justify-content: center; gap: .9em; flex-wrap: wrap; }
+  .drink-top div {
+    background: rgba(5,42,25,.6); border: .1em solid var(--oro); border-radius: 999px; color: var(--crema);
+    padding: .5em 1.2em; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap;
+  }
+  .cibo-top { text-align: center; font-weight: 600; letter-spacing: .04em; }
+  .cibo-top b { color: var(--oro); }
+  .data {
+    text-align: center; color: var(--verde-notte); font-weight: 900; text-transform: uppercase; letter-spacing: .14em;
+    background: linear-gradient(180deg, var(--oro-chiaro), var(--oro) 60%, #e0a93a);
+    padding: .45em 1.6em; display: inline-block;
+    clip-path: polygon(0 0, 100% 0, 96% 50%, 100% 100%, 0 100%, 4% 50%);
+  }
+  .data small { display: block; font-weight: 700; letter-spacing: .2em; font-size: .55em; margin-top: .15em; }
+  .verde { text-align: center; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--crema); }
+  .verde b { color: var(--trifoglio); }
+  .piede { text-align: center; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--oro-chiaro); }
+  .piede b { color: var(--oro); }
+
+  .decoro { position: absolute; pointer-events: none; }
+  .decoro svg { width: 100%; height: 100%; display: block; overflow: visible; }
+
+  /* ---------------- formati ---------------- */
+  .locandina { width: 1123px; height: 1587px; font-size: 26px; }
+  .post { width: 1080px; height: 1350px; font-size: 24px; }
+  .storia { width: 1080px; height: 1920px; font-size: 29px; }
+  .colonna { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .95em; padding: 6.5em 2.4em 4.5em; }
+  .storia .colonna { justify-content: space-evenly; gap: 0; padding: 8em 1.6em 6em; }
+  .post .colonna { gap: .7em; padding-top: 5.5em; padding-bottom: 4em; }
+  .post .presenta img { height: 8em; }
+  .titolo .san { font-size: 3em; }
+  .titolo .pat { font-size: 5.6em; }
+  .storia .titolo .pat { font-size: 5.2em; }
+  .storia .sottotitolo { letter-spacing: .16em; }
+  .sottotitolo { font-size: 1em; }
+  .slainte { font-size: 1.8em; }
+  .data { font-size: 1.7em; }
+
+  /* ---------------- menu da tavolo A5 ---------------- */
+  .menu { width: 148mm; height: 210mm; font-size: 9.4pt; background: var(--crema); color: #10301f; }
+  .menu .testa {
+    position: relative; height: 62mm; overflow: hidden; color: var(--crema);
+    background:
+      radial-gradient(ellipse 70% 70% at 50% 60%, rgba(47,179,106,.35), transparent 70%),
+      linear-gradient(180deg, var(--verde-notte), var(--verde-scuro) 50%, var(--verde));
+    border-bottom: 1.4mm solid var(--oro);
+  }
+  .menu .testa .colonna { padding: 15mm 6mm 2mm; gap: 1mm; justify-content: flex-start; }
+  .menu .festone svg { height: 11mm; }
+  .menu .presenta { font-size: 6.5pt; flex-direction: column; gap: .6mm; }
+  .menu .presenta img { height: 21mm; }
+  .menu .titolo .san { font-size: 11pt; }
+  .menu .titolo .pat { font-size: 25pt; }
+  .menu .sottotitolo { font-size: 6.6pt; }
+  .menu .corpo { padding: 3mm 10mm 0; }
+  .menu h2 {
+    font-family: "Uncial", serif; font-weight: 400; font-size: 13pt; color: var(--verde); letter-spacing: .04em;
+    display: flex; align-items: center; gap: 3mm; margin: 4mm 0 .8mm;
+  }
+  .menu h2::after { content: ""; flex: 1; height: .45mm; background: linear-gradient(90deg, var(--oro), rgba(242,193,78,.2)); }
+  .menu .voce { display: grid; grid-template-columns: 1fr auto; column-gap: 3mm; padding: 1.05mm 0; }
+  .menu .voce .n { font-weight: 800; text-transform: uppercase; letter-spacing: .04em; font-size: 9pt; }
+  .menu .voce .p { font-weight: 800; color: var(--verde); font-size: 9.5pt; }
+  .menu .voce .d { grid-column: 1 / -1; font-size: 7.3pt; color: #4f6357; line-height: 1.3; margin-top: .2mm; }
+  .menu .combo {
+    margin: 3mm 0 0; background: var(--verde); color: var(--oro-chiaro); border: .5mm solid var(--oro); border-radius: 2mm; padding: 2mm 3.5mm;
+    display: flex; justify-content: space-between; align-items: center; font-weight: 800; font-size: 8.6pt;
+  }
+  .menu .combo span { font-weight: 600; font-size: 7.4pt; color: var(--crema); }
+  .menu .note { text-align: center; font-size: 6.4pt; color: #6b7d72; margin-top: 2mm; line-height: 1.35; }
+  .menu .piede { position: absolute; left: 0; right: 0; bottom: 3.5mm; font-size: 6.2pt; color: var(--verde-scuro); }
+  .menu .piede b { color: var(--verde); }
+
+  @media print { html, body { background: none; } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <!-- trifoglio -->
+    <symbol id="trifoglio" viewBox="0 0 100 110">
+      <g fill="currentColor">
+        <path d="M50 50C38 40 22 42 20 28 18 14 34 6 44 16c4 4 6 10 6 16z"/>
+        <path d="M50 50C62 40 78 42 80 28 82 14 66 6 56 16c-4 4-6 10-6 16z"/>
+        <path d="M50 50C40 60 40 78 26 80 12 82 6 66 16 56c4-4 10-6 16-6z" transform="rotate(45 50 50) translate(10 -4)"/>
+        <path d="M50 52c2 20 4 38 14 54" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+      </g>
+    </symbol>
+    <!-- pinta di Guinness -->
+    <symbol id="pinta" viewBox="0 0 120 220">
+      <path d="M14 10h92l-10 196c-1 8-6 12-14 12H38c-8 0-13-4-14-12z" fill="rgba(255,255,255,.18)" stroke="#fdf6e3" stroke-width="3"/>
+      <path d="M18 44h84l-8 160c-1 6-4 9-10 9H36c-6 0-9-3-10-9z" fill="#1a0e0a"/>
+      <path d="M16 14h88l-2 32H18z" fill="#f3e6c8"/>
+      <path d="M22 60l-4 140" stroke="rgba(255,255,255,.15)" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+    <pattern id="tramatrifogli" width="180" height="180" patternUnits="userSpaceOnUse">
+      <use href="#trifoglio" x="20" y="20" width="50" height="55" color="#2fb36a"/>
+      <use href="#trifoglio" x="110" y="105" width="40" height="44" color="#2fb36a"/>
+    </pattern>
+  </defs>
+</svg>
+<div id="root"></div>
+
+<script>
+/* =================== DA CAMBIARE QUI =================== */
+const EVENTO = {
+  data: "Sabato 13 marzo",
+  orario: "",            // es. "dalle 19:00"
+  luogo: "Via Borgo Santa Caterina 24a · Bergamo",
+  instagram: "@dejavu.bergamo",
+};
+const DRINK = [
+  { n: "Guinness alla spina", p: 6.5, d: "La pinta perfetta, spillata in due tempi come in Irlanda." },
+  { n: "Kilkenny alla spina", p: 7, d: "L'ambrata irlandese, cremosa e morbida. Media." },
+  { n: "Irish Coffee", p: 8, d: "Whiskey irlandese, caffè caldo, zucchero di canna e panna." },
+  { n: "Black Velvet", p: 8, d: "Metà Guinness e metà bollicine, nel flûte." },
+  { n: "Dublin Mule", p: 10, d: "Whiskey irlandese, lime e ginger beer." },
+  { n: "Trifoglio", p: 10, d: "Gin, Chartreuse, elisir menta & eucalipto e lime. Verde come l'Irlanda." },
+  { n: "Baby Guinness", p: 4, d: "Lo shot che sembra una mini pinta: liquore al caffè e crema di whisky." },
+];
+const CIBO = [
+  { n: "Toastie irlandese", p: 7, d: "Pane tostato con cheddar irlandese, prosciutto di Praga e senape." },
+  { n: "Guinness Pie", p: 12, d: "Pasticcio di manzo cotto nella Guinness, con crosta di pasta sfoglia." },
+  { n: "Tagliere di Dublino", p: 10, d: "Soda bread caldo, burro salato, cheddar irlandese e salmone affumicato." },
+];
+const COMBO = { n: "Combo Dublino", d: "Guinness pinta + Toastie irlandese", p: 12 };
+/* ======================================================= */
+
+const formato = (location.hash.slice(1) || "locandina");
+const euro = (p) => (Number.isInteger(p) ? p : p.toFixed(2).replace(".", ",")) + " €";
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const deco = (id, css, colore = "") => `<div class="decoro" style="${css};${colore ? "color:" + colore : ""}"><svg><use href="#${id}"/></svg></div>`;
+const trifogli = `<div class="trifogli"><svg><rect width="100%" height="100%" fill="url(#tramatrifogli)"/></svg></div>`;
+
+// festone di bandierine con i colori dell'Irlanda
+function festone(n) {
+  const colori = ["#169b62", "#fdf6e3", "#f28c28"];
+  const w = 100, gap = 10, tot = n * w + (n - 1) * gap;
+  let s = `<svg viewBox="0 0 ${tot} 140" preserveAspectRatio="none"><path d="M0 12 Q ${tot / 2} 40 ${tot} 12" fill="none" stroke="#f2c14e" stroke-width="3"/>`;
+  for (let i = 0; i < n; i++) {
+    const x = i * (w + gap), y = 12 + 26 * Math.sin(Math.PI * (i + .5) / n);
+    s += `<polygon points="${x + 6},${y} ${x + w - 6},${y} ${x + w / 2},${y + 100}" fill="${colori[i % 3]}"/>`;
+  }
+  return s + "</svg>";
+}
+
+function grafica(cls) {
+  const W = { locandina: 1123, post: 1080, storia: 1080 }[cls];
+  const H = { locandina: 1587, post: 1350, storia: 1920 }[cls];
+  const m = W * .025;
+  const data = EVENTO.data
+    ? `<div class="data">${esc(EVENTO.data)}${EVENTO.orario ? `<small>${esc(EVENTO.orario)}</small>` : ""}</div>`
+    : `<div class="data">Data in arrivo</div>`;
+  return `<div class="tela ${cls}">
+    ${trifogli}
+    <div class="cornice" style="left:${m}px;right:${m}px;top:${m}px;bottom:${m}px"></div>
+    <div class="festone">${festone(cls === "storia" ? 11 : 12)}</div>
+    ${deco("pinta", `width:${W * .085}px;height:${W * .156}px;left:${W * .035}px;top:${H * (cls === "storia" ? .52 : .5)}px;transform:rotate(-8deg)`)}
+    ${deco("pinta", `width:${W * .075}px;height:${W * .138}px;right:${W * .04}px;top:${H * (cls === "storia" ? .54 : .52)}px;transform:rotate(9deg)`)}
+    ${deco("trifoglio", `width:${W * .1}px;height:${W * .11}px;left:${W * .1}px;top:${H * .2}px;transform:rotate(-15deg)`, "#2fb36a")}
+    ${deco("trifoglio", `width:${W * .07}px;height:${W * .077}px;right:${W * .12}px;top:${H * .24}px;transform:rotate(18deg)`, "#2fb36a")}
+    ${deco("trifoglio", `width:${W * .07}px;height:${W * .077}px;left:${W * .05}px;bottom:${H * .022}px;transform:rotate(10deg)`, "#2fb36a")}
+    ${deco("trifoglio", `width:${W * .06}px;height:${W * .066}px;right:${W * .06}px;bottom:${H * .025}px;transform:rotate(-12deg)`, "#f2c14e")}
+    <div class="colonna">
+      <div class="presenta"><img src="logo.png" alt="Déjà Vu"><span>presenta</span></div>
+      <div class="titolo"><span class="san">Festa di</span><span class="pat">San Patrizio</span></div>
+      <div class="sottotitolo">St. Patrick's Day · <span>Irish Night</span></div>
+      <div class="drink-top">${DRINK.slice(0, 1).concat(DRINK.slice(2, 4)).map((d) => `<div>${esc(d.n)}</div>`).join("")}</div>
+      <div class="cibo-top"><b>Toastie</b> · <b>Guinness Pie</b> · <b>Tagliere di Dublino</b></div>
+      ${data}
+      <div class="verde">🍀 Vieni vestito di <b>verde</b> 🍀</div>
+      <div class="slainte">Sláinte!</div>
+      <div class="piede">Déjà Vu · ${esc(EVENTO.luogo)}<br><b>${esc(EVENTO.instagram)}</b></div>
+    </div>
+  </div>`;
+}
+
+function menu() {
+  const voce = (x) => `<div class="voce"><span class="n">${esc(x.n)}</span><span class="p">${euro(x.p)}</span><span class="d">${esc(x.d)}</span></div>`;
+  return `<div class="tela menu" style="background:var(--crema)">
+    <div class="testa">
+      ${trifogli}
+      <div class="festone">${festone(10)}</div>
+      ${deco("pinta", "width:11mm;height:20mm;left:9mm;top:30mm;transform:rotate(-8deg)")}
+      ${deco("pinta", "width:11mm;height:20mm;right:9mm;top:30mm;transform:rotate(8deg)")}
+      <div class="colonna">
+        <div class="presenta"><img src="logo.png" alt="Déjà Vu"><span>presenta</span></div>
+        <div class="titolo"><span class="pat">San Patrizio</span></div>
+        <div class="sottotitolo">${esc(EVENTO.data)} · Irish Night</div>
+      </div>
+    </div>
+    <div class="corpo">
+      <h2>Da bere</h2>
+      ${DRINK.map(voce).join("")}
+      <h2>Da mangiare</h2>
+      ${CIBO.map(voce).join("")}
+      <div class="combo">${esc(COMBO.n)} <span>${esc(COMBO.d)}</span> ${euro(COMBO.p)}</div>
+      <div class="note">Sláinte! (alla salute, in irlandese) · Per allergie e intolleranze chiedi al personale.</div>
+    </div>
+    <div class="piede">Déjà Vu · ${esc(EVENTO.luogo)} · <b>${esc(EVENTO.instagram)}</b></div>
+  </div>`;
+}
+
+document.head.insertAdjacentHTML("beforeend", `<style>@page { size: ${formato === "menu" ? "148mm 210mm" : "297mm 420mm"}; margin: 0; }</style>`);
+document.getElementById("root").innerHTML = formato === "menu" ? menu() : grafica(formato);
+</script>
+</body>
+</html>

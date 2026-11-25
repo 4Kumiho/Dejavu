@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>San Patrizio · Istruzioni per il personale</title>
+<!-- Foglio per il personale (A4, da stampare e tenere al bancone). Si genera in PDF con Edge. -->
+<style>
+  @font-face { font-family: "Uncial"; src: url("font/uncial.woff2") format("woff2"); }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-400.woff2") format("woff2"); font-weight: 400; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-500.woff2") format("woff2"); font-weight: 500; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-600.woff2") format("woff2"); font-weight: 600; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-700.woff2") format("woff2"); font-weight: 700; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-800.woff2") format("woff2"); font-weight: 800; }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat-900.woff2") format("woff2"); font-weight: 900; }
+  @page { size: A4; margin: 0; }
+  :root { --verde-notte: #052a19; --verde-scuro: #0a4a2c; --verde: #138a4b; --trifoglio: #2fb36a; --oro: #f2c14e; --oro-chiaro: #ffe3a1; --arancio: #f28c28; --testo: #13261b; --grigio: #56685d; }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-family: "Montserrat", sans-serif; color: var(--testo); background: #888; -webkit-font-smoothing: antialiased; }
+  .pagina { width: 210mm; height: 297mm; background: #fff; margin: 0 auto 10mm; position: relative; overflow: hidden; page-break-after: always; }
+  .pagina:last-child { page-break-after: auto; margin-bottom: 0; }
+  @media print { body { background: none; } .pagina { margin: 0; } }
+
+  .testa {
+    height: 20mm; padding: 0 12mm; display: flex; align-items: center; justify-content: space-between; color: var(--oro-chiaro);
+    background: linear-gradient(100deg, var(--verde-notte), var(--verde-scuro) 45%, var(--verde));
+    border-bottom: 1.6mm solid; border-image: linear-gradient(90deg, #169b62 0 33.3%, #fdf6e3 33.3% 66.6%, #f28c28 66.6% 100%) 1;
+  }
+  .testa .tit { display: flex; align-items: center; gap: 3mm; }
+  .testa .tit b { font-family: "Uncial", serif; font-weight: 400; font-size: 18pt; color: var(--oro); letter-spacing: .03em; }
+  .testa .tit i { font-style: normal; font-size: 16pt; }
+  .testa .cosa { text-align: right; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; font-size: 9pt; }
+  .testa .cosa span { display: block; font-weight: 600; letter-spacing: .06em; text-transform: none; font-size: 8pt; opacity: .85; margin-top: 1mm; }
+  .corpo { padding: 4.5mm 10mm 0; }
+  .avviso { background: #eef8f1; border-left: 1.4mm solid var(--trifoglio); padding: 2mm 3.5mm; font-size: 8pt; line-height: 1.4; margin-bottom: 3.5mm; }
+  .avviso b { color: var(--verde); }
+
+  .griglia { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
+  .scheda { border: .35mm solid #d6e7dc; border-radius: 2.5mm; padding: 2.6mm 3.6mm 2.8mm; break-inside: avoid; position: relative; }
+  .scheda::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1.4mm; border-radius: 2.5mm 0 0 2.5mm; background: var(--c, var(--verde)); }
+  .scheda.larga { grid-column: 1 / -1; }
+  .scheda h2 { font-size: 11.5pt; font-weight: 900; text-transform: uppercase; letter-spacing: .04em; color: var(--verde); display: flex; justify-content: space-between; align-items: baseline; gap: 2mm; }
+  .scheda h2 small { font-size: 9.5pt; color: var(--testo); font-weight: 800; white-space: nowrap; }
+  .scheda .sub { font-size: 7.3pt; color: var(--grigio); margin: .4mm 0 1.4mm; }
+  .info { display: flex; flex-wrap: wrap; gap: 1mm; margin-bottom: 1.4mm; }
+  .info span { background: #eef5f0; border-radius: 1mm; padding: .7mm 1.8mm; font-size: 7.2pt; font-weight: 600; }
+  .info span b { color: var(--grigio); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; font-size: 6.4pt; margin-right: 1mm; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 1.4mm; }
+  td { font-size: 8.6pt; padding: .7mm 0; border-bottom: .25mm dashed #d6e7dc; }
+  td:last-child { text-align: right; font-weight: 800; color: var(--verde); white-space: nowrap; padding-left: 2mm; }
+  ol { padding-left: 4.6mm; font-size: 8.4pt; line-height: 1.36; }
+  ol li { margin-bottom: .2mm; }
+  ol li::marker { font-weight: 800; color: var(--arancio); }
+  .due { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+  .tip { font-size: 7.6pt; color: var(--grigio); margin-top: 1.4mm; font-style: italic; }
+  .etic { font-size: 6.8pt; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--arancio); margin: 1.2mm 0 .5mm; }
+  .scheda p.t { font-size: 8.4pt; line-height: 1.36; }
+  .allerg { font-size: 7.2pt; margin-top: 1.4mm; color: var(--grigio); }
+  .allerg b { color: var(--testo); }
+
+  .lista { columns: 2; column-gap: 8mm; font-size: 8.6pt; line-height: 1.45; margin-top: 1.5mm; }
+  .lista li { list-style: none; break-inside: avoid; padding-left: 5.5mm; position: relative; margin-bottom: .6mm; }
+  .lista li::before { content: ""; position: absolute; left: 0; top: .9mm; width: 3mm; height: 3mm; border: .4mm solid var(--verde); border-radius: .6mm; }
+  h3 { font-family: "Uncial", serif; font-weight: 400; color: var(--verde); font-size: 12.5pt; margin: 3.5mm 0 .5mm; display: flex; align-items: center; gap: 3mm; }
+  h3::after { content: ""; flex: 1; height: .45mm; background: linear-gradient(90deg, var(--oro), rgba(242,193,78,.2)); }
+  .piede { position: absolute; left: 10mm; right: 10mm; bottom: 5mm; font-size: 7pt; color: var(--grigio); display: flex; justify-content: space-between; border-top: .3mm solid #eee; padding-top: 2mm; }
+</style>
+</head>
+<body>
+
+<!-- ======================= PAGINA 1: DA BERE ======================= -->
+<section class="pagina">
+  <div class="testa">
+    <div class="tit"><i>🍀</i><b>San Patrizio</b></div>
+    <div class="cosa">Da bere<span>Sabato 13 marzo · Istruzioni per il personale · 1/2</span></div>
+  </div>
+  <div class="corpo">
+    <div class="avviso">
+      Da comprare solo una bottiglia di <b>whiskey irlandese</b> (es. Jameson) per Irish Coffee e Dublin Mule: tutto il resto è già al bar.
+      La regina della serata è la <b>Guinness</b>: spillala con calma, come qui sotto. Al brindisi si dice <b>«Sláinte!»</b> (alla salute, si pronuncia «slància»).
+    </div>
+    <div class="griglia">
+
+      <div class="scheda larga" style="--c:#1a0e0a">
+        <h2>La pinta perfetta di Guinness <small>piccola 4 € · pinta 6,50 €</small></h2>
+        <div class="sub">Si spilla in due tempi: è il segreto della crema compatta. Ci vogliono circa 2 minuti, vale la pena.</div>
+        <div class="due">
+          <ol>
+            <li>Bicchiere <b>pulito e asciutto</b>, inclinato a 45° sotto la spina.</li>
+            <li>Apri tutto e versa lungo la parete fino a <b>circa ¾</b>, raddrizzando il bicchiere verso la fine.</li>
+            <li>Appoggialo sul bancone e <b>aspetta</b> che la birra diventi scura e la crema si separi (1–2 minuti).</li>
+          </ol>
+          <ol start="4">
+            <li>Completa fino all'orlo: la crema deve <b>sporgere appena</b> sopra il bordo.</li>
+            <li>Servila con il logo verso il cliente, senza toccare la crema.</li>
+            <li><b>Kilkenny</b> (7 €): spillata normale in un tempo, con un dito di crema.</li>
+          </ol>
+        </div>
+        <div class="tip">Con tanti ordini: riempi i ¾ di più pinte di fila, poi completale tutte insieme.</div>
+      </div>
+
+      <div class="scheda" style="--c:#b8862b">
+        <h2>Irish Coffee <small>8 €</small></h2>
+        <div class="sub">Caldo: caffè e whiskey sotto, panna fredda che galleggia sopra.</div>
+        <div class="info"><span><b>Bicchiere</b>Vetro caldo con manico (o tumbler)</span><span><b>Metodo</b>Nel bicchiere</span></div>
+        <table>
+          <tr><td>Whiskey irlandese</td><td>1½ oz</td></tr>
+          <tr><td>Zucchero di canna</td><td>2 cucchiaini</td></tr>
+          <tr><td>Caffè caldo (espresso allungato)</td><td>3 oz</td></tr>
+          <tr><td>Panna fresca semi-montata</td><td>1 oz</td></tr>
+        </table>
+        <ol>
+          <li>Scalda il bicchiere con acqua calda e svuotalo.</li>
+          <li>Zucchero e caffè caldo: mescola finché lo zucchero si scioglie. Aggiungi il whiskey.</li>
+          <li>Panna nello shaker <b>senza ghiaccio</b>, shakera 10 secondi: deve restare morbida.</li>
+          <li>Versala piano sul dorso del cucchiaio, che galleggi. <b>Non mescolare.</b></li>
+        </ol>
+      </div>
+
+      <div class="scheda" style="--c:#2fb36a">
+        <h2>Trifoglio <small>10 €</small></h2>
+        <div class="sub">Il cocktail verde della serata: erbaceo e fresco.</div>
+        <div class="info"><span><b>Bicchiere</b>Coppetta fredda</span><span><b>Ghiaccio</b>No</span><span><b>Metodo</b>Shaker + doppio strain</span></div>
+        <table>
+          <tr><td>Gin Sipsmith</td><td>1½ oz</td></tr>
+          <tr><td>Elisir Eucalipto &amp; Menta</td><td>½ oz</td></tr>
+          <tr><td>Chartreuse</td><td>¼ oz</td></tr>
+          <tr><td>Sciroppo di zucchero</td><td>¼ oz</td></tr>
+          <tr><td>Lime spremuto</td><td>½ lime</td></tr>
+        </table>
+        <ol>
+          <li>Nello shaker con ghiaccio versa tutti gli ingredienti.</li>
+          <li>Shakera forte 10–12 secondi.</li>
+          <li>Filtra con il colino fine nella coppetta fredda.</li>
+          <li>Guarnisci con una foglia di menta.</li>
+        </ol>
+      </div>
+
+      <div class="scheda" style="--c:#138a4b">
+        <h2>Black Velvet <small>8 €</small></h2>
+        <div class="sub">Metà bollicine, metà Guinness: elegante e scuro.</div>
+        <div class="info"><span><b>Bicchiere</b>Flûte</span><span><b>Ghiaccio</b>No</span><span><b>Metodo</b>A strati</span></div>
+        <table>
+          <tr><td>Bollicine (Bolla spensierata), fredde</td><td>metà flûte</td></tr>
+          <tr><td>Guinness</td><td>metà flûte</td></tr>
+        </table>
+        <ol>
+          <li>Versa le bollicine fino a metà flûte.</li>
+          <li>Completa con la Guinness, piano, sul dorso del bar spoon.</li>
+        </ol>
+      </div>
+
+      <div class="scheda" style="--c:#f28c28">
+        <h2>Dublin Mule <small>10 €</small></h2>
+        <div class="sub">Il Moscow Mule con il whiskey irlandese.</div>
+        <div class="info"><span><b>Bicchiere</b>Come il Moscow Mule</span><span><b>Ghiaccio</b>Sì</span><span><b>Metodo</b>Nel bicchiere</span></div>
+        <table>
+          <tr><td>Whiskey irlandese</td><td>1½ oz</td></tr>
+          <tr><td>Lime spremuto</td><td>½ lime</td></tr>
+          <tr><td>Ginger beer</td><td>top</td></tr>
+        </table>
+        <ol>
+          <li>Bicchiere pieno di ghiaccio, versa whiskey e lime.</li>
+          <li>Completa con la ginger beer e mescola. Fetta di lime.</li>
+        </ol>
+      </div>
+
+      <div class="scheda larga" style="--c:#052a19">
+        <h2>Baby Guinness <small>4 €</small></h2>
+        <div class="due">
+          <div>
+            <div class="sub">Lo shot che sembra una pinta in miniatura: scuro sotto, «crema» sopra. Non è birra.</div>
+            <div class="info"><span><b>Bicchiere</b>Bicchierino</span><span><b>Ghiaccio</b>No</span><span><b>Metodo</b>A strati</span></div>
+            <table>
+              <tr><td>Liquore al caffè</td><td>¾ oz</td></tr>
+              <tr><td>Crema Whisky (sopra)</td><td>¼ oz</td></tr>
+            </table>
+          </div>
+          <ol>
+            <li>Versa il liquore al caffè nel bicchierino, fino a circa 1 cm dall'orlo.</li>
+            <li>Versa la Crema Whisky <b>molto piano</b> sul dorso del bar spoon appoggiato al bordo: deve restare sopra, come la crema della Guinness.</li>
+            <li>Servilo così, senza mescolare.</li>
+          </ol>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="piede"><span>Déjà Vu · San Patrizio</span><span>Misure come nel ricettario del bar · 1 oz = circa 3 cl</span></div>
+</section>
+
+<!-- ======================= PAGINA 2: DA MANGIARE ======================= -->
+<section class="pagina">
+  <div class="testa">
+    <div class="tit"><i>🍀</i><b>San Patrizio</b></div>
+    <div class="cosa">Da mangiare<span>Sabato 13 marzo · Istruzioni per il personale · 2/2</span></div>
+  </div>
+  <div class="corpo">
+    <div class="avviso">
+      In cucina c'è <b>solo il fornetto</b>: tutto è <b>comprato o preparato prima</b>, e al momento si scalda e si monta il piatto.
+      Le preparazioni stanno in <b>frigo</b> e si servono <b>ben calde anche all'interno</b> (seguire le regole HACCP del bar).
+      Per allergie controllare sempre anche le etichette dei prodotti comprati.
+    </div>
+    <div class="griglia">
+
+      <div class="scheda" style="--c:#f2c14e">
+        <h2>Toastie irlandese <small>7 €</small></h2>
+        <div class="etic">Pronto prima</div>
+        <p class="t">Pane in cassetta · cheddar irlandese a fette · prosciutto di Praga · senape.</p>
+        <div class="etic">Al momento</div>
+        <ol>
+          <li>2 fette di pane: senape, cheddar, 2 fette di Praga, ancora cheddar, chiudi.</li>
+          <li><b>Fornetto 5–6 minuti</b>, finché è dorato e il formaggio fonde.</li>
+          <li>Taglia in 2 triangoli e servi.</li>
+        </ol>
+        <div class="tip">Combo Dublino (12 €): Guinness pinta + Toastie.</div>
+        <div class="allerg"><b>Allergeni:</b> glutine, latte, senape.</div>
+      </div>
+
+      <div class="scheda" style="--c:#1a0e0a">
+        <h2>Guinness Pie <small>12 €</small></h2>
+        <div class="etic">Pronto prima (il giorno prima)</div>
+        <p class="t">Pie già pronte in vaschetta monoporzione: <b>comprate</b>, oppure fatte prima (manzo cotto a lungo nella Guinness, coperto di pasta sfoglia e cotto in forno) e tenute in frigo.</p>
+        <div class="etic">Al momento</div>
+        <ol>
+          <li>Una pie nel <b>fornetto 10–12 minuti</b>: deve essere ben calda al centro.</li>
+          <li>Servila nella sua vaschetta su un piatto, con una forchetta e un coltello.</li>
+        </ol>
+        <div class="allerg"><b>Allergeni:</b> glutine (sfoglia e Guinness), sedano, latte/burro (vedi etichetta).</div>
+      </div>
+
+      <div class="scheda" style="--c:#138a4b">
+        <h2>Tagliere di Dublino <small>10 €</small></h2>
+        <div class="etic">Pronto prima</div>
+        <p class="t">Soda bread (comprato o fatto il giorno prima) · burro salato irlandese · cheddar irlandese · salmone affumicato.</p>
+        <div class="etic">Al momento</div>
+        <ol>
+          <li>3–4 fette di soda bread nel <b>fornetto 2 minuti</b>, solo per scaldarle.</li>
+          <li>Sul tagliere: pane caldo, un ricciolo di burro, cheddar a cubetti e 2–3 fette di salmone.</li>
+        </ol>
+        <div class="allerg"><b>Allergeni:</b> glutine, latte, pesce.</div>
+      </div>
+
+      <div class="scheda" style="--c:#f28c28">
+        <h2>Il soda bread <small>se lo fate voi</small></h2>
+        <div class="etic">Il giorno prima · forno di casa</div>
+        <p class="t">500 g di farina, 1 cucchiaino di bicarbonato, 1 cucchiaino di sale, 400 ml di yogurt bianco allungato con un po' di latte.
+          Impasta poco, forma una pagnotta, fai una croce profonda sopra. Forno a 200 °C per circa 40 minuti. Si conserva avvolto in un canovaccio.</p>
+        <div class="allerg"><b>Allergeni:</b> glutine, latte.</div>
+      </div>
+
+    </div>
+
+    <h3>Prima di aprire</h3>
+    <ul class="lista">
+      <li>Bicchieri da pinta puliti e asciutti</li>
+      <li>Controllato il fusto della Guinness (e quello di scorta)</li>
+      <li>Whiskey irlandese, liquore al caffè e Crema Whisky a portata di mano</li>
+      <li>Panna fresca in frigo · zucchero di canna</li>
+      <li>Bollicine fredde per il Black Velvet</li>
+      <li>Coppette in frigo · lime tagliati · ginger beer</li>
+      <li>Fornetto acceso</li>
+      <li>Pie, toastie e soda bread pronti</li>
+      <li>Decorazioni verdi e trifogli al bancone</li>
+      <li>Menu della serata sui tavoli</li>
+      <li>Combo Dublino: Guinness pinta + Toastie = <b>12 €</b></li>
+      <li>Nell'app: Cronologia → Serata → <b>🎉 Segna come evento</b></li>
+    </ul>
+  </div>
+  <div class="piede"><span>Déjà Vu · San Patrizio</span><span>Tutto ben caldo anche all'interno prima di servirlo.</span></div>
+</section>
+
+</body>
+</html>
