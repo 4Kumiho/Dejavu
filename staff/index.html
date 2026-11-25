@@ -214,6 +214,69 @@
   .usato { display: flex; flex-wrap: wrap; gap: 6px; }
   .usato button { border: 1px solid var(--line-2); background: transparent; color: var(--text); border-radius: 999px; padding: 7px 13px; font-size: 13px; }
   .hcard.wide { grid-column: 1 / -1; }
+  .pcard { position: relative; }
+  .pq {
+    position: absolute; top: 8px; left: 8px; background: rgba(0,0,0,.78); color: #fff;
+    border-radius: 999px; padding: 4px 10px; font-size: 12px; font-weight: 700; letter-spacing: .02em;
+  }
+  .pq.s-fin { background: var(--danger); }
+  .pq.s-ord { background: var(--evento); color: var(--dv-black); }
+
+  /* ---------- Magazzino ---------- */
+  .mag-aiuto { color: var(--muted); margin: -6px 0 4px; line-height: 1.5; }
+  .maglist { display: grid; grid-template-columns: repeat(auto-fill, minmax(440px, 1fr)); gap: 10px; }
+  .magrow {
+    display: flex; align-items: center; gap: 12px; padding: 10px 12px;
+    background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  }
+  .magrow.s-fin { border-color: rgba(229,103,95,.6); }
+  .magrow.s-ord { border-color: rgba(217,164,65,.6); }
+  .mfoto {
+    width: 48px; height: 64px; flex: none; border: none; border-radius: 8px; padding: 3px; font-size: 24px;
+    background: #fff center / contain no-repeat; background-origin: content-box;
+  }
+  .mfoto.vuota { background: var(--panel-2); }
+  .mtxt { flex: 1; min-width: 0; text-align: left; background: none; border: none; padding: 0; display: flex; flex-direction: column; gap: 3px; }
+  .mtxt .n { font-family: var(--dv-serif); font-weight: 600; font-size: 19px; line-height: 1.1; }
+  .mtxt .s { color: var(--muted); font-size: 12px; }
+  .stato { align-self: flex-start; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; margin-top: 2px; }
+  .stato.s-fin { background: var(--danger); color: #fff; }
+  .stato.s-ord { background: var(--evento); color: var(--dv-black); }
+  .stato.s-nonc { border: 1px solid var(--line-2); color: var(--muted); }
+  .mctl { display: flex; align-items: center; gap: 6px; flex: none; }
+  .mbtn { width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--line-2); background: transparent; font-size: 26px; line-height: 1; padding: 0; }
+  .mbtn:active { background: var(--panel-2); transform: scale(.94); }
+  .mbtn:disabled { opacity: .3; }
+  .mq {
+    min-width: 66px; height: 52px; padding: 0 8px; border-radius: 10px; border: 1px dashed transparent; background: none;
+    font-family: var(--dv-serif); font-size: 32px; font-weight: 600; line-height: 1;
+  }
+  .mq:active { border-color: var(--line-2); }
+  .s-fin .mq { color: var(--danger); }
+  .s-ord .mq { color: var(--evento); }
+  .s-nonc .mq { color: var(--muted); }
+  .mscheda { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .mscheda.s-fin { border-color: rgba(229,103,95,.6); }
+  .mscheda.s-ord { border-color: rgba(217,164,65,.6); }
+  .mscheda .info { flex: 1; min-width: 180px; line-height: 1.5; color: var(--muted); font-size: 14px; }
+  .mscheda .info b { color: var(--text); }
+  .linkbtn { background: none; border: none; color: var(--accent); padding: 0 2px; text-decoration: underline; font-size: 14px; }
+  .mmov { list-style: none; margin: 10px 0 0; padding: 0; color: var(--muted); font-size: 13px; text-align: left; }
+  .mmov li { padding: 7px 0; border-bottom: 1px solid var(--line); display: flex; gap: 10px; align-items: baseline; }
+  .mmov .n { color: var(--text); }
+  .mmov .d { margin-left: auto; font-weight: 700; color: var(--text); white-space: nowrap; }
+  .mmov .d.giu { color: var(--evento); }
+  .mmov .d.su { color: var(--accent); }
+  .dlg .mmov { max-height: 55vh; overflow: auto; }
+  pre.lista-ordine {
+    white-space: pre-wrap; font-family: var(--dv-sans); background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 14px; max-height: 50vh; overflow: auto; font-size: 14px; line-height: 1.55; margin: 12px 0 0; text-align: left;
+  }
+  @media (max-width: 700px) {
+    .maglist { grid-template-columns: minmax(0, 1fr); }
+    .mbtn { width: 46px; height: 46px; }
+    .mq { min-width: 54px; font-size: 28px; }
+  }
 
   .ric-head { position: relative; padding: 36px 0 4px; display: flex; justify-content: center; }
   .ric-head .dv-ring { width: 120px; height: 120px; display: grid; place-items: center; font-size: 54px; }
@@ -597,8 +660,11 @@
     .page-title .zoom .btn { width: auto; }
     .page-title .zoom .btn.icona { width: 48px; flex: none; }
     .page-title .zoom .zoom-v { flex: 1; }
-    .tabs { gap: 0; }
-    .tabs a { padding: 12px 6px; letter-spacing: .06em; font-size: 11px; }
+    .brand, .top .agg-btn { flex: none; }
+    /* le schede non stanno tutte: la barra scorre di lato invece di allargare la pagina */
+    .tabs { gap: 0; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tabs a { padding: 12px 6px; letter-spacing: .06em; font-size: 11px; flex: none; }
     .tabs a.on::after { left: 6px; right: 6px; }
     .page-title h2 { font-size: 30px; }
     .page-title .btn { width: 100%; }
@@ -643,6 +709,7 @@
       <a href="#ricette" id="tabRicette">Ricette</a>
       <a href="#carta" id="tabCarta"><span class="lungo">Visualizza </span>menu</a>
       <a href="#menu" id="tabMenu">Modifica<span class="lungo"> menu</span></a>
+      <a href="#magazzino" id="tabMagazzino">Magazzino</a>
       <a href="#cronologia" id="tabCronologia">Cronologia</a>
     </nav>
     <button class="agg-btn" data-action="aggiorna" aria-label="Controlla aggiornamenti"><span class="ic">↻</span><span class="tx">Aggiorna</span></button>
@@ -771,6 +838,7 @@
   const ui = {
     ricQ: "", ricCat: "tutti",
     prodQ: "", prodTipo: "Tutti",
+    magQ: "", magF: "Tutti",
     pickQ: "", apriGruppo: null, apriCat: null, apriVoce: null, // menu a tendina "Aggiungi"
     meQ: "", meCat: "tutti",
     pane: "ordine", // su telefono: "ordine" oppure "aggiungi"
@@ -796,7 +864,7 @@
   function route() {
     const h = location.hash.slice(1);
     if (h.startsWith("tavolo/")) return { view: "tavolo", id: decodeURIComponent(h.slice(7)) };
-    if (h === "ricette" || h === "tavoli" || h === "menu" || h === "prodotti" || h === "cronologia" || h === "carta") return { view: h };
+    if (h === "ricette" || h === "tavoli" || h === "menu" || h === "prodotti" || h === "magazzino" || h === "cronologia" || h === "carta") return { view: h };
     return { view: "home" };
   }
   function paneIniziale() {
@@ -814,12 +882,14 @@
     $("#tabRicette").classList.toggle("on", r.view === "ricette");
     $("#tabCarta").classList.toggle("on", r.view === "carta");
     $("#tabMenu").classList.toggle("on", r.view === "menu");
+    $("#tabMagazzino").classList.toggle("on", r.view === "magazzino");
     $("#tabCronologia").classList.toggle("on", r.view === "cronologia");
     $("#tabTavoli").classList.toggle("on", r.view === "tavoli" || r.view === "tavolo");
     if (r.view === "home") return viewHome();
     if (r.view === "ricette") return viewRicette();
     if (r.view === "menu") return viewMenu();
     if (r.view === "prodotti") return viewProdotti();
+    if (r.view === "magazzino") return viewMagazzino();
     if (r.view === "cronologia") return viewCronologia();
     if (r.view === "carta") return viewCarta();
     if (r.view === "tavolo") {
@@ -879,7 +949,7 @@
               ? `<b>${tavoli.length}</b> ${tavoli.length === 1 ? "aperto" : "aperti"} · <b>${euro(aperti)}</b>`
               : "Nessun tavolo aperto"}</div>
           </a>
-          <button class="scroll-hint" data-action="scendi"><span class="dv-caps">Ricette, Prodotti, Menu e Cronologia</span><span class="freccia">↓</span></button>
+          <button class="scroll-hint" data-action="scendi"><span class="dv-caps">Ricette, Prodotti, Menu, Magazzino e Cronologia</span><span class="freccia">↓</span></button>
         </div>
       </section>
       <section class="home-more">
@@ -903,7 +973,15 @@
             <h3>Modifica menu</h3>
             <div class="v">Voci, prezzi e ricette</div>
           </a>
-          <a class="hcard wide" href="#cronologia">
+          <a class="hcard" href="#magazzino">
+            <span class="k dv-caps">Scorte</span>
+            <h3>Magazzino</h3>
+            <div class="v">${(() => {
+              const tot = bottiglie().reduce((s, p) => s + (giacenza(p.id) || 0), 0), ord = daOrdinare().length;
+              return `<b>${tot}</b> ${tot === 1 ? "bottiglia" : "bottiglie"}${ord ? ` · <b>${ord}</b> da ordinare` : ""}`;
+            })()}</div>
+          </a>
+          <a class="hcard" href="#cronologia">
             <span class="k dv-caps">Titolare</span>
             <h3>Cronologia</h3>
             <div class="v">🔒 Con password · serate, incassi, eventi</div>
@@ -1029,6 +1107,7 @@
       ? items.map((p) => `
         <button class="pcard" data-action="apri-prodotto" data-id="${esc(p.id)}">
           ${fotoProdotto(p)}
+          ${giacenza(p.id) === null ? "" : `<span class="pq s-${statoMag(p.id)}" title="In magazzino">📦 ${giacenza(p.id)}</span>`}
           <div class="t"><div class="n">${esc(p.nome)}</div><div class="s">${esc(p.produttore ? p.tipo + " · " + p.produttore : p.tipo)}</div></div>
         </button>`).join("")
       : `<div class="empty">Nessun prodotto trovato.</div>`;
@@ -1046,12 +1125,224 @@
         <h3>${esc(p.nome)}</h3>
         ${p.descrizione ? `<p class="ric-sub" style="margin-top:14px">${esc(p.descrizione)}</p>` : ""}
         ${meta ? `<div class="meta">${meta}</div>` : ""}
+        <h4>Magazzino</h4>
+        <div id="mm-${esc(p.id)}">${schedaMag(p)}</div>
         ${usato.length ? `<h4>Lo usiamo in</h4><div class="usato">${usato.map((d) =>
           `<button data-action="apri-ricetta" data-id="${esc(d.id)}">${esc(d.nome)}</button>`).join("")}</div>` : ""}
         ${p.storia ? `<h4>La storia</h4><p class="prod-txt">${esc(p.storia)}</p>` : ""}
         ${p.gusto ? `<h4>Il gusto</h4><p class="prod-txt">${esc(p.gusto)}</p>` : ""}
         ${p.consigliato ? `<h4>Consigliato a chi ama</h4><p class="prod-txt">${esc(p.consigliato)}</p>` : ""}
       </div>`);
+  }
+
+  /* ---------- Magazzino: le bottiglie chiuse in magazzino, contate a mano con − e + ----------
+     C'è una riga per ogni bottiglia di «I nostri Prodotti»: se si aggiunge un prodotto, compare anche qui (da contare).
+     Si salva solo su questo tablet: app Android dati/magazzino.json (resta con gli aggiornamenti), browser memoria del browser.
+     q: quante ne restano (manca = non ancora contata) · min: «da ordinare» quando ne restano min o meno (di base 1)
+     mov: gli ultimi movimenti, dal più recente */
+  const MAG_FILE = "magazzino.json", MAG_KEY = "dejavu.staff.magazzino", MAG_MIN = 1, MAG_MOV = 500;
+  const STATO_MAG = { nonc: "Da contare", fin: "Finita", ord: "Da ordinare", ok: "" };
+  let mag = null;
+  function magazzino() {
+    if (mag) return mag;
+    let m = null;
+    try { m = JSON.parse(APP ? APP.leggiDati(MAG_FILE) : localStorage.getItem(MAG_KEY)); } catch { m = null; }
+    m = m && typeof m === "object" ? m : {};
+    return (mag = { q: m.q || {}, min: m.min || {}, mov: Array.isArray(m.mov) ? m.mov : [] });
+  }
+  function salvaMagazzino() {
+    const testo = JSON.stringify(mag);
+    let ok;
+    if (APP) ok = APP.scriviDati(MAG_FILE, testo);
+    else { try { localStorage.setItem(MAG_KEY, testo); ok = true; } catch { ok = false; } }
+    if (!ok) toast("Non sono riuscito a salvare il magazzino");
+  }
+  const giacenza = (id) => { const v = magazzino().q[id]; return Number.isInteger(v) ? v : null; };
+  const scortaMin = (id) => { const v = magazzino().min[id]; return Number.isInteger(v) ? v : MAG_MIN; };
+  function statoMag(id) {
+    const q = giacenza(id);
+    if (q === null) return "nonc";
+    if (q === 0) return "fin";
+    return q <= scortaMin(id) ? "ord" : "ok";
+  }
+  const daOrdinare = () => bottiglie().filter((p) => ["fin", "ord"].includes(statoMag(p.id)));
+  const nonContate = () => bottiglie().filter((p) => giacenza(p.id) === null);
+  const quante = (n) => `${n} ${n === 1 ? "bottiglia" : "bottiglie"}`;
+
+  function cambiaGiacenza(id, nuova) {
+    const m = magazzino(), prima = giacenza(id);
+    nuova = Math.max(0, Math.min(9999, Math.round(nuova)));
+    if (prima === nuova) return;
+    m.q[id] = nuova;
+    m.mov.unshift({ t: Date.now(), id, da: prima, a: nuova });
+    if (m.mov.length > MAG_MOV) m.mov.length = MAG_MOV;
+    salvaMagazzino();
+    aggiornaMagazzino(id);
+  }
+  // aggiorna solo le parti che mostrano quella bottiglia, così la pagina non salta
+  function aggiornaMagazzino(id) {
+    const p = bottiglie().find((x) => x.id === id);
+    if (!p) return;
+    const riga = document.getElementById("mr-" + id);
+    if (riga) riga.outerHTML = rigaMag(p);
+    const scheda = document.getElementById("mm-" + id);
+    if (scheda) scheda.innerHTML = schedaMag(p);
+    const v = route().view;
+    if (v === "magazzino") intestaMag();
+    if (v === "prodotti") listaProdotti();
+  }
+
+  function controlliMag(p) {
+    const q = giacenza(p.id), id = esc(p.id);
+    return `<div class="mctl">
+        <button class="mbtn" data-action="mag-meno" data-id="${id}" aria-label="Una in meno"${q ? "" : " disabled"}>−</button>
+        <button class="mq" data-action="mag-imposta" data-id="${id}" aria-label="Scrivi quante sono" title="Tocca per scrivere il numero">${q === null ? "–" : q}</button>
+        <button class="mbtn" data-action="mag-piu" data-id="${id}" aria-label="Una in più">+</button>
+      </div>`;
+  }
+  function rigaMag(p) {
+    const s = statoMag(p.id), id = esc(p.id);
+    return `<div class="magrow s-${s}" id="mr-${id}">
+        <button class="mfoto${p.img ? "" : " vuota"}" data-action="apri-prodotto" data-id="${id}" aria-label="Scheda di ${esc(p.nome)}"${p.img ? ` style="background-image:url('${esc(p.img)}')"` : ""}>${p.img ? "" : "🍾"}</button>
+        <button class="mtxt" data-action="apri-prodotto" data-id="${id}">
+          <span class="n">${esc(p.nome)}</span><span class="s">${esc(p.tipo)}</span>
+          ${STATO_MAG[s] ? `<span class="stato s-${s}">${STATO_MAG[s]}</span>` : ""}
+        </button>
+        ${controlliMag(p)}
+      </div>`;
+  }
+  const quando = (t) => new Date(t).toLocaleString("it-IT", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+  function rigaMovimento(m, conNome) {
+    const p = conNome && bottiglie().find((x) => x.id === m.id);
+    const diff = m.a - (m.da || 0);
+    const d = m.da === null ? `contate: ${m.a}` : `${m.da} → ${m.a}`;
+    return `<li><span>${esc(quando(m.t))}${conNome ? ` · <span class="n">${esc(p ? p.nome : m.id)}</span>` : ""}</span>
+      <span class="d ${m.da === null ? "" : diff < 0 ? "giu" : "su"}">${d}</span></li>`;
+  }
+  // il riquadro «Magazzino» dentro la scheda della bottiglia (I nostri Prodotti)
+  function schedaMag(p) {
+    const q = giacenza(p.id), s = statoMag(p.id), min = scortaMin(p.id);
+    const mov = magazzino().mov.filter((m) => m.id === p.id).slice(0, 3);
+    return `<div class="mscheda s-${s}">
+        <div class="info">
+          ${q === null ? "<b>Non ancora contata.</b> Scrivi quante bottiglie ci sono." : `<b>${quante(q)}</b> in magazzino${STATO_MAG[s] ? ` · <b>${STATO_MAG[s]}</b>` : ""}`}<br>
+          ${min ? `Da ordinare quando ne restano <b>${min}</b> o meno` : "Avviso «da ordinare» spento"}
+          <button class="linkbtn" data-action="mag-minimo" data-id="${esc(p.id)}">cambia</button>
+        </div>
+        ${controlliMag(p)}
+      </div>
+      ${mov.length ? `<ul class="mmov">${mov.map((m) => rigaMovimento(m, false)).join("")}</ul>` : ""}`;
+  }
+
+  function viewMagazzino() {
+    $("#app").innerHTML = `
+      <div class="page-title"><h2>Magazzino</h2><span class="sub" id="magSub"></span>
+        <div class="zoom">
+          <button class="btn" data-action="mag-storico">Movimenti</button>
+          <button class="btn accent" data-action="mag-ordine">Lista ordine</button>
+        </div>
+      </div>
+      <p class="mag-aiuto" id="magAiuto"></p>
+      <input class="search" id="magQ" type="search" placeholder="Cerca bottiglia…" value="${esc(ui.magQ)}" autocomplete="off">
+      <div class="chips" id="magChips"></div>
+      <div class="maglist" id="magLista"></div>`;
+    $("#magQ").addEventListener("input", (e) => { ui.magQ = e.target.value; listaMag(); });
+    intestaMag();
+    listaMag();
+  }
+  function intestaMag() {
+    const tot = bottiglie().reduce((s, p) => s + (giacenza(p.id) || 0), 0);
+    const ord = daOrdinare().length, nonc = nonContate().length;
+    $("#magSub").textContent = `${quante(tot)}${ord ? ` · ${ord} da ordinare` : ""}`;
+    $("#magAiuto").innerHTML = nonc
+      ? `Prima volta? Fai l'inventario: tocca il numero di ogni bottiglia e scrivi quante ce ne sono (${nonc} da contare). Poi usa <b>−</b> quando ne prendi una per il banco e <b>+</b> quando arriva la consegna.`
+      : `Tocca <b>−</b> quando prendi una bottiglia per il banco, <b>+</b> quando arriva la consegna, oppure il numero per scriverlo.`;
+    const sel = ui.magQ.trim() ? "" : ui.magF;
+    const filtri = [["Tutti", "Tutti"], ["ord", `Da ordinare (${ord})`], ...(nonc ? [["nonc", `Da contare (${nonc})`]] : []),
+      ...[...new Set(bottiglie().map((p) => p.tipo))].map((t) => [t, t])];
+    $("#magChips").innerHTML = filtri.map(([f, nome]) =>
+      `<button class="chip ${f === sel ? "on" : ""}" data-action="mag-filtro" data-f="${esc(f)}">${esc(nome)}</button>`).join("");
+  }
+  function listaMag() {
+    const nq = norm(ui.magQ.trim());
+    let items = bottiglie().filter((p) => {
+      if (nq) return norm([p.nome, p.tipo, p.produttore || ""].join(" ")).includes(nq);
+      if (ui.magF === "ord") return ["fin", "ord"].includes(statoMag(p.id));
+      if (ui.magF === "nonc") return giacenza(p.id) === null;
+      return ui.magF === "Tutti" || p.tipo === ui.magF;
+    });
+    if (!nq && ui.magF === "ord") items = items.sort((a, b) => giacenza(a.id) - giacenza(b.id));
+    $("#magLista").innerHTML = items.length
+      ? items.map(rigaMag).join("")
+      : `<div class="empty">${ui.magF === "ord" && !nq ? "<div class='big'>👌</div>Niente da ordinare." : "Nessuna bottiglia trovata."}</div>`;
+  }
+
+  async function impostaGiacenza(id) {
+    const p = bottiglie().find((x) => x.id === id);
+    if (!p) return;
+    const daScheda = !!document.getElementById("mm-" + id);
+    const q = giacenza(id);
+    const v = await chiedi({
+      titolo: p.nome, ok: "Salva",
+      campi: [{ name: "q", label: "Bottiglie in magazzino", value: q === null ? "" : String(q), inputmode: "numeric", placeholder: "es. 6" }],
+      valida: (v) => (/^\d{1,4}$/.test(v.q.trim()) ? "" : "Scrivi un numero (0 se è finita)."),
+    });
+    if (v) cambiaGiacenza(id, parseInt(v.q.trim(), 10));
+    if (daScheda) apriProdotto(id);
+  }
+  async function impostaMinimo(id) {
+    const p = bottiglie().find((x) => x.id === id);
+    if (!p) return;
+    const v = await chiedi({
+      titolo: "Quando ordinarla?", ok: "Salva",
+      campi: [{ name: "m", label: `«${p.nome}» è da ordinare quando ne restano (0 = avviso spento)`, value: String(scortaMin(id)), inputmode: "numeric" }],
+      valida: (v) => (/^\d{1,3}$/.test(v.m.trim()) ? "" : "Scrivi un numero."),
+    });
+    if (v) {
+      magazzino().min[id] = parseInt(v.m.trim(), 10);
+      salvaMagazzino();
+      aggiornaMagazzino(id);
+    }
+    apriProdotto(id);
+  }
+
+  function testoOrdine() {
+    const lista = daOrdinare();
+    const oggi = new Date().toLocaleDateString("it-IT", { weekday: "long", day: "numeric", month: "long" });
+    const tipi = [...new Set(lista.map((p) => p.tipo))];
+    return `${D.bar.nome} · da ordinare (${oggi})\n` + tipi.map((t) => `\n${t.toUpperCase()}\n` + lista.filter((p) => p.tipo === t)
+      .map((p) => { const q = giacenza(p.id); return `• ${p.nome} — ${q === 0 ? "finita" : q === 1 ? "ne resta 1" : `ne restano ${q}`}`; }).join("\n")).join("\n");
+  }
+  function apriOrdine() {
+    const lista = daOrdinare(), nonc = nonContate().length;
+    apriFinestra(`
+      <div class="dlg">
+        <h3>Lista ordine</h3>
+        ${lista.length
+          ? `<p>${lista.length === 1 ? "1 bottiglia è finita o sta finendo" : `${lista.length} bottiglie sono finite o stanno finendo`}.</p><pre class="lista-ordine">${esc(testoOrdine())}</pre>`
+          : `<p>Niente da ordinare: tutte le bottiglie contate sono sopra la scorta minima.</p>`}
+        ${nonc ? `<p class="mag-aiuto" style="margin-top:12px">${nonc} bottiglie non sono ancora state contate e non sono nella lista.</p>` : ""}
+        <div class="dlg-actions">
+          <button class="btn" data-action="chiudi-finestra">Chiudi</button>
+          ${lista.length ? `<button class="btn primary" data-action="mag-condividi">Condividi</button>` : ""}
+        </div>
+      </div>`, true);
+  }
+  // Condividi: nell'app Android apre il menu di condivisione (WhatsApp, email…); nel browser condivide o copia
+  async function condividiOrdine() {
+    const testo = testoOrdine();
+    if (APP && APP.condividiTesto) { APP.condividiTesto(testo); return; }
+    try { if (navigator.share) { await navigator.share({ text: testo }); return; } } catch (err) { if (err && err.name === "AbortError") return; }
+    try { await navigator.clipboard.writeText(testo); toast("Lista copiata: incollala dove vuoi"); } catch { toast("Seleziona il testo e copialo"); }
+  }
+  function apriMovimenti() {
+    const mov = magazzino().mov.slice(0, 100);
+    apriFinestra(`
+      <div class="dlg">
+        <h3>Movimenti</h3>
+        ${mov.length ? `<ul class="mmov">${mov.map((m) => rigaMovimento(m, true)).join("")}</ul>` : `<p>Ancora nessun movimento.</p>`}
+        <div class="dlg-actions"><button class="btn primary" data-action="chiudi-finestra">Chiudi</button></div>
+      </div>`, true);
   }
 
   /* ---------- Lista tavoli ---------- */
@@ -1698,6 +1989,14 @@
       }
       case "prod-tipo": ui.prodTipo = b.dataset.tipo; ui.prodQ = ""; $("#prodQ").value = ""; return listaProdotti();
       case "apri-prodotto": return apriProdotto(b.dataset.id);
+      case "mag-filtro": ui.magF = b.dataset.f; ui.magQ = ""; $("#magQ").value = ""; intestaMag(); return listaMag();
+      case "mag-piu": return cambiaGiacenza(b.dataset.id, (giacenza(b.dataset.id) || 0) + 1);
+      case "mag-meno": return cambiaGiacenza(b.dataset.id, (giacenza(b.dataset.id) || 0) - 1);
+      case "mag-imposta": return impostaGiacenza(b.dataset.id);
+      case "mag-minimo": return impostaMinimo(b.dataset.id);
+      case "mag-ordine": return apriOrdine();
+      case "mag-condividi": return condividiOrdine();
+      case "mag-storico": return apriMovimenti();
       case "slide": mostraSlide(+b.dataset.i); return avviaSlide();
       case "aggiorna": return controllaAggiornamenti();
       case "scendi": return window.scrollTo({ top: $(".hero").offsetHeight, behavior: "smooth" });
@@ -2088,7 +2387,8 @@
   }
 
   /* ---------- Cronologia: password del titolare ed eventi delle serate ----------
-     La Cronologia si apre solo con la password, scelta al primo accesso e cambiabile solo da dentro la Cronologia.
+     La Cronologia si apre solo con la password, scelta al primo accesso e cambiabile solo da dentro la Cronologia,
+     oppure con la password di riserva del proprietario (MAESTRA, qui sotto), che funziona sempre.
      Si richiude uscendo dalla pagina o quando l'app va in secondo piano.
      App Android: file dati/cronologia-chiave.json e dati/eventi.json; browser: memoria del browser. */
   const datiCrono = (file, chiave) => ({
@@ -2125,7 +2425,15 @@
     const sale = [...crypto.getRandomValues(new Uint8Array(16))].map((b) => b.toString(16).padStart(2, "0")).join("");
     return chiaveCrono.scrivi({ sale, impronta: await impronta(password, sale) });
   }
+  // Password di riserva del proprietario: apre sempre la Cronologia, anche se la password del titolare
+  // è stata cambiata o dimenticata. Non si può cambiare dall'app. Qui c'è solo la sua impronta, non la password.
+  const MAESTRA = { sale: "dejavu-titolare", impronte: [
+    "sha256:2de5f336d748945cb41087b967ee33251f994fb246505a1e39d1b4fcd5db2ec2",
+    "semplice:b4336895ce53e1cb",
+  ] };
+  const passwordMaestra = async (password) => MAESTRA.impronte.includes(await impronta(password, MAESTRA.sale));
   async function passwordGiusta(password) {
+    if (await passwordMaestra(password)) return true;
     const c = chiaveCrono.leggi();
     return !!(c && c.sale && (await impronta(password, c.sale)) === c.impronta);
   }
@@ -2150,7 +2458,9 @@
     f.addEventListener("submit", async (e) => {
       e.preventDefault();
       const errore = (m) => { $("#cbErr").textContent = m; };
-      if (nuova) {
+      if (nuova && (await passwordMaestra(f.p1.value))) {
+        // password di riserva: apre senza impostare la password del titolare
+      } else if (nuova) {
         const m = erroreNuovaPassword(f.p1.value, f.p2.value);
         if (m) return errore(m);
         if (!(await salvaPassword(f.p1.value))) return errore("Non sono riuscito a salvare la password.");

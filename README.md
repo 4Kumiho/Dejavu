@@ -76,7 +76,7 @@ Quando c'è una versione nuova, l'app mostra in alto **«È disponibile una nuov
 (puoi controllare anche tu con **↻ Aggiorna**, in alto a destra).
 1. Tocca **Scarica** e aspetta il download.
 2. Apri il file e tocca **Aggiorna**.
-3. Tavoli aperti, menu modificato, cronologia, **password della Cronologia** ed eventi delle serate **restano** (provato: aggiornando non si perde nulla).
+3. Tavoli aperti, menu modificato, cronologia, **password della Cronologia**, eventi delle serate e **magazzino** **restano** (provato: aggiornando non si perde nulla).
 
 > ⚠️ **Non disinstallare mai l'app** per aggiornarla: disinstallando si cancellano menu modificato e cronologia degli incassi.
 > Se proprio devi (o se cambi tablet), prima fai **Scarica copia** sia in **Menu** sia in **Cronologia**: i file finiscono nella cartella **Download/Deja Vu** del tablet.
@@ -87,7 +87,7 @@ Quando c'è una versione nuova, l'app mostra in alto **«È disponibile una nuov
 
 ### 1. Pagina iniziale
 Le foto del locale scorrono dietro il logo e c'è subito il riquadro **Tavoli**, con quanti tavoli sono aperti e quanto c'è ancora da incassare.
-**Scorrendo verso il basso** trovi **Ricette**, **I nostri Prodotti**, **Visualizza menu**, **Modifica menu** e **Cronologia**.
+**Scorrendo verso il basso** trovi **Ricette**, **I nostri Prodotti**, **Visualizza menu**, **Modifica menu**, **Magazzino** e **Cronologia**.
 Le stesse voci sono anche nella barra in alto, in ogni pagina.
 
 <p align="center">
@@ -173,7 +173,23 @@ L'app è pensata per **un solo tablet**, quello del bar: le modifiche fatte lì 
 - **Carica copia** rimette un menu salvato con *Scarica copia* (per esempio su un tablet nuovo).
 - **Ripristina originale** torna al menu di partenza (`shared/menu.json`).
 
-### 11. Cronologia (titolare)
+### 11. Magazzino
+Quante **bottiglie chiuse** ci sono in magazzino, per ogni prodotto di **I nostri Prodotti**, per sapere subito cosa ordinare.
+
+- **La prima volta fai l'inventario**: tocca il numero di ogni bottiglia (all'inizio c'è «–», *Da contare*) e scrivi quante ce ne sono.
+- Poi, al bar: **−** quando prendi una bottiglia dal magazzino per il banco, **+** quando arriva la consegna
+  (o tocca il numero e scrivi direttamente, per esempio dopo una consegna da 12).
+- **Da ordinare** (giallo): ne resta 1 o meno. **Finita** (rosso): 0. Il limite si cambia bottiglia per bottiglia
+  dalla sua scheda (**cambia**); con 0 l'avviso è spento.
+- **Lista ordine**: tutte le bottiglie finite o quasi, divise per tipo. **Condividi** la manda su WhatsApp, email, ecc.
+- **Movimenti**: gli ultimi cambi (quando, quale bottiglia, da quanto a quanto).
+- È **collegato a I nostri Prodotti**: ogni bottiglia del magazzino apre la sua scheda, e nella scheda c'è il riquadro
+  **Magazzino** con − e +. Sulle foto in *I nostri Prodotti* compare 📦 con il numero. Un prodotto nuovo compare da solo
+  anche nel Magazzino, da contare.
+- Lo può usare **tutto lo staff**, senza password. I numeri sono salvati **solo su questo tablet** (non serve internet)
+  e restano con gli aggiornamenti dell'app.
+
+### 12. Cronologia (titolare)
 Tutto quello che viene incassato resta salvato: ogni **Incassa** di *Paga separato* e ogni **Chiudi tavolo**
 (che vuol dire «pagato tutto»), con data, ora e prodotti. I prodotti tolti con **−** prima del pagamento non contano.
 
@@ -182,6 +198,8 @@ Gli incassi sono un dato riservato: la Cronologia si apre **solo con la password
 - La **prima volta** che apri la Cronologia scegli la password (almeno 4 caratteri, da scrivere due volte).
   👉 Fallo **subito tu (titolare)**, appena installata l'app: chi apre per primo la Cronologia sceglie la password.
 - Per **cambiarla**: entra nella Cronologia → **Password**. Si può cambiare solo da dentro, quindi serve quella attuale per entrare.
+- Esiste anche una **password di riserva del proprietario**: apre **sempre** la Cronologia, anche se la password del titolare è stata cambiata o dimenticata.
+  Non si può cambiare dall'app e nel codice c'è solo la sua impronta, non la password: la conosce solo il proprietario.
 - La Cronologia **si richiude da sola** quando esci dalla pagina o quando il tablet va in standby / l'app va in secondo piano.
   Con **🔒 Blocca** la richiudi subito.
 - Senza password lo staff usa normalmente tavoli, ricette, prodotti e menu; nella pagina iniziale non compare più l'incasso della serata.
@@ -247,7 +265,8 @@ Compare solo la pagina per **scaricare l'app Android**: l'app si usa esclusivame
 È un aggiornamento dell'app: tocca **Scarica** e installa il file (vedi [Aggiornare l'app](#-aggiornare-lapp)).
 
 **Ho dimenticato la password della Cronologia.**
-Dall'app non si può recuperare né azzerare (altrimenti chiunque potrebbe farlo). Chiedi a chi gestisce il progetto.
+Dall'app non si può recuperare né azzerare (altrimenti chiunque potrebbe farlo). Entra con la **password di riserva del proprietario**
+e poi, dentro la Cronologia, tocca **Password** per sceglierne una nuova.
 
 **Voglio controllare io se ci sono aggiornamenti.**
 Tocca **↻ Aggiorna** (in alto a destra, in ogni pagina). Se c'è una nuova versione dell'app te lo dice,
@@ -295,7 +314,9 @@ funziona solo dentro l'APK (e in prova sul computer, vedi sotto).
 - È la stessa web app di `staff/` + `shared/`, copiata dentro l'APK e aperta in una WebView.
   Funziona senza internet: menu modificato (`dati/menu.json`) e cronologia restano in file dentro l'app.
 - La cronologia è in file dentro l'app (`dati/cronologia/AAAA-MM.json` + `.bak`), come in Reef; nel browser sta nella memoria del browser.
-  Password della Cronologia (solo l'impronta SHA-256 con sale, mai in chiaro) in `dati/cronologia-chiave.json`, eventi delle serate in `dati/eventi.json`.
+  Password della Cronologia (solo l'impronta SHA-256 con sale, mai in chiaro) in `dati/cronologia-chiave.json`, eventi delle serate in `dati/eventi.json`,
+  magazzino (quantità, scorte minime, ultimi 500 movimenti) in `dati/magazzino.json`.
+  `Condividi` della lista ordine usa `DejavuAndroid.condividiTesto` (menu «Condividi» di Android).
 - **Ricreare l'APK** (PowerShell, dalla radice della repo): `.\android\build.ps1` → `Dejavu-Staff.apk`.
   La prima volta scarica Java, Android SDK e Gradle in `..\.android-tools` (fuori dalla repo).
 - **Provare l'APK sul computer**, senza tablet: `.\android\prova-emulatore.ps1`. Apre un tablet Android virtuale (emulatore),

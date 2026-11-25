@@ -2,6 +2,7 @@ package it.dejavu.staff;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.net.Uri;
 import android.os.Build;
@@ -191,6 +192,22 @@ public class Ponte {
         } catch (Exception e) {
             return "";
         }
+    }
+
+    /** Apre il menu «Condividi» di Android con un testo (es. la lista ordine del magazzino, da mandare su WhatsApp). */
+    @JavascriptInterface
+    public void condividiTesto(String testo) {
+        if (testo == null || testo.isEmpty()) return;
+        app.runOnUiThread(() -> {
+            Intent invio = new Intent(Intent.ACTION_SEND);
+            invio.setType("text/plain");
+            invio.putExtra(Intent.EXTRA_TEXT, testo);
+            try {
+                app.startActivity(Intent.createChooser(invio, "Condividi la lista ordine"));
+            } catch (Exception ignorata) {
+                // nessuna app per condividere
+            }
+        });
     }
 
     /* ---------- Varie ---------- */
