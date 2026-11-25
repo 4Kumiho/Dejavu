@@ -1,7 +1,7 @@
 # 🎄 Christmas Jumper Night · Déjà Vu
 
-**Sabato 19 e sabato 26 dicembre 2026** (il 26 è Santo Stefano).
-Tutti con il **maglione di Natale più brutto (o più bello)**, con un **premio al più brutto** ogni sera.
+**Sabato 26 dicembre 2026**, Santo Stefano: la serata del dopo-Natale.
+Tutti con il **maglione di Natale più brutto (o più bello)**, con un **premio al più brutto**.
 Cocktail delle feste fatti con quello che c'è già al bar, e **3 cose salate** da scaldare nel **fornetto**.
 
 **Orario:** da decidere → si aggiunge in `sorgente/grafiche.html` (riga `orario:`) e si rigenerano le grafiche.
@@ -16,7 +16,7 @@ Cocktail delle feste fatti con quello che c'è già al bar, e **3 cose salate** 
 | `Instagram storia.png` | Storia (1080×1920) |
 | `Menu da tavolo A5.pdf` | Menu della serata da mettere sui tavoli (A5, o due per foglio A4) |
 | `Istruzioni per il personale.pdf` | **Per lo staff**, 2 pagine A4: drink, cibo, premio e lista «Prima di aprire» |
-| `sorgente/` | I file da cui nascono le grafiche (date, prezzi, testi) |
+| `sorgente/` | I file da cui nascono le grafiche (data, prezzi, testi) |
 
 ---
 
@@ -46,7 +46,7 @@ Cocktail delle feste fatti con quello che c'è già al bar, e **3 cose salate** 
 ## 🏆 Il premio al maglione più brutto
 
 Da decidere il premio, per esempio **un cocktail della serata offerto** o **una bottiglia di bollicine**.
-Si sceglie verso le 23:30, ogni sera. Le foto dei maglioni (con il permesso) sono perfette per le storie Instagram.
+Si sceglie verso le 23:30. Le foto dei maglioni (con il permesso) sono perfette per le storie Instagram.
 
 ---
 
@@ -56,9 +56,9 @@ Si sceglie verso le 23:30, ogni sera. Le foto dei maglioni (con il permesso) son
 purea di lampone, soda, bourbon, purea di zenzero, miele, Angostura, Crema Whisky, Amaretto Adriatico, arance,
 pane malfatto, Branzi, porchetta, fornetto.
 
-**Da controllare le scorte** (per **due** serate): Campari, Prosecco, **Trento DOC**, panna, liquore al caffè, Branzi, porchetta.
+**Da controllare le scorte:** Campari, Prosecco, **Trento DOC**, panna, liquore al caffè, Branzi, porchetta.
 
-**Da comprare** (quantità indicative **ogni 10 porzioni** di ciascun piatto, **per serata**):
+**Da comprare** (quantità indicative **ogni 10 porzioni** di ciascun piatto):
 
 | Cosa | Per | Quanto |
 |---|---|---|
@@ -67,24 +67,21 @@ pane malfatto, Branzi, porchetta, fornetto.
 | Pane malfatto, Branzi e porchetta in più | Crostini | 40 fette di pane, 400 g di Branzi, 400 g di porchetta |
 | **Stecche di cannella** e cannella in polvere | Negroni, Bianco Natale, Shot Neve | 1 confezione ciascuna |
 | **Rosmarino** fresco | Rudolph Spritz | 2 mazzetti |
-| Premio per il maglione più brutto | Premio | 1 a serata |
+| Premio per il maglione più brutto | Premio | 1 |
 | Decorazioni: lucine, festoni, cappellini da Babbo Natale per lo staff | Locale | a piacere |
 
 ---
 
-## 🗓️ Tabella di marcia (si parte subito!)
+## 🗓️ Tabella di marcia
 
 | Quando | Cosa |
 |---|---|
-| **Entro venerdì 4 dicembre** | Decidere orario e premio · rigenerare le grafiche · pubblicare il **post** |
-| **Sabato 5 dicembre** | Locandina in **vetrina** · prima **storia** |
-| **Sabato 12 dicembre** | Storia «tra una settimana» · avvisare lo staff: tutti in maglione |
-| **Mercoledì 16 dicembre** | Spesa per la prima serata · stampa **menu da tavolo** e **istruzioni** |
-| **Venerdì 18 dicembre** | Prova dei drink · storia «domani!» |
-| **Sabato 19 dicembre** | 🎄 **Prima serata** · foto dei maglioni per le storie · nell'app: **Cronologia → 🎉 Segna come evento** |
-| **Domenica 20 dicembre** | Storie con le foto e il vincitore · «si replica sabato 26!» |
-| **Mercoledì 23 dicembre** | Spesa per la seconda serata (attenzione: negozi chiusi il 25 e il 26) |
-| **Sabato 26 dicembre** | 🎄 **Seconda serata** · nell'app: **Segna come evento** |
+| **Entro sabato 12 dicembre** | Decidere orario e premio · rigenerare le grafiche · pubblicare il **post** · locandina in **vetrina** |
+| **Sabato 19 dicembre** | Storia «tra una settimana» · avvisare lo staff: tutti in maglione |
+| **Mercoledì 23 dicembre** | **Spesa** (attenzione: il 25 e il 26 i negozi sono chiusi) · prova dei drink · stampa **menu da tavolo** e **istruzioni** |
+| **Giovedì 24 dicembre** | Storia «dopo Natale ci vediamo al Déjà Vu!» |
+| **Sabato 26 dicembre** | 🎄 **La serata** · decorazioni · lista «Prima di aprire» · storia «stasera!» · foto dei maglioni · nell'app: **Cronologia → 🎉 Segna come evento** |
+| **Domenica 27 dicembre** | Storie con le foto dei maglioni e il vincitore |
 
 ---
 
@@ -96,7 +93,7 @@ pane malfatto, Branzi, porchetta, fornetto.
 > Nel bicchiere il **Negroni di Natale**, il **Bianco Natale** e il **Rudolph Spritz** 🍸
 > Da mangiare **panettone salato**, **salatini caldi** e **crostini Branzi e porchetta** 🥪
 >
-> 📅 Sabato 19 e sabato 26 dicembre
+> 📅 Sabato 26 dicembre, Santo Stefano
 > 📍 Via Borgo Santa Caterina 24a, Bergamo
 >
 > Buone Feste! ✨
