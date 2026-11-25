@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Capodanno Cinese · Istruzioni per il personale</title>
+<!-- Foglio per il personale (A4, da stampare e tenere al bancone). Si genera in PDF con Edge. -->
+<style>
+  @font-face { font-family: "Cinzel"; src: url("font/cinzel-700.woff2") format("woff2"); font-weight: 700; }
+  @font-face { font-family: "Pennello"; src: url("font/fu.woff2") format("woff2"); }
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat.woff2") format("woff2"); font-weight: 100 900; }
+  @page { size: A4; margin: 0; }
+  :root { --rosso: #c8102e; --rosso-scuro: #6e0a17; --notte: #3a0610; --oro: #f2c14e; --oro-chiaro: #ffe3a1; --oro-scuro: #b8862b; --testo: #2e1418; --grigio: #6f5458; }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-family: "Montserrat", sans-serif; color: var(--testo); background: #888; -webkit-font-smoothing: antialiased; }
+  .pagina { width: 210mm; height: 297mm; background: #fff; margin: 0 auto 10mm; position: relative; overflow: hidden; page-break-after: always; }
+  .pagina:last-child { page-break-after: auto; margin-bottom: 0; }
+  @media print { body { background: none; } .pagina { margin: 0; } }
+
+  .testa {
+    height: 20mm; padding: 0 12mm; display: flex; align-items: center; justify-content: space-between; color: var(--oro-chiaro);
+    background: linear-gradient(100deg, var(--notte), var(--rosso-scuro) 45%, var(--rosso));
+    border-bottom: 1.4mm solid var(--oro);
+  }
+  .testa .tit { display: flex; align-items: center; gap: 3mm; }
+  .testa .tit .fu { font-family: "Pennello", serif; color: var(--oro); font-size: 20pt; display: inline-block; transform: rotate(180deg); }
+  .testa .tit b { font-family: "Cinzel", serif; font-weight: 700; font-size: 17pt; letter-spacing: .08em; color: var(--oro); }
+  .testa .cosa { text-align: right; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; font-size: 9pt; }
+  .testa .cosa span { display: block; font-weight: 600; letter-spacing: .06em; text-transform: none; font-size: 8pt; opacity: .85; margin-top: 1mm; }
+  .corpo { padding: 4.5mm 10mm 0; }
+  .avviso { background: #fff6e0; border-left: 1.4mm solid var(--oro); padding: 2mm 3.5mm; font-size: 8pt; line-height: 1.4; margin-bottom: 3.5mm; }
+  .avviso b { color: var(--rosso); }
+
+  .griglia { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
+  .scheda { border: .35mm solid #ecdcc0; border-radius: 2.5mm; padding: 2.6mm 3.6mm 2.8mm; break-inside: avoid; position: relative; }
+  .scheda::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1.4mm; border-radius: 2.5mm 0 0 2.5mm; background: var(--c, var(--rosso)); }
+  .scheda h2 { font-size: 11.5pt; font-weight: 900; text-transform: uppercase; letter-spacing: .04em; color: var(--rosso); display: flex; justify-content: space-between; align-items: baseline; gap: 2mm; }
+  .scheda h2 small { font-size: 9.5pt; color: var(--testo); font-weight: 800; white-space: nowrap; }
+  .scheda .sub { font-size: 7.3pt; color: var(--grigio); margin: .4mm 0 1.4mm; }
+  .info { display: flex; flex-wrap: wrap; gap: 1mm; margin-bottom: 1.4mm; }
+  .info span { background: #fbf1df; border-radius: 1mm; padding: .7mm 1.8mm; font-size: 7.2pt; font-weight: 600; }
+  .info span b { color: var(--grigio); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; font-size: 6.4pt; margin-right: 1mm; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 1.4mm; }
+  td { font-size: 8.6pt; padding: .75mm 0; border-bottom: .25mm dashed #ecdcc0; }
+  td:last-child { text-align: right; font-weight: 800; color: var(--rosso); white-space: nowrap; padding-left: 2mm; }
+  ol { padding-left: 4.6mm; font-size: 8.5pt; line-height: 1.36; }
+  ol li { margin-bottom: .2mm; }
+  ol li::marker { font-weight: 800; color: var(--oro-scuro); }
+  .tip { font-size: 7.6pt; color: var(--grigio); margin-top: 1.4mm; font-style: italic; }
+  .etic { font-size: 6.8pt; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--oro-scuro); margin: 1.2mm 0 .5mm; }
+  .scheda p.t { font-size: 8.4pt; line-height: 1.36; }
+  .allerg { font-size: 7.2pt; margin-top: 1.4mm; color: var(--grigio); }
+  .allerg b { color: var(--testo); }
+
+  .lista { columns: 2; column-gap: 8mm; font-size: 8.6pt; line-height: 1.45; margin-top: 1.5mm; }
+  .lista li { list-style: none; break-inside: avoid; padding-left: 5.5mm; position: relative; margin-bottom: .6mm; }
+  .lista li::before { content: ""; position: absolute; left: 0; top: .9mm; width: 3mm; height: 3mm; border: .4mm solid var(--rosso); border-radius: .6mm; }
+  h3 { font-family: "Cinzel", serif; font-weight: 700; color: var(--rosso); font-size: 12pt; letter-spacing: .06em; margin: 3.5mm 0 .5mm; display: flex; align-items: center; gap: 3mm; }
+  h3::after { content: ""; flex: 1; height: .45mm; background: linear-gradient(90deg, var(--oro), rgba(242,193,78,.2)); }
+  .piede { position: absolute; left: 10mm; right: 10mm; bottom: 5mm; font-size: 7pt; color: var(--grigio); display: flex; justify-content: space-between; border-top: .3mm solid #eee; padding-top: 2mm; }
+</style>
+</head>
+<body>
+
+<!-- ======================= PAGINA 1: DRINK ======================= -->
+<section class="pagina">
+  <div class="testa">
+    <div class="tit"><span class="fu">福</span><b>Capodanno Cinese</b></div>
+    <div class="cosa">I drink della serata<span>Sabato 6 febbraio · Istruzioni per il personale · 1/2</span></div>
+  </div>
+  <div class="corpo">
+    <div class="avviso">
+      Tutti i drink usano bottiglie che sono già al bar. Da comprare solo l'<b>anice stellato</b> per il Gin Tonic della Fortuna.
+      Il rosso e l'oro portano fortuna: <b>guarnizioni curate</b> e servizio con un sorriso. Chi ordina lo shot si brinda con <b>«Gānbēi!»</b> (alla salute).
+    </div>
+    <div class="griglia">
+
+      <div class="scheda" style="--c:#c8102e">
+        <h2>Drago Rosso <small>10 €</small></h2>
+        <div class="sub">Rosso fuoco, fresco, con la punta piccante dello zenzero.</div>
+        <div class="info"><span><b>Bicchiere</b>Tumbler alto</span><span><b>Ghiaccio</b>Sì</span><span><b>Metodo</b>Shaker + top</span></div>
+        <table>
+          <tr><td>Gin Bulldog</td><td>1½ oz</td></tr>
+          <tr><td>Purea di lampone</td><td>½ oz</td></tr>
+          <tr><td>Purea di zenzero</td><td>¼ oz</td></tr>
+          <tr><td>Sciroppo di zucchero</td><td>¼ oz</td></tr>
+          <tr><td>Lime spremuto</td><td>½ lime</td></tr>
+          <tr><td>Soda</td><td>top</td></tr>
+        </table>
+        <ol>
+          <li>Nello shaker con ghiaccio versa tutto tranne la soda.</li>
+          <li>Shakera forte e filtra nel tumbler pieno di ghiaccio.</li>
+          <li>Completa con la soda e mescola dal basso.</li>
+          <li>Guarnisci con una fetta di lime.</li>
+        </ol>
+      </div>
+
+      <div class="scheda" style="--c:#f2c14e">
+        <h2>Gin Tonic della Fortuna <small>10 €</small></h2>
+        <div class="sub">Il mandarino è il frutto della fortuna del capodanno cinese.</div>
+        <div class="info"><span><b>Bicchiere</b>Quello del gin tonic</span><span><b>Ghiaccio</b>Sì, pieno</span><span><b>Metodo</b>Nel bicchiere</span></div>
+        <table>
+          <tr><td>Ukiyo Yuzu Gin</td><td>1½ oz</td></tr>
+          <tr><td>Tonica Mandarino &amp; Bergamotto</td><td>top</td></tr>
+          <tr><td>Scorza d'arancia</td><td>1</td></tr>
+          <tr><td>Anice stellato</td><td>1 stella</td></tr>
+        </table>
+        <ol>
+          <li>Riempi il bicchiere di ghiaccio e versa il gin.</li>
+          <li>Completa con la tonica lungo il bar spoon, mescola piano.</li>
+          <li>Spremi la scorza d'arancia sopra e lasciala dentro.</li>
+          <li>Appoggia la stella di anice sul ghiaccio.</li>
+        </ol>
+      </div>
+
+      <div class="scheda" style="--c:#b8862b">
+        <h2>Lanterna d'Oro <small>10 €</small></h2>
+        <div class="sub">Whisky, miele e zenzero (come un Penicillin), con un velo affumicato.</div>
+        <div class="info"><span><b>Bicchiere</b>Tumbler basso</span><span><b>Ghiaccio</b>Cubo grande</span><span><b>Metodo</b>Shaker + strain</span></div>
+        <table>
+          <tr><td>Johnnie Walker Black Label</td><td>1½ oz</td></tr>
+          <tr><td>Miele</td><td>½ oz</td></tr>
+          <tr><td>Purea di zenzero</td><td>¼ oz</td></tr>
+          <tr><td>Lime spremuto</td><td>½ lime</td></tr>
+          <tr><td>Caol Ila 12 (sopra)</td><td>¼ oz</td></tr>
+        </table>
+        <ol>
+          <li>Nello shaker <b>senza ghiaccio</b> mescola miele e lime finché il miele si scioglie.</li>
+          <li>Aggiungi whisky, zenzero e ghiaccio; shakera forte.</li>
+          <li>Filtra nel tumbler sul cubo grande.</li>
+          <li>Versa il Caol Ila piano sul dorso del bar spoon, che resti in superficie.</li>
+        </ol>
+      </div>
+
+      <div class="scheda" style="--c:#ff8fa3">
+        <h2>Fiore di Pesco <small>8 €</small></h2>
+        <div class="sub">Il fiore di pesco è il simbolo della primavera e del nuovo anno.</div>
+        <div class="info"><span><b>Bicchiere</b>Calice</span><span><b>Ghiaccio</b>Sì</span><span><b>Metodo</b>Nel bicchiere</span></div>
+        <table>
+          <tr><td>Liquore ai fiori di sambuco</td><td>½ oz</td></tr>
+          <tr><td>Succo di pesca</td><td>1 oz</td></tr>
+          <tr><td>Prosecco</td><td>3 oz</td></tr>
+          <tr><td>Soda</td><td>splash</td></tr>
+        </table>
+        <ol>
+          <li>Riempi il calice di ghiaccio.</li>
+          <li>Versa liquore al sambuco e succo di pesca.</li>
+          <li>Completa con il Prosecco e uno splash di soda, mescola piano.</li>
+          <li>Guarnisci con una scorza di limone.</li>
+        </ol>
+      </div>
+
+      <div class="scheda" style="--c:#6e0a17">
+        <h2>Shot Gānbēi <small>4 €</small></h2>
+        <div class="sub">Arancia e zenzero: si beve tutto d'un fiato dopo il brindisi.</div>
+        <div class="info"><span><b>Bicchiere</b>Bicchierino</span><span><b>Ghiaccio</b>Solo nello shaker</span><span><b>Metodo</b>Shaker + strain</span></div>
+        <table>
+          <tr><td>Cointreau</td><td>¾ oz</td></tr>
+          <tr><td>Purea di zenzero</td><td>1 bar spoon</td></tr>
+          <tr><td>Lime spremuto</td><td>qualche goccia</td></tr>
+        </table>
+        <ol>
+          <li>Shakera tutto con ghiaccio, per servirlo freddo.</li>
+          <li>Filtra nel bicchierino.</li>
+          <li>Brinda con il cliente: «Gānbēi!».</li>
+        </ol>
+        <div class="tip">Con tanti shot per lo stesso tavolo: shakera tutto insieme e dividi.</div>
+      </div>
+
+      <div class="scheda" style="--c:#c8102e">
+        <h2>Biscotti della fortuna <small>omaggio</small></h2>
+        <div class="sub">Il piccolo regalo della serata.</div>
+        <ol>
+          <li>Un biscotto della fortuna <b>per ogni persona</b> del tavolo, in un piattino.</li>
+          <li>Si portano insieme al <b>conto</b>.</li>
+          <li>Dentro c'è un bigliettino con una frase: fallo leggere ad alta voce, fa ridere il tavolo.</li>
+        </ol>
+        <div class="allerg"><b>Allergeni:</b> glutine (controllare l'etichetta della confezione).</div>
+      </div>
+
+    </div>
+  </div>
+  <div class="piede"><span>Déjà Vu · Capodanno Cinese</span><span>Misure come nel ricettario del bar · 1 oz ≈ 3 cl</span></div>
+</section>
+
+<!-- ======================= PAGINA 2: CIBO ======================= -->
+<section class="pagina">
+  <div class="testa">
+    <div class="tit"><span class="fu">福</span><b>Capodanno Cinese</b></div>
+    <div class="cosa">La cucina della serata<span>Sabato 6 febbraio · Istruzioni per il personale · 2/2</span></div>
+  </div>
+  <div class="corpo">
+    <div class="avviso">
+      Solo <b>fornetto</b> e <b>friggitrice</b>: quasi tutto è <b>surgelato già pronto</b> e va solo cotto. Seguire tempi e temperature scritti <b>sulla confezione</b> se diversi da questi.
+      Salse comprate pronte (agrodolce, soia, hoisin). Per allergie controllare sempre le etichette.
+      ⚠️ <b>Le nuvolette di gamberi si friggono prima di aprire</b>: così l'olio non prende i crostacei durante la serata.
+    </div>
+    <div class="griglia">
+
+      <div class="scheda" style="--c:#f2c14e">
+        <h2>Involtini primavera <small>6 €</small></h2>
+        <div class="etic">Al momento</div>
+        <ol>
+          <li><b>Friggitrice 175 °C per 4–6 minuti</b>, ancora surgelati, finché sono dorati.</li>
+          <li>Scola bene sulla carta.</li>
+          <li>3 involtini nel piatto, salsa agrodolce in una ciotolina.</li>
+        </ol>
+        <div class="allerg"><b>Allergeni:</b> glutine, soia; spesso sedano (vedi etichetta).</div>
+      </div>
+
+      <div class="scheda" style="--c:#c8102e">
+        <h2>Ravioli fritti <small>7 €</small></h2>
+        <div class="etic">Al momento</div>
+        <ol>
+          <li><b>Friggitrice 175 °C per 4–5 minuti</b>, ancora surgelati.</li>
+          <li>Scola sulla carta.</li>
+          <li>6 ravioli nel piatto, salsa di soia in una ciotolina.</li>
+        </ol>
+        <div class="tip">Combo Fortuna (15 €): un cocktail della serata + Ravioli fritti.</div>
+        <div class="allerg"><b>Allergeni:</b> glutine, soia; alcune marche sesamo o crostacei (vedi etichetta).</div>
+      </div>
+
+      <div class="scheda" style="--c:#b8862b">
+        <h2>Bao Bergamasco <small>9 €</small></h2>
+        <div class="etic">Pronto prima</div>
+        <p class="t">Porchetta a fette sottili · cetriolo a bastoncini · cipollotto a rondelle · salsa hoisin.</p>
+        <div class="etic">Al momento</div>
+        <ol>
+          <li>2 bao surgelati in un foglio di alluminio con <b>1 cucchiaio d'acqua</b>, chiuso bene (fa vapore).</li>
+          <li><b>Fornetto 6–8 minuti</b>, finché sono morbidi e caldi. Le fette di porchetta nel fornetto con loro, a parte.</li>
+          <li>Apri ogni bao: un filo di hoisin, porchetta, cetriolo e cipollotto.</li>
+        </ol>
+        <div class="allerg"><b>Allergeni:</b> glutine, soia e sesamo (hoisin); vedi etichette.</div>
+      </div>
+
+      <div class="scheda" style="--c:#6e0a17">
+        <h2>Pollo croccante agrodolce <small>8 €</small></h2>
+        <div class="etic">Al momento</div>
+        <ol>
+          <li>Bocconcini di pollo impanati surgelati in <b>friggitrice 175 °C per 5–6 minuti</b>: dentro devono essere ben cotti.</li>
+          <li>Scola e metti nel piatto.</li>
+          <li>Salsa agrodolce sopra (o a parte se il cliente preferisce) e una spolverata di semi di sesamo.</li>
+        </ol>
+        <div class="allerg"><b>Allergeni:</b> glutine, sesamo; uova o latte nella panatura (vedi etichetta).</div>
+      </div>
+
+      <div class="scheda" style="--c:#ff8fa3">
+        <h2>Nuvolette di gamberi <small>4 €</small></h2>
+        <div class="etic">Prima di aprire</div>
+        <ol>
+          <li>Friggitrice a <b>180 °C</b>: poche nuvolette alla volta, <b>5–10 secondi</b>, finché si gonfiano.</li>
+          <li>Scola sulla carta e lascia raffreddare.</li>
+          <li>Conservale in un contenitore <b>chiuso</b>: restano croccanti tutta la sera.</li>
+        </ol>
+        <div class="etic">Al momento</div>
+        <p class="t">Una ciotola piena, servita così.</p>
+        <div class="allerg"><b>Allergeni:</b> <b>crostacei</b> (gamberi); spesso glutine.</div>
+      </div>
+
+      <div class="scheda" style="--c:#f2c14e">
+        <h2>Le salse <small>comprate</small></h2>
+        <div class="etic">Agrodolce</div>
+        <p class="t">Per involtini e pollo. In ciotoline piccole, preparate prima di aprire.</p>
+        <div class="etic">Soia</div>
+        <p class="t">Per i ravioli. Ciotolina piccola: è molto salata, ne basta poca.</p>
+        <div class="etic">Hoisin</div>
+        <p class="t">Per i bao. Un filo dentro ogni panino.</p>
+        <div class="allerg"><b>Allergeni:</b> soia (tutte), glutine e sesamo in alcune marche.</div>
+      </div>
+
+    </div>
+
+    <h3>Prima di aprire</h3>
+    <ul class="lista">
+      <li>Nuvolette di gamberi già fritte, in un contenitore chiuso</li>
+      <li>Ciotoline di agrodolce, soia e hoisin pronte</li>
+      <li>Porchetta a fette, cetriolo e cipollotto tagliati</li>
+      <li>Fornetto acceso e friggitrice in temperatura</li>
+      <li>Lime tagliati · scorze d'arancia · anice stellato</li>
+      <li>Ukiyo Yuzu Gin, tonica mandarino e Prosecco in frigo</li>
+      <li>Miele e purea di zenzero a portata di mano</li>
+      <li>Ghiaccio in più (cubi grandi per la Lanterna d'Oro)</li>
+      <li>Biscotti della fortuna vicino alla cassa</li>
+      <li>Menu della serata sui tavoli</li>
+      <li>Combo Fortuna: cocktail + Ravioli = <b>15 €</b></li>
+      <li>Nell'app: Cronologia → Serata → <b>🎉 Segna come evento</b></li>
+    </ul>
+  </div>
+  <div class="piede"><span>Déjà Vu · Capodanno Cinese</span><span>Cibi surgelati: sempre ben caldi anche all'interno prima di servirli.</span></div>
+</section>
+
+</body>
+</html>

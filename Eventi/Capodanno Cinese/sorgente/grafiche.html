@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Capodanno Cinese · Déjà Vu</title>
+<!--
+  Grafiche del Capodanno Cinese. Un solo file per tutti i formati, scelti con l'indirizzo:
+    grafiche.html#locandina   vetrina A3
+    grafiche.html#post        Instagram 1080×1350
+    grafiche.html#storia      Instagram storia 1080×1920
+    grafiche.html#menu        menu da tavolo A5 (stampabile)
+  Data, orario e menu si cambiano in EVENTO, qui sotto nello script.
+-->
+<style>
+  @font-face { font-family: "Cinzel"; src: url("font/cinzel-400.woff2") format("woff2"); font-weight: 400; }
+  @font-face { font-family: "Cinzel"; src: url("font/cinzel-700.woff2") format("woff2"); font-weight: 700; }
+  @font-face { font-family: "Pennello"; src: url("font/fu.woff2") format("woff2"); } /* solo i caratteri 福 e 春 */
+  @font-face { font-family: "Montserrat"; src: url("font/montserrat.woff2") format("woff2"); font-weight: 100 900; }
+
+  :root {
+    --rosso: #c8102e;
+    --rosso-scuro: #6e0a17;
+    --notte: #3a0610;
+    --oro: #f2c14e;
+    --oro-chiaro: #ffe3a1;
+    --oro-scuro: #b8862b;
+    --avorio: #fff8ea;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { background: #111; }
+  body { font-family: "Montserrat", system-ui, sans-serif; color: var(--avorio); -webkit-font-smoothing: antialiased; }
+
+  .tela {
+    position: relative; overflow: hidden; margin: 0 auto;
+    background:
+      radial-gradient(ellipse 65% 38% at 50% 40%, rgba(242,193,78,.22), transparent 70%),
+      radial-gradient(ellipse 90% 60% at 50% 110%, rgba(0,0,0,.45), transparent 70%),
+      linear-gradient(180deg, var(--notte) 0%, var(--rosso-scuro) 30%, var(--rosso) 70%, #a50d25 100%);
+  }
+  /* trama di nuvole dorate */
+  .nuvole { position: absolute; inset: 0; opacity: .1; }
+  .nuvole svg { width: 100%; height: 100%; }
+  /* cornice dorata */
+  .cornice { position: absolute; border: .12em solid var(--oro); border-radius: .4em; pointer-events: none; }
+  .cornice::after { content: ""; position: absolute; inset: .35em; border: .05em solid rgba(242,193,78,.6); border-radius: .25em; }
+
+  .presenta { display: flex; align-items: center; justify-content: center; gap: .5em; letter-spacing: .3em; text-transform: uppercase; font-weight: 700; color: var(--oro-chiaro); }
+  .presenta img { height: 4.2em; width: auto; }
+  .fu {
+    width: 5.2em; height: 5.2em; transform: rotate(45deg); margin: 1em 0 .9em; background: var(--rosso); border: .14em solid var(--oro);
+    box-shadow: 0 0 0 .3em var(--rosso), 0 0 0 .38em var(--oro), 0 .5em 1.2em rgba(0,0,0,.4);
+    display: grid; place-items: center;
+  }
+  /* il 福 si appende capovolto: «la fortuna è arrivata» */
+  .fu span { transform: rotate(-45deg) rotate(180deg); font-family: "Pennello", "KaiTi", serif; color: var(--oro); font-size: 3.9em; line-height: 1; }
+  .titolo { text-align: center; font-family: "Cinzel", serif; font-weight: 700; line-height: 1; }
+  .titolo .cap { display: block; color: var(--oro); letter-spacing: .12em; }
+  .titolo .cin {
+    display: block; letter-spacing: .06em; margin-top: .05em;
+    background: linear-gradient(180deg, var(--oro-chiaro) 0%, var(--oro) 50%, var(--oro-scuro) 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 .06em 0 var(--notte)) drop-shadow(0 .15em .25em rgba(0,0,0,.35));
+  }
+  .anno { text-align: center; font-family: "Cinzel", serif; letter-spacing: .25em; color: var(--oro-chiaro); }
+  .anno b { color: var(--oro); }
+
+  .drink-top { display: flex; justify-content: center; gap: .9em; flex-wrap: wrap; }
+  .drink-top div {
+    background: rgba(58,6,16,.55); border: .1em solid var(--oro); border-radius: 999px; color: var(--avorio);
+    padding: .5em 1.2em; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap;
+  }
+  .cibo-top { text-align: center; font-weight: 600; letter-spacing: .04em; }
+  .cibo-top b { color: var(--oro); }
+  .data {
+    text-align: center; color: var(--rosso-scuro); font-weight: 900; text-transform: uppercase; letter-spacing: .14em;
+    background: linear-gradient(180deg, var(--oro-chiaro), var(--oro) 60%, #e0a93a);
+    padding: .45em 1.6em; display: inline-block; position: relative;
+    clip-path: polygon(0 0, 100% 0, 96% 50%, 100% 100%, 0 100%, 4% 50%);
+  }
+  .data small { display: block; font-weight: 700; letter-spacing: .2em; font-size: .55em; margin-top: .15em; }
+  .piede { text-align: center; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--oro-chiaro); }
+  .piede b { color: var(--oro); }
+
+  .decoro { position: absolute; pointer-events: none; }
+  .decoro svg { width: 100%; height: 100%; display: block; overflow: visible; }
+
+  /* ---------------- formati ---------------- */
+  .locandina { width: 1123px; height: 1587px; font-size: 26px; }
+  .post { width: 1080px; height: 1350px; font-size: 24px; }
+  .storia { width: 1080px; height: 1920px; font-size: 29px; }
+  .colonna { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1em; padding: 7.5em 2.4em 4.5em; }
+  .storia .colonna { justify-content: space-evenly; gap: 0; padding: 9em 1.6em 6em; }
+  .locandina .titolo .cap, .post .titolo .cap { font-size: 2.6em; }
+  .locandina .titolo .cin, .post .titolo .cin { font-size: 5.4em; }
+  .storia .titolo .cap { font-size: 2.5em; }
+  .storia .titolo .cin { font-size: 4.9em; }
+  .anno { font-size: 1.15em; }
+  .data { font-size: 1.7em; }
+
+  /* ---------------- menu da tavolo A5 ---------------- */
+  .menu { width: 148mm; height: 210mm; font-size: 9.4pt; background: var(--avorio); color: #3a0610; }
+  .menu .testa {
+    position: relative; height: 40mm; overflow: hidden; color: var(--avorio);
+    background:
+      radial-gradient(ellipse 70% 70% at 50% 60%, rgba(242,193,78,.25), transparent 70%),
+      linear-gradient(180deg, var(--notte), var(--rosso-scuro) 45%, var(--rosso));
+    border-bottom: 1.4mm solid var(--oro);
+  }
+  .menu .testa .colonna { padding: 4.5mm 6mm 2mm; gap: 1.2mm; justify-content: flex-start; }
+  .menu .presenta { font-size: 6.5pt; }
+  .menu .presenta img { height: 3.2em; }
+  .menu .titolo .cap { font-size: 12pt; }
+  .menu .titolo .cin { font-size: 25pt; }
+  .menu .anno { font-size: 6.6pt; }
+  .menu .corpo { padding: 3mm 10mm 0; }
+  .menu h2 {
+    font-family: "Cinzel", serif; font-weight: 700; font-size: 12.5pt; color: var(--rosso); letter-spacing: .1em;
+    display: flex; align-items: center; gap: 3mm; margin: 4.2mm 0 .8mm;
+  }
+  .menu h2::after { content: ""; flex: 1; height: .45mm; background: linear-gradient(90deg, var(--oro), rgba(242,193,78,.2)); }
+  .menu .voce { display: grid; grid-template-columns: 1fr auto; column-gap: 3mm; padding: 1.5mm 0; }
+  .menu .voce .n { font-weight: 800; text-transform: uppercase; letter-spacing: .04em; font-size: 9pt; }
+  .menu .voce .n i { font-style: normal; font-weight: 600; text-transform: none; letter-spacing: 0; color: var(--oro-scuro); margin-left: 1.5mm; font-size: 7.6pt; }
+  .menu .voce .p { font-weight: 800; color: var(--rosso); font-size: 9.5pt; }
+  .menu .voce .d { grid-column: 1 / -1; font-size: 7.3pt; color: #6b4a4f; line-height: 1.3; margin-top: .2mm; }
+  .menu .combo {
+    margin: 3mm 0 0; background: var(--rosso); color: var(--oro-chiaro); border: .5mm solid var(--oro); border-radius: 2mm; padding: 2mm 3.5mm;
+    display: flex; justify-content: space-between; align-items: center; font-weight: 800; font-size: 8.6pt;
+  }
+  .menu .combo span { font-weight: 600; font-size: 7.4pt; color: var(--avorio); }
+  .menu .regalo { text-align: center; margin-top: 2.4mm; font-size: 8pt; font-weight: 700; color: var(--rosso); }
+  .menu .note { text-align: center; font-size: 6.4pt; color: #8a6a6f; margin-top: 1.4mm; line-height: 1.35; }
+  .menu .piede { position: absolute; left: 0; right: 0; bottom: 3.5mm; font-size: 6.2pt; color: var(--rosso-scuro); }
+  .menu .piede b { color: var(--rosso); }
+
+  @media print { html, body { background: none; } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <!-- lanterna rossa con filo, cappucci dorati e nappa -->
+    <symbol id="lanterna" viewBox="0 0 120 260">
+      <line x1="60" y1="0" x2="60" y2="40" stroke="#f2c14e" stroke-width="3"/>
+      <rect x="40" y="38" width="40" height="12" rx="3" fill="#f2c14e"/>
+      <ellipse cx="60" cy="110" rx="54" ry="62" fill="#e0182f"/>
+      <ellipse cx="60" cy="110" rx="54" ry="62" fill="url(#lucelanterna)"/>
+      <g fill="none" stroke="#a50d25" stroke-width="3">
+        <ellipse cx="60" cy="110" rx="18" ry="62"/><ellipse cx="60" cy="110" rx="38" ry="62"/>
+      </g>
+      <rect x="40" y="168" width="40" height="12" rx="3" fill="#f2c14e"/>
+      <line x1="60" y1="180" x2="60" y2="200" stroke="#f2c14e" stroke-width="3"/>
+      <path d="M50 200h20l6 56H44z" fill="#f2c14e"/>
+      <g stroke="#b8862b" stroke-width="2"><path d="M52 206v48M58 206v50M64 206v50M70 206v48"/></g>
+      <radialGradient id="lucelanterna" cx=".45" cy=".4" r=".6"><stop offset="0" stop-color="#ffcf6b" stop-opacity=".55"/><stop offset="1" stop-color="#e0182f" stop-opacity="0"/></radialGradient>
+    </symbol>
+    <!-- fuoco d'artificio dorato -->
+    <symbol id="fuoco" viewBox="-50 -50 100 100">
+      <g stroke="#f2c14e" stroke-width="2.4" stroke-linecap="round">
+        <path d="M0-18V-46M0 18V46M-18 0H-46M18 0H46M-13-13-32-32M13 13 32 32M-13 13-32 32M13-13 32-32"/>
+      </g>
+      <g fill="#ffe3a1"><circle cx="0" cy="-48" r="3"/><circle cx="0" cy="48" r="3"/><circle cx="-48" cy="0" r="3"/><circle cx="48" cy="0" r="3"/>
+        <circle cx="-34" cy="-34" r="3"/><circle cx="34" cy="34" r="3"/><circle cx="-34" cy="34" r="3"/><circle cx="34" cy="-34" r="3"/></g>
+    </symbol>
+    <!-- nuvola cinese -->
+    <symbol id="nuvola" viewBox="0 0 200 90">
+      <path d="M20 70c-14 0-18-20-4-24 0-18 22-26 34-14 6-18 34-22 44-4 10-14 36-10 38 8 14-4 26 8 20 22 10 2 12 12 2 12z" fill="none" stroke="#f2c14e" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M58 62c0-10 14-10 14 0M110 60c0-12 16-12 16 0" fill="none" stroke="#f2c14e" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+    <pattern id="tramanuvole" width="260" height="170" patternUnits="userSpaceOnUse">
+      <use href="#nuvola" x="10" y="20" width="110" height="50"/>
+      <use href="#nuvola" x="140" y="105" width="110" height="50"/>
+    </pattern>
+  </defs>
+</svg>
+<div id="root"></div>
+
+<script>
+/* =================== DA CAMBIARE QUI =================== */
+const EVENTO = {
+  data: "Sabato 6 febbraio",
+  orario: "",            // es. "dalle 19:00"
+  anno: "Anno della Capra · 2027",
+  luogo: "Via Borgo Santa Caterina 24a · Bergamo",
+  instagram: "@dejavu.bergamo",
+};
+const DRINK = [
+  { n: "Drago Rosso", p: 10, d: "Gin Bulldog, purea di lampone e zenzero, lime e soda. Rosso come la fortuna." },
+  { n: "Gin Tonic della Fortuna", p: 10, d: "Ukiyo Yuzu Gin e tonica mandarino & bergamotto, con anice stellato." },
+  { n: "Lanterna d'Oro", p: 10, d: "Whisky, miele, zenzero e lime, con un velo affumicato di Caol Ila." },
+  { n: "Fiore di Pesco", p: 8, d: "Liquore ai fiori di sambuco, succo di pesca e Prosecco." },
+  { n: "Shot Gānbēi", p: 4, d: "Cointreau e zenzero, con lime. Gānbēi: «alla salute!»." },
+];
+const CIBO = [
+  { n: "Involtini primavera", p: 6, d: "3 involtini croccanti con salsa agrodolce." },
+  { n: "Ravioli fritti", p: 7, d: "6 ravioli di carne e verdure, salsa di soia." },
+  { n: "Bao Bergamasco", p: 9, d: "2 panini al vapore con porchetta di Ariccia, salsa hoisin, cetriolo e cipollotto." },
+  { n: "Pollo croccante agrodolce", p: 8, d: "Bocconcini di pollo fritti con salsa agrodolce e sesamo." },
+  { n: "Nuvolette di gamberi", p: 4, d: "Una ciotola di chips di gamberi, appena fritte." },
+];
+const COMBO = { n: "Combo Fortuna", d: "un cocktail della serata + Ravioli fritti", p: 15 };
+const REGALO = "🥠 Con il conto, un biscotto della fortuna in regalo per tutti";
+/* ======================================================= */
+
+const formato = (location.hash.slice(1) || "locandina");
+const euro = (p) => (Number.isInteger(p) ? p : p.toFixed(2).replace(".", ",")) + " €";
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const deco = (id, css) => `<div class="decoro" style="${css}"><svg><use href="#${id}"/></svg></div>`;
+const nuvole = `<div class="nuvole"><svg><rect width="100%" height="100%" fill="url(#tramanuvole)"/></svg></div>`;
+function lanterne(W, n, alt) {
+  let s = "";
+  for (let i = 0; i < n; i++) {
+    const x = (W / (n + 1)) * (i + 1), h = alt * (i % 2 ? .78 : 1), w = h * 120 / 260;
+    s += deco("lanterna", `width:${w}px;height:${h}px;left:${x - w / 2}px;top:-${h * .1}px`);
+  }
+  return s;
+}
+
+function grafica(cls) {
+  const W = { locandina: 1123, post: 1080, storia: 1080 }[cls];
+  const H = { locandina: 1587, post: 1350, storia: 1920 }[cls];
+  const m = W * .025;
+  const data = EVENTO.data
+    ? `<div class="data">${esc(EVENTO.data)}${EVENTO.orario ? `<small>${esc(EVENTO.orario)}</small>` : ""}</div>`
+    : `<div class="data">Data in arrivo</div>`;
+  return `<div class="tela ${cls}">
+    ${nuvole}
+    <div class="cornice" style="left:${m}px;right:${m}px;top:${m}px;bottom:${m}px"></div>
+    ${lanterne(W, cls === "storia" ? 3 : 4, cls === "storia" ? 300 : 250)}
+    ${deco("fuoco", `width:${W * .14}px;height:${W * .14}px;left:${W * .08}px;top:${H * (cls === "storia" ? .2 : .2)}px`)}
+    ${deco("fuoco", `width:${W * .1}px;height:${W * .1}px;right:${W * .1}px;top:${H * (cls === "storia" ? .24 : .26)}px`)}
+    ${deco("fuoco", `width:${W * .11}px;height:${W * .11}px;right:${W * .07}px;bottom:${H * .045}px`)}
+    ${deco("nuvola", `width:${W * .3}px;height:${W * .135}px;left:${W * .04}px;bottom:${H * .025}px;opacity:.55`)}
+    <div class="colonna">
+      <div class="presenta"><img src="logo.png" alt="Déjà Vu"><span>presenta</span></div>
+      <div class="fu"><span>福</span></div>
+      <div class="titolo"><span class="cap">Capodanno</span><span class="cin">CINESE</span></div>
+      <div class="anno">${esc(EVENTO.anno).replace("Capra", "<b>Capra</b>")} 🐐</div>
+      <div class="drink-top">${DRINK.slice(0, 3).map((d) => `<div>${esc(d.n)}</div>`).join("")}</div>
+      <div class="cibo-top"><b>Involtini primavera</b> · <b>Ravioli</b> · <b>Bao</b> · <b>Pollo agrodolce</b></div>
+      ${data}
+      <div class="piede">Déjà Vu · ${esc(EVENTO.luogo)}<br><b>${esc(EVENTO.instagram)}</b></div>
+    </div>
+  </div>`;
+}
+
+function menu() {
+  const voce = (x) => `<div class="voce"><span class="n">${esc(x.n)}</span><span class="p">${euro(x.p)}</span><span class="d">${esc(x.d)}</span></div>`;
+  return `<div class="tela menu" style="background:var(--avorio)">
+    <div class="testa">
+      ${nuvole}
+      ${deco("lanterna", "width:10mm;height:22mm;left:9mm;top:-2mm")}
+      ${deco("lanterna", "width:8mm;height:17mm;left:21mm;top:-2mm")}
+      ${deco("lanterna", "width:8mm;height:17mm;right:21mm;top:-2mm")}
+      ${deco("lanterna", "width:10mm;height:22mm;right:9mm;top:-2mm")}
+      <div class="colonna">
+        <div class="presenta"><img src="logo.png" alt="Déjà Vu"><span>presenta</span></div>
+        <div class="titolo"><span class="cap">Capodanno</span><span class="cin">CINESE</span></div>
+        <div class="anno">${esc(EVENTO.data)} · ${esc(EVENTO.anno)}</div>
+      </div>
+    </div>
+    <div class="corpo">
+      <h2>Drink</h2>
+      ${DRINK.map(voce).join("")}
+      <h2>Cucina</h2>
+      ${CIBO.map(voce).join("")}
+      <div class="combo">${esc(COMBO.n)} <span>${esc(COMBO.d)}</span> ${euro(COMBO.p)}</div>
+      <div class="regalo">${esc(REGALO)}</div>
+      <div class="note">Per allergie e intolleranze chiedi al personale.</div>
+    </div>
+    <div class="piede">Déjà Vu · ${esc(EVENTO.luogo)} · <b>${esc(EVENTO.instagram)}</b></div>
+  </div>`;
+}
+
+document.head.insertAdjacentHTML("beforeend", `<style>@page { size: ${formato === "menu" ? "148mm 210mm" : "297mm 420mm"}; margin: 0; }</style>`);
+document.getElementById("root").innerHTML = formato === "menu" ? menu() : grafica(formato);
+</script>
+</body>
+</html>
